@@ -38,10 +38,10 @@ const mySlice = createSlice({
         state.dataObject.image = null;
       })
       .addCase(postHtmlDataAsync.fulfilled, (state, action) => {
-        state.dataObject.image = action.payload;
+        state.metricsLoading = true;
       })
       .addCase(postHtmlDataAsync.rejected, (state, action) => {
-        state.dataObject.image = [];
+        state.metricsLoading = true;
       });
   }
 });

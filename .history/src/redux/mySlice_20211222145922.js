@@ -1,21 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const initialState = {
   tag: "h3",
-  addedImages: [],
-  dataObject: {
-    image: []
-  }
+  addedImages: []
 };
 
-export const postHtmlDataAsync = createAsyncThunk(
-  "HtmlData/post",
+export const creatMilestonesAsync = createAsyncThunk(
+  "milestone/create",
   async (action) => {
-    const response = await axios.post(
-      `https://test.zegashop.com/api/set`,
-      action
-    );
+    const response = await axios.post(`${BASE_URL}/milestone`, action);
     return response.data;
   }
 );
@@ -31,18 +24,6 @@ const mySlice = createSlice({
       state.addedImages = [...state.addedImages, ...action.payload];
       console.log(state.addedImages, "addedImages");
     }
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(postHtmlDataAsync.pending, (state, action) => {
-        state.dataObject.image = null;
-      })
-      .addCase(postHtmlDataAsync.fulfilled, (state, action) => {
-        state.dataObject.image = action.payload;
-      })
-      .addCase(postHtmlDataAsync.rejected, (state, action) => {
-        state.dataObject.image = [];
-      });
   }
 });
 

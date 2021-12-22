@@ -41,7 +41,7 @@ const mySlice = createSlice({
         state.dataObject.image = action.payload;
       })
       .addCase(postHtmlDataAsync.rejected, (state, action) => {
-        state.dataObject.image = [];
+        state.metricsLoading = true;
       });
   }
 });

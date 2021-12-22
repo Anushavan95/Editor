@@ -1,12 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const initialState = {
   tag: "h3",
-  addedImages: [],
-  dataObject: {
-    image: []
-  }
+  addedImages: []
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -32,18 +28,11 @@ const mySlice = createSlice({
       console.log(state.addedImages, "addedImages");
     }
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(postHtmlDataAsync.pending, (state, action) => {
-        state.dataObject.image = null;
-      })
-      .addCase(postHtmlDataAsync.fulfilled, (state, action) => {
-        state.dataObject.image = action.payload;
-      })
-      .addCase(postHtmlDataAsync.rejected, (state, action) => {
-        state.dataObject.image = [];
-      });
-  }
+  extraReducers:  (builder) => {
+		builder
+			.addCase(getInitiativeChartsAsync.pending, (state, action) => {
+				state.metricsLoading = true
+			})
 });
 
 export const { setTag, addIMages } = mySlice.actions;
