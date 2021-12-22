@@ -1,11 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tag: "h3",
   addedImages: []
 };
-
-// export const postHtmlData = createAsyncThunk();
 
 const mySlice = createSlice({
   name: "counter",

@@ -1,7 +1,7 @@
 import React from "react";
 import ImageUploading from "react-images-uploading";
-import { useDispatch } from "react-redux";
 import { addIMages } from "./redux/mySlice";
+
 function ImageUploadingApp() {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;

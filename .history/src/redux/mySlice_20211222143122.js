@@ -1,11 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tag: "h3",
   addedImages: []
 };
-
-// export const postHtmlData = createAsyncThunk();
 
 const mySlice = createSlice({
   name: "counter",
@@ -15,8 +13,7 @@ const mySlice = createSlice({
       state.tag = action.payload;
     },
     addIMages: (state, action) => {
-      state.addedImages = [...state.addedImages, ...action.payload];
-      console.log(state.addedImages, "addedImages");
+      state.addedImages = action.payload;
     }
   }
 });
@@ -24,6 +21,8 @@ const mySlice = createSlice({
 export const { setTag, addIMages } = mySlice.actions;
 
 export const selectTag = (state) => state.counter.tag;
-export const selectAddedImages = (state) => state.counter.addedImages;
+export const selectTag = (state) => state.counter.addedImages;
+
+addedImages;
 
 export default mySlice.reducer;

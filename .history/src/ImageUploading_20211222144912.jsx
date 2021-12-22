@@ -9,7 +9,7 @@ function ImageUploadingApp() {
   const onChange = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
-    dispatch(addIMages(imageList));
+    dispatch(addIMages(images));
   };
   return (
     <ImageUploading

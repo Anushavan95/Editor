@@ -5,7 +5,7 @@ const initialState = {
   addedImages: []
 };
 
-// export const postHtmlData = createAsyncThunk();
+export const postHtmlData = createAsyncThunk();
 
 const mySlice = createSlice({
   name: "counter",

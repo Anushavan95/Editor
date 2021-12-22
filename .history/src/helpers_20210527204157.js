@@ -110,7 +110,7 @@ export const handleMoveWithinParent = (
   return reorderChildren(layout, splitDropZonePath, splitItemPath);
 };
 
-export const handleAddColumDataToRow = (layout) => {
+export const handleAddColumDataToRow = layout => {
   const layoutCopy = [...layout];
   const COLUMN_STRUCTURE = {
     type: COLUMN,
@@ -118,7 +118,7 @@ export const handleAddColumDataToRow = (layout) => {
     children: []
   };
 
-  return layoutCopy.map((row) => {
+  return layoutCopy.map(row => {
     if (!row.children.length) {
       row.children = [COLUMN_STRUCTURE];
     }

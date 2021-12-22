@@ -1,16 +1,17 @@
 import React from "react";
 import ImageUploading from "react-images-uploading";
-import { useDispatch } from "react-redux";
-import { addIMages } from "./redux/mySlice";
+import { useSelector } from "react-redux";
+
 function ImageUploadingApp() {
-  const [images, setImages] = React.useState([]);
   const maxNumber = 69;
-  const dispatch = useDispatch();
+
+  const imagesList = useSelector((state) => state.imagesList);
   const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
-    dispatch(addIMages(imageList));
   };
+
   return (
     <ImageUploading
       multiple

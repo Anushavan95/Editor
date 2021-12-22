@@ -136,6 +136,7 @@ const Container = () => {
         </Tabs>
 
         <BasicSelect />
+        <Constants />
       </div>
       <div className="pageContainer">
         <div className="page">

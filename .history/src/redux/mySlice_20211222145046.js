@@ -1,11 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tag: "h3",
   addedImages: []
 };
-
-// export const postHtmlData = createAsyncThunk();
 
 const mySlice = createSlice({
   name: "counter",
@@ -15,7 +13,7 @@ const mySlice = createSlice({
       state.tag = action.payload;
     },
     addIMages: (state, action) => {
-      state.addedImages = [...state.addedImages, ...action.payload];
+      state.addedImages = [...state.addedImages, action.payload];
       console.log(state.addedImages, "addedImages");
     }
   }

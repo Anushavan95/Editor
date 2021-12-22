@@ -1,20 +1,21 @@
 import React from "react";
 import ImageUploading from "react-images-uploading";
-import { useDispatch } from "react-redux";
-import { addIMages } from "./redux/mySlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addIMages, selectAddedImages } from "./redux/mySlice";
+
 function ImageUploadingApp() {
-  const [images, setImages] = React.useState([]);
   const maxNumber = 69;
   const dispatch = useDispatch();
-  const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
+  const imagesList = useSelector(selectAddedImages);
+  const onChange = (imageList) => {
     dispatch(addIMages(imageList));
+    imageList = [];
   };
+
   return (
     <ImageUploading
       multiple
-      value={images}
+      value={imagesList}
       onChange={onChange}
       maxNumber={maxNumber}
       dataURLKey="data_url"
@@ -39,7 +40,7 @@ function ImageUploadingApp() {
           </button>
           &nbsp;
           <button onClick={onImageRemoveAll}>Remove all images</button>
-          {imageList.map((image, index) => (
+          {imagesList.map((image, index) => (
             <div key={index} className="image-item">
               <img src={image["data_url"]} alt="" width="100" />
               <div className="image-item__btn-wrapper">
