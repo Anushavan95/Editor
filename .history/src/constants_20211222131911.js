@@ -1,5 +1,8 @@
 import React from "react";
 import shortid from "shortid";
+// import TextFieldsIcon from "@mui/icons-material/TextFields";
+// import Heading from "./images/header-icon.png";
+// import { selectCount } from "./redux/mySlice";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
