@@ -19,11 +19,19 @@ import Constants, {
   COLUMN
 } from "./constants";
 import shortid from "shortid";
+<<<<<<< HEAD
+=======
+import BasicSelect from "./TagSelect";
+>>>>>>> 0063af70a35dbf1701b25b8b543748cfb7a158c9
 import Tabs from "./Tabs";
 
 const Container = () => {
   const initialLayout = initialData.layout;
+<<<<<<< HEAD
+
+=======
   console.log(initialLayout, "initial");
+>>>>>>> 0063af70a35dbf1701b25b8b543748cfb7a158c9
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
@@ -76,6 +84,10 @@ const Container = () => {
       // move down here since sidebar items dont have path
       const splitItemPath = item.path.split("-");
       const pathToItem = splitItemPath.slice(0, -1).join("-");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0063af70a35dbf1701b25b8b543748cfb7a158c9
       // 2. Pure move (no create)
       if (splitItemPath.length === splitDropZonePath.length) {
         // 2.a. move within parent
@@ -132,7 +144,11 @@ const Container = () => {
             <SideBarItem key={sideBarItem.id} data={sideBarItem} />
           ))}
         </Tabs>
+<<<<<<< HEAD
+=======
 
+        <BasicSelect />
+>>>>>>> 0063af70a35dbf1701b25b8b543748cfb7a158c9
       </div>
       <div className="pageContainer">
         <div className="page">

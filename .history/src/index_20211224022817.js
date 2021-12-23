@@ -7,14 +7,12 @@ import "./styles.css";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import Header from "./Componenets/ZegeTheme/Header/Header";
-import Main from "./Componenets/ZegeTheme/Main/Main";
-import "./Componenets/zegaTheme.css";
+
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
         <Header />
-        <Main />
         <DndProvider backend={Backend}>
           <Example />
         </DndProvider>

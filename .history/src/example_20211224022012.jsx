@@ -23,7 +23,6 @@ import Tabs from "./Tabs";
 
 const Container = () => {
   const initialLayout = initialData.layout;
-  console.log(initialLayout, "initial");
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
@@ -132,7 +131,6 @@ const Container = () => {
             <SideBarItem key={sideBarItem.id} data={sideBarItem} />
           ))}
         </Tabs>
-
       </div>
       <div className="pageContainer">
         <div className="page">
