@@ -1,7 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { useDispatch, useSelector } from "react-redux";
-import { addIMages, postHtmlDataAsync } from "./redux/builderSlice";
+import { useDispatch } from "react-redux";
 
 const SideBarItem = ({ data }) => {
   const [{ opacity }, drag] = useDrag({
@@ -10,17 +9,12 @@ const SideBarItem = ({ data }) => {
       opacity: monitor.isDragging() ? 0.4 : 1
     })
   });
-  const addIMage = useSelector(addIMages);
   const dispatch = useDispatch();
-  // const myclick = () => {
-  //   dispatch(postHtmlDataAsync(JSON.stringify({ data: addIMage })));
-  // };
   return (
     <div>
       <div className="sideBarItem" ref={drag} style={{ opacity }}>
         {data.component.type}
       </div>
-      {/* <button onClick={myclick}> click</button> */}
     </div>
   );
 };

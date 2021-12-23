@@ -12,9 +12,9 @@ const SideBarItem = ({ data }) => {
   });
   const addIMage = useSelector(addIMages);
   const dispatch = useDispatch();
-  // const myclick = () => {
-  //   dispatch(postHtmlDataAsync(JSON.stringify({ data: addIMage })));
-  // };
+  const myclick = () => {
+    dispatch(postHtmlDataAsync(JSON.stringify({ data: addIMage })));
+  };
   return (
     <div>
       <div className="sideBarItem" ref={drag} style={{ opacity }}>

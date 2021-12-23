@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { COMPONENT } from "./constants";
 import ImageUploadingApp from "./ImageUploading";
 
-import { selectTag } from "./redux/builderSlice";
+import { selectTag } from "./redux/mySlice";
 
 const style = {
   border: "1px dashed black",
