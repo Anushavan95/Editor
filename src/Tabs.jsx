@@ -10,7 +10,7 @@ import {
   selectTab,
   selectTextEditorValue,
   setEditorTextValue,
-  setTab,
+  setTab
 } from "./redux/mySlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ function Tabs(props) {
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
   const valueText = useSelector(selectTextEditorValue);
- 
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     // dispatch(setTab(tab));
@@ -33,7 +33,7 @@ function Tabs(props) {
 
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
-    console.log(valueText.toString("html"), 'val');
+    console.log(valueText.toString("html"), "val");
   };
 
   const handleSave = () => {
@@ -48,9 +48,9 @@ function Tabs(props) {
         body: JSON.stringify({
           data: {
             component_id: 1,
-            text: `${obj3}  <img src=${imag[0].data_url} />`,
-          },
-        }),
+            text: `${obj3}  <img src=${imag[0].data_url} />`
+          }
+        })
       };
       {
         /* */
@@ -69,7 +69,7 @@ function Tabs(props) {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Components" value="1" />
+            <Tab label="Elements" value="1" />
             <Tab label="Styles" value={"2"} />
           </TabList>
         </Box>
@@ -78,8 +78,12 @@ function Tabs(props) {
         </TabPanel>
         <TabPanel value="2">
           <RichTextEditor value={valueText} onChange={onChange} />
-        <BasicSelect />
-          <Button style={{marginTop: "150px"}} variant="contained" onClick={handleSave}>
+          <BasicSelect />
+          <Button
+            style={{ marginTop: "150px" }}
+            variant="contained"
+            onClick={handleSave}
+          >
             handlesave
           </Button>
         </TabPanel>

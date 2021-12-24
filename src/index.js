@@ -13,7 +13,7 @@ import Tabs from "./Tabs";
 import { SIDEBAR_ITEMS } from "./constants";
 import SideBarItem from "./SideBarItem";
 import { Box } from "@mui/system";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 function App() {
   return (
@@ -23,16 +23,19 @@ function App() {
           <Grid>
             <Box sx={{ display: "flex" }}>
               <Box className="sideBar">
+                <Typography variant="h4" className="editor-title">
+                  Editor
+                </Typography>
                 <Tabs>
                   {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
                     <SideBarItem key={sideBarItem.id} data={sideBarItem} />
                   ))}
                 </Tabs>
               </Box>
-              <div className="parent">
+              <Box className="parent">
                 <Header />
                 <Main />
-              </div>
+              </Box>
             </Box>
           </Grid>
           <Example />
