@@ -2,7 +2,7 @@ import React from "react";
 import SecondHeader from "./SecondHeader";
 export default function Header() {
   return (
-    <div className="parent">
+    <div>
       <div className="Toastify"></div>
       <div className="mobilemenu" style={{ opacity: "0" }}>
         <div className="mobilemenu__backdrop"></div>

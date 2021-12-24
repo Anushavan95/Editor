@@ -10,8 +10,9 @@ body {
 }
 
 .sideBar {
+  position: fixed;
   flex: 0 0 1;
-  width: 250px;
+  width: 280px;
   padding: 10px;
   border-right: 1px solid #111;
   height: 100vh;

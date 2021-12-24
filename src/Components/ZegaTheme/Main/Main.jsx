@@ -21,7 +21,6 @@ export default function Main() {
           </div>
         </div>
       </div>
-      {/* <TextBoard /> */}
       <BlockProducts />
     </div>
   );

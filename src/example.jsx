@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 
 import DropZone from "./DropZone";
 import TrashDropZone from "./TrashDropZone";
-import SideBarItem from "./SideBarItem";
 import Row from "./Row";
 import initialData from "./initial-data";
 import {
@@ -12,14 +11,8 @@ import {
   handleRemoveItemFromLayout
 } from "./helpers";
 
-import Constants, {
-  SIDEBAR_ITEMS,
-  SIDEBAR_ITEM,
-  COMPONENT,
-  COLUMN
-} from "./constants";
+import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
-import Tabs from "./Tabs";
 
 const Container = () => {
   const initialLayout = initialData.layout;
@@ -126,14 +119,6 @@ const Container = () => {
 
   return (
     <div className="body">
-      <div className="sideBar">
-        <Tabs>
-          {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-            <SideBarItem key={sideBarItem.id} data={sideBarItem} />
-          ))}
-        </Tabs>
-
-      </div>
       <div className="pageContainer">
         <div className="page">
           {layout.map((row, index) => {

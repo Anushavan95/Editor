@@ -9,13 +9,32 @@ import { Provider } from "react-redux";
 import Header from "./Components/ZegaTheme/Header/Header";
 import Main from "./Components/ZegaTheme/Main/Main";
 import "./Components/zegaTheme.css";
+import Tabs from "./Tabs";
+import { SIDEBAR_ITEMS } from "./constants";
+import SideBarItem from "./SideBarItem";
+import { Box } from "@mui/system";
+import { Grid } from "@mui/material";
+
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Header />
-        <Main />
         <DndProvider backend={Backend}>
+          <Grid>
+            <Box sx={{ display: "flex" }}>
+              <Box className="sideBar">
+                <Tabs>
+                  {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
+                    <SideBarItem key={sideBarItem.id} data={sideBarItem} />
+                  ))}
+                </Tabs>
+              </Box>
+              <div className="parent">
+                <Header />
+                <Main />
+              </div>
+            </Box>
+          </Grid>
           <Example />
         </DndProvider>
       </Provider>
