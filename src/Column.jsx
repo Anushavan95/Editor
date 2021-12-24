@@ -22,7 +22,6 @@ const Column = ({ data, components, handleDrop, path }) => {
 
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-
   const renderComponent = (component, currentPath) => {
     return (
       <Component
@@ -43,7 +42,6 @@ const Column = ({ data, components, handleDrop, path }) => {
       {data.id}
       {data.children.map((component, index) => {
         const currentPath = `${path}-${index}`;
-
         return (
           <React.Fragment key={component.id}>
             <DropZone

@@ -138,3 +138,7 @@ body {
   box-shadow: 0 1px rgb(0 0 0 / 4%), inset 0 -1px rgb(0 0 0 / 4%);
   color: white;
 }
+
+.dragged {
+  box-shadow: 5px 10px 15px rgb(150, 149, 149);
+}
