@@ -23,6 +23,7 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: <TextSnippetIcon className="edit-icon icon" />,
+      text: "Editor",
       content: "Editor"
     }
   },
@@ -31,6 +32,7 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: <AddPhotoAlternateIcon className="image-upload icon" />,
+      text: "Image",
       content: "ImageUpload"
     }
   },

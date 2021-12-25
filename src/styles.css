@@ -144,3 +144,7 @@ body {
 .dragged {
   box-shadow: 5px 10px 15px rgb(150, 149, 149);
 }
+
+.element-title {
+  font-size: 18px !important;
+}
