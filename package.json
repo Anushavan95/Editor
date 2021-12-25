@@ -23,6 +23,7 @@
     "immutability-helper": "^3.0.0",
     "jsx": "react",
     "lodash": "4.17.15",
+    "node-sass": "^7.0.0",
     "react": "^17.0.2",
     "react-contenteditable": "^3.3.6",
     "react-dnd": "10.0.2",

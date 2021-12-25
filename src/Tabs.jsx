@@ -84,7 +84,7 @@ function Tabs(props) {
             variant="contained"
             onClick={handleSave}
           >
-            handlesave
+            handleSave
           </Button>
         </TabPanel>
       </TabContext>

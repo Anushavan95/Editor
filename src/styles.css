@@ -13,16 +13,16 @@ body {
   position: fixed;
   flex: 0 0 1;
   width: 280px;
-  /* padding: 10px; */
   border-right: 1px solid #111;
   height: 100vh;
-  background: #e1e1e1;
+  background-color: #EFF1F2;
+
 }
 
 .sideBarItem {
   border: 1px solid #000;
   border-radius: 3px;
-  height: 75px;
+  height: 80px;
   padding: 10px;
   margin-top: 10px;
   background: #ccc;
@@ -31,10 +31,12 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: #FFFFFF;
   cursor: move;
-  /* position: relative; */
+  display: flex;
+  flex-direction: column;
 }
+
 
 .page {
   flex: 1 1 auto;

@@ -14,6 +14,7 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: <TextFieldsIcon className="text-icon icon" />,
+      text: "Heading",
       content: "Heading"
     }
   },

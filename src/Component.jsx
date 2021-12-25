@@ -10,7 +10,7 @@ const style = {
   border: "1px dashed black",
   padding: "0.5rem 1rem",
   backgroundColor: "white",
-  cursor: "move",
+  cursor: "move"
 };
 const Component = ({ data, components, path }) => {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ const Component = ({ data, components, path }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, id: data.id, path },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
+      isDragging: monitor.isDragging()
+    })
   });
 
   const opacity = isDragging ? 0 : 1;
@@ -41,7 +41,7 @@ const Component = ({ data, components, path }) => {
     return (
       <div
         dangerouslySetInnerHTML={{
-          __html: tagEntry,
+          __html: tagEntry
         }}
       ></div>
     );
