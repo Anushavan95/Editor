@@ -27,9 +27,11 @@ function App() {
                   Editor
                 </Typography>
                 <Tabs>
-                  {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-                    <SideBarItem key={sideBarItem.id} data={sideBarItem} />
-                  ))}
+                  <Box className="elements-parent-box">
+                    {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
+                      <SideBarItem key={sideBarItem.id} data={sideBarItem} />
+                    ))}
+                  </Box>
                 </Tabs>
               </Box>
               <Box className="parent">

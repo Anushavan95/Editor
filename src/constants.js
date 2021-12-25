@@ -43,13 +43,13 @@ export const SIDEBAR_ITEMS = [
       type: "phone",
       content: "Some phone"
     }
-  },
-  {
-    id: shortid.generate(),
-    type: SIDEBAR_ITEM,
-    component: {
-      type: "image",
-      content: "Some image"
-    }
   }
+  // {
+  //   id: shortid.generate(),
+  //   type: SIDEBAR_ITEM,
+  //   component: {
+  //     type: "image",
+  //     content: "Some image"
+  //   }
+  // }
 ];

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 import { useDrag } from "react-dnd";
 const SideBarItem = ({ data }) => {
@@ -12,12 +12,12 @@ const SideBarItem = ({ data }) => {
   });
 
   return (
-    <div className={`sideBarItem ${className}`} ref={drag} style={{ opacity }}>
+    <Box className={`sideBarItem ${className}`} ref={drag} style={{ opacity }}>
       {data.component.type}
       <Typography variant={"h6"} className="element-title">
         {data.component.text}
       </Typography>
-    </div>
+    </Box>
   );
 };
 export default SideBarItem;
