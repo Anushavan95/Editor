@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import ImageUploading from "react-images-uploading";
 import { useDispatch } from "react-redux";
@@ -28,23 +29,32 @@ function ImageUploadingApp() {
         isDragging,
         dragProps
       }) => (
-        // write your building UI
         <div className="upload__image-wrapper">
-          <button
+          <Button
+            variant="contained"
             style={isDragging ? { color: "red" } : undefined}
             onClick={onImageUpload}
             {...dragProps}
           >
             Click or Drop here
-          </button>
+          </Button>
           &nbsp;
-          <button onClick={onImageRemoveAll}>Remove all images</button>
+          <Button variant="error" onClick={onImageRemoveAll}>
+            Remove all images
+          </Button>
           {imageList.map((image, index) => (
             <div key={index} className="image-item">
               <img src={image["data_url"]} alt="" width="100" />
               <div className="image-item__btn-wrapper">
-                <button onClick={() => onImageUpdate(index)}>Update</button>
-                <button onClick={() => onImageRemove(index)}>Remove</button>
+                <Button
+                  variant="contained"
+                  onClick={() => onImageUpdate(index)}
+                >
+                  Update
+                </Button>
+                <Button variant="error" onClick={() => onImageRemove(index)}>
+                  Remove
+                </Button>
               </div>
             </div>
           ))}

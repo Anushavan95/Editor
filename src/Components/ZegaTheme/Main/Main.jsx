@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectZegaProducts, zegaProductsAsync } from "../../../redux/mySlice";
+
 import BlockProducts from "./BlockProducts";
 
 export default function Main() {
+  const dispatch = useDispatch();
+  const stateZegaProducts = useSelector(selectZegaProducts);
+
+  useEffect(() => {
+    dispatch(zegaProductsAsync());
+  }, []);
+
   return (
     <div className="site__body">
       <div>
@@ -21,7 +31,7 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <BlockProducts />
+      <BlockProducts stateZegaProducts={stateZegaProducts} />
     </div>
   );
 }

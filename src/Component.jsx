@@ -29,8 +29,8 @@ const Component = ({ data, components, path }) => {
   drag(ref);
 
   const component = components[data.id];
-  let tagEntry = `<${tag}>lalal</${tag}>`;
-
+  console.log(components, "componentds");
+  let tagEntry = `<${tag}>Your Heading</${tag}>`;
   if (component.content == "ImageUpload") {
     return <ImageUploadingApp />;
   }
@@ -40,14 +40,14 @@ const Component = ({ data, components, path }) => {
   if (component.content == "Heading") {
     return (
       <div
+        // contentEditable={true}
         dangerouslySetInnerHTML={{
           __html: tagEntry
         }}
-      ></div>
+      />
     );
   }
 
-  console.log(component.content, "component.content");
   return (
     <div
       ref={ref}

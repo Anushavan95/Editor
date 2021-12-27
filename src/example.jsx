@@ -16,7 +16,7 @@ import shortid from "shortid";
 
 const Container = () => {
   const initialLayout = initialData.layout;
-  console.log(initialLayout, "initial");
+  // console.log(initialLayout, "initial");
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);

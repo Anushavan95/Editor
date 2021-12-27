@@ -60,11 +60,15 @@ const initialData = {
   components: {
     component0: {
       id: "component0",
-      type: "input",
-      content: "<h1>Your Heading</h1>"
+      type: "heading",
+      content: "Your Heading"
     },
-    component1: { id: "component1", type: "image", content: "Some image" },
-    component2: { id: "component2", type: "email", content: "Some email" },
+    component1: {
+      id: "component1",
+      type: "editor",
+      content: "PLease Your Text"
+    },
+    component2: { id: "component2", type: "Image", content: "Some Image" },
     component3: { id: "component3", type: "name", content: "Some name" },
     component4: {
       id: "component4",

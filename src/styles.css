@@ -84,8 +84,9 @@ body {
 
 .column {
   border: 1px solid blue;
-  flex: 1 1 100%;
+  /* flex: 1 1 100%; */
   padding: 10px;
+  width: 100%;
 }
 
 .columns {
@@ -103,7 +104,7 @@ body {
   cursor: move;
 }
 
-.row {
+.row-editor {
   border: 1px solid red;
   padding: 0;
 }

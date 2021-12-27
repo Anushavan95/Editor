@@ -7,6 +7,7 @@ const initialState = {
   dataObject: {
     image: []
   }
+  // zegaProducts: []
 };
 
 export const postHtmlDataAsync = createAsyncThunk(

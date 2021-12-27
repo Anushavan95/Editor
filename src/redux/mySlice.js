@@ -7,9 +7,10 @@ const initialState = {
   tab: "2",
   addedImages: [],
   dataObject: {
-    image: [],
+    image: []
   },
-  textEditorValue:  RichTextEditor.createEmptyValue()
+  textEditorValue: RichTextEditor.createEmptyValue(),
+  zegaProducts: []
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -23,13 +24,22 @@ export const postHtmlDataAsync = createAsyncThunk(
   }
 );
 
+export const zegaProductsAsync = createAsyncThunk(
+  "zegaProducts/post",
+  async (data) => {
+    const response = await axios.get(
+      `https://zega.zegashop.com/api/new-products?locale=en&currency=AMD&limit=10`,
+      data
+    );
+    return response.data;
+  }
+);
 const mySlice = createSlice({
   name: "component",
   initialState,
   reducers: {
     setTag: (state, action) => {
       state.tag = action.payload;
-      console.log(state.tag, 'state tag');
     },
     addIMages: (state, action) => {
       state.addedImages = [...state.addedImages, ...action.payload];
@@ -39,7 +49,7 @@ const mySlice = createSlice({
     },
     setEditorTextValue: (state, action) => {
       state.textEditorValue = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -51,13 +61,32 @@ const mySlice = createSlice({
       })
       .addCase(postHtmlDataAsync.rejected, (state, action) => {
         state.dataObject.image = [];
+      })
+      .addCase(zegaProductsAsync.fulfilled, (state, action) => {
+        state.zegaProducts = action.payload;
+        // console.log(state.zegaProducts, "lalal");
+        // Object.keys(state.zegaProducts).forEach(function (key) {
+        //   const element = state.zegaProducts[key];
+        //   state.zegaProducts = [...state.zegaProducts, element];
+        //   console.log(state.zegaProducts, "oo");
+        // });
+        // for (const key in action.payload) {
+        //   if (Object.hasOwnProperty.call(action.payload, key)) {
+        //     const elements = action.payload[key];
+        //     state.zegaProducts = [...state.zegaProducts, elements];
+        //     console.log(state.zegaProducts, "state.zegaProducts");
+        //   }
+        // }
       });
-  },
+  }
 });
 
-export const { setTag, addIMages, setTab, setEditorTextValue } = mySlice.actions;
+export const { setTag, addIMages, setTab, setEditorTextValue } =
+  mySlice.actions;
 export const selectTag = (state) => state.component.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
 export const selectTab = (state) => state.component.tab;
 export const selectTextEditorValue = (state) => state.component.textEditorValue;
+export const selectZegaProducts = (state) => state.component.zegaProducts;
+
 export default mySlice.reducer;

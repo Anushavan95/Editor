@@ -20,6 +20,7 @@ const Column = ({ data, components, handleDrop, path }) => {
     })
   });
 
+  console.log(data, "data");
   const opacity = isDragging ? 0 : 1;
   drag(ref);
   const renderComponent = (component, currentPath) => {
@@ -67,3 +68,11 @@ const Column = ({ data, components, handleDrop, path }) => {
   );
 };
 export default Column;
+
+// let ComponentsArray = [
+//   {
+//     row: [{}]
+//   },
+//   {},
+//   {}
+// ];

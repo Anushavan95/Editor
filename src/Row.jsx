@@ -3,12 +3,10 @@ import { useDrag } from "react-dnd";
 import { ROW } from "./constants";
 import DropZone from "./DropZone";
 import Column from "./Column";
-import ImageUploadingApp from "./ImageUploading";
 
 const style = {};
 const Row = ({ data, components, handleDrop, path }) => {
   const ref = useRef(null);
-
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ROW,
@@ -16,10 +14,16 @@ const Row = ({ data, components, handleDrop, path }) => {
       children: data.children,
       path
     },
+
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
   });
+
+  // console.log(data, "data");
+  // console.log(components, "components");
+  // console.log(path, "path");
+  // console.log(data.id, "path");
 
   const opacity = isDragging ? 0 : 1;
   drag(ref);
@@ -37,7 +41,11 @@ const Row = ({ data, components, handleDrop, path }) => {
   };
 
   return (
-    <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
+    <div
+      ref={ref}
+      style={{ ...style, opacity }}
+      className="base draggable row-editor"
+    >
       {data.id}
       <div className="columns">
         {data.children.map((column, index) => {

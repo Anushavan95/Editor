@@ -38,9 +38,7 @@ function Tabs(props) {
 
   const handleSave = () => {
     let obj3 = valueText.toString("html");
-    imag.map((item) => {
-      return console.log(item.data_url);
-    });
+    console.log(obj3, "333");
     if (valueText.length !== 0) {
       const requestOptions = {
         method: "POST",
@@ -48,13 +46,11 @@ function Tabs(props) {
         body: JSON.stringify({
           data: {
             component_id: 1,
-            text: `${obj3}  <img src=${imag[0].data_url} />`
+            text: `${obj3}`
           }
         })
       };
-      {
-        /* */
-      }
+
       fetch("https://test.zegashop.com/api/set", requestOptions).then(
         (response) => response.json()
       );
