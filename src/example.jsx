@@ -13,10 +13,13 @@ import {
 
 import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
+import { useDispatch } from "react-redux";
+import { setComponent } from "./redux/mySlice";
 
 const Container = () => {
   const initialLayout = initialData.layout;
   // console.log(initialLayout, "initial");
+  const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
@@ -32,10 +35,9 @@ const Container = () => {
     (dropZone, item) => {
       console.log("dropZone", dropZone);
       console.log("item", item);
-
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
-
+      dispatch(setComponent(item.component.content));
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;

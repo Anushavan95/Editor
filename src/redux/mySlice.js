@@ -10,7 +10,8 @@ const initialState = {
     image: []
   },
   textEditorValue: RichTextEditor.createEmptyValue(),
-  zegaProducts: []
+  zegaProducts: [],
+  componentEntry: ""
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -49,6 +50,9 @@ const mySlice = createSlice({
     },
     setEditorTextValue: (state, action) => {
       state.textEditorValue = action.payload;
+    },
+    setComponent: (state, action) => {
+      state.componentEntry = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -81,12 +85,13 @@ const mySlice = createSlice({
   }
 });
 
-export const { setTag, addIMages, setTab, setEditorTextValue } =
+export const { setTag, addIMages, setTab, setEditorTextValue, setComponent } =
   mySlice.actions;
 export const selectTag = (state) => state.component.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
 export const selectTab = (state) => state.component.tab;
 export const selectTextEditorValue = (state) => state.component.textEditorValue;
 export const selectZegaProducts = (state) => state.component.zegaProducts;
+export const selectComponentEntry = (state) => state.component.componentEntry;
 
 export default mySlice.reducer;

@@ -7,6 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import RichTextEditor from "react-rte";
 import {
   selectAddedImages,
+  selectComponentEntry,
   selectTab,
   selectTextEditorValue,
   setEditorTextValue,
@@ -23,6 +24,7 @@ function Tabs(props) {
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
   const valueText = useSelector(selectTextEditorValue);
+  const selComponent = useSelector(selectComponentEntry);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -76,15 +78,26 @@ function Tabs(props) {
           {props.children}
         </TabPanel>
         <TabPanel value="2">
-          <RichTextEditor value={valueText} onChange={onChange} />
-          <BasicSelect />
-          <Button
-            style={{ marginTop: "150px" }}
-            variant="contained"
-            onClick={handleSave}
-          >
-            handleSave
-          </Button>
+          {(function (selComponent, handleSave, valueText, onChange) {
+            switch (selComponent) {
+              case "Editor":
+                return <RichTextEditor value={valueText} onChange={onChange} />;
+              case "Heading":
+                return <BasicSelect />;
+              case "button":
+                return (
+                  <Button
+                    style={{ marginTop: "150px" }}
+                    variant="contained"
+                    onClick={handleSave}
+                  >
+                    handleSave
+                  </Button>
+                );
+              default:
+                return null;
+            }
+          })(selComponent, handleSave, valueText, onChange)}
         </TabPanel>
       </TabContext>
     </Box>
