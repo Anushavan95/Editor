@@ -31,8 +31,6 @@ function Tabs(props) {
     // dispatch(setTab(tab));
   };
 
-  // const [valueText, setValueText] = useState(RichTextEditor.createEmptyValue());
-
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
     console.log(valueText.toString("html"), "val");
