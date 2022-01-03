@@ -5,7 +5,19 @@ import { COMPONENT } from "./constants";
 import ContentEditableText from "./ContentEditable";
 import ImageUploadingApp from "./ImageUploading";
 
-import { selectTag, setTab } from "./redux/mySlice";
+import {
+  selectMarginBottom,
+  selectMarginLeft,
+  selectMarginObj,
+  selectMarginRight,
+  selectMarginTop,
+  selectPaddingBottom,
+  selectPaddingLeft,
+  selectPaddingRight,
+  selectPaddingTop,
+  selectTag,
+  setTab
+} from "./redux/mySlice";
 const style = {
   border: "1px dashed black",
   padding: "0.5rem 1rem",
@@ -13,6 +25,18 @@ const style = {
   cursor: "move"
 };
 const Component = ({ data, components, path }) => {
+  const margin = useSelector(selectMarginObj);
+  const top = useSelector(selectMarginTop);
+  const right = useSelector(selectMarginRight);
+  const bottom = useSelector(selectMarginBottom);
+  const left = useSelector(selectMarginLeft);
+
+  const Ptop = useSelector(selectPaddingTop);
+  const Pright = useSelector(selectPaddingRight);
+  const Pbottom = useSelector(selectPaddingBottom);
+  const Pleft = useSelector(selectPaddingLeft);
+  console.log(margin, "margin");
+
   const dispatch = useDispatch();
   const tag = useSelector(selectTag);
   console.log(tag);
@@ -27,7 +51,14 @@ const Component = ({ data, components, path }) => {
 
   const opacity = isDragging ? 0 : 1;
   drag(ref);
+  const meginto = {
+    margin: `${top}px  ${right}px ${bottom}px ${left}px`,
+    padding: `${Ptop}px  ${Pright}px ${Pbottom}px ${Pleft}px`
+  };
 
+  // const padd = {
+  //
+  // };
   const component = components[data.id];
   console.log(components, "componentds");
   let tagEntry = `<${tag}>Your Heading</${tag}>`;
@@ -40,7 +71,8 @@ const Component = ({ data, components, path }) => {
   if (component.content == "Heading") {
     return (
       <div
-        // contentEditable={true}
+        style={meginto}
+        contentEditable={true}
         dangerouslySetInnerHTML={{
           __html: tagEntry
         }}

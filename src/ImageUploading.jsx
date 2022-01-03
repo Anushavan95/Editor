@@ -8,10 +8,11 @@ function ImageUploadingApp() {
   const maxNumber = 69;
   const dispatch = useDispatch();
   const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
+    // console.log(imageList, addUpdateIndex);
     setImages(imageList);
     dispatch(addIMages(imageList));
   };
+  console.log(images, "images");
   return (
     <ImageUploading
       multiple
@@ -45,7 +46,7 @@ function ImageUploadingApp() {
           {imageList.map((image, index) => (
             <div key={index} className="image-item">
               <img src={image["data_url"]} alt="" width="100" />
-              <div className="image-item__btn-wrapper">
+              {/* <div className="image-item__btn-wrapper">
                 <Button
                   variant="contained"
                   onClick={() => onImageUpdate(index)}
@@ -55,7 +56,7 @@ function ImageUploadingApp() {
                 <Button variant="error" onClick={() => onImageRemove(index)}>
                   Remove
                 </Button>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

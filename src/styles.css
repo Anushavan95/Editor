@@ -188,3 +188,22 @@ body {
   padding: 5px;
   border-radius: 2px;
 }
+
+.margin-styles {
+  display: flex;
+  grid-gap: 2px;
+}
+
+#filled-number {
+  height: 20px;
+  padding: 5px !important;
+}
+
+.margin-component {
+  margin-top: 15px;
+}
+
+.title-margin {
+  color: #6d7882;
+  font-size: 12px;
+}

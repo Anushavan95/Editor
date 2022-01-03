@@ -1,20 +1,24 @@
 import React, { useState, useCallback } from "react";
 
-import DropZone from "./DropZone";
-import TrashDropZone from "./TrashDropZone";
-import Row from "./Row";
-import initialData from "./initial-data";
+import DropZone from "../../DropZone";
+import TrashDropZone from "../../TrashDropZone";
+import Row from "../../Row";
+import initialData from "../../initial-data";
 import {
   handleMoveWithinParent,
   handleMoveToDifferentParent,
   handleMoveSidebarComponentIntoParent,
   handleRemoveItemFromLayout
-} from "./helpers";
+} from "../../helpers";
 
-import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
+import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "../../constants";
 import shortid from "shortid";
 import { useDispatch } from "react-redux";
-import { setComponent } from "./redux/mySlice";
+import {
+  setComponent,
+  setMergeStylesMargin,
+  setTab
+} from "../../redux/mySlice";
 
 const Container = () => {
   const initialLayout = initialData.layout;
@@ -37,7 +41,10 @@ const Container = () => {
       console.log("item", item);
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
+
       dispatch(setComponent(item.component.content));
+      dispatch(setTab("2"));
+      // dispatch(setMergeStylesMargin());
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;
@@ -120,7 +127,7 @@ const Container = () => {
   };
 
   return (
-    <div className="body" style={{ width: "50%", margin: "0 auto" }}>
+    <div className="body" style={{ width: "75%", marginLeft: " 320px" }}>
       <div className="pageContainer">
         <div className="page">
           {layout.map((row, index) => {

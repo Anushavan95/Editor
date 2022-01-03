@@ -10,6 +10,7 @@ import {
   selectComponentEntry,
   selectTab,
   selectTextEditorValue,
+  setComponent,
   setEditorTextValue,
   setTab
 } from "./redux/mySlice";
@@ -17,23 +18,23 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
 import BasicSelect from "./TagSelect";
+import MarginStyles from "./Components/EditorBuilder/MarginStyles";
+import PaddingStyles from "./Components/EditorBuilder/PaddingStyles";
 
 function Tabs(props) {
-  const tab = useSelector(selectTab);
-  const [value, setValue] = useState("1");
+  const value = useSelector(selectTab);
+  // const [value, setValue] = useState("1");
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
   const valueText = useSelector(selectTextEditorValue);
   const selComponent = useSelector(selectComponentEntry);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-    // dispatch(setTab(tab));
+    dispatch(setTab(newValue));
   };
 
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
-    console.log(valueText.toString("html"), "val");
   };
 
   const handleSave = () => {
@@ -69,7 +70,7 @@ function Tabs(props) {
         >
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Elements" value="1" />
-            <Tab label="Styles" value={"2"} />
+            <Tab label="Styles" value="2" />
           </TabList>
         </Box>
         <TabPanel value="1" className="components-tab">
@@ -81,7 +82,13 @@ function Tabs(props) {
               case "Editor":
                 return <RichTextEditor value={valueText} onChange={onChange} />;
               case "Heading":
-                return <BasicSelect />;
+                return (
+                  <>
+                    <BasicSelect />
+                    <MarginStyles />
+                    <PaddingStyles />
+                  </>
+                );
               case "button":
                 return (
                   <Button
