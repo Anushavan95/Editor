@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { useDrag } from "react-dnd";
-import { COLUMN } from "./constants";
+import { COLUMN } from "../Config/constants";
 import DropZone from "./DropZone";
-import Component from "./Component";
+import Component from "../../../Component";
 
 const style = {};
 const Column = ({ data, components, handleDrop, path }) => {
@@ -20,7 +20,7 @@ const Column = ({ data, components, handleDrop, path }) => {
     })
   });
 
-  console.log(data, "data");
+  // console.log(data, "data");
   const opacity = isDragging ? 0 : 1;
   drag(ref);
   const renderComponent = (component, currentPath) => {

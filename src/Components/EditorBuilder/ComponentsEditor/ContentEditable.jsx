@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useSelector } from "react-redux";
-import { selectTextEditorValue } from "./redux/mySlice";
+import { selectTextEditorValue } from "../../../redux/mySlice";
 export default function ContentEditableText() {
   const textValue = useSelector(selectTextEditorValue);
   console.log(textValue.toString("html"), "val");

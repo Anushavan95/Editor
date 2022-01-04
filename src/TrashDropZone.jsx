@@ -1,7 +1,11 @@
 import React from "react";
 import classNames from "classnames";
 import { useDrop } from "react-dnd";
-import { COMPONENT, ROW, COLUMN } from "./constants";
+import {
+  COMPONENT,
+  ROW,
+  COLUMN
+} from "./Components/EditorBuilder/Config/constants";
 
 const ACCEPTS = [ROW, COLUMN, COMPONENT];
 

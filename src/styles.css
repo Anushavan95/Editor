@@ -17,7 +17,7 @@ body {
 .sideBar {
   position: fixed;
   flex: 0 0 1;
-  width: 300px;
+  width: 325px;
   border-right: 1px solid #111;
   height: 100vh;
   background-color: #EFF1F2;
@@ -25,13 +25,13 @@ body {
 }
 
 .sideBarItem {
-  border: 1px solid #000;
+  border: 1px solid #E9E9E9;
   border-radius: 3px;
   height: 80px;
   padding: 10px;
   margin-top: 10px;
   background: #ccc;
-  width: 100px;
+  width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,9 +45,13 @@ body {
 
 .page {
   flex: 1 1 auto;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   margin: 20px;
-  border: 1px solid green;
+  /* border: 1px solid green; */
+}
+
+.page:hover {
+  border: 1px dashed blue;
 }
 
 .dropZone {
@@ -165,7 +169,7 @@ body {
 .tab-box .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
   background-color: #FFFFFF;
   height: 100% !important;
-  padding: 8px 22px !important;
+  padding: 8px 32px !important;
   border-radius: 2px;
 }
 
@@ -185,7 +189,8 @@ body {
   grid-gap: 10px;
   justify-content: center;
   background-color: #FFFFFF;
-  padding: 5px;
+  padding: 5px 5px 15px 5px;
+  box-shadow: 0px 3px 7px 1px #888888;
   border-radius: 2px;
 }
 
@@ -206,4 +211,9 @@ body {
 .title-margin {
   color: #6d7882;
   font-size: 12px;
+}
+
+.MuiTabs-indicator {
+  left: -1.775px;
+  width: 142.663px;
 }

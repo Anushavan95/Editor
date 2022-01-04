@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useDrag } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
-import { COMPONENT } from "./constants";
-import ContentEditableText from "./ContentEditable";
-import ImageUploadingApp from "./ImageUploading";
+import { COMPONENT } from "./Components/EditorBuilder/Config/constants";
+import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
+import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
 
 import {
   selectMarginBottom,
@@ -31,15 +31,12 @@ const Component = ({ data, components, path }) => {
   const bottom = useSelector(selectMarginBottom);
   const left = useSelector(selectMarginLeft);
 
-  const Ptop = useSelector(selectPaddingTop);
-  const Pright = useSelector(selectPaddingRight);
-  const Pbottom = useSelector(selectPaddingBottom);
-  const Pleft = useSelector(selectPaddingLeft);
-  console.log(margin, "margin");
-
+  const P_top = useSelector(selectPaddingTop);
+  const P_right = useSelector(selectPaddingRight);
+  const P_bottom = useSelector(selectPaddingBottom);
+  const P_left = useSelector(selectPaddingLeft);
   const dispatch = useDispatch();
   const tag = useSelector(selectTag);
-  console.log(tag);
   const ref = useRef(null);
 
   const [{ isDragging }, drag] = useDrag({
@@ -51,16 +48,12 @@ const Component = ({ data, components, path }) => {
 
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-  const meginto = {
+  const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
-    padding: `${Ptop}px  ${Pright}px ${Pbottom}px ${Pleft}px`
+    padding: `${P_top}px  ${P_right}px ${P_bottom}px ${P_left}px`
   };
 
-  // const padd = {
-  //
-  // };
   const component = components[data.id];
-  console.log(components, "componentds");
   let tagEntry = `<${tag}>Your Heading</${tag}>`;
   if (component.content == "ImageUpload") {
     return <ImageUploadingApp />;
@@ -71,7 +64,7 @@ const Component = ({ data, components, path }) => {
   if (component.content == "Heading") {
     return (
       <div
-        style={meginto}
+        style={styles}
         contentEditable={true}
         dangerouslySetInnerHTML={{
           __html: tagEntry

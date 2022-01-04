@@ -1,17 +1,17 @@
 import React, { useState, useCallback } from "react";
 
-import DropZone from "../../DropZone";
+import DropZone from "./Layout/DropZone";
 import TrashDropZone from "../../TrashDropZone";
-import Row from "../../Row";
-import initialData from "../../initial-data";
+import Row from "./Layout/Row";
+import initialData from "./Config/initial-data";
 import {
   handleMoveWithinParent,
   handleMoveToDifferentParent,
   handleMoveSidebarComponentIntoParent,
   handleRemoveItemFromLayout
-} from "../../helpers";
+} from "./Config/helpers";
 
-import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "../../constants";
+import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./Config/constants";
 import shortid from "shortid";
 import { useDispatch } from "react-redux";
 import {
@@ -127,7 +127,7 @@ const Container = () => {
   };
 
   return (
-    <div className="body" style={{ width: "75%", marginLeft: " 320px" }}>
+    <div className="body" style={{ width: "75%", marginLeft: " 325px" }}>
       <div className="pageContainer">
         <div className="page">
           {layout.map((row, index) => {
@@ -157,12 +157,12 @@ const Container = () => {
           />
         </div>
 
-        <TrashDropZone
+        {/* <TrashDropZone
           data={{
             layout
           }}
           onDrop={handleDropToTrashBin}
-        />
+        /> */}
       </div>
     </div>
   );
