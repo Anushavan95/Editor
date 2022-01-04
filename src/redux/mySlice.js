@@ -100,10 +100,10 @@ const mySlice = createSlice({
     },
     setPaddingLeft: (state, action) => {
       state.paddingLeft = action.payload;
+    },
+    setHyperLink: (state, action) => {
+      state.hyperLink.link = action.payload;
     }
-    // setHyperLink: (state, action) => {
-    //   state.hyperLink = action.payload;
-    // }
   },
   extraReducers: (builder) => {
     builder

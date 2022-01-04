@@ -6,12 +6,9 @@ import { selectHyperLink, setHyperLink } from "../../../redux/mySlice";
 
 export default function HyperSettings() {
   const hyperLink = useSelector(selectHyperLink);
-  console.log(hyperLink, "hyperLink");
-  const [hyperVal, setHyperVal] = useState(hyperLink.link);
   const dispatch = useDispatch();
-  console.log(hyperVal);
   const handleHyperChange = (event) => {
-    setHyperVal(event.target.value);
+    dispatch(setHyperLink(event.target.value));
   };
 
   return (
@@ -20,7 +17,7 @@ export default function HyperSettings() {
         className="link"
         label="HyperLink"
         id="outlined-size-small"
-        value={hyperVal}
+        value={hyperLink.link}
         onChange={handleHyperChange}
         size="small"
       />
@@ -28,7 +25,6 @@ export default function HyperSettings() {
         className="link"
         label="HyperLink Name"
         id="outlined-size-small"
-        // defaultValue=""
         size="small"
       />
       <Button variant="contained">handleSubmit</Button>

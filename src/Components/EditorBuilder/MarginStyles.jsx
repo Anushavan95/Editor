@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Box, Typography } from "@mui/material";
+import { TextField, Box, Typography, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectMarginBottom,
@@ -13,26 +13,48 @@ import {
 } from "../../redux/mySlice";
 
 export default function MarginStyles() {
+  const [change, setChange] = useState(false);
   const dispatch = useDispatch();
   const top = useSelector(selectMarginTop);
   const right = useSelector(selectMarginRight);
   const bottom = useSelector(selectMarginBottom);
   const left = useSelector(selectMarginLeft);
+  const allChanges = (event) => {
+    setChange(!change);
+  };
+  console.log(change);
 
   const handleTopChange = (event) => {
     dispatch(setMarginTop(event.target.value));
-    console.log(top);
+    if (change == true) {
+      dispatch(setMarginRight(event.target.value));
+      dispatch(setMarginBottom(event.target.value));
+      dispatch(setMarginLeft(event.target.value));
+    }
   };
   const handleRightChange = (event) => {
     dispatch(setMarginRight(event.target.value));
-    console.log(right);
+    if (change == true) {
+      dispatch(setMarginTop(event.target.value));
+      dispatch(setMarginBottom(event.target.value));
+      dispatch(setMarginLeft(event.target.value));
+    }
   };
   const handleBottomChange = (event) => {
     dispatch(setMarginBottom(event.target.value));
-    console.log(bottom);
+    if (change == true) {
+      dispatch(setMarginTop(event.target.value));
+      dispatch(setMarginRight(event.target.value));
+      dispatch(setMarginLeft(event.target.value));
+    }
   };
   const handleLeftChange = (event) => {
     dispatch(setMarginLeft(event.target.value));
+    if (change == true) {
+      dispatch(setMarginTop(event.target.value));
+      dispatch(setMarginRight(event.target.value));
+      dispatch(setMarginBottom(event.target.value));
+    }
   };
 
   return (
@@ -84,6 +106,10 @@ export default function MarginStyles() {
           variant="filled"
         />
       </Box>
+      <Button onClick={allChanges} variant={change ? "contained" : "outlined"}>
+        click
+      </Button>
+
       <Box className="direction">
         <Typography variant="span">Top</Typography>
         <Typography variant="span">Right</Typography>
