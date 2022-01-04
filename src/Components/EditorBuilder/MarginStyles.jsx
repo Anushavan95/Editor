@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Box } from "@mui/material";
+import { TextField, Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectMarginBottom,
@@ -83,6 +83,12 @@ export default function MarginStyles() {
           }}
           variant="filled"
         />
+      </Box>
+      <Box className="direction">
+        <Typography variant="span">Top</Typography>
+        <Typography variant="span">Right</Typography>
+        <Typography variant="span">Bottom</Typography>
+        <Typography variant="span">Left</Typography>
       </Box>
     </div>
   );

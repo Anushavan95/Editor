@@ -16,13 +16,13 @@ import shortid from "shortid";
 import { useDispatch } from "react-redux";
 import {
   setComponent,
+  setHyperLink,
   setMergeStylesMargin,
   setTab
 } from "../../redux/mySlice";
 
 const Container = () => {
   const initialLayout = initialData.layout;
-  // console.log(initialLayout, "initial");
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);

@@ -199,6 +199,16 @@ body {
   grid-gap: 2px;
 }
 
+.direction {
+  display: flex;
+  justify-content: space-around;
+}
+
+.direction span {
+  color: #d5dadf;
+  font-size: 12px;
+}
+
 #filled-number {
   height: 20px;
   padding: 5px !important;
@@ -216,4 +226,12 @@ body {
 .MuiTabs-indicator {
   left: -1.775px;
   width: 142.663px;
+}
+
+.input-settings .link {
+  color: #6d7882 !important;
+  /* border: 1px solid; */
+  width: 100%;
+  outline: none;
+  margin: 10px 0px;
 }

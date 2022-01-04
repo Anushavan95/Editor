@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import RichTextEditor from "react-rte";
 import axios from "axios";
-
+import shortid from "shortid";
 const initialState = {
   tag: "h3",
   tab: "1",
@@ -20,7 +20,13 @@ const initialState = {
   paddingRight: "0",
   paddingBottom: "0",
   paddingLeft: "0",
-  marginObj: {}
+  marginObj: {},
+  hyperLink: {
+    link: "",
+    name: "",
+    id: shortid.generate(),
+    settings: {}
+  }
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -95,6 +101,9 @@ const mySlice = createSlice({
     setPaddingLeft: (state, action) => {
       state.paddingLeft = action.payload;
     }
+    // setHyperLink: (state, action) => {
+    //   state.hyperLink = action.payload;
+    // }
   },
   extraReducers: (builder) => {
     builder
@@ -140,7 +149,8 @@ export const {
   setPaddingRight,
   setPaddingBottom,
   setPaddingLeft,
-  setMergeStylesMargin
+  setMergeStylesMargin,
+  setHyperLink
 } = mySlice.actions;
 export const selectTag = (state) => state.component.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
@@ -157,5 +167,6 @@ export const selectPaddingTop = (state) => state.component.paddingTop;
 export const selectPaddingRight = (state) => state.component.paddingRight;
 export const selectPaddingBottom = (state) => state.component.paddingBottom;
 export const selectPaddingLeft = (state) => state.component.paddingLeft;
+export const selectHyperLink = (state) => state.component.hyperLink;
 
 export default mySlice.reducer;

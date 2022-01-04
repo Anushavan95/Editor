@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Box } from "@mui/material";
+import { TextField, Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectPaddingBottom,
@@ -79,6 +79,12 @@ export default function PaddingStyles() {
           }}
           variant="filled"
         />
+      </Box>
+      <Box className="direction">
+        <Typography variant="span">Top</Typography>
+        <Typography variant="span">Right</Typography>
+        <Typography variant="span">Bottom</Typography>
+        <Typography variant="span">Left</Typography>
       </Box>
     </div>
   );

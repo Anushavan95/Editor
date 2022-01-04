@@ -20,10 +20,11 @@ import { Button } from "@mui/material";
 import BasicSelect from "./TagSelect";
 import MarginStyles from "./Components/EditorBuilder/MarginStyles";
 import PaddingStyles from "./Components/EditorBuilder/PaddingStyles";
+import HyperSettings from "./Components/EditorBuilder/ComponentsEditor/HyperSettings";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
-  // const [value, setValue] = useState("1");
+
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
   const valueText = useSelector(selectTextEditorValue);
@@ -89,6 +90,8 @@ function Tabs(props) {
                     <PaddingStyles />
                   </>
                 );
+              case "HyperLink":
+                return <HyperSettings />;
               case "button":
                 return (
                   <Button

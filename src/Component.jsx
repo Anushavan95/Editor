@@ -18,12 +18,14 @@ import {
   selectTag,
   setTab
 } from "./redux/mySlice";
+import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 const style = {
   border: "1px dashed black",
   padding: "0.5rem 1rem",
   backgroundColor: "white",
   cursor: "move"
 };
+
 const Component = ({ data, components, path }) => {
   const margin = useSelector(selectMarginObj);
   const top = useSelector(selectMarginTop);
@@ -55,22 +57,30 @@ const Component = ({ data, components, path }) => {
 
   const component = components[data.id];
   let tagEntry = `<${tag}>Your Heading</${tag}>`;
-  if (component.content == "ImageUpload") {
-    return <ImageUploadingApp />;
-  }
-  if (component.content == "Editor") {
-    return <ContentEditableText />;
-  }
-  if (component.content == "Heading") {
-    return (
-      <div
-        style={styles}
-        contentEditable={true}
-        dangerouslySetInnerHTML={{
-          __html: tagEntry
-        }}
-      />
-    );
+
+  switch (component.content) {
+    case "ImageUpload":
+      return <ImageUploadingApp />;
+      break;
+    case "Editor":
+      return <ContentEditableText />;
+      break;
+    case "Heading":
+      return (
+        <div
+          style={styles}
+          contentEditable={true}
+          dangerouslySetInnerHTML={{
+            __html: tagEntry
+          }}
+        />
+      );
+      break;
+    case "HyperLink":
+      return <HyperLink />;
+      break;
+    default:
+      break;
   }
 
   return (
