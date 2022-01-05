@@ -18,6 +18,6 @@ export default function HyperLink() {
   );
 }
 
-//   <a href={link.link} alt="Google">
+//  <a href={link.link} alt="Google">
 //     Google
 //   </a>
