@@ -15,6 +15,7 @@ import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./Config/constants";
 import shortid from "shortid";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  selectHyperLink,
   selectInitialLayout,
   setComponent,
   setHyperLink,
@@ -25,6 +26,8 @@ import {
 
 const Container = () => {
   // const initialLayout = initialData.layout;
+  const link = useSelector(selectHyperLink);
+  console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
@@ -50,36 +53,40 @@ const Container = () => {
 
       dispatch(setComponent(item.component.content));
       dispatch(setTab("2"));
-      let item1 = "";
+      let component = null;
       switch (item.component.content) {
         case "Heading":
-          item1 = "Heading";
+          component = "heading";
           break;
-        case "Editor":
-          item1 = "ditor";
+        case "HyperLink":
+          component = { ...link };
           break;
         default:
           break;
       }
-      console.log(item1, "item1");
+
+      console.log(item.component.content);
+      // console.log(item1, "item1");
       // dispatch(setMergeStylesMargin());
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;
       }
-      console.log(item.component, "item");
+      // console.log(item.component, "item");
       // sidebar into
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
+
         const newComponent = {
           id: shortid.generate(),
+          // id: newId,
           ...item.component
         };
-        console.log(newComponent, "newComponent");
+        // console.log(newComponent, "newComponent");
         const newItem = {
           id: newComponent.id,
           type: COMPONENT,
-          my: item1
+          component
         };
         setComponents({
           ...components,

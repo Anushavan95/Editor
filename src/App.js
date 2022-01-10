@@ -13,8 +13,17 @@ import { SIDEBAR_ITEMS } from "./Components/EditorBuilder/Config/constants";
 import SideBarItem from "./SideBarItem";
 import { Box } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function App() {
+  const [expanded, setExpanded] = React.useState("panel1");
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   return (
     <div className="App">
       <Provider store={store}>
@@ -25,12 +34,71 @@ export default function App() {
                 <Typography variant="h4" className="editor-title">
                   Editor
                 </Typography>
+
                 <Tabs>
-                  <Box className="elements-parent-box">
-                    {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-                      <SideBarItem key={sideBarItem.id} data={sideBarItem} />
-                    ))}
-                  </Box>
+                  <Accordion
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel1")}
+                    className="panel-1"
+                  >
+                    <AccordionSummary
+                      aria-controls="panel3d-content"
+                      id="panel3d-header"
+                      expandIcon={<ExpandMoreIcon />}
+                    >
+                      <Typography
+                        variant="h4"
+                        className="title-component-sidebar"
+                      >
+                        Text
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        <Box className="elements-parent-box">
+                          {Object.values(SIDEBAR_ITEMS.slice(0, 3)).map(
+                            (sideBarItem, index) => (
+                              <SideBarItem
+                                key={sideBarItem.id}
+                                data={sideBarItem}
+                              />
+                            )
+                          )}
+                        </Box>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+
+                  <Accordion
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel2")}
+                    className="panel-2"
+                  >
+                    <AccordionSummary
+                      aria-controls="panel2d-content"
+                      id="panel2d-header"
+                      expandIcon={<ExpandMoreIcon />}
+                    >
+                      <Typography
+                        variant="h4"
+                        className="title-component-sidebar"
+                      >
+                        Image/ImageLink
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Box className="elements-parent-box">
+                        {Object.values(SIDEBAR_ITEMS.slice(3, 6)).map(
+                          (sideBarItem, index) => (
+                            <SideBarItem
+                              key={sideBarItem.id}
+                              data={sideBarItem}
+                            />
+                          )
+                        )}
+                      </Box>
+                    </AccordionDetails>
+                  </Accordion>
                 </Tabs>
               </Box>
               {/* <iframe> */}

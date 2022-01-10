@@ -6,7 +6,7 @@ import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternate
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 // import LinkIcon from "@mui/icons-material/Link";
 import HyperLink from "../../../images/hyperLink.png";
-
+import ImageIcon from "../../../images/Image.png";
 export const SIDEBAR_ITEM = "sidebarItem";
 export const ROW = "row";
 export const COLUMN = "column";
@@ -34,23 +34,6 @@ export const SIDEBAR_ITEMS = [
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
-      type: <AddPhotoAlternateOutlinedIcon className="image-upload icon" />,
-      text: "Image",
-      content: "ImageUpload"
-    }
-  },
-  {
-    id: shortid.generate(),
-    type: SIDEBAR_ITEM,
-    component: {
-      type: "phone",
-      content: "Some phone"
-    }
-  },
-  {
-    id: shortid.generate(),
-    type: SIDEBAR_ITEM,
-    component: {
       type: <img src={HyperLink} alt="HyperLink" className="icon" />,
       text: "Hyperlink",
       // my: link,
@@ -61,7 +44,29 @@ export const SIDEBAR_ITEMS = [
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
-      type: <ImageOutlinedIcon className="icon" />,
+      type: <img src={ImageIcon} alt="Image" className="icon" />,
+
+      // type: <AddPhotoAlternateOutlinedIcon className="image-upload icon" />,
+      text: "Image",
+      content: "ImageUpload"
+    }
+  },
+  // {
+  //   id: shortid.generate(),
+  //   type: SIDEBAR_ITEM,
+  //   component: {
+  //     type: "phone",
+  //     content: "Some phone"
+  //   }
+  // },
+
+  {
+    id: shortid.generate(),
+    type: SIDEBAR_ITEM,
+    component: {
+      // type: <ImageOutlinedIcon className="icon" />,
+      type: <img src={ImageIcon} alt="Image" className="icon" />,
+
       text: "ImageLink",
       content: "ImageLink"
     }
