@@ -6,11 +6,11 @@ import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternate
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 // import LinkIcon from "@mui/icons-material/Link";
 import HyperLink from "../../../images/hyperLink.png";
+
 export const SIDEBAR_ITEM = "sidebarItem";
 export const ROW = "row";
 export const COLUMN = "column";
 export const COMPONENT = "component";
-
 export const SIDEBAR_ITEMS = [
   {
     id: shortid.generate(),
@@ -53,6 +53,7 @@ export const SIDEBAR_ITEMS = [
     component: {
       type: <img src={HyperLink} alt="HyperLink" className="icon" />,
       text: "Hyperlink",
+      // my: link,
       content: "HyperLink"
     }
   },

@@ -26,7 +26,8 @@ const initialState = {
     name: "",
     id: shortid.generate(),
     settings: {}
-  }
+  },
+  initialLayout: []
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -103,6 +104,9 @@ const mySlice = createSlice({
     },
     setHyperLink: (state, action) => {
       state.hyperLink.link = action.payload;
+    },
+    setInitialLayout: (state, action) => {
+      state.initialLayout = [...state.initialLayout, ...action.payload];
     }
   },
   extraReducers: (builder) => {
@@ -150,7 +154,8 @@ export const {
   setPaddingBottom,
   setPaddingLeft,
   setMergeStylesMargin,
-  setHyperLink
+  setHyperLink,
+  setInitialLayout
 } = mySlice.actions;
 export const selectTag = (state) => state.component.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
@@ -168,5 +173,6 @@ export const selectPaddingRight = (state) => state.component.paddingRight;
 export const selectPaddingBottom = (state) => state.component.paddingBottom;
 export const selectPaddingLeft = (state) => state.component.paddingLeft;
 export const selectHyperLink = (state) => state.component.hyperLink;
+export const selectInitialLayout = (state) => state.component.initialLayout;
 
 export default mySlice.reducer;

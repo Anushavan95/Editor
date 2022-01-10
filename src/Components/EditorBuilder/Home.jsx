@@ -13,19 +13,23 @@ import {
 
 import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./Config/constants";
 import shortid from "shortid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  selectInitialLayout,
   setComponent,
   setHyperLink,
+  setInitialLayout,
   setMergeStylesMargin,
   setTab
 } from "../../redux/mySlice";
 
 const Container = () => {
-  const initialLayout = initialData.layout;
+  // const initialLayout = initialData.layout;
+  const initialLayout = useSelector(selectInitialLayout);
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
+  console.log(layout, "out");
   const [components, setComponents] = useState(initialComponents);
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
@@ -37,6 +41,8 @@ const Container = () => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
+      dispatch(setInitialLayout(layout));
+
       console.log("dropZone", dropZone);
       console.log("item", item);
       const splitDropZonePath = dropZone.path.split("-");
@@ -44,12 +50,24 @@ const Container = () => {
 
       dispatch(setComponent(item.component.content));
       dispatch(setTab("2"));
+      let item1 = "";
+      switch (item.component.content) {
+        case "Heading":
+          item1 = "Heading";
+          break;
+        case "Editor":
+          item1 = "ditor";
+          break;
+        default:
+          break;
+      }
+      console.log(item1, "item1");
       // dispatch(setMergeStylesMargin());
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;
       }
-
+      console.log(item.component, "item");
       // sidebar into
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
@@ -57,9 +75,11 @@ const Container = () => {
           id: shortid.generate(),
           ...item.component
         };
+        console.log(newComponent, "newComponent");
         const newItem = {
           id: newComponent.id,
-          type: COMPONENT
+          type: COMPONENT,
+          my: item1
         };
         setComponents({
           ...components,
