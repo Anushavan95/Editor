@@ -21,6 +21,9 @@ import BasicSelect from "./TagSelect";
 import MarginStyles from "./Components/EditorBuilder/MarginStyles";
 import PaddingStyles from "./Components/EditorBuilder/PaddingStyles";
 import HyperSettings from "./Components/EditorBuilder/ComponentsEditor/HyperSettings";
+import SelectFontFamily from "./SelectFontFamily";
+import ColorChange from "./ColorChange";
+import AlignMent from "./AlignMent";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -88,6 +91,9 @@ function Tabs(props) {
                     <BasicSelect />
                     <MarginStyles />
                     <PaddingStyles />
+                    <SelectFontFamily />
+                    <ColorChange />
+                    <AlignMent />
                   </>
                 );
               case "HyperLink":

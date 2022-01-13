@@ -3,21 +3,21 @@ import { useSelector } from "react-redux";
 import { selectHyperLink } from "../../../redux/mySlice";
 
 export default function HyperLink(props) {
-  const link = useSelector(selectHyperLink);
-  const [hyper, sethyper] = useState([]);
+  // const link = useSelector(selectHyperLink);
+  const [hyper, setHyper] = useState([]);
   const handleClick = (...args) => {
     console.log("item", args);
   };
-  const arr = [
-    { name: "item-1", id: 0, key: "nm" },
-    { name: "item-2", id: 1, key: "nm1" },
-    { name: "item-3", id: 2, key: "nm2" }
-  ];
+  // const arr = [
+  //   { name: "item-1", id: 0, key: "nm" },
+  //   { name: "item-2", id: 1, key: "nm1" },
+  //   { name: "item-3", id: 2, key: "nm2" }
+  // ];
   const myFoo = () => {
     [...props.layout].map((row) => {
       return [...row.children].map((column) => {
         return [column.children].map((col) => {
-          return sethyper(col);
+          return setHyper(col);
         });
       });
     });

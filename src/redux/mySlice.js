@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import RichTextEditor from "react-rte";
 import axios from "axios";
-import shortid from "shortid";
 const initialState = {
   tag: "h3",
   tab: "1",
+  fontFamily: "",
+  color: "",
   addedImages: [],
   dataObject: {
     image: []
@@ -61,6 +62,12 @@ const mySlice = createSlice({
   reducers: {
     setTag: (state, action) => {
       state.tag = action.payload;
+    },
+    setFontFamily: (state, action) => {
+      state.fontFamily = action.payload;
+    },
+    setColor: (state, action) => {
+      state.color = action.payload;
     },
     addIMages: (state, action) => {
       state.addedImages = [...state.addedImages, ...action.payload];
@@ -144,6 +151,7 @@ const mySlice = createSlice({
 });
 
 export const {
+  setColor,
   setTag,
   addIMages,
   setTab,
@@ -159,7 +167,8 @@ export const {
   setPaddingLeft,
   setMergeStylesMargin,
   setHyperLink,
-  setInitialLayout
+  setInitialLayout,
+  setFontFamily
 } = mySlice.actions;
 export const selectTag = (state) => state.component.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
@@ -178,5 +187,7 @@ export const selectPaddingBottom = (state) => state.component.paddingBottom;
 export const selectPaddingLeft = (state) => state.component.paddingLeft;
 export const selectHyperLink = (state) => state.component.hyperLink;
 export const selectInitialLayout = (state) => state.component.initialLayout;
+export const selectFontFamily = (state) => state.component.fontFamily;
+export const selectColor = (state) => state.component.color;
 
 export default mySlice.reducer;

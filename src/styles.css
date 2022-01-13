@@ -299,3 +299,8 @@ body {
   font-family: 'Open Sans', sans-serif !important;
   color: #1A2A47 !important;
 }
+
+#filled-hidden-label-normal {
+  padding: 5px !important;
+  width: 60px !important;
+}

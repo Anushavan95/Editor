@@ -6,6 +6,8 @@ import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/Con
 import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
 
 import {
+  selectColor,
+  selectFontFamily,
   selectMarginBottom,
   selectMarginLeft,
   selectMarginObj,
@@ -32,7 +34,8 @@ const Component = ({ data, components, path, layout }) => {
   const right = useSelector(selectMarginRight);
   const bottom = useSelector(selectMarginBottom);
   const left = useSelector(selectMarginLeft);
-
+  const color = useSelector(selectColor);
+  const font = useSelector(selectFontFamily);
   const P_top = useSelector(selectPaddingTop);
   const P_right = useSelector(selectPaddingRight);
   const P_bottom = useSelector(selectPaddingBottom);
@@ -47,14 +50,15 @@ const Component = ({ data, components, path, layout }) => {
       isDragging: monitor.isDragging()
     })
   });
-
   const opacity = isDragging ? 0 : 1;
   drag(ref);
   const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
-    padding: `${P_top}px  ${P_right}px ${P_bottom}px ${P_left}px`
+    padding: `${P_top}px  ${P_right}px ${P_bottom}px ${P_left}px`,
+    fontFamily: font,
+    color: color
   };
-
+  console.log(styles, "styles");
   const component = components[data.id];
   let tagEntry = `<${tag}>Your Heading</${tag}>`;
   console.log(component, "component");
