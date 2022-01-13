@@ -70,8 +70,8 @@ function Tabs(props) {
           className="tab-box"
         >
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Elements" value="1" />
-            <Tab label="Styles" value="2" />
+            <Tab label="Elements" value="1" className="tab-label" />
+            <Tab label="Styles" value="2" className="tab-label" />
           </TabList>
         </Box>
         <TabPanel value="1" className="components-tab">

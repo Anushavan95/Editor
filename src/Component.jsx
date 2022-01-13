@@ -26,7 +26,7 @@ const style = {
   cursor: "move"
 };
 
-const Component = ({ data, components, path }) => {
+const Component = ({ data, components, path, layout }) => {
   const margin = useSelector(selectMarginObj);
   const top = useSelector(selectMarginTop);
   const right = useSelector(selectMarginRight);
@@ -57,7 +57,7 @@ const Component = ({ data, components, path }) => {
 
   const component = components[data.id];
   let tagEntry = `<${tag}>Your Heading</${tag}>`;
-
+  console.log(component, "component");
   switch (component.content) {
     case "ImageUpload":
       return <ImageUploadingApp />;
@@ -69,6 +69,7 @@ const Component = ({ data, components, path }) => {
       return (
         <div
           style={styles}
+          // onClick={handleClick}
           contentEditable={true}
           dangerouslySetInnerHTML={{
             __html: tagEntry
@@ -77,7 +78,7 @@ const Component = ({ data, components, path }) => {
       );
       break;
     case "HyperLink":
-      return <HyperLink />;
+      return <HyperLink layout={layout} />;
       break;
     default:
       break;

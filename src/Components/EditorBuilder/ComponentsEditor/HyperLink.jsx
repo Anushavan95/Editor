@@ -1,23 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectHyperLink } from "../../../redux/mySlice";
-export default function HyperLink() {
+
+export default function HyperLink(props) {
   const link = useSelector(selectHyperLink);
-  console.log(link, "link");
+  const [hyper, sethyper] = useState([]);
+  const handleClick = (...args) => {
+    console.log("item", args);
+  };
+  const arr = [
+    { name: "item-1", id: 0, key: "nm" },
+    { name: "item-2", id: 1, key: "nm1" },
+    { name: "item-3", id: 2, key: "nm2" }
+  ];
+  const myFoo = () => {
+    [...props.layout].map((row) => {
+      return [...row.children].map((column) => {
+        return [column.children].map((col) => {
+          return sethyper(col);
+        });
+      });
+    });
+  };
+  useEffect(() => {
+    myFoo();
+  }, [myFoo]);
+  console.log(hyper[hyper.length - 1], "hyperlal");
   return (
     <div>
-      {[link].map((item, index) => {
-        console.log(item, "item");
-        return (
-          <a key={item.name} href={item.link}>
-            {item.name}
-          </a>
-        );
+      {hyper.map((item, index) => {
+        return <li onClick={() => handleClick(item.id, item)}>{item.id}</li>;
       })}
+      {/* {(function (handleClick, props) {
+        return [...props.layout].map((itemRow, indexRow) => {
+          return [...itemRow.children].map((itemColumn) => {
+            return [...itemColumn.children].map((item, index) => {
+              switch (item.component.content) {
+                case "HyperText":
+                  return (
+                    <>
+                      <p
+                        key={index}
+                        // href={item.link}
+                        onClick={() =>
+                          handleClick(itemRow.id, itemColumn.id, item)
+                        }
+                      >
+                        I T E M {item.id}, {index + 1}
+                      </p>
+                    </>
+                  );
+
+                default:
+                  return null;
+              }
+            });
+          });
+        });
+      })(handleClick, props)} */}
     </div>
   );
 }
-
-//  <a href={link.link} alt="Google">
-//     Google
-//   </a>

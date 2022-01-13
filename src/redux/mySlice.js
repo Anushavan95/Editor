@@ -23,11 +23,15 @@ const initialState = {
   marginObj: {},
   hyperLink: {
     link: "",
+    content: "HyperText",
     name: "",
-    id: shortid.generate(),
+    id: null,
     settings: {}
   },
-  initialLayout: []
+  initialLayout: [],
+  rowId: null,
+  parentId: null,
+  childId: null
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -103,10 +107,10 @@ const mySlice = createSlice({
       state.paddingLeft = action.payload;
     },
     setHyperLink: (state, action) => {
-      state.hyperLink.link = action.payload;
+      state.hyperLink = action.payload;
     },
     setInitialLayout: (state, action) => {
-      state.initialLayout = [...state.initialLayout, ...action.payload];
+      state.initialLayout = [...state.initialLayout, action.payload];
     }
   },
   extraReducers: (builder) => {

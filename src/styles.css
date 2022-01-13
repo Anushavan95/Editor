@@ -16,14 +16,34 @@ body {
   margin: 0 auto;
 }
 
+.sideBar::-webkit-scrollbar {
+  width: 8px;
+  /* width of the entire scrollbar */
+}
+
+.sideBar::-webkit-scrollbar-track {
+  background: #EFF1F2;
+  /* color of the tracking area */
+}
+
 .sideBar {
   position: fixed;
+  overflow-y: scroll;
   flex: 0 0 1;
-  width: 325px;
+  width: 335px;
   border-right: 1px solid #111;
   height: 100vh;
   background-color: #EFF1F2;
 
+}
+
+.sideBar::-webkit-scrollbar-thumb {
+  background-color: #B9B9B9;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #B9B9B9;
+  /* creates padding around scroll thumb */
 }
 
 .sideBarItem {
@@ -272,4 +292,10 @@ body {
   color: #1A2A47;
   font-size: 16px !important;
   font-family: 'Open Sans', sans-serif;
+}
+
+.tab-label {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif !important;
+  color: #1A2A47 !important;
 }

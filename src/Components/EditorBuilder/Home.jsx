@@ -29,10 +29,12 @@ const Container = () => {
   const link = useSelector(selectHyperLink);
   console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
+  console.log(initialLayout, "initialLayout");
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
-  console.log(layout, "out");
+
+  console.log("out=>", layout);
   const [components, setComponents] = useState(initialComponents);
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
@@ -44,8 +46,6 @@ const Container = () => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      dispatch(setInitialLayout(layout));
-
       console.log("dropZone", dropZone);
       console.log("item", item);
       const splitDropZonePath = dropZone.path.split("-");
@@ -53,6 +53,7 @@ const Container = () => {
 
       dispatch(setComponent(item.component.content));
       dispatch(setTab("2"));
+      dispatch(setHyperLink(shortid.generate()));
       let component = null;
       switch (item.component.content) {
         case "Heading":
@@ -65,15 +66,11 @@ const Container = () => {
           break;
       }
 
-      console.log(item.component.content);
-      // console.log(item1, "item1");
-      // dispatch(setMergeStylesMargin());
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;
       }
-      // console.log(item.component, "item");
-      // sidebar into
+
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
 
@@ -82,12 +79,12 @@ const Container = () => {
           // id: newId,
           ...item.component
         };
-        // console.log(newComponent, "newComponent");
         const newItem = {
           id: newComponent.id,
           type: COMPONENT,
           component
         };
+
         setComponents({
           ...components,
           [newComponent.id]: newComponent
@@ -140,7 +137,6 @@ const Container = () => {
     },
     [layout, components]
   );
-
   const renderRow = (row, currentPath) => {
     return (
       <Row
@@ -149,6 +145,7 @@ const Container = () => {
         handleDrop={handleDrop}
         components={components}
         path={currentPath}
+        layout={layout}
       />
     );
   };
@@ -183,13 +180,6 @@ const Container = () => {
             isLast
           />
         </div>
-
-        {/* <TrashDropZone
-          data={{
-            layout
-          }}
-          onDrop={handleDropToTrashBin}
-        /> */}
       </div>
     </div>
   );
