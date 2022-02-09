@@ -1,5 +1,5 @@
-import React from "react";
-import { TextField, Box, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { TextField, Box, Typography, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectPaddingBottom,
@@ -11,12 +11,20 @@ import {
   setPaddingRight,
   setPaddingTop
 } from "../../redux/mySlice";
+import LinkIcon from "../../images/link.png";
+
 export default function PaddingStyles() {
+  const [change, setChange] = useState(false);
+
   const dispatch = useDispatch();
   const top = useSelector(selectPaddingTop);
   const right = useSelector(selectPaddingRight);
   const bottom = useSelector(selectPaddingBottom);
   const left = useSelector(selectPaddingLeft);
+
+  const allChanges = () => {
+    setChange(!change);
+  };
 
   const handleTopChange = (event) => {
     dispatch(setPaddingTop(event.target.value));
@@ -79,6 +87,12 @@ export default function PaddingStyles() {
           }}
           variant="filled"
         />
+        <Button
+          onClick={allChanges}
+          className={`margin-all ${change ? "contained" : "outlined"}`}
+          // variant={change ? "contained" : "outlined"}
+          startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
+        ></Button>
       </Box>
       <Box className="direction">
         <Typography variant="span">Top</Typography>

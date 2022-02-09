@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import RichTextEditor from "react-rte";
 import axios from "axios";
 const initialState = {
-  tag: "h3",
   tab: "1",
   fontFamily: "",
   color: "",
@@ -29,10 +28,14 @@ const initialState = {
     id: null,
     settings: {}
   },
-  initialLayout: [],
-  rowId: null,
-  parentId: null,
-  childId: null
+  heading: {
+    text: "",
+    tag: "h3",
+    content: "Heading",
+    id: null,
+    settings: {}
+  },
+  initialLayout: []
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -61,7 +64,7 @@ const mySlice = createSlice({
   initialState,
   reducers: {
     setTag: (state, action) => {
-      state.tag = action.payload;
+      state.heading.tag = action.payload;
     },
     setFontFamily: (state, action) => {
       state.fontFamily = action.payload;
@@ -116,6 +119,9 @@ const mySlice = createSlice({
     setHyperLink: (state, action) => {
       state.hyperLink = action.payload;
     },
+    setHeading: (state, action) => {
+      state.heading = action.payload;
+    },
     setInitialLayout: (state, action) => {
       state.initialLayout = [...state.initialLayout, action.payload];
     }
@@ -168,9 +174,10 @@ export const {
   setMergeStylesMargin,
   setHyperLink,
   setInitialLayout,
-  setFontFamily
+  setFontFamily,
+  setHeading
 } = mySlice.actions;
-export const selectTag = (state) => state.component.tag;
+export const selectTag = (state) => state.component.heading.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
 export const selectTab = (state) => state.component.tab;
 export const selectTextEditorValue = (state) => state.component.textEditorValue;
@@ -186,6 +193,7 @@ export const selectPaddingRight = (state) => state.component.paddingRight;
 export const selectPaddingBottom = (state) => state.component.paddingBottom;
 export const selectPaddingLeft = (state) => state.component.paddingLeft;
 export const selectHyperLink = (state) => state.component.hyperLink;
+export const selectHeading = (state) => state.component.heading;
 export const selectInitialLayout = (state) => state.component.initialLayout;
 export const selectFontFamily = (state) => state.component.fontFamily;
 export const selectColor = (state) => state.component.color;

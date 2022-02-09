@@ -11,7 +11,7 @@ import {
   setMarginRight,
   setMarginTop
 } from "../../redux/mySlice";
-
+import LinkIcon from "../../images/link.png";
 export default function MarginStyles() {
   const [change, setChange] = useState(false);
   const dispatch = useDispatch();
@@ -19,10 +19,9 @@ export default function MarginStyles() {
   const right = useSelector(selectMarginRight);
   const bottom = useSelector(selectMarginBottom);
   const left = useSelector(selectMarginLeft);
-  const allChanges = (event) => {
+  const allChanges = () => {
     setChange(!change);
   };
-  console.log(change);
 
   const handleTopChange = (event) => {
     dispatch(setMarginTop(event.target.value));
@@ -105,10 +104,13 @@ export default function MarginStyles() {
           }}
           variant="filled"
         />
+        <Button
+          onClick={allChanges}
+          className={`margin-all ${change ? "contained" : "outlined"}`}
+          // variant={change ? "contained" : "outlined"}
+          startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
+        ></Button>
       </Box>
-      <Button onClick={allChanges} variant={change ? "contained" : "outlined"}>
-        click
-      </Button>
 
       <Box className="direction">
         <Typography variant="span">Top</Typography>

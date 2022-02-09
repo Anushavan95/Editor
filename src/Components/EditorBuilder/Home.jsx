@@ -15,9 +15,11 @@ import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./Config/constants";
 import shortid from "shortid";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  selectHeading,
   selectHyperLink,
   selectInitialLayout,
   setComponent,
+  setHeading,
   setHyperLink,
   setInitialLayout,
   setMergeStylesMargin,
@@ -27,6 +29,7 @@ import {
 const Container = () => {
   // const initialLayout = initialData.layout;
   const link = useSelector(selectHyperLink);
+  const heading = useSelector(selectHeading);
   console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
   console.log(initialLayout, "initialLayout");
@@ -54,10 +57,11 @@ const Container = () => {
       dispatch(setComponent(item.component.content));
       dispatch(setTab("2"));
       dispatch(setHyperLink(shortid.generate()));
+      dispatch(setHeading(shortid.generate()));
       let component = null;
       switch (item.component.content) {
         case "Heading":
-          component = "heading";
+          component = { ...heading };
           break;
         case "HyperLink":
           component = { ...link };

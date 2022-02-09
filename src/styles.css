@@ -304,3 +304,20 @@ body {
   padding: 5px !important;
   width: 60px !important;
 }
+
+.link-icon {
+  width: 20px;
+}
+
+.margin-all .MuiButton-startIcon {
+  margin: 0 !important;
+
+}
+
+.outlined {
+  background-color: white !important;
+}
+
+.contained {
+  background-color: #e1e3e4 !important;
+}

@@ -43,7 +43,7 @@ const Component = ({ data, components, path, layout }) => {
   const dispatch = useDispatch();
   const tag = useSelector(selectTag);
   const ref = useRef(null);
-
+  console.log(tag, "tag");
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, id: data.id, path },
     collect: (monitor) => ({
