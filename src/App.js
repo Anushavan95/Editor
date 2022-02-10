@@ -38,18 +38,20 @@ export default function App() {
                   onChange={handleChange("panel1")}
                   className="panel-1"
                 >
-                  <AccordionSummary
-                    aria-controls="panel3d-content"
-                    id="panel3d-header"
-                    expandIcon={<ExpandMoreIcon />}
-                  >
-                    <Typography
-                      variant="h4"
-                      className="title-component-sidebar"
+                  <div className="paneli-border-fms">
+                    <AccordionSummary
+                      aria-controls="panel3d-content"
+                      id="panel3d-header"
+                      expandIcon={<ExpandMoreIcon />}
                     >
-                      Text
-                    </Typography>
-                  </AccordionSummary>
+                      <Typography
+                        variant="h4"
+                        className="title-component-sidebar"
+                      >
+                        Text
+                      </Typography>
+                    </AccordionSummary>
+                  </div>
                   <AccordionDetails>
                     <Typography>
                       <Box className="elements-parent-box">
@@ -67,22 +69,24 @@ export default function App() {
                 </Accordion>
 
                 <Accordion
-                  expanded={expanded === "panel1"}
+                  expanded={expanded === "panel2"}
                   onChange={handleChange("panel2")}
                   className="panel-2"
                 >
-                  <AccordionSummary
-                    aria-controls="panel2d-content"
-                    id="panel2d-header"
-                    expandIcon={<ExpandMoreIcon />}
-                  >
-                    <Typography
-                      variant="h4"
-                      className="title-component-sidebar"
+                  <div className="paneli-border-fms">
+                    <AccordionSummary
+                      aria-controls="panel2d-content"
+                      id="panel2d-header"
+                      expandIcon={<ExpandMoreIcon />}
                     >
-                      Image/ImageLink
-                    </Typography>
-                  </AccordionSummary>
+                      <Typography
+                        variant="h4"
+                        className="title-component-sidebar"
+                      >
+                        Image/ImageLink
+                      </Typography>
+                    </AccordionSummary>
+                  </div>
                   <AccordionDetails>
                     <Box className="elements-parent-box">
                       {Object.values(SIDEBAR_ITEMS.slice(3, 6)).map(
@@ -97,22 +101,24 @@ export default function App() {
                   </AccordionDetails>
                 </Accordion>
                 <Accordion
-                  expanded={expanded === "panel1"}
-                  onChange={handleChange("panel2")}
+                  expanded={expanded === "panel3"}
+                  onChange={handleChange("panel3")}
                   className="panel-2"
                 >
-                  <AccordionSummary
-                    aria-controls="panel2d-content"
-                    id="panel2d-header"
-                    expandIcon={<ExpandMoreIcon />}
-                  >
-                    <Typography
-                      variant="h4"
-                      className="title-component-sidebar"
+                  <div className="paneli-border-fms">
+                    <AccordionSummary
+                      aria-controls="panel2d-content"
+                      id="panel2d-header"
+                      expandIcon={<ExpandMoreIcon />}
                     >
-                      Image/ImageLink
-                    </Typography>
-                  </AccordionSummary>
+                      <Typography
+                        variant="h4"
+                        className="title-component-sidebar"
+                      >
+                        Image/ImageLink
+                      </Typography>
+                    </AccordionSummary>
+                  </div>
                   <AccordionDetails>
                     <Box className="elements-parent-box">
                       {Object.values(SIDEBAR_ITEMS.slice(3, 6)).map(
@@ -128,7 +134,7 @@ export default function App() {
                 </Accordion>
               </Tabs>
             </Box>
-            {/* <iframe> */}
+
             <Box className="parent">
               <Header />
               <Main />
@@ -136,7 +142,12 @@ export default function App() {
             {/* </iframe> */}
           </Box>
         </Grid>
-        <Home />
+        <div className="MuiBox-root css-k008qs builder-part-fms">
+          <div className="sideBar MuiBox-root css-0"></div>
+          <div className="parent MuiBox-root css-0">
+            <Home />
+          </div>
+        </div>
       </DndProvider>
     </div>
   );
