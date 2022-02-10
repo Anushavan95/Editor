@@ -15,9 +15,7 @@ export default function AlignMent() {
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          //   value={age}
           label="Age"
-          //   onChange={handleChange}
         >
           <MenuItem value="">
             <em>None</em>
