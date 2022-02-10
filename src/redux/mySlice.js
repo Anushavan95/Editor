@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import RichTextEditor from "react-rte";
 import axios from "axios";
+import RichTextEditor from "react-rte";
 const initialState = {
   tab: "1",
   fontFamily: "",
@@ -12,14 +12,7 @@ const initialState = {
   textEditorValue: RichTextEditor.createEmptyValue(),
   zegaProducts: [],
   componentEntry: "",
-  marginTop: "0",
-  marginRight: "0",
-  marginBottom: "0",
-  marginLeft: "0",
-  paddingTop: "0",
-  paddingRight: "0",
-  paddingBottom: "0",
-  paddingLeft: "0",
+
   marginObj: {},
   hyperLink: {
     link: "",
@@ -33,7 +26,16 @@ const initialState = {
     tag: "h3",
     content: "Heading",
     id: null,
-    settings: {}
+    settings: {
+      marginTop: "0",
+      marginRight: "0",
+      marginBottom: "0",
+      marginLeft: "0"
+      // paddingTop: "0",
+      // paddingRight: "0",
+      // paddingBottom: "0",
+      // paddingLeft: "0"
+    }
   },
   initialLayout: []
 };
@@ -85,7 +87,7 @@ const mySlice = createSlice({
       state.componentEntry = action.payload;
     },
     setMarginTop: (state, action) => {
-      state.marginTop = action.payload;
+      state.heading.settings.marginTop = action.payload;
     },
     setMarginRight: (state, action) => {
       state.marginRight = action.payload;
@@ -104,6 +106,7 @@ const mySlice = createSlice({
         marginLeft: ""
       };
     },
+
     setPaddingTop: (state, action) => {
       state.paddingTop = action.payload;
     },
@@ -119,9 +122,11 @@ const mySlice = createSlice({
     setHyperLink: (state, action) => {
       state.hyperLink = action.payload;
     },
+
     setHeading: (state, action) => {
       state.heading = action.payload;
     },
+
     setInitialLayout: (state, action) => {
       state.initialLayout = [...state.initialLayout, action.payload];
     }
@@ -175,7 +180,8 @@ export const {
   setHyperLink,
   setInitialLayout,
   setFontFamily,
-  setHeading
+  setHeading,
+  setHeadingGenerateId
 } = mySlice.actions;
 export const selectTag = (state) => state.component.heading.tag;
 export const selectAddedImages = (state) => state.component.addedImages;
@@ -183,10 +189,14 @@ export const selectTab = (state) => state.component.tab;
 export const selectTextEditorValue = (state) => state.component.textEditorValue;
 export const selectZegaProducts = (state) => state.component.zegaProducts;
 export const selectComponentEntry = (state) => state.component.componentEntry;
-export const selectMarginTop = (state) => state.component.marginTop;
-export const selectMarginRight = (state) => state.component.marginRight;
-export const selectMarginBottom = (state) => state.component.marginBottom;
-export const selectMarginLeft = (state) => state.component.marginLeft;
+export const selectMarginTop = (state) =>
+  state.component.heading.settings.marginTop;
+export const selectMarginRight = (state) =>
+  state.component.heading.settings.marginRight;
+export const selectMarginBottom = (state) =>
+  state.component.heading.settings.marginBottom;
+export const selectMarginLeft = (state) =>
+  state.component.heading.settings.marginLeft;
 export const selectMarginObj = (state) => state.component.marginObj;
 export const selectPaddingTop = (state) => state.component.paddingTop;
 export const selectPaddingRight = (state) => state.component.paddingRight;
