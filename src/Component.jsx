@@ -28,9 +28,11 @@ const style = {
   cursor: "move"
 };
 
-const Component = ({ data, components, path, layout }) => {
+const Component = ({ data, components, path, layout, id }) => {
+  console.log(id, "123");
   const margin = useSelector(selectMarginObj);
   const top = useSelector(selectMarginTop);
+  console.log(top, "mamamm");
   const right = useSelector(selectMarginRight);
   const bottom = useSelector(selectMarginBottom);
   const left = useSelector(selectMarginLeft);
@@ -43,7 +45,7 @@ const Component = ({ data, components, path, layout }) => {
   const dispatch = useDispatch();
   const tag = useSelector(selectTag);
   const ref = useRef(null);
-  console.log(tag, "tag");
+  // console.log(tag, "tag");
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, id: data.id, path },
     collect: (monitor) => ({
@@ -59,9 +61,10 @@ const Component = ({ data, components, path, layout }) => {
     color: color
   };
   console.log(styles, "styles");
+  // console.log(styles, "styles");
   const component = components[data.id];
   let tagEntry = `<${tag}>Your Heading</${tag}>`;
-  console.log(component, "component");
+  // console.log(component, "component");
   switch (component.content) {
     case "ImageUpload":
       return <ImageUploadingApp />;
@@ -72,6 +75,7 @@ const Component = ({ data, components, path, layout }) => {
     case "Heading":
       return (
         <div
+          id={id}
           style={styles}
           // onClick={handleClick}
           contentEditable={true}

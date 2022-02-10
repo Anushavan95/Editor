@@ -5,29 +5,28 @@ import DropZone from "./DropZone";
 import Column from "./Column";
 
 const style = {};
-const Row = ({ data, components, handleDrop, path, layout }) => {
+const Row = (
+  { data, components, handleDrop, path, layout, generateId },
+  props
+) => {
+  console.log(props, "rowid ");
   const ref = useRef(null);
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ROW,
       id: data.id,
       children: data.children,
-      path
+      path,
+      generateId
     },
-
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
   });
 
-  // console.log(data, "data");
-  // console.log(components, "components");
-  // console.log(path, "path");
-  // console.log(data.id, "path");
-
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-
+  console.log(generateId, "props");
   const renderColumn = (column, currentPath) => {
     return (
       <Column
@@ -48,7 +47,7 @@ const Row = ({ data, components, handleDrop, path, layout }) => {
       className="base draggable row-editor"
     >
       {data.id}
-      <div className="columns">
+      <div id={data.id} className="columns">
         {data.children.map((column, index) => {
           const currentPath = `${path}-${index}`;
 

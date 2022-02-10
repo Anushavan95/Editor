@@ -6,7 +6,7 @@ export default function HyperLink(props) {
   // const link = useSelector(selectHyperLink);
   const [hyper, setHyper] = useState([]);
   const handleClick = (...args) => {
-    console.log("item", args);
+    // console.log("item", args);
   };
   // const arr = [
   //   { name: "item-1", id: 0, key: "nm" },
@@ -25,7 +25,7 @@ export default function HyperLink(props) {
   useEffect(() => {
     myFoo();
   }, [myFoo]);
-  console.log(hyper[hyper.length - 1], "hyperlal");
+  // console.log(hyper[hyper.length - 1], "hyperlal");
   return (
     <div>
       {hyper.map((item, index) => {
