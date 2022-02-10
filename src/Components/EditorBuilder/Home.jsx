@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import shortid from "shortid";
+import React, { useCallback, useState }    from 'react'
+import { useDispatch, useSelector }        from 'react-redux'
+import shortid                             from 'shortid'
 import {
   selectHeading,
   selectHyperLink,
@@ -8,71 +8,73 @@ import {
   setComponent,
   setHeading,
   setHyperLink,
-  setTab
-} from "../../redux/mySlice";
-import { COLUMN, COMPONENT, SIDEBAR_ITEM } from "./Config/constants";
+  setTab,
+}                                          from '../../redux/mySlice'
+import { COLUMN, COMPONENT, SIDEBAR_ITEM } from './Config/constants'
 import {
   handleMoveSidebarComponentIntoParent,
   handleMoveToDifferentParent,
   handleMoveWithinParent,
-  handleRemoveItemFromLayout
-} from "./Config/helpers";
-import initialData from "./Config/initial-data";
-import DropZone from "./Layout/DropZone";
-import Row from "./Layout/Row";
+  handleRemoveItemFromLayout,
+}                                          from './Config/helpers'
+import initialData                         from './Config/initial-data'
+import DropZone                            from './Layout/DropZone'
+import Row                                 from './Layout/Row'
+
+
 
 const Container = () => {
   // const initialLayout = initialData.layout;
-  const link = useSelector(selectHyperLink);
-  const heading = useSelector(selectHeading);
+  const link = useSelector(selectHyperLink)
+  const heading = useSelector(selectHeading)
   // console.log(link, "link");
-  const initialLayout = useSelector(selectInitialLayout);
-  console.log(initialLayout, "initialLayout");
-  const dispatch = useDispatch();
-  const initialComponents = initialData.components;
-  const [layout, setLayout] = useState(initialLayout);
+  const initialLayout = useSelector(selectInitialLayout)
+  // console.log(initialLayout, 'initialLayout')
+  const dispatch = useDispatch()
+  const initialComponents = initialData.components
+  const [layout, setLayout] = useState(initialLayout)
 
   // console.log("out=>", layout);
-  const [components, setComponents] = useState(initialComponents);
+  const [components, setComponents] = useState(initialComponents)
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
-      const splitItemPath = item.path.split("-");
-      setLayout(handleRemoveItemFromLayout(layout, splitItemPath));
+      const splitItemPath = item.path.split('-')
+      setLayout(handleRemoveItemFromLayout(layout, splitItemPath))
     },
-    [layout]
-  );
-  let generateId = null;
+    [layout],
+  )
+  let generateId = null
 
   const handleDrop = useCallback(
     (dropZone, item) => {
       // console.log("dropZone", dropZone);
       // console.log("item", item);
-      const splitDropZonePath = dropZone.path.split("-");
-      const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
+      const splitDropZonePath = dropZone.path.split('-')
+      const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
 
-      dispatch(setComponent(item.component.content));
-      dispatch(setTab("2"));
-      dispatch(setHyperLink(shortid.generate()));
-      generateId = shortid.generate();
-      let component = null;
-      console.log(generateId, "genarete id");
+      dispatch(setComponent(item.component.content))
+      dispatch(setTab('2'))
+      dispatch(setHyperLink(shortid.generate()))
+      generateId = shortid.generate()
+      let component = null
+      console.log(generateId, 'genarete id')
       switch (item.component.content) {
-        case "Heading":
-          component = { ...heading };
-          component.id = generateId;
-
-          dispatch(setHeading(component));
-          break;
-        case "HyperLink":
-          component = { ...link };
-          break;
+        case 'Heading':
+          component = { ...heading }
+          console.log(component)
+          component.id = generateId
+          dispatch(setHeading(component))
+          break
+        case 'HyperLink':
+          component = { ...link }
+          break
         default:
-          break;
+          break
       }
 
-      const newItem = { id: item.id, type: item.type };
+      const newItem = { id: item.id, type: item.type }
       if (item.type === COLUMN) {
-        newItem.children = item.children;
+        newItem.children = item.children
       }
 
       if (item.type === SIDEBAR_ITEM) {
@@ -81,39 +83,39 @@ const Container = () => {
         const newComponent = {
           id: shortid.generate(),
           // id: newId,
-          ...item.component
-        };
+          ...item.component,
+        }
         const newItem = {
-          id: newComponent.id,
+          id  : newComponent.id,
           type: COMPONENT,
-          component
-        };
+          component,
+        }
 
         setComponents({
           ...components,
-          [newComponent.id]: newComponent
-        });
+          [newComponent.id]: newComponent,
+        })
         setLayout(
           handleMoveSidebarComponentIntoParent(
             layout,
             splitDropZonePath,
-            newItem
-          )
-        );
-        return;
+            newItem,
+          ),
+        )
+        return
       }
 
       // move down here since sidebar items dont have path
-      const splitItemPath = item.path.split("-");
-      const pathToItem = splitItemPath.slice(0, -1).join("-");
+      const splitItemPath = item.path.split('-')
+      const pathToItem = splitItemPath.slice(0, -1).join('-')
       // 2. Pure move (no create)
       if (splitItemPath.length === splitDropZonePath.length) {
         // 2.a. move within parent
         if (pathToItem === pathToDropZone) {
           setLayout(
-            handleMoveWithinParent(layout, splitDropZonePath, splitItemPath)
-          );
-          return;
+            handleMoveWithinParent(layout, splitDropZonePath, splitItemPath),
+          )
+          return
         }
 
         // 2.b. OR move different parent
@@ -123,10 +125,10 @@ const Container = () => {
             layout,
             splitDropZonePath,
             splitItemPath,
-            newItem
-          )
-        );
-        return;
+            newItem,
+          ),
+        )
+        return
       }
 
       // 3. Move + Create
@@ -136,12 +138,12 @@ const Container = () => {
           splitDropZonePath,
           splitItemPath,
           newItem,
-          generateId
-        )
-      );
+          generateId,
+        ),
+      )
     },
-    [layout, components]
-  );
+    [layout, components],
+  )
   const renderRow = (row, currentPath, generateId) => {
     return (
       <Row
@@ -153,34 +155,34 @@ const Container = () => {
         path={currentPath}
         layout={layout}
       />
-    );
-  };
+    )
+  }
 
   return (
-    <div className="body" style={{ width: "75%", marginLeft: " 325px" }}>
+    <div className="body" style={{ width: '75%', marginLeft: ' 325px' }}>
       <div className="pageContainer">
         <div className="page">
           {layout.map((row, index) => {
-            const currentPath = `${index}`;
+            const currentPath = `${index}`
             return (
               <React.Fragment key={row.id}>
                 <DropZone
                   data={{
-                    path: currentPath,
-                    id: generateId,
-                    childrenCount: layout.length
+                    path         : currentPath,
+                    id           : generateId,
+                    childrenCount: layout.length,
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
                 />
                 {renderRow(row, currentPath, generateId)}
               </React.Fragment>
-            );
+            )
           })}
           <DropZone
             data={{
-              path: `${layout.length}`,
-              childrenCount: layout.length
+              path         : `${layout.length}`,
+              childrenCount: layout.length,
             }}
             onDrop={handleDrop}
             isLast
@@ -188,6 +190,6 @@ const Container = () => {
         </div>
       </div>
     </div>
-  );
-};
-export default Container;
+  )
+}
+export default Container

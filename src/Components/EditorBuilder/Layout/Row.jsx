@@ -1,32 +1,33 @@
-import React, { useRef } from "react";
-import { useDrag } from "react-dnd";
-import { ROW } from "../Config/constants";
-import DropZone from "./DropZone";
-import Column from "./Column";
+import React, { useRef } from 'react'
+import { useDrag }       from 'react-dnd'
+import { ROW }           from '../Config/constants'
+import DropZone          from './DropZone'
+import Column            from './Column'
 
-const style = {};
+
+
+const style = {}
 const Row = (
   { data, components, handleDrop, path, layout, generateId },
-  props
+  props,
 ) => {
-  console.log(props, "rowid ");
-  const ref = useRef(null);
+  // console.log(props, 'rowid ')
+  const ref = useRef(null)
   const [{ isDragging }, drag] = useDrag({
-    item: {
-      type: ROW,
-      id: data.id,
+    item   : {
+      type    : ROW,
+      id      : data.id,
       children: data.children,
       path,
-      generateId
+      generateId,
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
-  });
+      isDragging: monitor.isDragging(),
+    }),
+  })
 
-  const opacity = isDragging ? 0 : 1;
-  drag(ref);
-  console.log(generateId, "props");
+  const opacity = isDragging ? 0 : 1
+  drag(ref)
   const renderColumn = (column, currentPath) => {
     return (
       <Column
@@ -37,8 +38,8 @@ const Row = (
         path={currentPath}
         layout={layout}
       />
-    );
-  };
+    )
+  }
 
   return (
     <div
@@ -49,26 +50,26 @@ const Row = (
       {data.id}
       <div id={data.id} className="columns">
         {data.children.map((column, index) => {
-          const currentPath = `${path}-${index}`;
+          const currentPath = `${path}-${index}`
 
           return (
             <React.Fragment key={column.id}>
               <DropZone
                 data={{
-                  path: currentPath,
-                  childrenCount: data.children.length
+                  path         : currentPath,
+                  childrenCount: data.children.length,
                 }}
                 onDrop={handleDrop}
                 className="horizontalDrag"
               />
               {renderColumn(column, currentPath)}
             </React.Fragment>
-          );
+          )
         })}
         <DropZone
           data={{
-            path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length
+            path         : `${path}-${data.children.length}`,
+            childrenCount: data.children.length,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"
@@ -76,6 +77,6 @@ const Row = (
         />
       </div>
     </div>
-  );
-};
-export default Row;
+  )
+}
+export default Row

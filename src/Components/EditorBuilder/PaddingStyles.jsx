@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { TextField, Box, Typography, Button } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState }                    from 'react'
+import { TextField, Box, Typography, Button } from '@mui/material'
+import { useDispatch, useSelector }           from 'react-redux'
 import {
   selectPaddingBottom,
   selectPaddingLeft,
@@ -9,35 +9,37 @@ import {
   setPaddingBottom,
   setPaddingLeft,
   setPaddingRight,
-  setPaddingTop
-} from "../../redux/mySlice";
-import LinkIcon from "../../images/link.png";
+  setPaddingTop,
+}                                             from '../../redux/mySlice'
+import LinkIcon                               from '../../images/link.png'
 
-export default function PaddingStyles() {
-  const [change, setChange] = useState(false);
 
-  const dispatch = useDispatch();
-  const top = useSelector(selectPaddingTop);
-  const right = useSelector(selectPaddingRight);
-  const bottom = useSelector(selectPaddingBottom);
-  const left = useSelector(selectPaddingLeft);
+
+export default function PaddingStyles () {
+  const [change, setChange] = useState(false)
+
+  const dispatch = useDispatch()
+  const top = useSelector(selectPaddingTop)
+  const right = useSelector(selectPaddingRight)
+  const bottom = useSelector(selectPaddingBottom)
+  const left = useSelector(selectPaddingLeft)
 
   const allChanges = () => {
-    setChange(!change);
-  };
+    setChange(!change)
+  }
 
   const handleTopChange = (event) => {
-    dispatch(setPaddingTop(event.target.value));
-  };
+    dispatch(setPaddingTop(event.target.value))
+  }
   const handleRightChange = (event) => {
-    dispatch(setPaddingRight(event.target.value));
-  };
+    dispatch(setPaddingRight(event.target.value))
+  }
   const handleBottomChange = (event) => {
-    dispatch(setPaddingBottom(event.target.value));
-  };
+    dispatch(setPaddingBottom(event.target.value))
+  }
   const handleLeftChange = (event) => {
-    dispatch(setPaddingLeft(event.target.value));
-  };
+    dispatch(setPaddingLeft(event.target.value))
+  }
 
   return (
     <div className="margin-component">
@@ -50,7 +52,7 @@ export default function PaddingStyles() {
           value={top}
           onChange={handleTopChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
@@ -61,7 +63,7 @@ export default function PaddingStyles() {
           type="number"
           onChange={handleRightChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
@@ -72,7 +74,7 @@ export default function PaddingStyles() {
           type="number"
           onChange={handleBottomChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
@@ -83,16 +85,16 @@ export default function PaddingStyles() {
           type="number"
           onChange={handleLeftChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
         <Button
           onClick={allChanges}
-          className={`margin-all ${change ? "contained" : "outlined"}`}
+          className={`margin-all ${change ? 'contained' : 'outlined'}`}
           // variant={change ? "contained" : "outlined"}
-          startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
-        ></Button>
+          startIcon={<img src={LinkIcon} alt="Link" className="link-icon"/>}
+        />
       </Box>
       <Box className="direction">
         <Typography variant="span">Top</Typography>
@@ -101,5 +103,5 @@ export default function PaddingStyles() {
         <Typography variant="span">Left</Typography>
       </Box>
     </div>
-  );
+  )
 }

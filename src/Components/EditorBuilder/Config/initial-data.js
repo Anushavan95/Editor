@@ -1,7 +1,9 @@
-import { COMPONENT, ROW, COLUMN } from "./constants";
+import { COMPONENT, ROW, COLUMN } from './constants'
+
+
 
 const initialData = {
-  layout: [
+  layout    : [
     // {
     //   type: ROW,
     //   id: "row0",
@@ -59,23 +61,23 @@ const initialData = {
   ],
   components: {
     component0: {
-      id: "component0",
-      type: "heading",
-      content: "Your Heading"
+      id     : 'component0',
+      type   : 'heading',
+      content: 'Your Heading',
     },
     component1: {
-      id: "component1",
-      type: "editor",
-      content: "PLease Your Text"
+      id     : 'component1',
+      type   : 'editor',
+      content: 'PLease Your Text',
     },
-    component2: { id: "component2", type: "Image", content: "Some Image" },
-    component3: { id: "component3", type: "name", content: "Some name" },
+    component2: { id: 'component2', type: 'Image', content: 'Some Image' },
+    component3: { id: 'component3', type: 'name', content: 'Some name' },
     component4: {
-      id: "component4",
-      type: "phone",
-      content: "<h1>Anushavan</h1>"
-    }
-  }
-};
+      id     : 'component4',
+      type   : 'phone',
+      content: '<h1>Anushavan</h1>',
+    },
+  },
+}
 
-export default initialData;
+export default initialData

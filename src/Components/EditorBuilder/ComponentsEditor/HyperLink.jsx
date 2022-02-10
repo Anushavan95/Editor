@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectHyperLink } from "../../../redux/mySlice";
+import React, { useEffect, useState } from 'react'
+import { useSelector }                from 'react-redux'
+import { selectHyperLink }            from '../../../redux/mySlice'
 
-export default function HyperLink(props) {
+
+
+export default function HyperLink (props) {
   // const link = useSelector(selectHyperLink);
-  const [hyper, setHyper] = useState([]);
+  const [hyper, setHyper] = useState([])
   const handleClick = (...args) => {
     // console.log("item", args);
-  };
+  }
   // const arr = [
   //   { name: "item-1", id: 0, key: "nm" },
   //   { name: "item-2", id: 1, key: "nm1" },
@@ -17,19 +19,19 @@ export default function HyperLink(props) {
     [...props.layout].map((row) => {
       return [...row.children].map((column) => {
         return [column.children].map((col) => {
-          return setHyper(col);
-        });
-      });
-    });
-  };
+          return setHyper(col)
+        })
+      })
+    })
+  }
   useEffect(() => {
-    myFoo();
-  }, [myFoo]);
+    myFoo()
+  }, [myFoo])
   // console.log(hyper[hyper.length - 1], "hyperlal");
   return (
     <div>
       {hyper.map((item, index) => {
-        return <li onClick={() => handleClick(item.id, item)}>{item.id}</li>;
+        return <li onClick={() => handleClick(item.id, item)}>{item.id}</li>
       })}
       {/* {(function (handleClick, props) {
         return [...props.layout].map((itemRow, indexRow) => {
@@ -59,5 +61,5 @@ export default function HyperLink(props) {
         });
       })(handleClick, props)} */}
     </div>
-  );
+  )
 }

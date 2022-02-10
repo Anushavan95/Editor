@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectZegaProducts, zegaProductsAsync } from "../../../redux/mySlice";
+import React, { useEffect }                      from 'react'
+import { useDispatch, useSelector }              from 'react-redux'
+import { selectZegaProducts, zegaProductsAsync } from '../../../redux/mySlice'
 
-import BlockProducts from "./BlockProducts";
+import BlockProducts from './BlockProducts'
 
-export default function Main() {
-  const dispatch = useDispatch();
-  const stateZegaProducts = useSelector(selectZegaProducts);
+
+
+export default function Main () {
+  const dispatch = useDispatch()
+  const stateZegaProducts = useSelector(selectZegaProducts)
 
   useEffect(() => {
-    dispatch(zegaProductsAsync());
-  }, []);
+    dispatch(zegaProductsAsync())
+  }, [])
 
   return (
     <div className="site__body">
@@ -22,7 +24,7 @@ export default function Main() {
                 <div className="slick-prevent-click">
                   <div className="slick-slider slick-initialized">
                     <div className="slick-list">
-                      <div className="slick-track"></div>
+                      <div className="slick-track"/>
                     </div>
                   </div>
                 </div>
@@ -31,7 +33,7 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <BlockProducts stateZegaProducts={stateZegaProducts} />
+      <BlockProducts stateZegaProducts={stateZegaProducts}/>
     </div>
-  );
+  )
 }

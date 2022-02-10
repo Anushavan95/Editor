@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { TextField, Box, Typography, Button } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState }                    from 'react'
+import { TextField, Box, Typography, Button } from '@mui/material'
+import { useDispatch, useSelector }           from 'react-redux'
 import {
   selectMarginBottom,
   selectMarginLeft,
@@ -9,52 +9,55 @@ import {
   setMarginBottom,
   setMarginLeft,
   setMarginRight,
-  setMarginTop
-} from "../../redux/mySlice";
-import LinkIcon from "../../images/link.png";
-export default function MarginStyles() {
-  const [change, setChange] = useState(false);
-  const dispatch = useDispatch();
-  const top = useSelector(selectMarginTop);
-  const right = useSelector(selectMarginRight);
-  const bottom = useSelector(selectMarginBottom);
-  const left = useSelector(selectMarginLeft);
+  setMarginTop,
+}                                             from '../../redux/mySlice'
+import LinkIcon                               from '../../images/link.png'
+
+
+
+export default function MarginStyles () {
+  const [change, setChange] = useState(false)
+  const dispatch = useDispatch()
+  const top = useSelector(selectMarginTop)
+  const right = useSelector(selectMarginRight)
+  const bottom = useSelector(selectMarginBottom)
+  const left = useSelector(selectMarginLeft)
   const allChanges = () => {
-    setChange(!change);
-  };
+    setChange(!change)
+  }
 
   const handleTopChange = (event) => {
-    dispatch(setMarginTop(event.target.value));
-    if (change == true) {
-      dispatch(setMarginRight(event.target.value));
-      dispatch(setMarginBottom(event.target.value));
-      dispatch(setMarginLeft(event.target.value));
+    dispatch(setMarginTop(event.target.value))
+    if (change === true) {
+      dispatch(setMarginRight(event.target.value))
+      dispatch(setMarginBottom(event.target.value))
+      dispatch(setMarginLeft(event.target.value))
     }
-  };
+  }
   const handleRightChange = (event) => {
-    dispatch(setMarginRight(event.target.value));
-    if (change == true) {
-      dispatch(setMarginTop(event.target.value));
-      dispatch(setMarginBottom(event.target.value));
-      dispatch(setMarginLeft(event.target.value));
+    dispatch(setMarginRight(event.target.value))
+    if (change === true) {
+      dispatch(setMarginTop(event.target.value))
+      dispatch(setMarginBottom(event.target.value))
+      dispatch(setMarginLeft(event.target.value))
     }
-  };
+  }
   const handleBottomChange = (event) => {
-    dispatch(setMarginBottom(event.target.value));
-    if (change == true) {
-      dispatch(setMarginTop(event.target.value));
-      dispatch(setMarginRight(event.target.value));
-      dispatch(setMarginLeft(event.target.value));
+    dispatch(setMarginBottom(event.target.value))
+    if (change === true) {
+      dispatch(setMarginTop(event.target.value))
+      dispatch(setMarginRight(event.target.value))
+      dispatch(setMarginLeft(event.target.value))
     }
-  };
+  }
   const handleLeftChange = (event) => {
-    dispatch(setMarginLeft(event.target.value));
-    if (change == true) {
-      dispatch(setMarginTop(event.target.value));
-      dispatch(setMarginRight(event.target.value));
-      dispatch(setMarginBottom(event.target.value));
+    dispatch(setMarginLeft(event.target.value))
+    if (change === true) {
+      dispatch(setMarginTop(event.target.value))
+      dispatch(setMarginRight(event.target.value))
+      dispatch(setMarginBottom(event.target.value))
     }
-  };
+  }
 
   return (
     <div className="margin-component">
@@ -67,7 +70,7 @@ export default function MarginStyles() {
           value={top}
           onChange={handleTopChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
@@ -78,7 +81,7 @@ export default function MarginStyles() {
           type="number"
           onChange={handleRightChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
@@ -89,7 +92,7 @@ export default function MarginStyles() {
           type="number"
           onChange={handleBottomChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
@@ -100,16 +103,16 @@ export default function MarginStyles() {
           type="number"
           onChange={handleLeftChange}
           InputLabelProps={{
-            shrink: true
+            shrink: true,
           }}
           variant="filled"
         />
         <Button
           onClick={allChanges}
-          className={`margin-all ${change ? "contained" : "outlined"}`}
+          className={`margin-all ${change ? 'contained' : 'outlined'}`}
           // variant={change ? "contained" : "outlined"}
-          startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
-        ></Button>
+          startIcon={<img src={LinkIcon} alt="Link" className="link-icon"/>}
+        />
       </Box>
 
       <Box className="direction">
@@ -119,5 +122,5 @@ export default function MarginStyles() {
         <Typography variant="span">Left</Typography>
       </Box>
     </div>
-  );
+  )
 }
