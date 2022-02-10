@@ -12,7 +12,7 @@ import {
   selectTextEditorValue,
   setComponent,
   setEditorTextValue,
-  setTab
+  setTab,
 } from "./redux/mySlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -51,9 +51,9 @@ function Tabs(props) {
         body: JSON.stringify({
           data: {
             component_id: 1,
-            text: `${obj3}`
-          }
-        })
+            text: `${obj3}`,
+          },
+        }),
       };
 
       fetch("https://test.zegashop.com/api/set", requestOptions).then(
@@ -73,8 +73,16 @@ function Tabs(props) {
           className="tab-box"
         >
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Elements" value="1" className="tab-label" />
-            <Tab label="Styles" value="2" className="tab-label" />
+            <Tab
+              label={<span className="tabs-text-fms">Elements</span>}
+              value="1"
+              className="tab-label"
+            />
+            <Tab
+              label={<span className="tabs-text-fms">Styles</span>}
+              value="2"
+              className="tab-label"
+            />
           </TabList>
         </Box>
         <TabPanel value="1" className="components-tab">
