@@ -95,14 +95,16 @@ function Tabs(props) {
                 return <RichTextEditor value={valueText} onChange={onChange} />;
               case "Heading":
                 return (
-                  <>
-                    <BasicSelect />
-                    <MarginStyles />
-                    <PaddingStyles />
-                    <SelectFontFamily />
-                    <ColorChange />
-                    <AlignMent />
-                  </>
+                  <div className="editor-titles-fms">
+                    <div>
+                      <BasicSelect />
+                      <MarginStyles />
+                      <PaddingStyles />
+                      <SelectFontFamily />
+                      <ColorChange />
+                      <AlignMent />
+                    </div>
+                  </div>
                 );
               case "HyperLink":
                 return <HyperSettings />;
