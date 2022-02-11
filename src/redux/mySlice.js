@@ -89,11 +89,8 @@ const mySlice = createSlice({
                 el = Object.values(el)[0]
                 console.log(el, 'el.idel.id')
                 if (el.id === action.payload.id) {
-                    console.log(el.settings,'el.settingsel.settingsel.settings')
-                    el.settings = {
-                        ...
-                            {'marginTop': action.payload.value}
-                    }
+                    console.log(action.payload.value,'el.settingsel.settingsel.settings')
+                    el.settings.push({'marginTop': action.payload.value})
                 }
             })
             state.children = data;
