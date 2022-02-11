@@ -8,7 +8,7 @@ import {
   handleMoveWithinParent,
   handleMoveToDifferentParent,
   handleMoveSidebarComponentIntoParent,
-  handleRemoveItemFromLayout
+  handleRemoveItemFromLayout,
 } from "./Config/helpers";
 
 import Constants, { SIDEBAR_ITEM, COMPONENT, COLUMN } from "./Config/constants";
@@ -23,21 +23,20 @@ import {
   setHyperLink,
   setInitialLayout,
   setMergeStylesMargin,
-  setTab
+  setTab,
 } from "../../redux/mySlice";
 
 const Container = () => {
   // const initialLayout = initialData.layout;
   const link = useSelector(selectHyperLink);
   const heading = useSelector(selectHeading);
-  console.log(link, "link");
+
   const initialLayout = useSelector(selectInitialLayout);
-  console.log(initialLayout, "initialLayout");
+
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
 
-  console.log("out=>", layout);
   const [components, setComponents] = useState(initialComponents);
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
@@ -49,8 +48,6 @@ const Container = () => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      console.log("dropZone", dropZone);
-      console.log("item", item);
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
 
@@ -81,17 +78,17 @@ const Container = () => {
         const newComponent = {
           id: shortid.generate(),
           // id: newId,
-          ...item.component
+          ...item.component,
         };
         const newItem = {
           id: newComponent.id,
           type: COMPONENT,
-          component
+          component,
         };
 
         setComponents({
           ...components,
-          [newComponent.id]: newComponent
+          [newComponent.id]: newComponent,
         });
         setLayout(
           handleMoveSidebarComponentIntoParent(
@@ -166,7 +163,7 @@ const Container = () => {
                 <DropZone
                   data={{
                     path: currentPath,
-                    childrenCount: layout.length
+                    childrenCount: layout.length,
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
@@ -178,7 +175,7 @@ const Container = () => {
           <DropZone
             data={{
               path: `${layout.length}`,
-              childrenCount: layout.length
+              childrenCount: layout.length,
             }}
             onDrop={handleDrop}
             isLast

@@ -71,7 +71,7 @@ export default function Header() {
                             <span
                               style={{
                                 paddingBottom: "3px",
-                                paddingRight: "10px"
+                                paddingRight: "10px",
                               }}
                             ></span>
                             <div className="inner-class-inline">
@@ -132,14 +132,14 @@ export default function Header() {
                           overflow: "hidden",
                           position: "relative",
                           boxSizing: "border-box",
-                          margin: "0"
+                          margin: "0",
                         }}
                       >
                         <div
                           style={{
                             boxSizing: "border-box",
                             display: "block",
-                            maxWidth: "100%"
+                            maxWidth: "100%",
                           }}
                         >
                           <img
@@ -148,7 +148,7 @@ export default function Header() {
                               display: "block",
                               margin: "0",
                               border: "none",
-                              padding: "0"
+                              padding: "0",
                             }}
                             alt=""
                             aria-hidden="true"
@@ -178,7 +178,7 @@ export default function Header() {
                               minWidth: "100%",
                               maxWidth: "100%",
                               minHeight: "100%",
-                              maxHeight: "100%"
+                              maxHeight: "100%",
                             }}
                           />
                         </noscript>
@@ -202,7 +202,7 @@ export default function Header() {
                             minWidth: "100%",
                             maxWidth: "100%",
                             minHeight: "100%",
-                            maxHeight: "100%"
+                            maxHeight: "100%",
                           }}
                         />
                       </div>

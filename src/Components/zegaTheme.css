@@ -31068,7 +31068,7 @@ html[dir="rtl"] .nav-links__item--with-submenu > a svg {
 
 .parent {
   width: 85%;
-  margin-left: 335px;
+  margin-left: 360px;
 }
 
 .editor {
@@ -31088,9 +31088,9 @@ html[dir="rtl"] .nav-links__item--with-submenu > a svg {
   border-radius: 50px;
   border-width: 0 !important;
 }
-.paneli-border-fms{
-  border-bottom: 1px solid #E7E7E7;
-    padding: 15px 0;
+.paneli-border-fms {
+  border-bottom: 1px solid #e7e7e7;
+  padding: 15px 0;
 }
 
 .editor-container .MuiTabs-fixed .MuiButtonBase-root {
