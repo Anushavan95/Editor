@@ -6,7 +6,7 @@ import ContentEditableText from './Components/EditorBuilder/ComponentsEditor/Con
 import ImageUploadingApp from './Components/EditorBuilder/ComponentsEditor/ImageUploading'
 
 import {
-    selectTag,
+    selectTag, setSelectedContent,
 
 } from './redux/mySlice'
 import HyperLink from './Components/EditorBuilder/ComponentsEditor/HyperLink'
@@ -19,9 +19,10 @@ const style = {
     cursor: 'move',
 }
 
-const Component = ({data, components, path, layout}) => {
-    const componentData = useSelector(selectTag)
-    console.log(componentData, 'children')
+const Component = ({data, componentData, components, path, layout}) => {
+    const dispatch = useDispatch();
+
+
     const ref = useRef(null)
     const [{isDragging}, drag] = useDrag({
         item: {type: COMPONENT, id: data.id, path},
@@ -30,67 +31,69 @@ const Component = ({data, components, path, layout}) => {
         }),
     })
 
-    const handleClick = (e) => {
-        console.log(e.target)
+    const handleClick = (id) => {
+        console.log(id)
+    //  console.log(e.target.id,'idididid')
+        dispatch(setSelectedContent(id));
+        // console.log(e.target)
     }
     const opacity = isDragging ? 0 : 1
-    // console.log('poxos')
     drag(ref)
-    let selectedComponentData = componentData.map(item => {
-        if (Object.values(item)[0].id === data.component.id) {
-            return Object.values(item)[0];
-        }
-    })
-    selectedComponentData = selectedComponentData[0];
     // const styles = {
     //   margin    : `${top}px  ${right}px ${bottom}px ${left}px`,
     //   padding   : `${P_top}px  ${P_right}px ${P_bottom}px ${P_left}px`,
     //   fontFamily: font,
     //   color     : color,
     // }
-    console.log(selectedComponentData, 'SelectedComponentData')
+
     // Object.values(children)
     const component = components[data.id]
+    /// console.log(selectedComponentData,'selectedComponentData')
+    if (componentData) {
+        switch (componentData.content) {
 
-    switch (component.content) {
-        case 'ImageUpload':
-            return <ImageUploadingApp/>
-        case 'Editor':
-            return <ContentEditableText/>
-        case 'Heading':
-            let tagEntry = `<${selectedComponentData.tag}>Your Heading</${selectedComponentData.tag}>`
-            return (
-                <>
-                     <div
-                       id={selectedComponentData.id}
-                       // style={styles}
-                       onClick={handleClick}
-                       contentEditable={true}
-                       dangerouslySetInnerHTML={{
-                         __html: tagEntry,
-                       }}
-                     />
+            case 'ImageUpload':
+                return <ImageUploadingApp/>
+            case 'Editor':
+                return <ContentEditableText/>
+            case 'Heading':
+                let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`
+                return (
+                    <>
+                        <div
+                            id={componentData.id}
+                            // style={styles}
+                            onClick={(event) => handleClick(componentData.id)}
+                            contentEditable={true}
+                            dangerouslySetInnerHTML={{
+                                __html: tagEntry,
+                            }}
+                        />
 
-                </>
-            )
-        case 'HyperLink':
-            return <HyperLink layout={layout}/>
-        default:
-            break
+                    </>
+                )
+            case 'HyperLink':
+                return <HyperLink layout={layout}/>
+            default:
+                break
+        }
+
+    }else{
+        return <></>
     }
 
-    return (
-        <div
-            ref={ref}
-            style={{...style, opacity}}
-            className="component draggable"
-        >
-            <div>{/*{data.id}*/}</div>
-            <div
-                contentEditable={true}
-                dangerouslySetInnerHTML={{__html: component.content}}
-            />
-        </div>
-    )
+    // return (
+    //     <div
+    //         ref={ref}
+    //         style={{...style, opacity}}
+    //         className="component draggable"
+    //     >
+    //         <div>{/*{data.id}*/}</div>
+    //         <div
+    //             contentEditable={true}
+    //             dangerouslySetInnerHTML={{__html: component.content}}
+    //         />
+    //     </div>
+    // )
 }
 export default Component

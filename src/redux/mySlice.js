@@ -83,45 +83,67 @@ const mySlice = createSlice({
 
 /////FIXME THINK ABOUT THIS
         setMarginTop: (state, action) => {
-            let data = current(state.children);
+            let data = state.children;
             data.map(el => {
-                console.log(el, 'el.idel.id')
                 el = Object.values(el)[0]
-                console.log(el, 'el.idel.id')
                 if (el.id === action.payload.id) {
-                    console.log(action.payload.value,'el.settingsel.settingsel.settings')
-                    el.settings.push({'marginTop': action.payload.value})
+                    let check = false;
+                    el.settings.map(item => {
+                        if (Object.keys(item) == 'marginTop') {
+                            check = true;
+                            item.marginRight = action.payload.value
+                        }
+                    })
+                    if (!check) {
+                        el.settings.push({'marginTop': action.payload.value})
+                    }
                 }
             })
             state.children = data;
-
         },
         setComponentEntry: (state, action) => {
             state.componentEntry = action.payload
         },
+
         setMarginRight: (state, action) => {
-            Object.keys(state.children).map(el => {
+            let data = state.children;
+            data.map(el => {
+                el = Object.values(el)[0]
                 if (el.id === action.payload.id) {
-                    el.settings = [...el.settings, ...{'marginRight': action.payload.value}]
+                    let check = false;
+                    el.settings.map(item => {
+                        if (Object.keys(item) == 'marginRight') {
+                            check = true;
+                            item.marginRight = action.payload.value
+                        }
+                    })
+                    if (!check) {
+                        el.settings.push({'marginRight': action.payload.value})
+                    }
+
                 }
             })
-
+            state.children = data;
         },
         setMarginBottom: (state, action) => {
-            Object.keys(state.children).map(el => {
+            let data = state.children;
+            data.map(el => {
+                el = Object.values(el)[0]
                 if (el.id === action.payload.id) {
-                    el.settings = [...el.settings, ...{'marginBottom': action.payload.value}]
+                    el.settings.push({'marginBottom': action.payload.value})
                 }
             })
-
+            state.children = data;
         },
         setMarginLeft: (state, action) => {
-            Object.keys(state.children).map(el => {
+            let data = state.children;
+            data.map(el => {
+                el = Object.values(el)[0]
                 if (el.id === action.payload.id) {
-                    el.settings = [...el.settings, ...{'marginLeft': action.payload.value}]
+                    el.settings.push({'marginLeft': action.payload.value})
                 }
             })
-
+            state.children = data;
         },
 
         setPaddingTop: (state, action) => {

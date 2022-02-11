@@ -33,7 +33,7 @@ const Container = () => {
     const dispatch = useDispatch()
     const initialComponents = initialData.components
     const [layout, setLayout] = useState(initialLayout)
-
+    console.log(layout, "lay")
     // console.log("out=>", layout);
     const [components, setComponents] = useState(initialComponents)
     const handleDropToTrashBin = useCallback(
@@ -53,18 +53,17 @@ const Container = () => {
             const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
             generateId = shortid.generate()
             let component = null
-            console.log(item.component, 'genarete id')
-            dispatch(setContent({content: item.component.content, generateId: generateId, tag: "h3"}))
+       ////     console.log(item.component, 'genarete id')
+
             dispatch(setSelectedContent(generateId));
             dispatch(setTab('2'))
 
-
+         ///   console.log(item.component.content,'item.component.content')
             switch (item.component.content) {
                 case 'Heading':
                     component = {...heading}
-                    console.log(component)
                     component.id = generateId
-                    dispatch(setContent(component))
+                    dispatch(setContent({content: item.component.content, generateId: generateId, tag: "h3"}))
                     break
                 case 'HyperLink':
                     ///  component = {...link}

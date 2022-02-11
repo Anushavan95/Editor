@@ -30,9 +30,9 @@ export default function MarginStyles({content, selectedComponentData}) {
     const allChanges = () => {
         setChange(!change)
     }
-    console.log(selectedComponentData, 'contentcontentcontent')
     selectedComponentData.settings.map(item => {
-        switch (Object.keys(item)) {
+    ////    console.log(Object.keys(item),'itemitemitem')
+        switch (Object.keys(item)[0]) {
             case 'marginTop':
                 return top = Object.values(item)
             case 'marginRight':
@@ -46,38 +46,38 @@ export default function MarginStyles({content, selectedComponentData}) {
         }
 
     })
-
+  ////  console.log(top,'toptoptoptop')
     const handleTopChange = (event) => {
 
         dispatch(setMarginTop({id: content, value: event.target.value}))
         if (change === true) {
-            dispatch(setMarginRight(event.target.value))
-            dispatch(setMarginBottom(event.target.value))
-            dispatch(setMarginLeft(event.target.value))
+            dispatch(setMarginRight({id: content, value: event.target.value}))
+            dispatch(setMarginBottom({id: content, value: event.target.value}))
+            dispatch(setMarginLeft({id: content, value: event.target.value}))
         }
     }
     const handleRightChange = (event) => {
-        dispatch(setMarginRight(event.target.value))
+        dispatch(setMarginRight({id: content, value: event.target.value}))
         if (change === true) {
-            dispatch(setMarginTop(event.target.value))
-            dispatch(setMarginBottom(event.target.value))
-            dispatch(setMarginLeft(event.target.value))
+            dispatch(setMarginTop({id: content, value: event.target.value}))
+            dispatch(setMarginBottom({id: content, value: event.target.value}))
+            dispatch(setMarginLeft({id: content, value: event.target.value}))
         }
     }
     const handleBottomChange = (event) => {
-        dispatch(setMarginBottom(event.target.value))
+        dispatch(setMarginBottom({id: content, value: event.target.value}))
         if (change === true) {
-            dispatch(setMarginTop(event.target.value))
-            dispatch(setMarginRight(event.target.value))
-            dispatch(setMarginLeft(event.target.value))
+            dispatch(setMarginTop({id: content, value: event.target.value}))
+            dispatch(setMarginRight({id: content, value: event.target.value}))
+            dispatch(setMarginLeft({id: content, value: event.target.value}))
         }
     }
     const handleLeftChange = (event) => {
-        dispatch(setMarginLeft(event.target.value))
+        dispatch(setMarginLeft({id: content, value: event.target.value}))
         if (change === true) {
-            dispatch(setMarginTop(event.target.value))
-            dispatch(setMarginRight(event.target.value))
-            dispatch(setMarginBottom(event.target.value))
+            dispatch(setMarginTop({id: content, value: event.target.value}))
+            dispatch(setMarginRight({id: content, value: event.target.value}))
+            dispatch(setMarginBottom({id: content, value: event.target.value}))
         }
     }
 
