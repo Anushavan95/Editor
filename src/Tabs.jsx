@@ -7,13 +7,13 @@ import TabPanel            from '@mui/lab/TabPanel'
 import RichTextEditor      from 'react-rte'
 import {
   selectAddedImages,
-  selectComponentEntry,
-  selectTab,
-  selectTextEditorValue,
+  selectComponentEntry, selectedContent,
+  selectTab, selectTag,
+  /// selectTextEditorValue,
   setComponent,
   setEditorTextValue,
   setTab,
-}                          from './redux/mySlice'
+} from './redux/mySlice'
 import { useSelector }     from 'react-redux'
 import { useDispatch }     from 'react-redux'
 import { Button }          from '@mui/material'
@@ -32,40 +32,47 @@ function Tabs (props) {
 
   const dispatch = useDispatch()
   const imag = useSelector(selectAddedImages)
-  const valueText = useSelector(selectTextEditorValue)
-  const selComponent = useSelector(selectComponentEntry)
-
+  //const valueText = useSelector(selectTextEditorValue)
+  const selComponent = useSelector(selectTag)
+  const content = useSelector(selectedContent)
+  let selectedComponentData = selComponent.map(item => {
+    if (Object.values(item)[0].id === content) {
+      return Object.values(item)[0];
+    }
+  })
+  selectedComponentData = selectedComponentData[0];
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue))
   }
-
+  console.log(props,'propsprops')
+  console.log(selectedComponentData,'value')
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText))
   }
-
-  const handleSave = () => {
-    let obj3 = valueText.toString('html')
-    // console.log(obj3, "333");
-    if (valueText.length !== 0) {
-      const requestOptions = {
-        method : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify({
-          data: {
-            component_id: 1,
-            text        : `${obj3}`,
-          },
-        }),
-      }
-
-      fetch('https://test.zegashop.com/api/set', requestOptions).then(
-        (response) => response.json(),
-      )
-      // console.log(valueText);
-    } else {
-      console.log('text null')
-    }
-  }
+  console.log(content,'1111111111111111')
+  // const handleSave = () => {
+  //   let obj3 = valueText.toString('html')
+  //   // console.log(obj3, "333");
+  //   if (valueText.length !== 0) {
+  //     const requestOptions = {
+  //       method : 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body   : JSON.stringify({
+  //         data: {
+  //           component_id: 1,
+  //           text        : `${obj3}`,
+  //         },
+  //       }),
+  //     }
+  //
+  //     fetch('https://test.zegashop.com/api/set', requestOptions).then(
+  //       (response) => response.json(),
+  //     )
+  //     // console.log(valueText);
+  //   } else {
+  //     console.log('text null')
+  //   }
+  // }
 
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
@@ -91,37 +98,45 @@ function Tabs (props) {
           {props.children}
         </TabPanel>
         <TabPanel value="2">
-          {(function (selComponent, handleSave, valueText, onChange) {
-            switch (selComponent) {
-              case 'Editor':
-                return <RichTextEditor value={valueText} onChange={onChange}/>
-              case 'Heading':
-                return (
-                  <>
-                    <BasicSelect/>
-                    <MarginStyles/>
-                    <PaddingStyles/>
-                    <SelectFontFamily/>
-                    <ColorChange/>
-                    <AlignMent/>
-                  </>
-                )
-              case 'HyperLink':
-                return <HyperSettings/>
-              case 'button':
-                return (
-                  <Button
-                    style={{ marginTop: '150px' }}
-                    variant="contained"
-                    onClick={handleSave}
-                  >
-                    handleSave
-                  </Button>
-                )
-              default:
-                return null
-            }
-          })(selComponent, handleSave, valueText, onChange)}
+          {
+            content && (function (selectedComponentData,   onChange) {
+              console.log(selectedComponentData, 'selComponent')
+              let contentType = false;
+              if(selectedComponentData){
+                contentType = selectedComponentData.content
+              }
+              switch (contentType) {
+                case 'Editor':
+                  // return <RichTextEditor value={valueText} onChange={onChange}/>
+                case 'Heading':
+                  return (
+                      <>
+                        <BasicSelect/>
+                        <MarginStyles content={content} selectedComponentData={selectedComponentData}/>
+                        <PaddingStyles/>
+                        <SelectFontFamily/>
+                        <ColorChange/>
+                        <AlignMent/>
+                      </>
+                  )
+                case 'HyperLink':
+                  return <HyperSettings/>
+                case 'button':
+                  return (
+                      <Button
+                          style={{ marginTop: '150px' }}
+                          variant="contained"
+                          /// onClick={}
+                      >
+                        handleSave
+                      </Button>
+                  )
+                default:
+                  return null
+              }
+            })(selectedComponentData,   onChange)
+          }
+
         </TabPanel>
       </TabContext>
     </Box>

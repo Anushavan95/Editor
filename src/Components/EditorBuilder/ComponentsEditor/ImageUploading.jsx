@@ -2,7 +2,7 @@ import { Button }      from '@mui/material'
 import React           from 'react'
 import ImageUploading  from 'react-images-uploading'
 import { useDispatch } from 'react-redux'
-import { addIMages }   from '../../../redux/mySlice'
+import { addImages }   from '../../../redux/mySlice'
 
 
 
@@ -13,7 +13,7 @@ function ImageUploadingApp () {
   const onChange = (imageList, addUpdateIndex) => {
     // console.log(imageList, addUpdateIndex);
     setImages(imageList)
-    dispatch(addIMages(imageList))
+    dispatch(addImages(imageList))
   }
   console.log(images, 'images')
   return (
