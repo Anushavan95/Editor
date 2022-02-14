@@ -43,17 +43,34 @@ const Component = ({ data, componentData, components, path, layout }) => {
   // }
 
   // Object.values(children)
-
+  let top = null;
+  let right = null;
+  let bottom = null;
+  let left = null;
   const component = components[data.id];
   let a = componentData.settings.map((item) => {
-    return item;
+    if (item.marginTop !== undefined) {
+      top = item.marginTop;
+    }
+    if (item.marginRight !== undefined) {
+      right = item.marginRight;
+    }
+    if (item.marginBottom !== undefined) {
+      bottom = item.marginBottom;
+    }
+    if (item.marginLeft !== undefined) {
+      left = item.marginLeft;
+    }
   });
 
+  // let top = componentData.settings[0];
+  // let right = componentData.settings[1];
+  // let left = componentData.settings[2];
+  // let bottom = componentData.settings[3];
+
+  console.log(top, "margines");
   const styleMargin = {
-    // mTop: `${a[0].marginTop}px`,
-    // mRight: `${a[1]}px`,
-    // mBottom: `${a[2]}px`,
-    // mLeft: `${a[3]}px`
+    margin: `${top}px  ${right}px ${bottom}px ${left}px`
   };
   console.log(styleMargin, "styleMargin");
 
