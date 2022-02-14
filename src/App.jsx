@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import Home from "./Components/EditorBuilder/Home";
 import { DndProvider } from "react-dnd";
 import Backend from "react-dnd-html5-backend";
 import "./styles.css";
-import React from "react";
 import Header from "./Components/ZegaTheme/Header/Header";
 import Main from "./Components/ZegaTheme/Main/Main";
 import "./Components/zegaTheme.css";
@@ -25,7 +25,11 @@ export default function App() {
   const [expanded, setExpanded] = React.useState("panel1");
   const [widthe, setWidthe] = React.useState("unset");
   const [values, setValues] = React.useState({
+<<<<<<< HEAD:src/App.js
     weight: "390px",
+=======
+    weight: ""
+>>>>>>> 4076571bcec0d9ca23f8824f9c5788ecb48d2eb8:src/App.jsx
   });
   const handleChanges = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -182,7 +186,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto",
+                  margin: "40px auto 0 auto"
                 }}
               >
                 <Header />
@@ -192,12 +196,12 @@ export default function App() {
           </Box>
         </Grid>
         <div className="MuiBox-root css-k008qs builder-part-fms">
-          <div className="sideBar MuiBox-root css-0"></div>
+          <div className="sideBar MuiBox-root css-0" />
           <div className="parent MuiBox-root css-0">
             <div
               style={{
                 width: widthe,
-                margin: "40px auto 0 auto",
+                margin: "40px auto 0 auto"
               }}
             >
               <Home />

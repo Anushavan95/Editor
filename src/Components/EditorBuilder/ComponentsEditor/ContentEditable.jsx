@@ -1,15 +1,18 @@
 import React, { useRef, useState } from "react";
 import ContentEditable from "react-contenteditable";
-import { useSelector } from "react-redux";
-import { selectTextEditorValue } from "../../../redux/mySlice";
+import { useDispatch } from "react-redux";
+import { setEditorTextValue } from "../../../redux/builderSlice";
+// import {useDispatch} from
+
 export default function ContentEditableText() {
-  const textValue = useSelector(selectTextEditorValue);
-  console.log(textValue.toString("html"), "val");
+  const dispatch = useDispatch();
+  ///const textValue = useSelector(selectTextEditorValue)
+  //// console.log(textValue.toString('html'), 'val')
   let contentEditable = useRef();
   const [html, setHtml] = useState("Please Your Text");
 
-  const handleChange = (evt) => {
-    setHtml(evt.target.value);
+  const handleChange = (evt, id) => {
+    dispatch(setEditorTextValue(evt.target.value, id));
   };
   return (
     // <div
@@ -21,10 +24,12 @@ export default function ContentEditableText() {
 
     <ContentEditable
       innerRef={contentEditable}
-      html={textValue.toString("html")} // innerHTML of the editable div
+      html={""}
+      /// html={textValue.toString('html')} // innerHTML of the editable div
       disabled={false} // use true to disable editing
       onChange={handleChange} // handle innerHTML change
       // Use a custom HTML tag (uses a div by default)
     />
+    // <>poxos</>
   );
 }

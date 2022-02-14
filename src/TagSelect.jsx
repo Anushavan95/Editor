@@ -1,14 +1,9 @@
-import React from "react";
-import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Button from "@mui/material/Button";
-import { selectTag, setTag } from "./redux/mySlice";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTag } from "./redux/builderSlice";
 
 export default function BasicSelect() {
   const dispatch = useDispatch();

@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import { useDrag } from "react-dnd";
+import Component from "../../../Component";
 import { COLUMN } from "../Config/constants";
 import DropZone from "./DropZone";
-import Component from "../../../Component";
+import { useSelector } from "react-redux";
+import { selectTag, setSelectedContent } from "../../../redux/builderSlice";
 
 const style = {};
 const Column = ({ data, components, handleDrop, path, layout }) => {
@@ -19,15 +21,30 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
       isDragging: monitor.isDragging()
     })
   });
-
-  // console.log(data, "data");
+  const componentData = useSelector(selectTag);
   const opacity = isDragging ? 0 : 1;
   drag(ref);
+
+  const handleGetData = (component) => {
+    return componentData.map((item) => {
+      if (Object.values(item)[0].id === component.component.id) {
+        ///  console.log(Object.values(item)[0])
+        return Object.values(item)[0];
+      }
+    });
+  };
+
   const renderComponent = (component, currentPath) => {
+    let componentData = handleGetData(component);
+    let filtered = componentData.filter(function (x) {
+      return x !== undefined;
+    });
+    ///   console.log(filtered[0])
     return (
       <Component
         key={component.id}
         data={component}
+        componentData={filtered[0]}
         components={components}
         path={currentPath}
         layout={layout}

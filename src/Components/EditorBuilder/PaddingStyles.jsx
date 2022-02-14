@@ -1,6 +1,7 @@
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { TextField, Box, Typography, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import LinkIcon from "../../images/link.png";
 import {
   selectPaddingBottom,
   selectPaddingLeft,
@@ -10,8 +11,7 @@ import {
   setPaddingLeft,
   setPaddingRight,
   setPaddingTop
-} from "../../redux/mySlice";
-import LinkIcon from "../../images/link.png";
+} from "../../redux/builderSlice";
 
 export default function PaddingStyles() {
   const [change, setChange] = useState(false);
@@ -92,7 +92,7 @@ export default function PaddingStyles() {
           className={`margin-all ${change ? "contained" : "outlined"}`}
           // variant={change ? "contained" : "outlined"}
           startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
-        ></Button>
+        />
       </Box>
       <Box className="direction">
         <Typography variant="span">Top</Typography>

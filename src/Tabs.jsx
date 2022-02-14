@@ -1,69 +1,82 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import RichTextEditor from "react-rte";
-import {
-  selectAddedImages,
-  selectComponentEntry,
-  selectTab,
-  selectTextEditorValue,
-  setComponent,
-  setEditorTextValue,
-  setTab,
-} from "./redux/mySlice";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
-import BasicSelect from "./TagSelect";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import AlignMent from "./AlignMent";
+import ColorChange from "./ColorChange";
+import HyperSettings from "./Components/EditorBuilder/ComponentsEditor/HyperSettings";
 import MarginStyles from "./Components/EditorBuilder/MarginStyles";
 import PaddingStyles from "./Components/EditorBuilder/PaddingStyles";
-import HyperSettings from "./Components/EditorBuilder/ComponentsEditor/HyperSettings";
+import {
+  selectAddedImages,
+  selectedContent,
+  selectTab,
+  selectTag,
+  setEditorTextValue,
+  setTab
+} from "./redux/builderSlice";
 import SelectFontFamily from "./SelectFontFamily";
-import ColorChange from "./ColorChange";
-import AlignMent from "./AlignMent";
+import BasicSelect from "./TagSelect";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
 
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
-  const valueText = useSelector(selectTextEditorValue);
-  const selComponent = useSelector(selectComponentEntry);
+  //const valueText = useSelector(selectTextEditorValue)
+  const selComponent = useSelector(selectTag);
+  const content = useSelector(selectedContent);
+  console.log(content, "content");
+  const handleData = (id) => {
+    let selectedComponentData = selComponent.map((item) => {
+      if (Object.values(item)[0].id === id) {
+        return Object.values(item)[0];
+      }
+    });
+    let filtered = selectedComponentData.filter(function (x) {
+      return x !== undefined;
+    });
+
+    return filtered[0];
+  };
 
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue));
+    // console.log(newValue, 'val')
   };
-
+  ////console.log(props,'propsprops')
+  ////console.log(selectedComponentData,'value')
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
   };
-
-  const handleSave = () => {
-    let obj3 = valueText.toString("html");
-    console.log(obj3, "333");
-    if (valueText.length !== 0) {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          data: {
-            component_id: 1,
-            text: `${obj3}`,
-          },
-        }),
-      };
-
-      fetch("https://test.zegashop.com/api/set", requestOptions).then(
-        (response) => response.json()
-      );
-      console.log(valueText);
-    } else {
-      console.log("text null");
-    }
-  };
+  ///console.log(content,'1111111111111111')
+  // const handleSave = () => {
+  //   let obj3 = valueText.toString('html')
+  //   // console.log(obj3, "333");
+  //   if (valueText.length !== 0) {
+  //     const requestOptions = {
+  //       method : 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body   : JSON.stringify({
+  //         data: {
+  //           component_id: 1,
+  //           text        : `${obj3}`,
+  //         },
+  //       }),
+  //     }
+  //
+  //     fetch('https://test.zegashop.com/api/set', requestOptions).then(
+  //       (response) => response.json(),
+  //     )
+  //     // console.log(valueText);
+  //   } else {
+  //     console.log('text null')
+  //   }
+  // }
 
   return (
     <Box sx={{ width: "100%", typography: "body1" }}>
@@ -89,39 +102,42 @@ function Tabs(props) {
           {props.children}
         </TabPanel>
         <TabPanel value="2">
-          {(function (selComponent, handleSave, valueText, onChange) {
-            switch (selComponent) {
+          {(function (onChange) {
+            let contentType = false;
+            let selectedComponentData = handleData(content);
+            console.log(selectedComponentData, "selectedComponentData");
+            if (selectedComponentData) {
+              contentType = selectedComponentData.content;
+            }
+            switch (contentType) {
               case "Editor":
-                return <RichTextEditor value={valueText} onChange={onChange} />;
+
               case "Heading":
                 return (
-                  <div className="editor-titles-fms">
-                    <div>
-                      <BasicSelect />
-                      <MarginStyles />
-                      <PaddingStyles />
-                      <SelectFontFamily />
-                      <ColorChange />
-                      <AlignMent />
-                    </div>
-                  </div>
+                  <>
+                    <BasicSelect />
+                    <MarginStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <PaddingStyles />
+                    <SelectFontFamily />
+                    <ColorChange />
+                    <AlignMent />
+                  </>
                 );
               case "HyperLink":
                 return <HyperSettings />;
               case "button":
                 return (
-                  <Button
-                    style={{ marginTop: "150px" }}
-                    variant="contained"
-                    onClick={handleSave}
-                  >
+                  <Button style={{ marginTop: "150px" }} variant="contained">
                     handleSave
                   </Button>
                 );
               default:
                 return null;
             }
-          })(selComponent, handleSave, valueText, onChange)}
+          })(onChange)}
         </TabPanel>
       </TabContext>
     </Box>

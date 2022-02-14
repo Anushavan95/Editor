@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectZegaProducts, zegaProductsAsync } from "../../../redux/mySlice";
+import {
+  selectZegaProducts,
+  zegaProductsAsync
+} from "../../../redux/builderSlice";
 
 import BlockProducts from "./BlockProducts";
 
@@ -22,7 +25,7 @@ export default function Main() {
                 <div className="slick-prevent-click">
                   <div className="slick-slider slick-initialized">
                     <div className="slick-list">
-                      <div className="slick-track"></div>
+                      <div className="slick-track" />
                     </div>
                   </div>
                 </div>

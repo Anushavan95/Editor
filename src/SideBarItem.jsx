@@ -1,6 +1,7 @@
 import React from "react";
-import { Typography, Box, AccordionDetails } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { useDrag } from "react-dnd";
+
 const SideBarItem = ({ data }) => {
   const [{ opacity, className }, drag] = useDrag({
     item: data,

@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 // import { selectZegaProducts } from "../../../redux/mySlice";
-export default function BlockProducts({ stateZegaProducts }) {
+export default function BlockProducts ({ stateZegaProducts }) {
   // console.log(stateZegaProducts, "stateZegaProducts");
   return (
     <div className="block-products block-products--layout--large-first">
       <div className="container p-0 home-product-container">
         <div className="block-header">
           <h3 className="block-header__title__custom">
-            <span className="title-line-fms"></span>
+            <span className="title-line-fms"/>
             <span className="title-name-fms">Shop</span>
-            <span className="title-line-fms"></span>
+            <span className="title-line-fms"/>
           </h3>
         </div>
         <div className="block-products__body block-larg-products">
@@ -19,7 +19,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -29,7 +29,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -55,7 +55,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                     <div className="product-card__name">
                       <a href="/products/test">Test</a>
                     </div>
-                    <div className="product-card-description">Test </div>
+                    <div className="product-card-description">Test</div>
                   </div>
                   <div className="product-card__actions">
                     <div className="product-card__availability-mobile">
@@ -63,7 +63,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availability
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -71,7 +71,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -91,7 +92,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -101,7 +102,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -127,7 +128,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                     <div className="product-card__name">
                       <a href="/products/hey">hey</a>
                     </div>
-                    <div className="product-card-description">dfsdfsfd </div>
+                    <div className="product-card-description">dfsdfsfd</div>
                   </div>
                   <div className="product-card__actions">
                     <div className="product-card__availability-mobile">
@@ -135,7 +136,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -143,7 +144,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -163,7 +165,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -173,7 +175,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      //  style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        //  style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -199,7 +201,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                     <div className="product-card__name">
                       <a href="/products/smth">smth</a>
                     </div>
-                    <div className="product-card-description">asda </div>
+                    <div className="product-card-description">asda</div>
                   </div>
                   <div className="product-card__actions">
                     <div className="product-card__availability-mobile">
@@ -207,7 +209,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
 
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
@@ -216,7 +218,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -236,7 +239,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -246,7 +249,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -272,7 +275,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                     <div className="product-card__name">
                       <a href="/products/asas">asas</a>
                     </div>
-                    <div className="product-card-description">sdss </div>
+                    <div className="product-card-description">sdss</div>
                   </div>
                   <div className="product-card__actions">
                     <div className="product-card__availability-mobile">
@@ -280,7 +283,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -288,7 +291,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -308,7 +312,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -318,7 +322,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -352,7 +356,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -360,7 +364,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -380,7 +385,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -390,7 +395,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        // style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -416,7 +421,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                     <div className="product-card__name">
                       <a href="/products/danak">danak</a>
                     </div>
-                    <div className="product-card-description">aasas </div>
+                    <div className="product-card-description">aasas</div>
                   </div>
                   <div className="product-card__actions">
                     <div className="product-card__availability-mobile">
@@ -424,7 +429,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -432,7 +437,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -452,7 +458,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -462,7 +468,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      //  style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        //  style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -488,7 +494,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                     <div className="product-card__name">
                       <a href="/products/aman">aman</a>
                     </div>
-                    <div className="product-card-description">sdsd </div>
+                    <div className="product-card-description">sdsd</div>
                   </div>
                   <div className="product-card__actions">
                     <div className="product-card__availability-mobile">
@@ -496,7 +502,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -504,7 +510,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -524,7 +531,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                 <div className="product-card">
                   <div className="product-card__image product-image">
                     <div className="product-image__body product-image__body-fms">
-                      <div className="item_overlay hide-for-tablet"></div>
+                      <div className="item_overlay hide-for-tablet"/>
                       <div className="img_btn_wrapper">
                         <button
                           type="button"
@@ -534,7 +541,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         </button>
                       </div>
                       <div
-                      //  style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
+                        //  style="display:block;overflow:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;margin:0"
                       >
                         <noscript>
                           <img
@@ -568,7 +575,7 @@ export default function BlockProducts({ stateZegaProducts }) {
                         Availabiluty
                         <span className="text-success">In stock</span>
                       </div>
-                      <div className="product-card__prices"></div>
+                      <div className="product-card__prices"/>
                       <div className="product-card__buttons">
                         <div className="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist">
                           <svg
@@ -576,7 +583,8 @@ export default function BlockProducts({ stateZegaProducts }) {
                             width="16"
                             height="16"
                           >
-                            <path d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"></path>
+                            <path
+                              d="m13.9 8.4-5.4 5.4c-.3.3-.7.3-1 0L2.1 8.4C.6 6.9.6 4.6 2.1 3.1 2.8 2.4 3.8 2 4.8 2s1.9.4 2.6 1.1l.6.6.6-.6c.7-.7 1.7-1.1 2.7-1.1 1 0 1.9.4 2.6 1.1 1.5 1.5 1.5 3.8 0 5.3z"/>
                           </svg>
                         </div>
                       </div>
@@ -596,7 +604,7 @@ export default function BlockProducts({ stateZegaProducts }) {
       </div>
       {[stateZegaProducts].map((item) => {})}
     </div>
-  );
+  )
 }
 
 {
