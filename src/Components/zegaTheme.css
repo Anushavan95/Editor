@@ -603,6 +603,9 @@ pre code {
   .container {
     max-width: 1140px;
   }
+  .builder-part-fms .body {
+    width: 100%;
+  }
 }
 
 .container-fluid,
@@ -31069,8 +31072,11 @@ html[dir="rtl"] .nav-links__item--with-submenu > a svg {
 .parent {
   width: 85%;
   margin-left: 360px;
+  background-color: #f8f8f9;
 }
-
+.site__body {
+  background-color: white;
+}
 .editor {
   width: 380px;
   border: 1px solid;
