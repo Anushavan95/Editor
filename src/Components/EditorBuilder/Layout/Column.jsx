@@ -15,11 +15,11 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
       type: COLUMN,
       id: data.id,
       children: data.children,
-      path
+      path,
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
+      isDragging: monitor.isDragging(),
+    }),
   });
   const componentData = useSelector(selectTag);
   const opacity = isDragging ? 0 : 1;
@@ -66,7 +66,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
             <DropZone
               data={{
                 path: currentPath,
-                childrenCount: data.children.length
+                childrenCount: data.children.length,
               }}
               onDrop={handleDrop}
             />
@@ -77,7 +77,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
       <DropZone
         data={{
           path: `${path}-${data.children.length}`,
-          childrenCount: data.children.length
+          childrenCount: data.children.length,
         }}
         onDrop={handleDrop}
         isLast
