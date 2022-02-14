@@ -43,10 +43,10 @@ const Component = ({ data, componentData, components, path, layout }) => {
   // }
 
   // Object.values(children)
-  let top = null;
-  let right = null;
-  let bottom = null;
-  let left = null;
+  let top = 0;
+  let right = 0;
+  let bottom = 0;
+  let left = 0;
   const component = components[data.id];
   let a = componentData.settings.map((item) => {
     if (item.marginTop !== undefined) {
@@ -69,10 +69,10 @@ const Component = ({ data, componentData, components, path, layout }) => {
   // let bottom = componentData.settings[3];
 
   console.log(top, "margines");
-  const styleMargin = {
+  const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`
   };
-  console.log(styleMargin, "styleMargin");
+  console.log(styles, "styleMargin");
 
   /// console.log(selectedComponentData,'selectedComponentData')
   if (componentData) {
@@ -85,7 +85,7 @@ const Component = ({ data, componentData, components, path, layout }) => {
         let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
         return (
           <Heading
-            styleMargin={styleMargin}
+            styles={styles}
             tagEntry={tagEntry}
             componentData={componentData}
             handleClick={(event) => handleClick(componentData.id)}

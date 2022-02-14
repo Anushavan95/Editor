@@ -1,9 +1,9 @@
 import React from "react";
 
-function Heading({ tagEntry, handleClick, componentData, styleMargin }) {
+function Heading({ tagEntry, handleClick, componentData, styles }) {
   return (
     <div
-      style={{ margin: styleMargin.margin }}
+      style={styles}
       id={componentData.id}
       onClick={() => handleClick(componentData.id)}
       contentEditable={true}
