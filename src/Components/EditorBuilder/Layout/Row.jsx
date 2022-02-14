@@ -3,18 +3,25 @@ import { useDrag } from "react-dnd";
 import { ROW } from "../Config/constants";
 import DropZone from "./DropZone";
 import Column from "./Column";
+import {
+  selectedContent,
+  selectTag,
+  setSelectedContent
+} from "../../../redux/builderSlice";
+import { useSelector } from "react-redux";
 
 const style = {};
 const Row = (
   { data, components, handleDrop, path, layout, generateId },
   props
 ) => {
-  console.log(props, "rowid ");
+  const selectId = useSelector(selectedContent);
+  // console.log(props, 'rowid ')
   const ref = useRef(null);
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ROW,
-      id: data.id,
+      id: selectId,
       children: data.children,
       path,
       generateId
@@ -24,10 +31,23 @@ const Row = (
     })
   });
 
+  const componentData = useSelector(selectTag);
+  const getData = (id) => {
+    let selectedComponentData = componentData.map((item) => {
+      ///   console.log(data.component.id,Object.values(item)[0].id,'data.component.id')
+      if (Object.values(item)[0].id === id) {
+        return Object.values(item)[0];
+      }
+    });
+    selectedComponentData = selectedComponentData[0];
+    return selectedComponentData;
+  };
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-  console.log(generateId, "props");
   const renderColumn = (column, currentPath) => {
+    // console.log(column.id)
+    // let componentData = getData(column.id)
+    // console.log(componentData)
     return (
       <Column
         key={column.id}
@@ -46,9 +66,10 @@ const Row = (
       style={{ ...style, opacity }}
       className="base draggable row-editor"
     >
-      {data.id}
+      {selectId} alala
       <div id={data.id} className="columns">
         {data.children.map((column, index) => {
+          console.log(column, "col");
           const currentPath = `${path}-${index}`;
 
           return (

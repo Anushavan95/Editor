@@ -2,7 +2,8 @@ import { Button } from "@mui/material";
 import React from "react";
 import ImageUploading from "react-images-uploading";
 import { useDispatch } from "react-redux";
-import { addIMages } from "../../../redux/mySlice";
+import { addImages } from "../../../redux/builderSlice";
+
 function ImageUploadingApp() {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
@@ -10,9 +11,9 @@ function ImageUploadingApp() {
   const onChange = (imageList, addUpdateIndex) => {
     // console.log(imageList, addUpdateIndex);
     setImages(imageList);
-    dispatch(addIMages(imageList));
+    dispatch(addImages(imageList));
   };
-  console.log(images, "images");
+  // console.log(images, 'images')
   return (
     <ImageUploading
       multiple

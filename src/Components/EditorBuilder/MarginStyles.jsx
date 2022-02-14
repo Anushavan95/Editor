@@ -1,58 +1,79 @@
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { TextField, Box, Typography, Button } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import LinkIcon from "../../images/link.png";
 import {
-  selectMarginBottom,
-  selectMarginLeft,
-  selectMarginRight,
-  selectMarginTop,
   setMarginBottom,
   setMarginLeft,
   setMarginRight,
   setMarginTop
-} from "../../redux/mySlice";
-import LinkIcon from "../../images/link.png";
-export default function MarginStyles() {
+} from "../../redux/builderSlice";
+
+export default function MarginStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
   const dispatch = useDispatch();
-  const top = useSelector(selectMarginTop);
-  const right = useSelector(selectMarginRight);
-  const bottom = useSelector(selectMarginBottom);
-  const left = useSelector(selectMarginLeft);
+  let top = 0;
+  let right = 0;
+  let bottom = 0;
+  let left = 0;
+
+  //   const marginsforAll = {
+  //     top: 0,
+  //     right: 0,
+  //     bottom: 0,
+  //     left: 0
+  //   };
+
+  //   window.marginsforAll = marginsforAll;
+
   const allChanges = () => {
     setChange(!change);
   };
-
+  selectedComponentData.settings.map((item) => {
+    console.log(Object.keys(item), "itemitemitem");
+    switch (Object.keys(item)[0]) {
+      case "marginTop":
+        return (top = Object.values(item));
+      case "marginRight":
+        return (right = Object.values(item));
+      case "marginLeft":
+        return (left = Object.values(item));
+      case "marginBottom":
+        return (bottom = Object.values(item));
+      default:
+        return null;
+    }
+  });
   const handleTopChange = (event) => {
-    dispatch(setMarginTop(event.target.value));
-    if (change == true) {
-      dispatch(setMarginRight(event.target.value));
-      dispatch(setMarginBottom(event.target.value));
-      dispatch(setMarginLeft(event.target.value));
+    dispatch(setMarginTop({ id: content, value: event.target.value }));
+    if (change === true) {
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
     }
   };
   const handleRightChange = (event) => {
-    dispatch(setMarginRight(event.target.value));
-    if (change == true) {
-      dispatch(setMarginTop(event.target.value));
-      dispatch(setMarginBottom(event.target.value));
-      dispatch(setMarginLeft(event.target.value));
+    dispatch(setMarginRight({ id: content, value: event.target.value }));
+    if (change === true) {
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
     }
   };
   const handleBottomChange = (event) => {
-    dispatch(setMarginBottom(event.target.value));
-    if (change == true) {
-      dispatch(setMarginTop(event.target.value));
-      dispatch(setMarginRight(event.target.value));
-      dispatch(setMarginLeft(event.target.value));
+    dispatch(setMarginBottom({ id: content, value: event.target.value }));
+    if (change === true) {
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
     }
   };
   const handleLeftChange = (event) => {
-    dispatch(setMarginLeft(event.target.value));
-    if (change == true) {
-      dispatch(setMarginTop(event.target.value));
-      dispatch(setMarginRight(event.target.value));
-      dispatch(setMarginBottom(event.target.value));
+    dispatch(setMarginLeft({ id: content, value: event.target.value }));
+    if (change === true) {
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
     }
   };
 
@@ -109,7 +130,7 @@ export default function MarginStyles() {
           className={`margin-all ${change ? "contained" : "outlined"}`}
           // variant={change ? "contained" : "outlined"}
           startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
-        ></Button>
+        />
       </Box>
 
       <Box className="direction">

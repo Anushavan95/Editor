@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import shortid from "shortid";
 import {
   selectHeading,
-  selectHyperLink,
+  ///selectHyperLink,
   selectInitialLayout,
-  setComponent,
-  setHeading,
-  setHyperLink,
+  setSelectedContent,
+  // setComponent,
+  setContent,
+  // setHyperLink,
   setTab
-} from "../../redux/mySlice";
+} from "../../redux/builderSlice";
 import { COLUMN, COMPONENT, SIDEBAR_ITEM } from "./Config/constants";
 import {
   handleMoveSidebarComponentIntoParent,
@@ -23,15 +24,15 @@ import Row from "./Layout/Row";
 
 const Container = () => {
   // const initialLayout = initialData.layout;
-  const link = useSelector(selectHyperLink);
+  /// const link = useSelector(selectHyperLink)
   const heading = useSelector(selectHeading);
   // console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
-  console.log(initialLayout, "initialLayout");
+  // console.log(initialLayout, 'initialLayout')
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
-
+  console.log(layout, "lay");
   // console.log("out=>", layout);
   const [components, setComponents] = useState(initialComponents);
   const handleDropToTrashBin = useCallback(
@@ -49,22 +50,28 @@ const Container = () => {
       // console.log("item", item);
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
-
-      dispatch(setComponent(item.component.content));
-      dispatch(setTab("2"));
-      dispatch(setHyperLink(shortid.generate()));
       generateId = shortid.generate();
       let component = null;
-      console.log(generateId, "genarete id");
+      ////     console.log(item.component, 'genarete id')
+
+      dispatch(setSelectedContent(generateId));
+      dispatch(setTab("2"));
+
+      ///   console.log(item.component.content,'item.component.content')
       switch (item.component.content) {
         case "Heading":
           component = { ...heading };
           component.id = generateId;
-
-          dispatch(setHeading(component));
+          dispatch(
+            setContent({
+              content: item.component.content,
+              generateId: generateId,
+              tag: "h3"
+            })
+          );
           break;
         case "HyperLink":
-          component = { ...link };
+          ///  component = {...link}
           break;
         default:
           break;

@@ -4,7 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { selectFontFamily, setFontFamily } from "./redux/mySlice";
+import { selectFontFamily, setFontFamily } from "./redux/builderSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function SelectFontFamily() {
