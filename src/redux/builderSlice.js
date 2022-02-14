@@ -4,11 +4,10 @@ import RichTextEditor from "react-rte";
 
 const initialState = {
   componentEntry: "",
-  tab: 0,
+  tab: "1",
   left: 0,
   selected: "",
   products: [],
-
   children: [],
   initialLayout: []
 };
@@ -42,28 +41,57 @@ const builderSlice = createSlice({
       state.tab = action.payload;
     },
     setTag: (state, action) => {
-      Object.keys(state.children).map((el) => {
-        if (el.id === action.payload.id) {
-          el.tag = action.payload.value;
-        }
-      });
+      // Object.keys(state.children).map((el) => {
+      //   if (el.id === action.payload.id) {
+      //     el.tag = action.payload.value;
+      //   }
+      // });
     },
     setFontFamily: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ fontFamily: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "fontFamily") {
+              check = true;
+              item.fontFamily = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ fontFamily: action.payload.value });
+          }
         }
       });
+      state.children = data;
+      // Object.keys(state.children).map((el) => {
+      //   if (el.id === action.payload.id) {
+      //     el.settings = [
+      //       ...el.settings,
+      //       ...{ fontFamily: action.payload.value }
+      //     ];
+      //   }
+      // });
     },
     setColor: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [...el.settings, ...{ color: action.payload.value }];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "color") {
+              check = true;
+              item.color = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ color: action.payload.value });
+          }
         }
       });
+      state.children = data;
     },
     addImages: (state, action) => {
       Object.keys(state.children).map((el) => {
@@ -343,8 +371,6 @@ export const selectPaddingLeft = (state) => state.children;
 //export const selectHyperLink = (state) => state.component.hyperLink
 export const selectHeading = (state) => state.component.heading;
 export const selectInitialLayout = (state) => state.component.initialLayout;
-export const selectFontFamily = (state) => state.component.fontFamily;
-export const selectColor = (state) => state.component.color;
 export const selectID = (state) => state.component.heading.id;
 
 export default builderSlice.reducer;

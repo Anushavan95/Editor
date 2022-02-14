@@ -1,18 +1,26 @@
+import React, { useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectChildren } from "./redux/builderSlice";
+import { selectChildren } from "../../redux/builderSlice";
 
-export default function BasicSelect() {
+export default function BasicSelect({ selectedComponentData, content }) {
   const dispatch = useDispatch();
-  const tagName = useSelector(selectChildren);
 
-  const [alignment, setAlignment] = React.useState("web");
+  const [tag, setTag] = useState("H1");
 
+  // let font = "";
+  selectedComponentData.settings.map((item) => {
+    switch (Object.keys(item)[0]) {
+      case "tag":
+        return setTag(Object.values(item));
+      default:
+        return null;
+    }
+  });
   const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+    setTag(newAlignment);
   };
 
   return (
@@ -21,7 +29,7 @@ export default function BasicSelect() {
       <div className="ss">
         <ToggleButtonGroup
           color="primary"
-          value={alignment}
+          value={tag}
           exclusive
           onChange={handleChange}
         >

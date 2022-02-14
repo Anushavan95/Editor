@@ -7,7 +7,7 @@ import Tab from "@mui/material/Tab";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AlignMent from "./AlignMent";
-import ColorChange from "./ColorChange";
+import ColorChange from "./Components/EditorBuilder/ColorChange";
 import HyperSettings from "./Components/EditorBuilder/ComponentsEditor/HyperSettings";
 import MarginStyles from "./Components/EditorBuilder/MarginStyles";
 import PaddingStyles from "./Components/EditorBuilder/PaddingStyles";
@@ -19,15 +19,14 @@ import {
   setEditorTextValue,
   setTab
 } from "./redux/builderSlice";
-import SelectFontFamily from "./SelectFontFamily";
-import BasicSelect from "./TagSelect";
+import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
+import BasicSelect from "./Components/EditorBuilder/TagSelect";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
 
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
-  //const valueText = useSelector(selectTextEditorValue)
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
   console.log(content, "content");
@@ -98,14 +97,13 @@ function Tabs(props) {
             />
           </TabList>
         </Box>
-        <TabPanel value="1" className="components-tab">
+        <TabPanel value={"1"} className="components-tab">
           {props.children}
         </TabPanel>
-        <TabPanel value="2">
+        <TabPanel value={"2"}>
           {(function (onChange) {
             let contentType = false;
             let selectedComponentData = handleData(content);
-            console.log(selectedComponentData, "selectedComponentData");
             if (selectedComponentData) {
               contentType = selectedComponentData.content;
             }
@@ -115,7 +113,10 @@ function Tabs(props) {
               case "Heading":
                 return (
                   <>
-                    <BasicSelect />
+                    <BasicSelect
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                     <MarginStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -124,8 +125,14 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <SelectFontFamily />
-                    <ColorChange />
+                    <SelectFontFamily
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <ColorChange
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                     <AlignMent />
                   </>
                 );
