@@ -15,7 +15,7 @@ import {
   selectAddedImages,
   selectedContent,
   selectTab,
-  selectTag,
+  selectChildren,
   setEditorTextValue,
   setTab
 } from "./redux/builderSlice";
@@ -28,7 +28,7 @@ function Tabs(props) {
   const dispatch = useDispatch();
   const imag = useSelector(selectAddedImages);
   //const valueText = useSelector(selectTextEditorValue)
-  const selComponent = useSelector(selectTag);
+  const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
   console.log(content, "content");
   const handleData = (id) => {
