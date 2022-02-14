@@ -5,7 +5,7 @@ import DropZone from "./DropZone";
 import Column from "./Column";
 import {
   selectedContent,
-  selectTag,
+  selectChildren,
   setSelectedContent
 } from "../../../redux/builderSlice";
 import { useSelector } from "react-redux";
@@ -31,7 +31,7 @@ const Row = (
     })
   });
 
-  const componentData = useSelector(selectTag);
+  const componentData = useSelector(selectChildren);
   const getData = (id) => {
     let selectedComponentData = componentData.map((item) => {
       ///   console.log(data.component.id,Object.values(item)[0].id,'data.component.id')

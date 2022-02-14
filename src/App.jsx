@@ -22,12 +22,12 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 
 export default function App() {
-  const [expanded, setExpanded] = React.useState("panel1");
-  const [widthe, setWidthe] = React.useState("unset");
-  const [values, setValues] = React.useState({
-    weight: "390px",
+  const [expanded, setExpanded] = useState("panel1");
+  const [widthe, setWidthe] = useState("unset");
+  const [values, setValues] = useState({
+    weight: "390px"
   });
-  const [active, setActive] = React.useState("unset");
+  const [active, setActive] = useState("unset");
   const handleChanges = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
     setWidthe(`${event.target.value}px`);
@@ -35,7 +35,7 @@ export default function App() {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-  let chageWidtheClick = (e) => {
+  let changeWidtheClick = (e) => {
     if (e == "mobile") {
       setWidthe("390px");
     } else if (e == "tablet") {
@@ -53,7 +53,7 @@ export default function App() {
             <div className="header-part-viwes-fms">
               <div className="icons-button-fms">
                 <span
-                  onClick={(e) => chageWidtheClick("mobile")}
+                  onClick={(e) => changeWidtheClick("mobile")}
                   className={
                     widthe == "390px" ? "active-icon" : "not-active-icon"
                   }
@@ -61,7 +61,7 @@ export default function App() {
                   <SmartphoneIcon />
                 </span>
                 <span
-                  onClick={(e) => chageWidtheClick("tablet")}
+                  onClick={(e) => changeWidtheClick("tablet")}
                   className={
                     widthe == "820px" ? "active-icon" : "not-active-icon"
                   }
@@ -69,7 +69,7 @@ export default function App() {
                   <TabletMacIcon />
                 </span>
                 <span
-                  onClick={(e) => chageWidtheClick("desktop")}
+                  onClick={(e) => changeWidtheClick("desktop")}
                   className={
                     widthe == "unset" ? "active-icon" : "not-active-icon"
                   }
@@ -200,7 +200,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto",
+                  margin: "40px auto 0 auto"
                 }}
               >
                 <Header />
@@ -216,7 +216,7 @@ export default function App() {
               className="site__body"
               style={{
                 width: widthe,
-                margin: "0px auto 0 auto",
+                margin: "0px auto 0 auto"
               }}
             >
               <div className="container p-0 home-product-container">

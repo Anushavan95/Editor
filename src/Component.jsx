@@ -5,15 +5,9 @@ import { COMPONENT } from "./Components/EditorBuilder/Config/constants";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
 
-import { selectTag, setSelectedContent } from "./redux/builderSlice";
+import { setSelectedContent } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
-
-const style = {
-  border: "1px dashed black",
-  padding: "0.5rem 1rem",
-  backgroundColor: "white",
-  cursor: "move"
-};
+import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
 
 const Component = ({ data, componentData, components, path, layout }) => {
   const dispatch = useDispatch();
@@ -27,28 +21,61 @@ const Component = ({ data, componentData, components, path, layout }) => {
   });
   console.log(componentData, "componentData121212");
   const handleClick = (id) => {
-    console.log(id);
-    //  console.log(e.target.id,'idididid')
     dispatch(setSelectedContent(id));
-    // console.log(e.target)
   };
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-  // const styles = {
-  //   margin    : `${top}px  ${right}px ${bottom}px ${left}px`,
-  //   padding   : `${P_top}px  ${P_right}px ${P_bottom}px ${P_left}px`,
-  //   fontFamily: font,
-  //   color     : color,
-  // }
 
-  // Object.values(children)
-
+  let top = 0;
+  let right = 0;
+  let bottom = 0;
+  let left = 0;
+  let paddTop = 0;
+  let paddRight = 0;
+  let paddBottom = 0;
+  let paddLeft = 0;
+  let fontFamily = "";
+  let color = "";
   const component = components[data.id];
-  let a = componentData.settings.map((item) => {
-    return item.marginRight;
+  componentData.settings.map((item) => {
+    Object.keys(item).forEach((key) => {
+      if (key !== undefined) {
+        switch (key) {
+          case "marginTop":
+            return (top = item.marginTop);
+          case "marginRight":
+            return (right = item.marginRight);
+          case "marginBottom":
+            return (bottom = item.marginBottom);
+          case "marginLeft":
+            return (left = item.marginLeft);
+          case "paddingTop":
+            return (paddTop = item.paddingTop);
+          case "paddingRight":
+            return (paddRight = item.paddingRight);
+          case "paddingBottom":
+            return (paddBottom = item.paddingBottom);
+          case "paddingLeft":
+            return (paddLeft = item.paddingLeft);
+          case "fontFamily":
+            return (fontFamily = item.fontFamily);
+          case "color":
+            return (color = item.color);
+
+          default:
+            return false;
+        }
+      }
+    });
   });
-  console.log(a, "aa212a12");
-  /// console.log(selectedComponentData,'selectedComponentData')
+
+  const styles = {
+    margin: `${top}px  ${right}px ${bottom}px ${left}px`,
+    padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
+    fontFamily: `${fontFamily}`,
+    color: color
+  };
+
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
@@ -58,17 +85,12 @@ const Component = ({ data, componentData, components, path, layout }) => {
       case "Heading":
         let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
         return (
-          <>
-            <div
-              style={{ marginLeft: `${a}px` }}
-              id={componentData.id}
-              onClick={(event) => handleClick(componentData.id)}
-              contentEditable={true}
-              dangerouslySetInnerHTML={{
-                __html: tagEntry
-              }}
-            />
-          </>
+          <Heading
+            styles={styles}
+            tagEntry={tagEntry}
+            componentData={componentData}
+            handleClick={(event) => handleClick(componentData.id)}
+          />
         );
       case "HyperLink":
         return <HyperLink layout={layout} />;

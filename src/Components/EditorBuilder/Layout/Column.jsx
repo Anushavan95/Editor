@@ -4,7 +4,10 @@ import Component from "../../../Component";
 import { COLUMN } from "../Config/constants";
 import DropZone from "./DropZone";
 import { useSelector } from "react-redux";
-import { selectTag, setSelectedContent } from "../../../redux/builderSlice";
+import {
+  selectChildren,
+  setSelectedContent
+} from "../../../redux/builderSlice";
 
 const style = {};
 const Column = ({ data, components, handleDrop, path, layout }) => {
@@ -21,7 +24,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-  const componentData = useSelector(selectTag);
+  const componentData = useSelector(selectChildren);
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
