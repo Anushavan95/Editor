@@ -47,34 +47,45 @@ const Component = ({ data, componentData, components, path, layout }) => {
   let right = 0;
   let bottom = 0;
   let left = 0;
+  let paddTop = 0;
+  let paddRight = 0;
+  let paddBottom = 0;
+  let paddLeft = 0;
   const component = components[data.id];
-  let a = componentData.settings.map((item) => {
-    if (item.marginTop !== undefined) {
-      top = item.marginTop;
-    }
-    if (item.marginRight !== undefined) {
-      right = item.marginRight;
-    }
-    if (item.marginBottom !== undefined) {
-      bottom = item.marginBottom;
-    }
-    if (item.marginLeft !== undefined) {
-      left = item.marginLeft;
-    }
+  componentData.settings.map((item) => {
+    Object.keys(item).forEach((key) => {
+      if (key !== undefined) {
+        switch (key) {
+          case "marginTop":
+            return (top = item.marginTop);
+          case "marginRight":
+            return (right = item.marginRight);
+          case "marginBottom":
+            return (bottom = item.marginBottom);
+          case "marginLeft":
+            return (left = item.marginLeft);
+          case "paddingTop":
+            return (paddTop = item.paddingTop);
+          case "paddingRight":
+            return (paddRight = item.paddingRight);
+          case "paddingBottom":
+            return (paddBottom = item.paddingBottom);
+          case "paddingLeft":
+            return (paddLeft = item.paddingLeft);
+          default:
+            return false;
+        }
+      }
+    });
   });
 
-  // let top = componentData.settings[0];
-  // let right = componentData.settings[1];
-  // let left = componentData.settings[2];
-  // let bottom = componentData.settings[3];
-
-  console.log(top, "margines");
+  console.log(componentData.settings, "componentData.settings");
   const styles = {
-    margin: `${top}px  ${right}px ${bottom}px ${left}px`
+    margin: `${top}px  ${right}px ${bottom}px ${left}px`,
+    padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`
   };
   console.log(styles, "styleMargin");
 
-  /// console.log(selectedComponentData,'selectedComponentData')
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":

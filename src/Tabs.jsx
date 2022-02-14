@@ -120,7 +120,10 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <PaddingStyles />
+                    <PaddingStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                     <SelectFontFamily />
                     <ColorChange />
                     <AlignMent />

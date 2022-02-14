@@ -13,30 +13,43 @@ import {
   setPaddingTop
 } from "../../redux/builderSlice";
 
-export default function PaddingStyles() {
+export default function PaddingStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
 
   const dispatch = useDispatch();
-  const top = useSelector(selectPaddingTop);
-  const right = useSelector(selectPaddingRight);
-  const bottom = useSelector(selectPaddingBottom);
-  const left = useSelector(selectPaddingLeft);
-
+  let top = 0;
+  let right = 0;
+  let bottom = 0;
+  let left = 0;
   const allChanges = () => {
     setChange(!change);
   };
-
+  selectedComponentData.settings.map((item) => {
+    console.log(Object.keys(item), "padd");
+    switch (Object.keys(item)[0]) {
+      case "paddingTop":
+        return (top = Object.values(item));
+      case "paddingRight":
+        return (right = Object.values(item));
+      case "paddingBottom":
+        return (bottom = Object.values(item));
+      case "paddingLeft":
+        return (left = Object.values(item));
+      default:
+        return null;
+    }
+  });
   const handleTopChange = (event) => {
-    dispatch(setPaddingTop(event.target.value));
+    dispatch(setPaddingTop({ id: content, value: event.target.value }));
   };
   const handleRightChange = (event) => {
-    dispatch(setPaddingRight(event.target.value));
+    dispatch(setPaddingRight({ id: content, value: event.target.value }));
   };
   const handleBottomChange = (event) => {
-    dispatch(setPaddingBottom(event.target.value));
+    dispatch(setPaddingBottom({ id: content, value: event.target.value }));
   };
   const handleLeftChange = (event) => {
-    dispatch(setPaddingLeft(event.target.value));
+    dispatch(setPaddingLeft({ id: content, value: event.target.value }));
   };
 
   return (

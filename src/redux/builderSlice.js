@@ -171,42 +171,82 @@ const builderSlice = createSlice({
     },
 
     setPaddingTop: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ paddingTop: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingTop") {
+              check = true;
+              item.paddingTop = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingTop: action.payload.value });
+          }
         }
       });
+      // Object.keys(state.children).map((el) => {
+      //   if (el.id === action.payload.id) {
+      //     el.settings = [
+      //       ...el.settings,
+      //       ...{ paddingTop: action.payload.value }
+      //     ];
+      //   }
+      // });
     },
     setPaddingRight: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ paddingRight: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingRight") {
+              check = true;
+              item.paddingRight = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingRight: action.payload.value });
+          }
         }
       });
     },
     setPaddingBottom: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ paddingBottom: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingBottom") {
+              check = true;
+              item.paddingBottom = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingBottom: action.payload.value });
+          }
         }
       });
     },
     setPaddingLeft: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.paddingLeft = [
-            ...el.settings,
-            ...{ paddingBottom: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingLeft") {
+              check = true;
+              item.paddingLeft = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingLeft: action.payload.value });
+          }
         }
       });
     },
