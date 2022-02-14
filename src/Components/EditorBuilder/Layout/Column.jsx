@@ -4,7 +4,10 @@ import Component from "../../../Component";
 import { COLUMN } from "../Config/constants";
 import DropZone from "./DropZone";
 import { useSelector } from "react-redux";
-import { selectTag, setSelectedContent } from "../../../redux/builderSlice";
+import {
+  selectChildren,
+  setSelectedContent
+} from "../../../redux/builderSlice";
 
 const style = {};
 const Column = ({ data, components, handleDrop, path, layout }) => {
@@ -15,13 +18,13 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
       type: COLUMN,
       id: data.id,
       children: data.children,
-      path
+      path,
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
+      isDragging: monitor.isDragging(),
+    }),
   });
-  const componentData = useSelector(selectTag);
+  const componentData = useSelector(selectChildren);
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
@@ -66,7 +69,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
             <DropZone
               data={{
                 path: currentPath,
-                childrenCount: data.children.length
+                childrenCount: data.children.length,
               }}
               onDrop={handleDrop}
             />
@@ -77,7 +80,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
       <DropZone
         data={{
           path: `${path}-${data.children.length}`,
-          childrenCount: data.children.length
+          childrenCount: data.children.length,
         }}
         onDrop={handleDrop}
         isLast

@@ -25,12 +25,12 @@ export default function App() {
   const [expanded, setExpanded] = React.useState("panel1");
   const [widthe, setWidthe] = React.useState("unset");
   const [values, setValues] = React.useState({
-    weight: ""
+    weight: "390px",
   });
+  const [active, setActive] = React.useState("unset");
   const handleChanges = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
     setWidthe(`${event.target.value}px`);
-    console.log(event.target.value, "widthewidthewidthe");
   };
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -52,24 +52,41 @@ export default function App() {
           <Box sx={{ display: "flex" }}>
             <div className="header-part-viwes-fms">
               <div className="icons-button-fms">
-                <span onClick={(e) => chageWidtheClick("mobile")}>
+                <span
+                  onClick={(e) => chageWidtheClick("mobile")}
+                  className={
+                    widthe == "390px" ? "active-icon" : "not-active-icon"
+                  }
+                >
                   <SmartphoneIcon />
                 </span>
-                <span onClick={(e) => chageWidtheClick("tablet")}>
+                <span
+                  onClick={(e) => chageWidtheClick("tablet")}
+                  className={
+                    widthe == "820px" ? "active-icon" : "not-active-icon"
+                  }
+                >
                   <TabletMacIcon />
                 </span>
-                <span onClick={(e) => chageWidtheClick("desktop")}>
+                <span
+                  onClick={(e) => chageWidtheClick("desktop")}
+                  className={
+                    widthe == "unset" ? "active-icon" : "not-active-icon"
+                  }
+                >
                   <DesktopWindowsIcon />
                 </span>
               </div>
-
-              <OutlinedInput
-                id="outlined-adornment-weight"
-                value={values.weight}
-                type="number"
-                onChange={handleChanges("weight")}
-                aria-describedby="outlined-weight-helper-text"
-              />
+              <span className="header-width-control">
+                <span>W</span>
+                <OutlinedInput
+                  id="outlined-adornment-weight"
+                  value={values.weight}
+                  type="number"
+                  onChange={handleChanges("weight")}
+                  aria-describedby="outlined-weight-helper-text"
+                />
+              </span>
             </div>
             <Box className="sideBar">
               <Typography variant="h4" className="editor-title">
@@ -183,7 +200,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto"
+                  margin: "40px auto 0 auto",
                 }}
               >
                 <Header />
@@ -194,11 +211,12 @@ export default function App() {
         </Grid>
         <div className="MuiBox-root css-k008qs builder-part-fms">
           <div className="sideBar MuiBox-root css-0" />
-          <div className="parent MuiBox-root css-0">
+          <div className="parent MuiBox-root css-0 ">
             <div
+              className="site__body"
               style={{
                 width: widthe,
-                margin: "40px auto 0 auto"
+                margin: "0px auto 0 auto",
               }}
             >
               <Home />

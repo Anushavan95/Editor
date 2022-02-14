@@ -3,11 +3,11 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTag } from "./redux/builderSlice";
+import { selectChildren } from "./redux/builderSlice";
 
 export default function BasicSelect() {
   const dispatch = useDispatch();
-  const tagName = useSelector(selectTag);
+  const tagName = useSelector(selectChildren);
 
   const [alignment, setAlignment] = React.useState("web");
 

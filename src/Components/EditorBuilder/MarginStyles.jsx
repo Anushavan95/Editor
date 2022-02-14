@@ -17,15 +17,6 @@ export default function MarginStyles({ content, selectedComponentData }) {
   let bottom = 0;
   let left = 0;
 
-  //   const marginsforAll = {
-  //     top: 0,
-  //     right: 0,
-  //     bottom: 0,
-  //     left: 0
-  //   };
-
-  //   window.marginsforAll = marginsforAll;
-
   const allChanges = () => {
     setChange(!change);
   };

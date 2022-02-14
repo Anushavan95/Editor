@@ -9,14 +9,14 @@ import {
   // setComponent,
   setContent,
   // setHyperLink,
-  setTab
+  setTab,
 } from "../../redux/builderSlice";
 import { COLUMN, COMPONENT, SIDEBAR_ITEM } from "./Config/constants";
 import {
   handleMoveSidebarComponentIntoParent,
   handleMoveToDifferentParent,
   handleMoveWithinParent,
-  handleRemoveItemFromLayout
+  handleRemoveItemFromLayout,
 } from "./Config/helpers";
 import initialData from "./Config/initial-data";
 import DropZone from "./Layout/DropZone";
@@ -66,7 +66,7 @@ const Container = () => {
             setContent({
               content: item.component.content,
               generateId: generateId,
-              tag: "h3"
+              tag: "h3",
             })
           );
           break;
@@ -88,17 +88,17 @@ const Container = () => {
         const newComponent = {
           id: shortid.generate(),
           // id: newId,
-          ...item.component
+          ...item.component,
         };
         const newItem = {
           id: newComponent.id,
           type: COMPONENT,
-          component
+          component,
         };
 
         setComponents({
           ...components,
-          [newComponent.id]: newComponent
+          [newComponent.id]: newComponent,
         });
         setLayout(
           handleMoveSidebarComponentIntoParent(
@@ -164,8 +164,8 @@ const Container = () => {
   };
 
   return (
-    <div className="body" style={{ width: "75%", marginLeft: " 325px" }}>
-      <div className="pageContainer">
+    <div className="body " style={{ width: "75%", marginLeft: " 325px" }}>
+      <div className="pageContainer ">
         <div className="page">
           {layout.map((row, index) => {
             const currentPath = `${index}`;
@@ -175,7 +175,7 @@ const Container = () => {
                   data={{
                     path: currentPath,
                     id: generateId,
-                    childrenCount: layout.length
+                    childrenCount: layout.length,
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
@@ -187,7 +187,7 @@ const Container = () => {
           <DropZone
             data={{
               path: `${layout.length}`,
-              childrenCount: layout.length
+              childrenCount: layout.length,
             }}
             onDrop={handleDrop}
             isLast

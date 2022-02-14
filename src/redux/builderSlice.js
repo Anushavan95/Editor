@@ -132,8 +132,20 @@ const builderSlice = createSlice({
       data.map((el) => {
         el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings.push({ marginBottom: action.payload.value });
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "marginBottom") {
+              check = true;
+              item.marginBottom = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ marginBottom: action.payload.value });
+          }
         }
+        // if (el.id === action.payload.id) {
+        //   el.settings.push({ marginBottom: action.payload.value });
+        // }
       });
       state.children = data;
     },
@@ -142,49 +154,99 @@ const builderSlice = createSlice({
       data.map((el) => {
         el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings.push({ marginLeft: action.payload.value });
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "marginLeft") {
+              check = true;
+              item.marginLeft = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ marginLeft: action.payload.value });
+          }
         }
       });
+
       state.children = data;
     },
 
     setPaddingTop: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ paddingTop: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingTop") {
+              check = true;
+              item.paddingTop = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingTop: action.payload.value });
+          }
         }
       });
+      // Object.keys(state.children).map((el) => {
+      //   if (el.id === action.payload.id) {
+      //     el.settings = [
+      //       ...el.settings,
+      //       ...{ paddingTop: action.payload.value }
+      //     ];
+      //   }
+      // });
     },
     setPaddingRight: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ paddingRight: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingRight") {
+              check = true;
+              item.paddingRight = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingRight: action.payload.value });
+          }
         }
       });
     },
     setPaddingBottom: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.settings = [
-            ...el.settings,
-            ...{ paddingBottom: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingBottom") {
+              check = true;
+              item.paddingBottom = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingBottom: action.payload.value });
+          }
         }
       });
     },
     setPaddingLeft: (state, action) => {
-      Object.keys(state.children).map((el) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
         if (el.id === action.payload.id) {
-          el.paddingLeft = [
-            ...el.settings,
-            ...{ paddingBottom: action.payload.value }
-          ];
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "paddingLeft") {
+              check = true;
+              item.paddingLeft = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ paddingLeft: action.payload.value });
+          }
         }
       });
     },
@@ -263,7 +325,7 @@ export const {
   setSelectedContent,
   setFontFamily
 } = builderSlice.actions;
-export const selectTag = (state) => state.component.children;
+export const selectChildren = (state) => state.component.children;
 export const selectAddedImages = (state) => state.component.children;
 export const selectTab = (state) => state.component.tab;
 // export const selectTextEditorValue = (state) => state.component.textEditorValue
