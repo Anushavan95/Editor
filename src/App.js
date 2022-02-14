@@ -25,12 +25,11 @@ export default function App() {
   const [expanded, setExpanded] = React.useState("panel1");
   const [widthe, setWidthe] = React.useState("unset");
   const [values, setValues] = React.useState({
-    weight: "",
+    weight: "390px",
   });
   const handleChanges = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
     setWidthe(`${event.target.value}px`);
-    console.log(event.target.value, "widthewidthewidthe");
   };
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
