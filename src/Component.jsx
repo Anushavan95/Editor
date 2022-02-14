@@ -5,16 +5,9 @@ import { COMPONENT } from "./Components/EditorBuilder/Config/constants";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
 
-import { selectChildren, setSelectedContent } from "./redux/builderSlice";
+import { setSelectedContent } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
-
-const style = {
-  border: "1px dashed black",
-  padding: "0.5rem 1rem",
-  backgroundColor: "white",
-  cursor: "move"
-};
 
 const Component = ({ data, componentData, components, path, layout }) => {
   const dispatch = useDispatch();
@@ -28,21 +21,11 @@ const Component = ({ data, componentData, components, path, layout }) => {
   });
   console.log(componentData, "componentData121212");
   const handleClick = (id) => {
-    console.log(id);
-    //  console.log(e.target.id,'idididid')
     dispatch(setSelectedContent(id));
-    // console.log(e.target)
   };
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-  // const styles = {
-  //   margin    : `${top}px  ${right}px ${bottom}px ${left}px`,
-  //   padding   : `${P_top}px  ${P_right}px ${P_bottom}px ${P_left}px`,
-  //   fontFamily: font,
-  //   color     : color,
-  // }
 
-  // Object.values(children)
   let top = 0;
   let right = 0;
   let bottom = 0;
@@ -51,6 +34,8 @@ const Component = ({ data, componentData, components, path, layout }) => {
   let paddRight = 0;
   let paddBottom = 0;
   let paddLeft = 0;
+  let fontFamily = "";
+  let color = "";
   const component = components[data.id];
   componentData.settings.map((item) => {
     Object.keys(item).forEach((key) => {
@@ -72,6 +57,11 @@ const Component = ({ data, componentData, components, path, layout }) => {
             return (paddBottom = item.paddingBottom);
           case "paddingLeft":
             return (paddLeft = item.paddingLeft);
+          case "fontFamily":
+            return (fontFamily = item.fontFamily);
+          case "color":
+            return (color = item.color);
+
           default:
             return false;
         }
@@ -79,12 +69,12 @@ const Component = ({ data, componentData, components, path, layout }) => {
     });
   });
 
-  console.log(componentData.settings, "componentData.settings");
   const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
-    padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`
+    padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
+    fontFamily: `${fontFamily}`,
+    color: color
   };
-  console.log(styles, "styleMargin");
 
   if (componentData) {
     switch (componentData.content) {

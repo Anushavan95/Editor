@@ -3,10 +3,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LinkIcon from "../../images/link.png";
 import {
-  selectPaddingBottom,
-  selectPaddingLeft,
-  selectPaddingRight,
-  selectPaddingTop,
   setPaddingBottom,
   setPaddingLeft,
   setPaddingRight,
@@ -25,7 +21,6 @@ export default function PaddingStyles({ content, selectedComponentData }) {
     setChange(!change);
   };
   selectedComponentData.settings.map((item) => {
-    console.log(Object.keys(item), "padd");
     switch (Object.keys(item)[0]) {
       case "paddingTop":
         return (top = Object.values(item));

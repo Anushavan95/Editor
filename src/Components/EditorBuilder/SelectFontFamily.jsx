@@ -1,17 +1,25 @@
-import React from "react";
 import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { selectFontFamily, setFontFamily } from "./redux/builderSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setFontFamily } from "../../redux/builderSlice";
 
-export default function SelectFontFamily() {
-  const font = useSelector(selectFontFamily);
+export default function SelectFontFamily({ selectedComponentData, content }) {
   const dispatch = useDispatch();
-  const handleChangeFont = (e) => {
-    dispatch(setFontFamily(e.target.value));
+  let font = "";
+  selectedComponentData.settings.map((item) => {
+    switch (Object.keys(item)[0]) {
+      case "fontFamily":
+        return (font = Object.values(item));
+      default:
+        return null;
+    }
+  });
+  const handleChangeFont = (event) => {
+    dispatch(setFontFamily({ id: content, value: event.target.value }));
   };
   return (
     <Box sx={{ minWidth: 120 }}>
