@@ -25,7 +25,7 @@ export default function App() {
   const [expanded, setExpanded] = React.useState("panel1");
   const [widthe, setWidthe] = React.useState("unset");
   const [values, setValues] = React.useState({
-    weight: "",
+    weight: ""
   });
   const handleChanges = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -183,7 +183,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto",
+                  margin: "40px auto 0 auto"
                 }}
               >
                 <Header />
@@ -198,7 +198,7 @@ export default function App() {
             <div
               style={{
                 width: widthe,
-                margin: "40px auto 0 auto",
+                margin: "40px auto 0 auto"
               }}
             >
               <Home />

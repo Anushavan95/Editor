@@ -5,8 +5,10 @@ import RichTextEditor from "react-rte";
 const initialState = {
   componentEntry: "",
   tab: 0,
+  left: 0,
   selected: "",
   products: [],
+
   children: [],
   initialLayout: []
 };
@@ -92,7 +94,7 @@ const builderSlice = createSlice({
           el.settings.map((item) => {
             if (Object.keys(item) == "marginTop") {
               check = true;
-              item.marginRight = action.payload.value;
+              item.marginTop = action.payload.value;
             }
           });
           if (!check) {
@@ -208,10 +210,6 @@ const builderSlice = createSlice({
       }
     },
 
-    // setHeading: (state, action) => {
-    //     state.heading = action.payload
-    // },
-
     setInitialLayout: (state, action) => {
       state.initialLayout = [...state.initialLayout, action.payload];
     }
@@ -252,7 +250,6 @@ export const {
   addImages,
   setTab,
   setEditorTextValue,
-  /// setComponent,
   setMarginTop,
   setMarginRight,
   setMarginBottom,
@@ -261,14 +258,10 @@ export const {
   setPaddingRight,
   setPaddingBottom,
   setPaddingLeft,
-  /// setMergeStylesMargin,
   setComponentEntry,
   setContent,
   setSelectedContent,
-  //// setInitialLayout,
   setFontFamily
-  ///  setHeading,
-  ///  setHeadingGenerateId,
 } = builderSlice.actions;
 export const selectTag = (state) => state.component.children;
 export const selectAddedImages = (state) => state.component.children;

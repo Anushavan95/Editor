@@ -25,7 +25,7 @@ const Component = ({ data, componentData, components, path, layout }) => {
       isDragging: monitor.isDragging()
     })
   });
-
+  console.log(componentData, "componentData121212");
   const handleClick = (id) => {
     console.log(id);
     //  console.log(e.target.id,'idididid')
@@ -42,7 +42,12 @@ const Component = ({ data, componentData, components, path, layout }) => {
   // }
 
   // Object.values(children)
+
   const component = components[data.id];
+  let a = componentData.settings.map((item) => {
+    return item.marginRight;
+  });
+  console.log(a, "aa212a12");
   /// console.log(selectedComponentData,'selectedComponentData')
   if (componentData) {
     switch (componentData.content) {
@@ -55,8 +60,8 @@ const Component = ({ data, componentData, components, path, layout }) => {
         return (
           <>
             <div
+              style={{ marginLeft: `${a}px` }}
               id={componentData.id}
-              // style={styles}
               onClick={(event) => handleClick(componentData.id)}
               contentEditable={true}
               dangerouslySetInnerHTML={{

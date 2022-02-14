@@ -1,23 +1,13 @@
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { TextField, Box, Typography, Button } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import LinkIcon from "../../images/link.png";
 import {
-  selectMarginBottom,
-  selectMarginLeft,
-  selectMarginRight,
-  selectMarginTop,
   setMarginBottom,
   setMarginLeft,
   setMarginRight,
   setMarginTop
 } from "../../redux/builderSlice";
-import LinkIcon from "../../images/link.png";
-import BasicSelect from "../../TagSelect";
-import PaddingStyles from "./PaddingStyles";
-import SelectFontFamily from "../../SelectFontFamily";
-import ColorChange from "../../ColorChange";
-import AlignMent from "../../AlignMent";
-import HyperSettings from "./ComponentsEditor/HyperSettings";
 
 export default function MarginStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
@@ -26,11 +16,21 @@ export default function MarginStyles({ content, selectedComponentData }) {
   let right = 0;
   let bottom = 0;
   let left = 0;
+
+  //   const marginsforAll = {
+  //     top: 0,
+  //     right: 0,
+  //     bottom: 0,
+  //     left: 0
+  //   };
+
+  //   window.marginsforAll = marginsforAll;
+
   const allChanges = () => {
     setChange(!change);
   };
   selectedComponentData.settings.map((item) => {
-    ////    console.log(Object.keys(item),'itemitemitem')
+    console.log(Object.keys(item), "itemitemitem");
     switch (Object.keys(item)[0]) {
       case "marginTop":
         return (top = Object.values(item));
@@ -44,7 +44,6 @@ export default function MarginStyles({ content, selectedComponentData }) {
         return null;
     }
   });
-  ////  console.log(top,'toptoptoptop')
   const handleTopChange = (event) => {
     dispatch(setMarginTop({ id: content, value: event.target.value }));
     if (change === true) {

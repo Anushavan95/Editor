@@ -103,19 +103,15 @@ function Tabs(props) {
         </TabPanel>
         <TabPanel value="2">
           {(function (onChange) {
-            ///        console.log(selectedComponentData, 'selComponent')
             let contentType = false;
-            ///  console.log(selectedComponentData,'selectedComponentData')
             let selectedComponentData = handleData(content);
             console.log(selectedComponentData, "selectedComponentData");
             if (selectedComponentData) {
               contentType = selectedComponentData.content;
             }
-            console.log(contentType, "SHBDJ");
             switch (contentType) {
               case "Editor":
 
-              // return <RichTextEditor value={valueText} onChange={onChange}/>
               case "Heading":
                 return (
                   <>
