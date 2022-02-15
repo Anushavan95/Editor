@@ -88,9 +88,9 @@ export default function App() {
               </span>
             </div>
             <Box className="sideBar">
-              <Typography variant="h4" className="editor-title">
+              {/* <Typography variant="h4" className="editor-title">
                 Editor
-              </Typography>
+              </Typography> */}
 
               <Tabs>
                 <Accordion
@@ -218,7 +218,9 @@ export default function App() {
                 margin: "0px auto 0 auto"
               }}
             >
-              <Home />
+              <div className="container p-0 home-product-container">
+                <Home />
+              </div>
             </div>
           </div>
         </div>

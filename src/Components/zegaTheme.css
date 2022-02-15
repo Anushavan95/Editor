@@ -25794,7 +25794,7 @@ html[dir="rtl"] .block-features--layout--boxed .block-features__icon {
   top: calc(50% - 50px);
   width: 100px;
   height: 100px;
-  border-radius: 50px;
+  /* border-radius: 50px; */
 }
 
 .block-products-carousel--loading .block-products-carousel__preloader {
@@ -31071,7 +31071,7 @@ html[dir="rtl"] .nav-links__item--with-submenu > a svg {
 
 .parent {
   width: 85%;
-  margin-left: 360px;
+  margin-left: 300px;
   background-color: #f8f8f9;
 }
 .site__body {
@@ -31091,12 +31091,12 @@ html[dir="rtl"] .nav-links__item--with-submenu > a svg {
 }
 .MuiButtonBase-root {
   border-color: #00254a !important;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   border-width: 0 !important;
 }
 .paneli-border-fms {
   border-bottom: 1px solid #e7e7e7;
-  padding: 15px 0;
+  padding: 5px 0;
 }
 
 .editor-container .MuiTabs-fixed .MuiButtonBase-root {
@@ -31135,4 +31135,21 @@ html[dir="rtl"] .nav-links__item--with-submenu > a svg {
 
 .Board .text-element {
   display: none;
+}
+
+/* .isLast::before,
+.horizontalDrag::before, */
+.dropZone::before {
+  content: "+";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px;
+  color: silver;
+}
+
+.horizontalDrag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
