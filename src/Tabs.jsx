@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import React from "react";
+import RichTextEditor from "react-rte";
 import { useDispatch, useSelector } from "react-redux";
 import AlignMent from "./AlignMent";
 import ColorChange from "./Components/EditorBuilder/ColorChange";
@@ -21,6 +22,8 @@ import {
 } from "./redux/builderSlice";
 import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/TagSelect";
+import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
+import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -45,7 +48,6 @@ function Tabs(props) {
 
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue));
-    // console.log(newValue, 'val')
   };
   ////console.log(props,'propsprops')
   ////console.log(selectedComponentData,'value')
@@ -109,7 +111,7 @@ function Tabs(props) {
             }
             switch (contentType) {
               case "Editor":
-
+                return <RichEditor />;
               case "Heading":
                 return (
                   <>

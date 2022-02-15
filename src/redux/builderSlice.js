@@ -65,14 +65,6 @@ const builderSlice = createSlice({
         }
       });
       state.children = data;
-      // Object.keys(state.children).map((el) => {
-      //   if (el.id === action.payload.id) {
-      //     el.settings = [
-      //       ...el.settings,
-      //       ...{ fontFamily: action.payload.value }
-      //     ];
-      //   }
-      // });
     },
     setColor: (state, action) => {
       let data = state.children;
@@ -171,9 +163,6 @@ const builderSlice = createSlice({
             el.settings.push({ marginBottom: action.payload.value });
           }
         }
-        // if (el.id === action.payload.id) {
-        //   el.settings.push({ marginBottom: action.payload.value });
-        // }
       });
       state.children = data;
     },
