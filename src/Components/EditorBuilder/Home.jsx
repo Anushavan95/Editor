@@ -162,7 +162,7 @@ const Container = () => {
   };
 
   return (
-    <div className="body " style={{ width: "75%", marginLeft: " 325px" }}>
+    <div className="body " style={{ width: "100%", marginLeft: " 325px" }}>
       <div className="pageContainer ">
         <div className="page">
           {layout.map((row, index) => {

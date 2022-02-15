@@ -61,7 +61,6 @@ const Component = ({ data, componentData, components, path, layout }) => {
             return (fontFamily = item.fontFamily);
           case "color":
             return (color = item.color);
-
           default:
             return false;
         }

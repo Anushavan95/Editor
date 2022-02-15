@@ -45,7 +45,6 @@ function Tabs(props) {
 
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue));
-    // console.log(newValue, 'val')
   };
   ////console.log(props,'propsprops')
   ////console.log(selectedComponentData,'value')
