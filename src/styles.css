@@ -171,7 +171,10 @@ body {
 }
 
 .dragged {
-  box-shadow: 5px 10px 15px rgb(150, 149, 149);
+  border: 1px dashed #ff5319 !important;
+}
+.dragged path {
+  fill: #ff5319 !important;
 }
 
 .element-title {
@@ -245,7 +248,7 @@ body {
   fill: #00254a;
 }
 .sideBarItem path {
-  fill: #00254a;
+  fill: #cacacc;
 }
 .MuiTypography-h6 {
   color: #00254a;

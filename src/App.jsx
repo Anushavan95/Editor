@@ -25,7 +25,7 @@ export default function App() {
   const [expanded, setExpanded] = useState("panel1");
   const [widthe, setWidthe] = useState("unset");
   const [values, setValues] = useState({
-    weight: "390px"
+    weight: "390px",
   });
   const [active, setActive] = useState("unset");
   const handleChanges = (prop) => (event) => {
@@ -200,7 +200,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto"
+                  margin: "40px auto 0 auto",
                 }}
               >
                 <Header />
@@ -216,7 +216,7 @@ export default function App() {
               className="site__body"
               style={{
                 width: widthe,
-                margin: "0px auto 0 auto"
+                margin: "0px auto 0 auto",
               }}
             >
               <div className="container p-0 home-product-container">

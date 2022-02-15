@@ -16,8 +16,8 @@ const Component = ({ data, componentData, components, path, layout }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, id: data.id, path },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
+      isDragging: monitor.isDragging(),
+    }),
   });
   console.log(componentData, "componentData121212");
   const handleClick = (id) => {
@@ -61,7 +61,6 @@ const Component = ({ data, componentData, components, path, layout }) => {
             return (fontFamily = item.fontFamily);
           case "color":
             return (color = item.color);
-
           default:
             return false;
         }
@@ -73,7 +72,7 @@ const Component = ({ data, componentData, components, path, layout }) => {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
     padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
     fontFamily: `${fontFamily}`,
-    color: color
+    color: color,
   };
 
   if (componentData) {
