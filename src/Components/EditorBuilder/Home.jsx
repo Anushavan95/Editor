@@ -26,6 +26,7 @@ const Container = () => {
   // const initialLayout = initialData.layout;
   /// const link = useSelector(selectHyperLink)
   const heading = useSelector(selectHeading);
+  console.log(heading, "myhead");
   // console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
   // console.log(initialLayout, 'initialLayout')
@@ -56,10 +57,12 @@ const Container = () => {
       dispatch(setSelectedContent(generateId));
       dispatch(setTab("2"));
 
+      console.log(item.component.content, "item.component.content");
       switch (item.component.content) {
         case "Heading":
-          component = { ...heading };
+          component = {};
           component.id = generateId;
+          console.log(component, "component");
           dispatch(
             setContent({
               content: item.component.content,
@@ -68,8 +71,17 @@ const Container = () => {
             })
           );
           break;
-        case "HyperLink":
-          ///  component = {...link}
+        case "Editor":
+          component = {};
+          component.id = generateId;
+          console.log(component, "component");
+          dispatch(
+            setContent({
+              content: item.component.content,
+              generateId: generateId,
+              tag: "h3"
+            })
+          );
           break;
         default:
           break;
