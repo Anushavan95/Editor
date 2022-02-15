@@ -31,10 +31,6 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
   const handleGetData = (component) => {
     return componentData.map((item) => {
       if (Object.values(item)[0].id === component.component.id) {
-        console.log(
-          Object.values(item),
-          "lllllllllllllllllllllllllllllllllllllllllllllllll"
-        );
         return Object.values(item)[0];
       }
     });

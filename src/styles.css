@@ -229,7 +229,7 @@ body {
   align-items: center !important;
   text-align: center !important;
   color: #ffffff !important;
-  background: #00254a !important;
+  background: #c4c4c4c4 !important;
   border-radius: 10px !important;
   width: 44px !important;
   height: 45px !important;
@@ -312,11 +312,15 @@ body {
   width: 142.663px;
   height: 100% !important;
 
-  background: #c4c4c4 !important;
+  background: transparent !important;
 }
 .Mui-selected .tabs-text-fms {
   color: #161616;
   font-size: 18px;
+  z-index: 9999999;
+}
+.Mui-selected .MuiTouchRipple-root {
+  background: #c4c4c4 !important ;
 }
 .tabs-text-fms {
   color: #787878;
