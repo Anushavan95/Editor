@@ -98,9 +98,9 @@ export default function App() {
               </span>
             </div>
             <Box className="sideBar">
-              {/* <Typography variant="h4" className="editor-title">
-                Editor
-              </Typography> */}
+              <Typography variant="h4" className="editor-title">
+                PageBuilder
+              </Typography>
 
               <Tabs>
                 <Accordion

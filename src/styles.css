@@ -162,11 +162,16 @@ body {
 }
 
 .editor-title {
-  letter-spacing: 0.2em !important;
+  font-size: 18px !important;
+  line-height: 25px !important;
+  display: flex;
+  align-items: center;
   text-align: center;
+  color: #161616;
+
+  /* text-align: center; */
   /* background-color: #333; */
-  color: #333;
-  box-shadow: 0 1px rgb(0 0 0 / 4%), inset 0 -1px rgb(0 0 0 / 4%);
+
   /* color: white; */
 }
 
