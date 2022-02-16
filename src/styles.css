@@ -99,7 +99,7 @@ body {
 
 .dropZone.active,
 .trashDropZone.active {
-  background: #00a2ff;
+  background: #f8f8f9;
   transition: 100ms all;
 }
 

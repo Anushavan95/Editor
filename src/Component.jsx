@@ -19,7 +19,7 @@ const Component = ({ data, componentData, components, path, layout }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-  console.log(componentData, "componentData121212");
+
   const handleClick = (id) => {
     dispatch(setSelectedContent(id));
   };

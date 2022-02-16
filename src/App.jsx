@@ -22,6 +22,8 @@ import Tabs from "./Tabs";
 
 export default function App() {
   const [expanded, setExpanded] = useState("panel1");
+  const [expanded2, setExpanded2] = useState("panel1");
+  const [expanded3, setExpanded3] = useState("panel1");
   const [widthe, setWidthe] = useState("unset");
   const [values, setValues] = useState({
     weight: "390px",
@@ -32,7 +34,15 @@ export default function App() {
     setWidthe(`${event.target.value}px`);
   };
   const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+    if (panel == "panel1") {
+      setExpanded(newExpanded ? panel : false);
+    }
+    if (panel == "panel2") {
+      setExpanded2(newExpanded ? panel : false);
+    }
+    if (panel == "panel3") {
+      setExpanded3(newExpanded ? panel : false);
+    }
   };
   let changeWidtheClick = (e) => {
     if (e == "mobile") {
@@ -129,7 +139,7 @@ export default function App() {
                 </Accordion>
 
                 <Accordion
-                  expanded={expanded === "panel2"}
+                  expanded={expanded2 === "panel2"}
                   onChange={handleChange("panel2")}
                   className="panel-2"
                 >
@@ -161,7 +171,7 @@ export default function App() {
                   </AccordionDetails>
                 </Accordion>
                 <Accordion
-                  expanded={expanded === "panel3"}
+                  expanded={expanded3 === "panel3"}
                   onChange={handleChange("panel3")}
                   className="panel-2"
                 >

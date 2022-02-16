@@ -18,7 +18,7 @@ import {
   selectTab,
   selectChildren,
   setEditorTextValue,
-  setTab
+  setTab,
 } from "./redux/builderSlice";
 import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/TagSelect";
@@ -32,7 +32,7 @@ function Tabs(props) {
   const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
-  console.log(content, "content");
+
   const handleData = (id) => {
     let selectedComponentData = selComponent.map((item) => {
       if (Object.values(item)[0].id === id) {
@@ -49,8 +49,7 @@ function Tabs(props) {
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue));
   };
-  ////console.log(props,'propsprops')
-  ////console.log(selectedComponentData,'value')
+
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
   };
@@ -111,7 +110,27 @@ function Tabs(props) {
             }
             switch (contentType) {
               case "Editor":
-                return <RichEditor />;
+                return (
+                  <>
+                    <RichEditor />
+                    <MarginStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <PaddingStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    {/* <ColorChange
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <SelectFontFamily
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    /> */}
+                  </>
+                );
               case "Heading":
                 return (
                   <>

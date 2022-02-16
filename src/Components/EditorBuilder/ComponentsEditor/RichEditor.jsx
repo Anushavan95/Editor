@@ -3,7 +3,7 @@ import RichTextEditor from "react-rte";
 
 export default class RichEditor extends Component {
   state = {
-    value: RichTextEditor.createEmptyValue()
+    value: RichTextEditor.createEmptyValue(),
   };
 
   onChange = (value) => {
@@ -17,6 +17,34 @@ export default class RichEditor extends Component {
   };
 
   render() {
+    console.log(this.state.value, "this.state.valuethis.state.value");
     return <RichTextEditor value={this.state.value} onChange={this.onChange} />;
   }
 }
+
+// import React, { useState, useRef } from "react";
+// import JoditEditor from "jodit-react";
+
+// const RichEditor = ({}) => {
+//   const editor = useRef(null);
+//   const [content, setContent] = useState("");
+
+//   const config = {
+//     readonly: false, // all options from https://xdsoft.net/jodit/doc/
+//   };
+
+//   return (
+//     <JoditEditor
+//       ref={editor}
+//       value={content}
+//       config={config}
+//       tabIndex={1} // tabIndex of textarea
+//       onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+//       onChange={(newContent) => {
+//         console.log(newContent, "aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//       }}
+//     />
+//   );
+// };
+
+// export default RichEditor;
