@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import React from "react";
-import RichTextEditor from "react-rte";
 import { useDispatch, useSelector } from "react-redux";
 import AlignMent from "./AlignMent";
 import ColorChange from "./Components/EditorBuilder/ColorChange";
@@ -18,12 +17,14 @@ import {
   selectTab,
   selectChildren,
   setEditorTextValue,
-  setTab,
+  setTab
 } from "./redux/builderSlice";
 import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/TagSelect";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
+import { ReactComponent as HeadingSvg } from "./images/svg/heading.svg";
+import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -117,6 +118,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+                    <EditorS />
                     <PaddingStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -142,6 +144,8 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+                    <HeadingSvg />
+
                     <PaddingStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -166,7 +170,7 @@ function Tabs(props) {
                   </Button>
                 );
               default:
-                return null;
+                return "";
             }
           })(onChange)}
         </TabPanel>
