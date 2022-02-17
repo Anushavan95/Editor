@@ -25,9 +25,11 @@ body {
   background: #eff1f2;
   /* color of the tracking area */
 }
+
 .css-13xfq8m-MuiTabPanel-root {
   padding: 0 !important;
 }
+
 .sideBar {
   position: fixed;
   overflow-y: auto;
@@ -178,6 +180,7 @@ body {
 .dragged {
   border: 1px dashed #ff5319 !important;
 }
+
 .dragged path {
   fill: #ff5319 !important;
 }
@@ -201,12 +204,14 @@ body {
 
   width: 50%;
 }
+
 .sideBarItem {
   opacity: 1;
   background: #ffffff;
   border: 1px solid #eeeeee;
   box-sizing: border-box;
 }
+
 .editor-titles-fms {
   background: #ffffff;
   box-shadow: 0px 5px 20px rgb(0 0 0 / 5%);
@@ -214,6 +219,7 @@ body {
   margin: 5px;
   padding: 15px;
 }
+
 .editor-titles-fms .MuiToggleButton-sizeMedium {
   width: 44px;
   height: 45px;
@@ -224,11 +230,13 @@ body {
   position: revert;
   padding: 0 5px;
 }
+
 .ss .MuiToggleButtonGroup-root {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
+
 .css-d9c359-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
   display: flex !important;
   align-items: center !important;
@@ -239,9 +247,11 @@ body {
   width: 44px !important;
   height: 45px !important;
 }
+
 .MuiAccordion-root:before {
   display: none !important;
 }
+
 .tab-box .css-heg063-MuiTabs-flexContainer {
   display: flex;
   justify-content: space-between;
@@ -249,15 +259,19 @@ body {
   background: #f0f0f0;
   /* border-radius: 50px; */
 }
+
 .MuiAccordionSummary-expandIconWrapper path {
   fill: #00254a;
 }
+
 .sideBarItem path {
   fill: #cacacc;
 }
+
 .MuiTypography-h6 {
   color: #00254a;
 }
+
 .MuiTypography-h4 {
   font-weight: normal;
   font-size: 18px;
@@ -265,9 +279,11 @@ body {
 
   color: #161616;
 }
+
 .MuiPaper-elevation1 {
   background: #ffffff !important;
 }
+
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
   min-height: 0 !important;
 }
@@ -275,17 +291,21 @@ body {
 .elements-parent-box {
   display: flex;
   flex-wrap: wrap;
-  /* grid-gap: 10px; */
-  /* justify-content: center; */
+
   background-color: #ffffff;
 
-  /* box-shadow: 0px 3px 7px 1px #888888; */
   border-radius: 2px;
 }
 
 .margin-styles {
   display: flex;
-  grid-gap: 2px;
+
+  align-items: center;
+  justify-content: space-evenly;
+  grid-gap: 25px;
+  padding: 20px 0px;
+  border-bottom: 0.5px solid #E7E7E7;
+
 }
 
 .direction {
@@ -299,12 +319,18 @@ body {
 }
 
 #filled-number {
-  height: 20px;
+  height: 35px;
   padding: 5px !important;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+
 }
 
 .margin-component {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .title-margin {
@@ -319,14 +345,17 @@ body {
 
   background: transparent !important;
 }
+
 .Mui-selected .tabs-text-fms {
   color: #161616;
   font-size: 18px;
   z-index: 9999999;
 }
+
 .Mui-selected .MuiTouchRipple-root {
-  background: #c4c4c4 !important ;
+  background: #c4c4c4 !important;
 }
+
 .tabs-text-fms {
   color: #787878;
   font-size: 18px;
@@ -339,21 +368,14 @@ body {
   outline: none;
   margin: 10px 0px;
 }
+
 .tab-label {
   z-index: 99999999;
   background: transparent !important;
   color: white !important;
 }
 
-#panel2d-header {
-  /* border-bottom: 1px solid #1A2A47 !important;
-  box-shadow: 0px 3px 10px 1px #888888; */
-}
 
-/* 
-.sideBar .MuiPaper-elevation {
-  max-height: 32px !important;
-} */
 
 .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
   height: 0 !important;
@@ -362,17 +384,17 @@ body {
 .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
   min-height: 32px !important;
 }
+
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded {
   margin: 0 !important;
 }
+
 .css-o4b71y-MuiAccordionSummary-content.Mui-expanded,
 .css-o4b71y-MuiAccordionSummary-content {
   margin: 0 !important;
 }
 
-/* .panel-2 {
-  margin-top: 25px;
-} */
+
 
 .title-component-sidebar {
   color: #1a2a47;
@@ -403,16 +425,26 @@ body {
   background-color: white !important;
 }
 
-.contained {
-  background-color: #e1e3e4 !important;
+.margin-all {
+  min-width: 40px !important;
+  margin-left: 5px !important;
+  background: #EBF0F5 !important;
 }
+
+
+.contained {
+  background-color: #00254A !important;
+}
+
 .sideBarItem {
   width: 149px !important;
   height: 149px !important;
 }
+
 .MuiCollapse-vertical div {
   padding: 0 !important;
 }
+
 .header-part-viwes-fms {
   position: fixed;
   width: 85%;
@@ -438,6 +470,7 @@ body {
   cursor: pointer;
   border: none !important;
 }
+
 .not-active-icon path {
   fill: #aaaaaa;
 }
@@ -464,6 +497,7 @@ body {
   justify-content: center;
   width: 50%;
 }
+
 .header-width-control span {
   font-family: Roboto;
   font-style: normal;
@@ -472,4 +506,29 @@ body {
   line-height: 14px;
   color: #787878;
   margin-right: 10px;
+}
+
+.components-edited-tab {
+  padding: 0px 20px !important;
+  background-color: #F8F8F9;
+}
+
+.component-entered {
+  background-color: white;
+  padding: 0px 15px;
+}
+
+#demo-simple-select-label {
+  padding: 15px 0px;
+  border-bottom: 0.5px solid #E7E7E7;
+  ;
+
+
+}
+
+.select-tags {
+  padding: 15px 0px;
+
+  border-bottom: 0.5px solid #E7E7E7;
+  ;
 }
