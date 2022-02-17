@@ -53,30 +53,6 @@ function Tabs(props) {
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
   };
-  ///console.log(content,'1111111111111111')
-  // const handleSave = () => {
-  //   let obj3 = valueText.toString('html')
-  //   // console.log(obj3, "333");
-  //   if (valueText.length !== 0) {
-  //     const requestOptions = {
-  //       method : 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body   : JSON.stringify({
-  //         data: {
-  //           component_id: 1,
-  //           text        : `${obj3}`,
-  //         },
-  //       }),
-  //     }
-  //
-  //     fetch('https://test.zegashop.com/api/set', requestOptions).then(
-  //       (response) => response.json(),
-  //     )
-  //     // console.log(valueText);
-  //   } else {
-  //     console.log('text null')
-  //   }
-  // }
 
   return (
     <Box sx={{ width: "100%", typography: "body1" }} className="lalal">
@@ -122,14 +98,6 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    {/* <ColorChange
-                      content={content}
-                      selectedComponentData={selectedComponentData}
-                    />
-                    <SelectFontFamily
-                      content={content}
-                      selectedComponentData={selectedComponentData}
-                    /> */}
                   </>
                 );
               case "Heading":

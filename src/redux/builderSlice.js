@@ -86,11 +86,11 @@ const builderSlice = createSlice({
       state.children = data;
     },
     addImages: (state, action) => {
-      Object.keys(state.children).map((el) => {
-        if (el.id === action.payload.id) {
-          el.images = [...el.images, ...action.payload.value];
-        }
-      });
+      // Object.keys(state.children).map((el) => {
+      //   if (el.id === action.payload.id) {
+      //     el.images = [...el.images, ...action.payload.value];
+      //   }
+      // });
     },
 
     setEditorTextValue: (state, action) => {
