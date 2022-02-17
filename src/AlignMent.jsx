@@ -1,14 +1,18 @@
-import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import React from "react";
+
+import {
+  InputLabel,
+  FormControl,
+  Box,
+  Select,
+  MenuItem,
+  FormHelperText
+} from "@mui/material";
 
 export default function AlignMent() {
   return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+    <Box>
+      <FormControl className="horizontal-align">
         <InputLabel id="demo-simple-select-helper-label">
           Horizontal Alignment
         </InputLabel>
@@ -24,18 +28,15 @@ export default function AlignMent() {
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
-        <FormHelperText>With label + helper text</FormHelperText>
       </FormControl>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormHelperText className="text-helper">
+        With label + helper text
+      </FormHelperText>
+      <FormControl className="vertical-align">
         <InputLabel id="demo-simple-select-helper-label">
           Vertical Alignment
         </InputLabel>
-        <Select
-          //   value={age}
-          //   onChange={handleChange}
-          displayEmpty
-          inputProps={{ "aria-label": "Without label" }}
-        >
+        <Select displayEmpty inputProps={{ "aria-label": "Without label" }}>
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
@@ -43,8 +44,8 @@ export default function AlignMent() {
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
-        <FormHelperText>Without label</FormHelperText>
       </FormControl>
-    </div>
+      <FormHelperText className="text-helper">Without label</FormHelperText>
+    </Box>
   );
 }
