@@ -6,7 +6,7 @@ import Column from "./Column";
 import {
   selectedContent,
   selectChildren,
-  setSelectedContent
+  setSelectedContent,
 } from "../../../redux/builderSlice";
 import { useSelector } from "react-redux";
 
@@ -24,17 +24,16 @@ const Row = (
       id: selectId,
       children: data.children,
       path,
-      generateId
+      generateId,
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
+      isDragging: monitor.isDragging(),
+    }),
   });
 
   const componentData = useSelector(selectChildren);
   const getData = (id) => {
     let selectedComponentData = componentData.map((item) => {
-      ///   console.log(data.component.id,Object.values(item)[0].id,'data.component.id')
       if (Object.values(item)[0].id === id) {
         return Object.values(item)[0];
       }
@@ -45,9 +44,9 @@ const Row = (
   const opacity = isDragging ? 0 : 1;
   drag(ref);
   const renderColumn = (column, currentPath) => {
-    // console.log(column.id)
+    //
     // let componentData = getData(column.id)
-    // console.log(componentData)
+
     return (
       <Column
         key={column.id}
@@ -69,15 +68,13 @@ const Row = (
       {selectId} alala
       <div id={data.id} className="columns">
         {data.children.map((column, index) => {
-          console.log(column, "col");
           const currentPath = `${path}-${index}`;
-
           return (
             <React.Fragment key={column.id}>
               <DropZone
                 data={{
                   path: currentPath,
-                  childrenCount: data.children.length
+                  childrenCount: data.children.length,
                 }}
                 onDrop={handleDrop}
                 className="horizontalDrag"
@@ -89,7 +86,7 @@ const Row = (
         <DropZone
           data={{
             path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length
+            childrenCount: data.children.length,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"

@@ -9,14 +9,14 @@ import {
   // setComponent,
   setContent,
   // setHyperLink,
-  setTab
+  setTab,
 } from "../../redux/builderSlice";
 import { COLUMN, COMPONENT, SIDEBAR_ITEM } from "./Config/constants";
 import {
   handleMoveSidebarComponentIntoParent,
   handleMoveToDifferentParent,
   handleMoveWithinParent,
-  handleRemoveItemFromLayout
+  handleRemoveItemFromLayout,
 } from "./Config/helpers";
 import initialData from "./Config/initial-data";
 import DropZone from "./Layout/DropZone";
@@ -26,14 +26,14 @@ const Container = () => {
   // const initialLayout = initialData.layout;
   /// const link = useSelector(selectHyperLink)
   const heading = useSelector(selectHeading);
-  console.log(heading, "myhead");
+
   // console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
   // console.log(initialLayout, 'initialLayout')
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
-  console.log(layout, "lay");
+
   // console.log("out=>", layout);
   const [components, setComponents] = useState(initialComponents);
   const handleDropToTrashBin = useCallback(
@@ -62,24 +62,24 @@ const Container = () => {
         case "Heading":
           component = {};
           component.id = generateId;
-          console.log(component, "component");
+
           dispatch(
             setContent({
               content: item.component.content,
               generateId: generateId,
-              tag: "h3"
+              tag: "h3",
             })
           );
           break;
         case "Editor":
           component = {};
           component.id = generateId;
-          console.log(component, "component");
+
           dispatch(
             setContent({
               content: item.component.content,
               generateId: generateId,
-              tag: "h3"
+              tag: "h3",
             })
           );
           break;
@@ -98,17 +98,17 @@ const Container = () => {
         const newComponent = {
           id: shortid.generate(),
           // id: newId,
-          ...item.component
+          ...item.component,
         };
         const newItem = {
           id: newComponent.id,
           type: COMPONENT,
-          component
+          component,
         };
 
         setComponents({
           ...components,
-          [newComponent.id]: newComponent
+          [newComponent.id]: newComponent,
         });
         setLayout(
           handleMoveSidebarComponentIntoParent(
@@ -185,7 +185,7 @@ const Container = () => {
                   data={{
                     path: currentPath,
                     id: generateId,
-                    childrenCount: layout.length
+                    childrenCount: layout.length,
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
@@ -197,7 +197,7 @@ const Container = () => {
           <DropZone
             data={{
               path: `${layout.length}`,
-              childrenCount: layout.length
+              childrenCount: layout.length,
             }}
             onDrop={handleDrop}
             isLast

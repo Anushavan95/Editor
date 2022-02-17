@@ -6,7 +6,7 @@ import DropZone from "./DropZone";
 import { useSelector } from "react-redux";
 import {
   selectChildren,
-  setSelectedContent
+  setSelectedContent,
 } from "../../../redux/builderSlice";
 
 const style = {};
@@ -31,7 +31,6 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
   const handleGetData = (component) => {
     return componentData.map((item) => {
       if (Object.values(item)[0].id === component.component.id) {
-        ///  console.log(Object.values(item)[0])
         return Object.values(item)[0];
       }
     });

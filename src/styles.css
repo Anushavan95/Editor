@@ -99,7 +99,7 @@ body {
 
 .dropZone.active,
 .trashDropZone.active {
-  background: #00a2ff;
+  background: #f8f8f9;
   transition: 100ms all;
 }
 
@@ -162,16 +162,24 @@ body {
 }
 
 .editor-title {
-  letter-spacing: 0.2em !important;
+  font-size: 18px !important;
+  line-height: 25px !important;
+  display: flex;
+  align-items: center;
   text-align: center;
+  color: #161616;
+
+  /* text-align: center; */
   /* background-color: #333; */
-  color: #333;
-  box-shadow: 0 1px rgb(0 0 0 / 4%), inset 0 -1px rgb(0 0 0 / 4%);
+
   /* color: white; */
 }
 
 .dragged {
-  box-shadow: 5px 10px 15px rgb(150, 149, 149);
+  border: 1px dashed #ff5319 !important;
+}
+.dragged path {
+  fill: #ff5319 !important;
 }
 
 .element-title {
@@ -226,7 +234,7 @@ body {
   align-items: center !important;
   text-align: center !important;
   color: #ffffff !important;
-  background: #00254a !important;
+  background: #c4c4c4c4 !important;
   border-radius: 10px !important;
   width: 44px !important;
   height: 45px !important;
@@ -245,7 +253,7 @@ body {
   fill: #00254a;
 }
 .sideBarItem path {
-  fill: #00254a;
+  fill: #cacacc;
 }
 .MuiTypography-h6 {
   color: #00254a;
@@ -309,11 +317,15 @@ body {
   width: 142.663px;
   height: 100% !important;
 
-  background: #c4c4c4 !important;
+  background: transparent !important;
 }
 .Mui-selected .tabs-text-fms {
   color: #161616;
   font-size: 18px;
+  z-index: 9999999;
+}
+.Mui-selected .MuiTouchRipple-root {
+  background: #c4c4c4 !important ;
 }
 .tabs-text-fms {
   color: #787878;

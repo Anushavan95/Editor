@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import React from "react";
-import RichTextEditor from "react-rte";
 import { useDispatch, useSelector } from "react-redux";
 import AlignMent from "./AlignMent";
 import ColorChange from "./Components/EditorBuilder/ColorChange";
@@ -24,6 +23,8 @@ import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/TagSelect";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
+import { ReactComponent as HeadingSvg } from "./images/svg/heading.svg";
+import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -32,7 +33,7 @@ function Tabs(props) {
   const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
-  console.log(content, "content");
+
   const handleData = (id) => {
     let selectedComponentData = selComponent.map((item) => {
       if (Object.values(item)[0].id === id) {
@@ -49,8 +50,7 @@ function Tabs(props) {
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue));
   };
-  ////console.log(props,'propsprops')
-  ////console.log(selectedComponentData,'value')
+
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
   };
@@ -111,7 +111,28 @@ function Tabs(props) {
             }
             switch (contentType) {
               case "Editor":
-                return <RichEditor />;
+                return (
+                  <>
+                    <RichEditor />
+                    <MarginStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <EditorS />
+                    <PaddingStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    {/* <ColorChange
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <SelectFontFamily
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    /> */}
+                  </>
+                );
               case "Heading":
                 return (
                   <>
@@ -123,6 +144,8 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+                    <HeadingSvg />
+
                     <PaddingStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -147,7 +170,7 @@ function Tabs(props) {
                   </Button>
                 );
               default:
-                return null;
+                return "";
             }
           })(onChange)}
         </TabPanel>

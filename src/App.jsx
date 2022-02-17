@@ -22,9 +22,11 @@ import Tabs from "./Tabs";
 
 export default function App() {
   const [expanded, setExpanded] = useState("panel1");
+  const [expanded2, setExpanded2] = useState("panel1");
+  const [expanded3, setExpanded3] = useState("panel1");
   const [widthe, setWidthe] = useState("unset");
   const [values, setValues] = useState({
-    weight: "390px"
+    weight: "390px",
   });
   const [active, setActive] = useState("unset");
   const handleChanges = (prop) => (event) => {
@@ -32,7 +34,15 @@ export default function App() {
     setWidthe(`${event.target.value}px`);
   };
   const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+    if (panel == "panel1") {
+      setExpanded(newExpanded ? panel : false);
+    }
+    if (panel == "panel2") {
+      setExpanded2(newExpanded ? panel : false);
+    }
+    if (panel == "panel3") {
+      setExpanded3(newExpanded ? panel : false);
+    }
   };
   let changeWidtheClick = (e) => {
     if (e == "mobile") {
@@ -88,9 +98,9 @@ export default function App() {
               </span>
             </div>
             <Box className="sideBar">
-              {/* <Typography variant="h4" className="editor-title">
-                Editor
-              </Typography> */}
+              <Typography variant="h4" className="editor-title">
+                PageBuilder
+              </Typography>
 
               <Tabs>
                 <Accordion
@@ -129,7 +139,7 @@ export default function App() {
                 </Accordion>
 
                 <Accordion
-                  expanded={expanded === "panel2"}
+                  expanded={expanded2 === "panel2"}
                   onChange={handleChange("panel2")}
                   className="panel-2"
                 >
@@ -161,7 +171,7 @@ export default function App() {
                   </AccordionDetails>
                 </Accordion>
                 <Accordion
-                  expanded={expanded === "panel3"}
+                  expanded={expanded3 === "panel3"}
                   onChange={handleChange("panel3")}
                   className="panel-2"
                 >
@@ -199,7 +209,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto"
+                  margin: "40px auto 0 auto",
                 }}
               >
                 <Header />
@@ -215,7 +225,7 @@ export default function App() {
               className="site__body"
               style={{
                 width: widthe,
-                margin: "0px auto 0 auto"
+                margin: "0px auto 0 auto",
               }}
             >
               <div className="container p-0 home-product-container">
