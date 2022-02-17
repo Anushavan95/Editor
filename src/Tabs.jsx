@@ -23,7 +23,6 @@ import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/TagSelect";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
-import { ReactComponent as HeadingSvg } from "./images/svg/heading.svg";
 import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
 
 function Tabs(props) {
@@ -80,7 +79,7 @@ function Tabs(props) {
   // }
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box sx={{ width: "100%", typography: "body1" }} className="lalal">
       <TabContext value={value}>
         <Box
           sx={{ borderBottom: 1, borderColor: "divider" }}
@@ -102,7 +101,7 @@ function Tabs(props) {
         <TabPanel value={"1"} className="components-tab">
           {props.children}
         </TabPanel>
-        <TabPanel value={"2"}>
+        <TabPanel value={"2"} className="components-edited-tab">
           {(function (onChange) {
             let contentType = false;
             let selectedComponentData = handleData(content);
@@ -135,7 +134,7 @@ function Tabs(props) {
                 );
               case "Heading":
                 return (
-                  <>
+                  <section className="component-entered">
                     <BasicSelect
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -144,7 +143,6 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <HeadingSvg />
 
                     <PaddingStyles
                       content={content}
@@ -159,7 +157,7 @@ function Tabs(props) {
                       selectedComponentData={selectedComponentData}
                     />
                     <AlignMent />
-                  </>
+                  </section>
                 );
               case "HyperLink":
                 return <HyperSettings />;

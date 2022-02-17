@@ -26,7 +26,7 @@ export default function BasicSelect({ selectedComponentData, content }) {
   return (
     <div>
       <InputLabel id="demo-simple-select-label">Heading</InputLabel>
-      <div className="ss">
+      <div className="select-tags">
         <ToggleButtonGroup
           color="primary"
           value={tag}
