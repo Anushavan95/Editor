@@ -24,6 +24,7 @@ import BasicSelect from "./Components/EditorBuilder/TagSelect";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
 import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
+import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUploadConfigs";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -129,6 +130,14 @@ function Tabs(props) {
                 );
               case "HyperLink":
                 return <HyperSettings />;
+
+              case "ImageUpload":
+                return (
+                  <ImageUploadConfigs
+                    content={content}
+                    selectedComponentData={selectedComponentData}
+                  />
+                );
               case "button":
                 return (
                   <Button style={{ marginTop: "150px" }} variant="contained">
