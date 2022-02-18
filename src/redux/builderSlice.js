@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
 import RichTextEditor from "react-rte";
 
@@ -47,6 +47,25 @@ const builderSlice = createSlice({
       //   }
       // });
     },
+    setImage: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          let check = false;
+          el.images.map((item) => {
+            if (Object.keys(item) == "imageUpload") {
+              check = true;
+              item.imageUpload = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.images.push({ imageUpload: action.payload.value });
+          }
+        }
+      });
+      state.children = data;
+    },
     setFontFamily: (state, action) => {
       let data = state.children;
       data.map((el) => {
@@ -84,13 +103,6 @@ const builderSlice = createSlice({
         }
       });
       state.children = data;
-    },
-    addImages: (state, action) => {
-      // Object.keys(state.children).map((el) => {
-      //   if (el.id === action.payload.id) {
-      //     el.images = [...el.images, ...action.payload.value];
-      //   }
-      // });
     },
 
     setEditorTextValue: (state, action) => {
@@ -327,6 +339,7 @@ export const {
   setColor,
   setTag,
   addImages,
+  setImage,
   setTab,
   setEditorTextValue,
   setMarginTop,

@@ -16,8 +16,8 @@ const Component = ({ data, componentData, components, path, layout }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, id: data.id, path },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
+      isDragging: monitor.isDragging()
+    })
   });
 
   const handleClick = (id) => {
@@ -35,6 +35,7 @@ const Component = ({ data, componentData, components, path, layout }) => {
   let paddBottom = 0;
   let paddLeft = 0;
   let fontFamily = "";
+  let image = [];
   let color = "";
   const component = components[data.id];
   componentData.settings.map((item) => {
@@ -61,24 +62,35 @@ const Component = ({ data, componentData, components, path, layout }) => {
             return (fontFamily = item.fontFamily);
           case "color":
             return (color = item.color);
+
           default:
             return false;
         }
       }
     });
   });
-
+  componentData.images.map((item) => {
+    Object.keys(item).forEach((key) => {
+      if (key !== undefined) {
+        switch (key) {
+          case "imageUpload":
+            return (image = item.imageUpload);
+        }
+      }
+    });
+  });
+  console.log(image, "lalala");
   const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
     padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
     fontFamily: `${fontFamily}`,
-    color: color,
+    color: color
   };
 
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
-        return <ImageUploadingApp />;
+        return <ImageUploadingApp image={image} />;
       case "Editor":
         return <ContentEditableText />;
       case "Heading":
