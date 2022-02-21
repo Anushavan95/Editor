@@ -29,7 +29,7 @@ function Tabs(props) {
   const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
-  console.log(content, "content");
+ /// console.log(content, "content");
   const handleData = (id) => {
     let selectedComponentData = selComponent.map((item) => {
       if (Object.values(item)[0].id === id) {

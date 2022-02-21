@@ -1,92 +1,177 @@
-import React, { useRef } from "react";
-import { useDrag } from "react-dnd";
+import React, {useRef} from "react";
+import {useDrag} from "react-dnd";
 import Component from "../../../Component";
-import { COLUMN } from "../Config/constants";
+import {COLUMN} from "../Config/constants";
 import DropZone from "./DropZone";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import {
-  selectChildren,
-  setSelectedContent
+    selectChildren,
+    setSelectedContent
 } from "../../../redux/builderSlice";
 
 const style = {};
-const Column = ({ data, components, handleDrop, path, layout }) => {
-  const ref = useRef(null);
+const Column = ({data, components, handleDrop, path, layout, column, row, setTree}) => {
+    const ref = useRef(null);
 
-  const [{ isDragging }, drag] = useDrag({
-    item: {
-      type: COLUMN,
-      id: data.id,
-      children: data.children,
-      path,
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-  const componentData = useSelector(selectChildren);
-  const opacity = isDragging ? 0 : 1;
-  drag(ref);
-
-  const handleGetData = (component) => {
-    return componentData.map((item) => {
-      if (Object.values(item)[0].id === component.component.id) {
-        ///  console.log(Object.values(item)[0])
-        return Object.values(item)[0];
-      }
+    const [{isDragging}, drag] = useDrag({
+        item: {
+            type: COLUMN,
+            id: data.id,
+            children: data.children,
+            path,
+        },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
     });
-  };
+    const componentData = useSelector(selectChildren);
+    const opacity = isDragging ? 0 : 1;
+    drag(ref);
 
-  const renderComponent = (component, currentPath) => {
-    let componentData = handleGetData(component);
-    let filtered = componentData.filter(function (x) {
-      return x !== undefined;
-    });
-    ///   console.log(filtered[0])
-    return (
-      <Component
-        key={component.id}
-        data={component}
-        componentData={filtered[0]}
-        components={components}
-        path={currentPath}
-        layout={layout}
-      />
-    );
-  };
+    const handleGetData = (component) => {
+        return componentData.map((item) => {
+            if (Object.values(item)[0].id === component.component.id) {
+                return Object.values(item)[0];
+            }
+        });
+    };
 
-  return (
-    <div
-      ref={ref}
-      style={{ ...style, opacity }}
-      className="base draggable column"
-    >
-      {data.id}
-      {data.children.map((component, index) => {
-        const currentPath = `${path}-${index}`;
+
+    const renderComponent = (component, currentPath, item) => {
+        // const asd = column;
+        // const asd2 = row;
+        // column = asd2;
+        // row = asd;
+        let componentData = handleGetData(component);
+        let filtered = componentData.filter(function (x) {
+            return x !== undefined;
+        });
+
+
+        // if(setTree[row]){
+        //     // console.log(column,'column')
+        //     // setTree[row][column].push(filtered[0].id) ;
+        // }
+
+        // // console.log(typeof setTree[row][column])
+        // if (typeof setTree[row] === 'object' && typeof setTree[row][column] === 'number') {
+        //     setTree[row][column] = [component.component.id]
+        // } else  if (typeof setTree[row] === 'object' && typeof setTree[row][column] === 'object') {
+        //     setTree[row][column].push(component.component.id)
+        // }  else {
+        //     // if (typeof setTree[row] === 'object' && typeof setTree[row][column] === 'object') {
+        //         const found = setTree[row][column].find(element => element === component.component.id)
+        //         if (!found) {
+        //             setTree[row][column].push(component.component.id)
+        //         }
+        //     //     setTree[row][column].push(component.component.id)
+        //     // }
+        //
+        //
+        // }
+
+        //setTree.push(component.component.id)
+        // const parent = document.querySelector()
+        // console.log(setTree)
+        // if (typeof setTree[row] === 'string') {
+        //     setTree[row] = [setTree[row], component.component.id]
+        // }else{
+        //     if(typeof setTree[row][column] === 'string'){
+        //         setTree[row][column] = [setTree[row][column] , component.component.id]
+        //     }else if(typeof setTree[row][column] === 'object'){
+        //         const found = setTree[row][column].find(element =>{
+        //            //// element == component.component.id
+        //             console.log(element,'elementelement')
+        //         })
+        //         setTree[row][column].push(component.component.id)
+        //     }
+        // }
+
+        // if (typeof setTree[row] === 'string') {
+        //     setTree[row] =  [setTree[row], component.component.id]
+        // } else if(typeof setTree[row] === 'object' && typeof setTree[row][column] == 'object') {
+        //     setTree[row][column].push(component.component.id)
+        // }else if(typeof setTree[row] === 'object' && typeof setTree[row][column] == 'string') {
+        //     setTree[row][column] = [setTree[row][column] , component.component.id]
+        // }else if(typeof setTree[row] === 'object'){
+        //     setTree[row].push(component.component.id)
+        // }
+
+//
+//         if (typeof setTree[row]  !== 'object') {
+//             ////        setTree[row] = [component.component.id]
+// ////            console.log(typeof setTree[row][column],'typeof setTree[row][column]')
+//             if(typeof setTree[row]  !== 'string' && typeof setTree[row][column] === 'string') {
+//                 setTree[row][column] = [setTree[row][column], component.component.id]
+//             } else if(typeof setTree[row][column] == 'object' && typeof setTree[row]  === 'object') {
+//                 setTree[row][column].push(component.component.id)
+//             }else{
+//
+//             }
+//             // setTree[row] = [setTree[row], component.component.id]
+//             // if (row >= 1 && typeof setTree[row] === 'string') {
+//             //     setTree[row] = [setTree[row], component.component.id]
+//             // } else {
+//             //     setTree[row] = [component.component.id]
+//             // }
+//         } else if(typeof setTree[row] === 'object') {
+//             setTree[row].push(component.component.id)
+//
+//         } else {
+//             setTree.push(component.component.id)
+//         }
+
         return (
-          <React.Fragment key={component.id}>
-            <DropZone
-              data={{
-                path: currentPath,
-                childrenCount: data.children.length,
-              }}
-              onDrop={handleDrop}
+            <Component
+                key={component.id}
+                data={component}
+                column={column}
+                row={row}
+                item={item}
+                componentData={filtered[0]}
+                components={components}
+                path={currentPath}
+                layout={layout}
+                setTree={setTree}
             />
-            {renderComponent(component, currentPath)}
-          </React.Fragment>
         );
-      })}
-      <DropZone
-        data={{
-          path: `${path}-${data.children.length}`,
-          childrenCount: data.children.length,
-        }}
-        onDrop={handleDrop}
-        isLast
-      />
-    </div>
-  );
+    };
+
+    return (
+        <div
+            ref={ref}
+            style={{...style, opacity}}
+            className="base draggable column"
+        >
+
+            {data.children.map((component, item) => {
+                const currentPath = `${path}-${item}`;
+                setTree[row][column][item] = []
+                return (
+                    <>
+                        {component.component.id}
+                        <React.Fragment key={component.id}>
+                            <DropZone
+                                data={{
+                                    path: currentPath,
+                                    childrenCount: data.children.length,
+                                }}
+                                onDrop={handleDrop}
+                            />
+                            {renderComponent(component, currentPath, item)}
+                        </React.Fragment></>
+                );
+            })}
+            <DropZone
+                data={{
+                    path: `${path}-${data.children.length}`,
+                    childrenCount: data.children.length,
+                }}
+                onDrop={handleDrop}
+                isLast
+            />
+        </div>
+    );
 };
 export default Column;
 

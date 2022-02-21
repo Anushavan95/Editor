@@ -8,9 +8,13 @@ import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/Image
 import { setSelectedContent } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
-
-const Component = ({ data, componentData, components, path, layout }) => {
+// let lastIds;
+const Component = ({ data, componentData, components, path, layout, index, row, item, column ,setTree }) => {
+  // console.log("path", path)
   const dispatch = useDispatch();
+  // lastIds = path.split("-");
+  //  lastIds.push(componentData.id)
+  // console.log("lastIds ______________" , lastIds)
 
   const ref = useRef(null);
   const [{ isDragging }, drag] = useDrag({
@@ -19,10 +23,11 @@ const Component = ({ data, componentData, components, path, layout }) => {
       isDragging: monitor.isDragging()
     })
   });
-  console.log(componentData, "componentData121212");
+///  console.log(componentData, "componentData121212");
   const handleClick = (id) => {
     dispatch(setSelectedContent(id));
   };
+
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
@@ -75,21 +80,67 @@ const Component = ({ data, componentData, components, path, layout }) => {
     color: color
   };
 
+ /// console.log(path,'pathpathpathpathpath')
+  // const currentPath = `${path}-${row}`;
+  // console.log(currentPath,'currentPath')
+  //
+  const newPath = path.split('-')
+  // console.log(index,'index')
+  // console.log(newPath,'newPath')
+  // console.log(newPath[index -1])
+// const setTree = [path[index]];
+//
+//
+//   // console.log(filtered)
+//   console.log(typeof setTree[index]);
+//   //
+//      if (typeof setTree[index] === 'number' ) {
+//        setTree[index] = [component.component.index]
+//      }   else {
+//        console.log("minchev push",setTree[index])
+//        setTree[index].push(component.component.index)
+//      }
+
+     // console.log(setTree[path[index]],'COLUMN')
+
+  console.log(row,column,item )
+  setTree[row][column][item] = componentData.id ;
+
+  console.log(componentData)
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
+        console.log("ImageUpload")
+
         return <ImageUploadingApp />;
       case "Editor":
         return <ContentEditableText />;
       case "Heading":
+
+        // const currentPath = `${path}`;
+        // const currentPath = `${path}-${index}`;
+
+        // const dataPath = currentPath.split('-');
+        // console.log(dataPath,'dataPathdataPathdataPathdataPath')
         let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
+
+        // lastIds.push(componentData.id)
+
+          // lastIds = [...lastIds, componentData.id]
+
+        // console.log("lastIds ______________" , lastIds)
+
         return (
-          <Heading
-            styles={styles}
-            tagEntry={tagEntry}
-            componentData={componentData}
-            handleClick={(event) => handleClick(componentData.id)}
-          />
+            <>
+              {index}
+              <Heading
+                  styles={styles}
+                  tagEntry={tagEntry}
+                  componentData={componentData}
+                  handleClick={(event) => handleClick(componentData.id)}
+              />
+
+            </>
         );
       case "HyperLink":
         return <HyperLink layout={layout} />;
