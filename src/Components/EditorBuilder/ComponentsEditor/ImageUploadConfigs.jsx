@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setImage } from "../../../redux/builderSlice";
 
-export default function ImageUploadConfigs({ content, selectedComponentData }) {
+export default function ImageUploadConfigs({ content }) {
   const dispatch = useDispatch();
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {

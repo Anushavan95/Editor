@@ -23,7 +23,6 @@ export default function MarginStyles({ content, selectedComponentData }) {
     setChange(!change);
   };
   selectedComponentData.settings.map((item) => {
-   ///// console.log(Object.keys(item), "itemitemitem");
     switch (Object.keys(item)[0]) {
       case "marginTop":
         return (top = Object.values(item));

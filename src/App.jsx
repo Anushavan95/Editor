@@ -26,7 +26,7 @@ export default function App() {
   const [expanded3, setExpanded3] = useState("panel1");
   const [widthe, setWidthe] = useState("unset");
   const [values, setValues] = useState({
-    weight: "390px",
+    weight: "390px"
   });
   const [active, setActive] = useState("unset");
   const handleChanges = (prop) => (event) => {
@@ -170,38 +170,6 @@ export default function App() {
                     </Box>
                   </AccordionDetails>
                 </Accordion>
-                <Accordion
-                  expanded={expanded3 === "panel3"}
-                  onChange={handleChange("panel3")}
-                  className="panel-2"
-                >
-                  <div className="paneli-border-fms">
-                    <AccordionSummary
-                      aria-controls="panel2d-content"
-                      id="panel2d-header"
-                      expandIcon={<ExpandMoreIcon />}
-                    >
-                      <Typography
-                        variant="h4"
-                        className="title-component-sidebar"
-                      >
-                        Image/ImageLink
-                      </Typography>
-                    </AccordionSummary>
-                  </div>
-                  <AccordionDetails>
-                    <Box className="elements-parent-box">
-                      {Object.values(SIDEBAR_ITEMS.slice(3, 6)).map(
-                        (sideBarItem, index) => (
-                          <SideBarItem
-                            key={sideBarItem.id}
-                            data={sideBarItem}
-                          />
-                        )
-                      )}
-                    </Box>
-                  </AccordionDetails>
-                </Accordion>
               </Tabs>
             </Box>
 
@@ -209,7 +177,7 @@ export default function App() {
               <div
                 style={{
                   width: widthe,
-                  margin: "40px auto 0 auto",
+                  margin: "40px auto 0 auto"
                 }}
               >
                 <Header />
@@ -225,7 +193,7 @@ export default function App() {
               className="site__body"
               style={{
                 width: widthe,
-                margin: "0px auto 0 auto",
+                margin: "0px auto 0 auto"
               }}
             >
               <div className="container p-0 home-product-container">
