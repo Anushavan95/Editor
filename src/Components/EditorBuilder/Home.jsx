@@ -176,7 +176,7 @@ const Container = () => {
             <Row
                 generateId={generateId}
                 key={index}
-                row={index}
+                rowIndex={index}
                 data={row}
                 setTree={setTree}
                 handleDrop={handleDrop}

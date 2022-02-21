@@ -8,8 +8,9 @@ import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/Image
 import { setSelectedContent } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
-
-const Component = ({ data, componentData, components, path, layout }) => {
+// let lastIds;
+const Component = ({ data, componentData, components, path, layout, index, rowIndex, item, column ,setTree }) => {
+  // console.log("path", path)
   const dispatch = useDispatch();
 
   const ref = useRef(null);
@@ -78,7 +79,7 @@ const Component = ({ data, componentData, components, path, layout }) => {
       }
     });
   });
-  console.log(image, "lalala");
+
   const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
     padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
@@ -86,9 +87,9 @@ const Component = ({ data, componentData, components, path, layout }) => {
     color: color
   };
 
-  setTree[row][column][item] = componentData.id ;
-
-  console.log(componentData)
+  setTree[rowIndex][column][item] = componentData.id ;
+ /// console.log(image, "lalala");
+  console.log(setTree)
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":

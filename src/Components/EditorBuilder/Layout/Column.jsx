@@ -10,7 +10,7 @@ import {
 } from "../../../redux/builderSlice";
 
 const style = {};
-const Column = ({data, components, handleDrop, path, layout, column, row, setTree}) => {
+const Column = ({data, components, handleDrop, path, layout, column, rowIndex, setTree}) => {
     const ref = useRef(null);
 
     const [{isDragging}, drag] = useDrag({
@@ -50,7 +50,7 @@ const Column = ({data, components, handleDrop, path, layout, column, row, setTre
                 key={component.id}
                 data={component}
                 column={column}
-                row={row}
+                rowIndex={rowIndex}
                 item={item}
                 componentData={filtered[0]}
                 components={components}
@@ -70,7 +70,7 @@ const Column = ({data, components, handleDrop, path, layout, column, row, setTre
 
             {data.children.map((component, item) => {
                 const currentPath = `${path}-${item}`;
-                setTree[row][column][item] = []
+                setTree[rowIndex][column][item] = []
                 return (
                     <>
                         {component.component.id}

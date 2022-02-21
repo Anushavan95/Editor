@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 
 const style = {};
 const Row = (
-    {data, components, handleDrop, path, layout, generateId, key, row, setTree},
+    {data, components, handleDrop, path, layout, generateId, rowIndex, setTree},
     props
 ) => {
 
@@ -34,9 +34,9 @@ const Row = (
     });
     const opacity = isDragging ? 0 : 1;
     drag(ref);
-    const renderColumn = (column, currentPath, selectId, id, row, setTree) => {
-        if(setTree[row]){
-            setTree[row][id].push(id)
+    const renderColumn = (column, currentPath, selectId, id, rowIndex, setTree) => {
+        if(setTree[rowIndex]){
+            setTree[rowIndex][id].push(id)
         }
 
         return (
@@ -44,7 +44,7 @@ const Row = (
                 key={column.id}
                 data={column}
                 column={id}
-                row={row}
+                rowIndex={rowIndex}
                 setTree={setTree}
                 components={components}
                 handleDrop={handleDrop}
@@ -60,11 +60,10 @@ const Row = (
             style={{...style, opacity}}
             className="base draggable row-editor"
         >
-            {row}
             <div id={data.id} className="columns">
                 {data.children.map((column, id) => {
-                    if(setTree[row]){
-                        setTree[row][id] = []
+                    if(setTree[rowIndex]){
+                        setTree[rowIndex][id] = []
                     }
 
 
@@ -80,7 +79,7 @@ const Row = (
                                 onDrop={handleDrop}
                                 className="horizontalDrag"
                             />
-                            {renderColumn(column, currentPath, selectId, id, row, setTree)}
+                            {renderColumn(column, currentPath, selectId, id, rowIndex, setTree)}
                         </React.Fragment>
                     );
                 })}
