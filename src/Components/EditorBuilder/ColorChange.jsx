@@ -1,4 +1,4 @@
-import { InputLabel, TextField } from "@mui/material";
+import { InputLabel, TextField, Box } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setColor } from "../../redux/builderSlice";
@@ -18,7 +18,7 @@ export default function ColorChange({ selectedComponentData, content }) {
     dispatch(setColor({ id: content, value: event.target.value }));
   };
   return (
-    <>
+    <Box className="color-changer">
       <InputLabel for="filled-hidden-label-normal">Change Color</InputLabel>
       <TextField
         onChange={handleColorChange}
@@ -32,6 +32,6 @@ export default function ColorChange({ selectedComponentData, content }) {
         defaultValue="Normal"
         variant="filled"
       />
-    </>
+    </Box>
   );
 }

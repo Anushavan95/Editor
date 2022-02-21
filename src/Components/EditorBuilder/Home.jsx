@@ -1,14 +1,11 @@
-import React, {useCallback, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import shortid from "shortid";
 import {
     selectHeading,
-    ///selectHyperLink,
     selectInitialLayout,
     setSelectedContent,
-    // setComponent,
     setContent,
-    // setHyperLink,
     setTab
 } from "../../redux/builderSlice";
 import {COLUMN, COMPONENT, SIDEBAR_ITEM} from "./Config/constants";
@@ -23,26 +20,27 @@ import DropZone from "./Layout/DropZone";
 import Row from "./Layout/Row";
 
 const Container = () => {
-    // const initialLayout = initialData.layout;
-    /// const link = useSelector(selectHyperLink)
-    const heading = useSelector(selectHeading);
-    // console.log(link, "link");
-    const initialLayout = useSelector(selectInitialLayout);
-    // console.log(initialLayout, 'initialLayout')
-    const dispatch = useDispatch();
-    const initialComponents = initialData.components;
-    const [layout, setLayout] = useState(initialLayout);
-  ////  console.log(layout, "lay");
-    // console.log("out=>", layout);
-    const [components, setComponents] = useState(initialComponents);
-    const handleDropToTrashBin = useCallback(
-        (dropZone, item) => {
-            const splitItemPath = item.path.split("-");
-            setLayout(handleRemoveItemFromLayout(layout, splitItemPath));
-        },
-        [layout]
-    );
-    let generateId = null;
+  // const initialLayout = initialData.layout;
+  /// const link = useSelector(selectHyperLink)
+  const heading = useSelector(selectHeading);
+
+  // console.log(link, "link");
+  const initialLayout = useSelector(selectInitialLayout);
+  // console.log(initialLayout, 'initialLayout')
+  const dispatch = useDispatch();
+  const initialComponents = initialData.components;
+  const [layout, setLayout] = useState(initialLayout);
+
+  // console.log("out=>", layout);
+  const [components, setComponents] = useState(initialComponents);
+  const handleDropToTrashBin = useCallback(
+    (dropZone, item) => {
+      const splitItemPath = item.path.split("-");
+      setLayout(handleRemoveItemFromLayout(layout, splitItemPath));
+    },
+    [layout]
+  );
+  let generateId = null;
 
     const handleDrop = useCallback(
         (dropZone, item) => {
@@ -56,30 +54,47 @@ const Container = () => {
             dispatch(setSelectedContent(generateId));
             dispatch(setTab("2"));
 
-            switch (item.component.content) {
-                case "Heading":
-                    component = {...heading};
-                    component.id = generateId;
-                    dispatch(
-                        setContent({
-                            content: item.component.content,
-                            generateId: generateId,
-                            tag: "h3"
-                        })
-                    );
-                    break;
-                case "Editor":
-                    dispatch(
-                        setContent({
-                            content: item.component.content,
-                            generateId: generateId,
-                            tag: "Editor"
-                        })
-                    );
-                    break;
-                default:
-                    break;
-            }
+      console.log(item.component.content, "item.component.content");
+      switch (item.component.content) {
+        case "Heading":
+          component = {};
+          component.id = generateId;
+
+          dispatch(
+            setContent({
+              content: item.component.content,
+              generateId: generateId,
+              tag: "h3"
+            })
+          );
+          break;
+        case "Editor":
+          component = {};
+          component.id = generateId;
+
+          dispatch(
+            setContent({
+              content: item.component.content,
+              generateId: generateId,
+              tag: "h3"
+            })
+          );
+
+          break;
+        case "ImageUpload":
+          component = {};
+          component.id = generateId;
+
+          dispatch(
+            setContent({
+              content: item.component.content,
+              generateId: generateId,
+              tag: "h3"
+            })
+          );
+        default:
+          break;
+      }
 
             const newItem = {id: item.id, type: item.type};
             if (item.type === COLUMN) {

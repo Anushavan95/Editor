@@ -22,9 +22,9 @@ export default function SelectFontFamily({ selectedComponentData, content }) {
     dispatch(setFontFamily({ id: content, value: event.target.value }));
   };
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120 }} className={"font-box-select"}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Font Select</InputLabel>
+        <InputLabel id="demo-simple-select-label">Fonts</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

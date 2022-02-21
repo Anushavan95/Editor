@@ -21,6 +21,10 @@ import {
 } from "./redux/builderSlice";
 import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/TagSelect";
+import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
+import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
+import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
+import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUploadConfigs";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -29,7 +33,7 @@ function Tabs(props) {
   const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
- /// console.log(content, "content");
+
   const handleData = (id) => {
     let selectedComponentData = selComponent.map((item) => {
       if (Object.values(item)[0].id === id) {
@@ -46,38 +50,13 @@ function Tabs(props) {
   const handleChange = (event, newValue) => {
     dispatch(setTab(newValue));
   };
-  ////console.log(props,'propsprops')
-  ////console.log(selectedComponentData,'value')
+
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
   };
-  ///console.log(content,'1111111111111111')
-  // const handleSave = () => {
-  //   let obj3 = valueText.toString('html')
-  //   // console.log(obj3, "333");
-  //   if (valueText.length !== 0) {
-  //     const requestOptions = {
-  //       method : 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body   : JSON.stringify({
-  //         data: {
-  //           component_id: 1,
-  //           text        : `${obj3}`,
-  //         },
-  //       }),
-  //     }
-  //
-  //     fetch('https://test.zegashop.com/api/set', requestOptions).then(
-  //       (response) => response.json(),
-  //     )
-  //     // console.log(valueText);
-  //   } else {
-  //     console.log('text null')
-  //   }
-  // }
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box sx={{ width: "100%", typography: "body1" }} className="lalal">
       <TabContext value={value}>
         <Box
           sx={{ borderBottom: 1, borderColor: "divider" }}
@@ -99,7 +78,7 @@ function Tabs(props) {
         <TabPanel value={"1"} className="components-tab">
           {props.children}
         </TabPanel>
-        <TabPanel value={"2"}>
+        <TabPanel value={"2"} className="components-edited-tab">
           {(function (onChange) {
             let contentType = false;
             let selectedComponentData = handleData(content);
@@ -108,10 +87,23 @@ function Tabs(props) {
             }
             switch (contentType) {
               case "Editor":
-
-              case "Heading":
                 return (
                   <>
+                    <RichEditor />
+                    <MarginStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <EditorS />
+                    <PaddingStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                  </>
+                );
+              case "Heading":
+                return (
+                  <section className="component-entered">
                     <BasicSelect
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -120,6 +112,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+
                     <PaddingStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -133,10 +126,18 @@ function Tabs(props) {
                       selectedComponentData={selectedComponentData}
                     />
                     <AlignMent />
-                  </>
+                  </section>
                 );
               case "HyperLink":
                 return <HyperSettings />;
+
+              case "ImageUpload":
+                return (
+                  <ImageUploadConfigs
+                    content={content}
+                    selectedComponentData={selectedComponentData}
+                  />
+                );
               case "button":
                 return (
                   <Button style={{ marginTop: "150px" }} variant="contained">
@@ -144,7 +145,7 @@ function Tabs(props) {
                   </Button>
                 );
               default:
-                return null;
+                return "";
             }
           })(onChange)}
         </TabPanel>

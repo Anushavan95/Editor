@@ -1,12 +1,12 @@
-import React, {useRef} from "react";
-import {useDrag} from "react-dnd";
+import React, { useRef } from "react";
+import { useDrag } from "react-dnd";
 import Component from "../../../Component";
-import {COLUMN} from "../Config/constants";
+import { COLUMN } from "../Config/constants";
 import DropZone from "./DropZone";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import {
-    selectChildren,
-    setSelectedContent
+  selectChildren,
+  setSelectedContent,
 } from "../../../redux/builderSlice";
 
 const style = {};
@@ -38,88 +38,12 @@ const Column = ({data, components, handleDrop, path, layout, column, row, setTre
 
 
     const renderComponent = (component, currentPath, item) => {
-        // const asd = column;
-        // const asd2 = row;
-        // column = asd2;
-        // row = asd;
         let componentData = handleGetData(component);
         let filtered = componentData.filter(function (x) {
             return x !== undefined;
         });
 
 
-        // if(setTree[row]){
-        //     // console.log(column,'column')
-        //     // setTree[row][column].push(filtered[0].id) ;
-        // }
-
-        // // console.log(typeof setTree[row][column])
-        // if (typeof setTree[row] === 'object' && typeof setTree[row][column] === 'number') {
-        //     setTree[row][column] = [component.component.id]
-        // } else  if (typeof setTree[row] === 'object' && typeof setTree[row][column] === 'object') {
-        //     setTree[row][column].push(component.component.id)
-        // }  else {
-        //     // if (typeof setTree[row] === 'object' && typeof setTree[row][column] === 'object') {
-        //         const found = setTree[row][column].find(element => element === component.component.id)
-        //         if (!found) {
-        //             setTree[row][column].push(component.component.id)
-        //         }
-        //     //     setTree[row][column].push(component.component.id)
-        //     // }
-        //
-        //
-        // }
-
-        //setTree.push(component.component.id)
-        // const parent = document.querySelector()
-        // console.log(setTree)
-        // if (typeof setTree[row] === 'string') {
-        //     setTree[row] = [setTree[row], component.component.id]
-        // }else{
-        //     if(typeof setTree[row][column] === 'string'){
-        //         setTree[row][column] = [setTree[row][column] , component.component.id]
-        //     }else if(typeof setTree[row][column] === 'object'){
-        //         const found = setTree[row][column].find(element =>{
-        //            //// element == component.component.id
-        //             console.log(element,'elementelement')
-        //         })
-        //         setTree[row][column].push(component.component.id)
-        //     }
-        // }
-
-        // if (typeof setTree[row] === 'string') {
-        //     setTree[row] =  [setTree[row], component.component.id]
-        // } else if(typeof setTree[row] === 'object' && typeof setTree[row][column] == 'object') {
-        //     setTree[row][column].push(component.component.id)
-        // }else if(typeof setTree[row] === 'object' && typeof setTree[row][column] == 'string') {
-        //     setTree[row][column] = [setTree[row][column] , component.component.id]
-        // }else if(typeof setTree[row] === 'object'){
-        //     setTree[row].push(component.component.id)
-        // }
-
-//
-//         if (typeof setTree[row]  !== 'object') {
-//             ////        setTree[row] = [component.component.id]
-// ////            console.log(typeof setTree[row][column],'typeof setTree[row][column]')
-//             if(typeof setTree[row]  !== 'string' && typeof setTree[row][column] === 'string') {
-//                 setTree[row][column] = [setTree[row][column], component.component.id]
-//             } else if(typeof setTree[row][column] == 'object' && typeof setTree[row]  === 'object') {
-//                 setTree[row][column].push(component.component.id)
-//             }else{
-//
-//             }
-//             // setTree[row] = [setTree[row], component.component.id]
-//             // if (row >= 1 && typeof setTree[row] === 'string') {
-//             //     setTree[row] = [setTree[row], component.component.id]
-//             // } else {
-//             //     setTree[row] = [component.component.id]
-//             // }
-//         } else if(typeof setTree[row] === 'object') {
-//             setTree[row].push(component.component.id)
-//
-//         } else {
-//             setTree.push(component.component.id)
-//         }
 
         return (
             <Component

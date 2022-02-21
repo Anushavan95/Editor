@@ -1,84 +1,82 @@
-import React                                    from 'react'
-import classNames                               from 'classnames'
-import { useDrop }                              from 'react-dnd'
-import { COMPONENT, SIDEBAR_ITEM, ROW, COLUMN } from '../Config/constants'
+import React from "react";
+import classNames from "classnames";
+import { useDrop } from "react-dnd";
+import { COMPONENT, SIDEBAR_ITEM, ROW, COLUMN } from "../Config/constants";
 
-
-
-const ACCEPTS = [SIDEBAR_ITEM, COMPONENT, ROW, COLUMN]
+const ACCEPTS = [SIDEBAR_ITEM, COMPONENT, ROW, COLUMN];
 
 const DropZone = ({ data, onDrop, isLast, className }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
-    accept : ACCEPTS,
-    drop   : (item, monitor) => {
-      onDrop(data, item)
+    accept: ACCEPTS,
+    drop: (item, monitor) => {
+      onDrop(data, item);
     },
     canDrop: (item, monitor) => {
-      const dropZonePath = data.path
-      const splitDropZonePath = dropZonePath.split('-')
-      const itemPath = item.path
+      const dropZonePath = data.path;
+      const splitDropZonePath = dropZonePath.split("-");
+      const itemPath = item.path;
 
       // sidebar items can always be dropped anywhere
       if (!itemPath) {
         // if (data.childrenCount >= 3) {
         //  return false;
         // }
-        return true
+        return true;
       }
 
-      const splitItemPath = itemPath.split('-')
+      const splitItemPath = itemPath.split("-");
 
       // limit columns when dragging from one row to another row
-      const dropZonePathRowIndex = splitDropZonePath[0]
-      const itemPathRowIndex = splitItemPath[0]
-      const diffRow = dropZonePathRowIndex !== itemPathRowIndex
+      const dropZonePathRowIndex = splitDropZonePath[0];
+      const itemPathRowIndex = splitItemPath[0];
+      const diffRow = dropZonePathRowIndex !== itemPathRowIndex;
       if (
         diffRow &&
         splitDropZonePath.length === 2 &&
         data.childrenCount >= 3
       ) {
-        return false
+        return false;
       }
 
       // Invalid (Can't drop a parent element (row) into a child (column))
-      const parentDropInChild = splitItemPath.length < splitDropZonePath.length
-      if (parentDropInChild) return false
+      const parentDropInChild = splitItemPath.length < splitDropZonePath.length;
+      if (parentDropInChild) return false;
 
       // Current item can't possible mo; mve to it's own location
-      if (itemPath === dropZonePath) return false
+      if (itemPath === dropZonePath) return false;
 
       // Current area
       if (splitItemPath.length === splitDropZonePath.length) {
-        const pathToItem = splitItemPath.slice(0, -1).join('-')
-        const currentItemIndex = Number(splitItemPath.slice(-1)[0])
+        const pathToItem = splitItemPath.slice(0, -1).join("-");
+        const currentItemIndex = Number(splitItemPath.slice(-1)[0]);
 
-        const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
-        const currentDropZoneIndex = Number(splitDropZonePath.slice(-1)[0])
+        const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
+        const currentDropZoneIndex = Number(splitDropZonePath.slice(-1)[0]);
 
         if (pathToItem === pathToDropZone) {
-          const nextDropZoneIndex = currentItemIndex + 1
-          if (nextDropZoneIndex === currentDropZoneIndex) return false
+          const nextDropZoneIndex = currentItemIndex + 1;
+          if (nextDropZoneIndex === currentDropZoneIndex) return false;
         }
       }
 
-      return true
+      return true;
     },
     collect: (monitor) => ({
-      isOver : monitor.isOver(),
+      isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
-  })
+  });
 
-  const isActive = isOver && canDrop
+  const isActive = isOver && canDrop;
   return (
     <div
       className={classNames(
-        'dropZone',
+        "dropZone",
         { active: isActive, isLast },
-        className,
+        className
       )}
       ref={drop}
     />
-  )
-}
-export default DropZone
+  );
+};
+export default DropZone;

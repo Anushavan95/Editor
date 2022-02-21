@@ -1,13 +1,15 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import LinkIcon from "../../images/link.png";
+import LinkIcon from "../../images/link.svg";
 import {
   setMarginBottom,
   setMarginLeft,
   setMarginRight,
   setMarginTop
 } from "../../redux/builderSlice";
+
+import { ReactComponent as HeadingSvg } from "../../images/svg/heading.svg";
 
 export default function MarginStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
@@ -70,52 +72,8 @@ export default function MarginStyles({ content, selectedComponentData }) {
 
   return (
     <div className="margin-component">
-      <span className="title-margin">Margin</span>
-      <Box className="margin-styles">
-        <TextField
-          id="filled-number"
-          // label="Top"
-          type="number"
-          value={top}
-          onChange={handleTopChange}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="filled"
-        />
-        <TextField
-          id="filled-number"
-          // label="Right"
-          value={right}
-          type="number"
-          onChange={handleRightChange}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="filled"
-        />
-        <TextField
-          id="filled-number"
-          // label="Bottom"
-          value={bottom}
-          type="number"
-          onChange={handleBottomChange}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="filled"
-        />
-        <TextField
-          id="filled-number"
-          // label="Left"
-          value={left}
-          type="number"
-          onChange={handleLeftChange}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="filled"
-        />
+      <Box>
+        <b className="title-margin">Margin</b>
         <Button
           onClick={allChanges}
           className={`margin-all ${change ? "contained" : "outlined"}`}
@@ -124,11 +82,67 @@ export default function MarginStyles({ content, selectedComponentData }) {
         />
       </Box>
 
-      <Box className="direction">
-        <Typography variant="span">Top</Typography>
-        <Typography variant="span">Right</Typography>
-        <Typography variant="span">Bottom</Typography>
-        <Typography variant="span">Left</Typography>
+      <Box className="margin-styles">
+        <Box>
+          <Typography variant="span">Left</Typography>
+          <TextField
+            id="filled-number"
+            type="number"
+            value={left}
+            onChange={handleLeftChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+        </Box>
+        <Box>
+          <Typography variant="span">Top</Typography>
+          <TextField
+            id="filled-number"
+            // label="Right"
+            value={top}
+            type="number"
+            onChange={handleTopChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+          <HeadingSvg
+            style={{
+              margin: "5px auto",
+              borderRadius: "5px",
+              background: " #EBF0F5 "
+            }}
+          />
+          <Typography variant="span">Bottom</Typography>
+          <TextField
+            id="filled-number"
+            // label="Bottom"
+            value={bottom}
+            type="number"
+            onChange={handleBottomChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+        </Box>
+        <Box>
+          <Typography variant="span">Right</Typography>
+          <TextField
+            id="filled-number"
+            // label="Left"
+            value={right}
+            type="number"
+            onChange={handleRightChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+        </Box>
       </Box>
     </div>
   );

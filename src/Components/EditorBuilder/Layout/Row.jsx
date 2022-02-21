@@ -1,6 +1,6 @@
-import React, {useRef, useState} from "react";
-import {useDrag} from "react-dnd";
-import {ROW} from "../Config/constants";
+import React, { useRef } from "react";
+import { useDrag } from "react-dnd";
+import { ROW } from "../Config/constants";
 import DropZone from "./DropZone";
 import Column from "./Column";
 import {
@@ -8,7 +8,7 @@ import {
     selectChildren,
     setSelectedContent
 } from "../../../redux/builderSlice";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 const style = {};
 const Row = (
@@ -35,7 +35,6 @@ const Row = (
     const opacity = isDragging ? 0 : 1;
     drag(ref);
     const renderColumn = (column, currentPath, selectId, id, row, setTree) => {
-        console.log(setTree,row,'setTree')
         if(setTree[row]){
             setTree[row][id].push(id)
         }
@@ -54,8 +53,6 @@ const Row = (
             />
         );
     };
-
-    // console.log("setTree from rows", setTree)
 
     return (
         <div
