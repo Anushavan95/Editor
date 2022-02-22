@@ -584,3 +584,11 @@ body {
 .text-helper {
   text-align: right !important;
 }
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  width: initial !important;
+}
+
+.settingsIcon {
+  width: 15px;
+}

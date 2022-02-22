@@ -138,12 +138,6 @@ function Tabs(props) {
                     selectedComponentData={selectedComponentData}
                   />
                 );
-              case "button":
-                return (
-                  <Button style={{ marginTop: "150px" }} variant="contained">
-                    handleSave
-                  </Button>
-                );
               default:
                 return "";
             }
