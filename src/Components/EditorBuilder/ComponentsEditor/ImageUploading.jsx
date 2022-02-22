@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import PlaceHolderImage from "../../../images/placeholder.png";
 import { selectChecked, selectLinkValue } from "../../../redux/builderSlice";
 
-export default function ImageUploadingApp({ image }) {
+export default function ImageUploadingApp({ image, styles }) {
   const linkValue = useSelector(selectLinkValue);
   const checked = useSelector(selectChecked);
 
@@ -20,7 +20,12 @@ export default function ImageUploadingApp({ image }) {
         </a>
       ) : (
         <React.Fragment>
-          <img src={srcImage} alt="Image_Upload" style={imageStyles} />
+          <img
+            src={srcImage}
+            alt="Image_Upload"
+            className="image-upload"
+            style={styles}
+          />
         </React.Fragment>
       )}
     </div>

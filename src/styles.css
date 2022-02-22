@@ -592,3 +592,7 @@ body {
 .settingsIcon {
   width: 15px;
 }
+
+.image-upload {
+  width: 100%;
+}

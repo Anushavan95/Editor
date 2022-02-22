@@ -9,7 +9,18 @@ import { setSelectedContent } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
 // let lastIds;
-const Component = ({ data, componentData, components, path, layout, index, rowIndex, item, column ,setTree }) => {
+const Component = ({
+  data,
+  componentData,
+  components,
+  path,
+  layout,
+  index,
+  rowIndex,
+  item,
+  column,
+  setTree
+}) => {
   // console.log("path", path)
   const dispatch = useDispatch();
 
@@ -87,13 +98,13 @@ const Component = ({ data, componentData, components, path, layout, index, rowIn
     color: color
   };
 
-  setTree[rowIndex][column][item] = componentData.id ;
- /// console.log(image, "lalala");
-  console.log(setTree)
+  setTree[rowIndex][column][item] = componentData.id;
+  /// console.log(image, "lalala");
+  console.log(setTree);
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
-        return <ImageUploadingApp image={image} />;
+        return <ImageUploadingApp image={image} styles={styles} />;
       case "Editor":
         return <ContentEditableText />;
       case "Heading":
@@ -114,6 +125,5 @@ const Component = ({ data, componentData, components, path, layout, index, rowIn
   } else {
     return <></>;
   }
-
 };
 export default Component;
