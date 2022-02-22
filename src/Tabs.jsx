@@ -30,7 +30,7 @@ function Tabs(props) {
   const value = useSelector(selectTab);
 
   const dispatch = useDispatch();
-  const imag = useSelector(selectAddedImages);
+  // const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
 
@@ -133,10 +133,21 @@ function Tabs(props) {
 
               case "ImageUpload":
                 return (
-                  <ImageUploadConfigs
-                    content={content}
-                    selectedComponentData={selectedComponentData}
-                  />
+                  <>
+                    <MarginStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+
+                    <PaddingStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <ImageUploadConfigs
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                  </>
                 );
               default:
                 return "";
