@@ -9,7 +9,10 @@ const initialState = {
   selected: "",
   products: [],
   children: [],
-  initialLayout: []
+  initialLayout: [],
+  linkValue: "",
+  selectLink: "",
+  checked: false
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -39,6 +42,15 @@ const builderSlice = createSlice({
   reducers: {
     setTab: (state, action) => {
       state.tab = action.payload;
+    },
+    setLinkValue: (state, action) => {
+      state.linkValue = action.payload;
+    },
+    setSelectLink: (state, action) => {
+      state.selectLink = action.payload;
+    },
+    setChecked: (state, action) => {
+      state.checked = !state.checked;
     },
     setTag: (state, action) => {
       // Object.keys(state.children).map((el) => {
@@ -352,7 +364,10 @@ export const {
   setPaddingLeft,
   setComponentEntry,
   setContent,
+  setLinkValue,
+  setSelectLink,
   setSelectedContent,
+  setChecked,
   setFontFamily
 } = builderSlice.actions;
 export const selectChildren = (state) => state.component.children;
@@ -374,5 +389,8 @@ export const selectPaddingLeft = (state) => state.children;
 export const selectHeading = (state) => state.component.heading;
 export const selectInitialLayout = (state) => state.component.initialLayout;
 export const selectID = (state) => state.component.heading.id;
+export const selectLinkValue = (state) => state.component.linkValue;
+export const selectLink = (state) => state.component.selectLink;
+export const selectChecked = (state) => state.component.checked;
 
 export default builderSlice.reducer;
