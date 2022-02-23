@@ -134,16 +134,16 @@ function Tabs(props) {
               case "ImageUpload":
                 return (
                   <>
+                    <ImageUploadConfigs
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                     <MarginStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
 
                     <PaddingStyles
-                      content={content}
-                      selectedComponentData={selectedComponentData}
-                    />
-                    <ImageUploadConfigs
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
