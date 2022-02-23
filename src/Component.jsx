@@ -99,8 +99,7 @@ const Component = ({
   };
 
   setTree[rowIndex][column][item] = componentData.id;
-  /// console.log(image, "lalala");
-  console.log(setTree);
+
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
