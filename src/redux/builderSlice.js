@@ -80,6 +80,25 @@ const builderSlice = createSlice({
       //   }
       // });
     },
+    setAlignMent: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "align") {
+              check = true;
+              item.align = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ align: action.payload.value });
+          }
+        }
+      });
+      state.children = data;
+    },
     setImage: (state, action) => {
       let data = state.children;
       data.map((el) => {
@@ -137,7 +156,6 @@ const builderSlice = createSlice({
       });
       state.children = data;
     },
-
     setEditorTextValue: (state, action) => {
       Object.keys(state.children).map((el) => {
         if (el.id === action.payload.id) {
@@ -389,6 +407,7 @@ export const {
   setSelectLink,
   setSelectedContent,
   setChecked,
+  setAlignMent,
   setSize,
   setFontFamily
 } = builderSlice.actions;

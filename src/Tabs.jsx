@@ -144,6 +144,10 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+                    <AlignMent
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                     <MarginStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
