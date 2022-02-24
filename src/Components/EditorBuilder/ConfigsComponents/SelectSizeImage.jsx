@@ -1,9 +1,5 @@
-import Box from "@mui/material/Box";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import React from "react";
+import { Select, MenuItem, Grid, FormControl, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setSize } from "../../../redux/builderSlice";
 
@@ -23,24 +19,28 @@ export default function SelectSizeImage({ selectedComponentData, content }) {
     dispatch(setSize({ id: content, value: event.target.value }));
   };
   return (
-    <Box sx={{ minWidth: 120 }} className={"font-box-select"}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Width</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={width}
-          label="width"
-          onChange={handleImageChange}
-        >
-          <MenuItem value={"150"}>Sans-Serif</MenuItem>
-          <MenuItem value={"100"}>Verdana</MenuItem>
-          <MenuItem value={"200"}>Cursive</MenuItem>
-          <MenuItem value={"600"}>Monospace</MenuItem>
-          <MenuItem value={"400"}>Courier</MenuItem>
-          <MenuItem value={"1000"}>Optima</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <Grid className="grid-container-image-size">
+      <p id="demo-simple-select-label">Width</p>
+      <Box sx={{ minWidth: 120 }} className={"image-size-box"}>
+        <FormControl>
+          <Select
+            value={width}
+            onChange={handleImageChange}
+            displayEmpty
+            // inputProps={{ "aria-label": "Without label" }}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"150"}>150px</MenuItem>
+            <MenuItem value={"100"}>100px</MenuItem>
+            <MenuItem value={"200"}>200px</MenuItem>
+            <MenuItem value={"600"}>600px</MenuItem>
+            <MenuItem value={"400"}>400px</MenuItem>
+            <MenuItem value={"1000"}>1000px</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+    </Grid>
   );
 }

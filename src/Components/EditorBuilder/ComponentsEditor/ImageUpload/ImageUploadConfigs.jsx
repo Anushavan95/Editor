@@ -1,29 +1,28 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
-  Select,
+  Checkbox,
   FormControl,
   MenuItem,
+  Select,
   TextField,
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Checkbox
+  Typography
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import SettingsIcon from "../../../../images/svg/settings-link.svg";
 import {
+  selectChecked,
   selectLink,
   selectLinkValue,
+  setChecked,
   setImage,
   setLinkValue,
-  selectChecked,
-  setChecked,
-  setSelectLink,
-  selectSize,
-  setSize
+  setSelectLink
 } from "../../../../redux/builderSlice";
-import SettingsIcon from "../../../../images/svg/settings-link.svg";
+import "../../ConfigsComponents/index.css";
 
 export default function ImageUploadConfigs({ content, selectedComponentData }) {
   const dispatch = useDispatch();
@@ -79,7 +78,7 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
         ></Box>
       </label>
       <Box>
-        <Box>
+        <Box className="link-to-image-box">
           <Typography variant="p">Link</Typography>
           <FormControl>
             <Select
