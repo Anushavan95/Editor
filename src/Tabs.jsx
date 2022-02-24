@@ -25,6 +25,7 @@ import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/Con
 import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
 import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
 import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUploadConfigs";
+import SelectSizeImage from "./Components/EditorBuilder/SelectSizeImage";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -108,6 +109,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+
                     <MarginStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -135,6 +137,10 @@ function Tabs(props) {
                 return (
                   <>
                     <ImageUploadConfigs
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <SelectSizeImage
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />

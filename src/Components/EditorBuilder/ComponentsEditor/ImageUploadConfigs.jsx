@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Select,
   FormControl,
-  Button,
   MenuItem,
   TextField,
   Typography,
@@ -20,19 +19,18 @@ import {
   setLinkValue,
   selectChecked,
   setChecked,
-  setSelectLink
+  setSelectLink,
+  selectSize,
+  setSize
 } from "../../../redux/builderSlice";
 import SettingsIcon from "../../../images/svg/settings-link.svg";
-import PlaceHolderImage from "../../../images/placeholder.png";
 
 export default function ImageUploadConfigs({ content, selectedComponentData }) {
-  console.log(selectedComponentData, "selectedComponentData");
-  const [imageBg, setimageBg] = useState("");
   const dispatch = useDispatch();
   const linkSelected = useSelector(selectLink);
   const linkValue = useSelector(selectLinkValue);
+
   const checked = useSelector(selectChecked);
-  console.log(imageBg, "imageBg");
   const handleChangeCheckbox = (event) => {
     dispatch(setChecked(event.target.checked));
   };
@@ -55,14 +53,6 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
       });
     }
   };
-  // useEffect(() => {
-  //   let a = selectedComponentData.images.map((item) => {
-  //     console.log(item, "item");
-  //     return item.imageUpload;
-  //   });
-  //   console.log(a, "a");
-  //   setimageBg(a);
-  // }, []);
 
   return (
     <Box>
@@ -89,20 +79,22 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
         ></Box>
       </label>
       <Box>
-        <Typography variant="p">Link</Typography>
-        <FormControl>
-          <Select
-            value={linkSelected}
-            onChange={handleChange}
-            displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"url"}>Custom URL</MenuItem>
-          </Select>
-        </FormControl>
+        <Box>
+          <Typography variant="p">Link</Typography>
+          <FormControl>
+            <Select
+              value={linkSelected}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"url"}>Custom URL</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
         <Box>
           {linkSelected === "url" ? (
             <>

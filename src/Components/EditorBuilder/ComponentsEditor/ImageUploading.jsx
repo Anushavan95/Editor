@@ -1,16 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PlaceHolderImage from "../../../images/placeholder.png";
-import { selectChecked, selectLinkValue } from "../../../redux/builderSlice";
+import {
+  selectChecked,
+  selectLinkValue,
+  selectSize
+} from "../../../redux/builderSlice";
 
 export default function ImageUploadingApp({ image, styles }) {
   const linkValue = useSelector(selectLinkValue);
   const checked = useSelector(selectChecked);
-
-  // const srcImage = image.length > 0 ? image : image;
-
+  const sizeImage = useSelector(selectSize);
   const imageStyles = {
-    width: "100%"
+    width: sizeImage == "" ? "100%" : sizeImage
   };
   return (
     <div>
