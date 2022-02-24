@@ -50,6 +50,7 @@ const Component = ({
   let image = [];
   let color = "";
   let width = "";
+  let align = "";
   console.log(width, "ww");
   const component = components[data.id];
   componentData.settings.map((item) => {
@@ -78,6 +79,8 @@ const Component = ({
             return (color = item.color);
           case "sizeWidth":
             return (width = item.sizeWidth);
+          case "align":
+            return (align = item.align);
           default:
             return false;
         }
@@ -95,6 +98,11 @@ const Component = ({
     });
   });
 
+  const parentStyles = {
+    textAlign: `${align}`,
+    width: "200px"
+  };
+  console.log(parentStyles, "align");
   const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
     padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
@@ -108,7 +116,13 @@ const Component = ({
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
-        return <ImageUploadingApp image={image} styles={styles} />;
+        return (
+          <ImageUploadingApp
+            image={image}
+            styles={styles}
+            parentStyles={parentStyles}
+          />
+        );
       case "Editor":
         return <ContentEditableText />;
       case "Heading":

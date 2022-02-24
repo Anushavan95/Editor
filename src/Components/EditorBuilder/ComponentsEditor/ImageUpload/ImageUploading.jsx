@@ -6,7 +6,7 @@ import {
   selectSize
 } from "../../../../redux/builderSlice";
 
-export default function ImageUploadingApp({ image, styles }) {
+export default function ImageUploadingApp({ image, styles, parentStyles }) {
   const linkValue = useSelector(selectLinkValue);
   const checked = useSelector(selectChecked);
   const sizeImage = useSelector(selectSize);
@@ -14,7 +14,7 @@ export default function ImageUploadingApp({ image, styles }) {
     width: sizeImage == "" ? "100%" : sizeImage
   };
   return (
-    <div>
+    <div style={parentStyles}>
       {linkValue !== "" ? (
         <a href={linkValue} target={checked ? "_blank" : ""}>
           <img src={image} alt="Image_Upload" style={imageStyles} />

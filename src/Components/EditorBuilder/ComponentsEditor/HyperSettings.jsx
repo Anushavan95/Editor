@@ -1,15 +1,12 @@
+import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-///import { selectHyperLink, setHyperLink } from '../../../redux/mySlice'
+import { useDispatch } from "react-redux";
 
 export default function HyperSettings() {
   /// const hyperLink = useSelector(selectHyperLink)
   const dispatch = useDispatch();
-  const handleHyperChange = (event) => {
-    ///dispatch(setHyperLink(event.target.value))
-  };
+  const handleHyperChange = (event) => {};
 
   return (
     <Box className="input-settings">
