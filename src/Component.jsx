@@ -49,6 +49,8 @@ const Component = ({
   let fontFamily = "";
   let image = [];
   let color = "";
+  let width = "";
+  console.log(width, "ww");
   const component = components[data.id];
   componentData.settings.map((item) => {
     Object.keys(item).forEach((key) => {
@@ -74,6 +76,8 @@ const Component = ({
             return (fontFamily = item.fontFamily);
           case "color":
             return (color = item.color);
+          case "sizeWidth":
+            return (width = item.sizeWidth);
           default:
             return false;
         }
@@ -95,7 +99,8 @@ const Component = ({
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
     padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
     fontFamily: `${fontFamily}`,
-    color: color
+    color: color,
+    width: `${width}px`
   };
 
   setTree[rowIndex][column][item] = componentData.id;
