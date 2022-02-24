@@ -1,0 +1,6 @@
+.link-to-image-box,
+.grid-container-image-size {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
