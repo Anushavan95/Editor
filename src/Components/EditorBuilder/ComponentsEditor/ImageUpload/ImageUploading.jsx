@@ -4,7 +4,7 @@ import {
   selectChecked,
   selectLinkValue,
   selectSize
-} from "../../../redux/builderSlice";
+} from "../../../../redux/builderSlice";
 
 export default function ImageUploadingApp({ image, styles }) {
   const linkValue = useSelector(selectLinkValue);

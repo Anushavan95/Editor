@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { COMPONENT } from "./Components/EditorBuilder/Config/constants";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
-import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
+import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUpload/ImageUploading";
 
 import { setSelectedContent } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";

@@ -22,8 +22,8 @@ import {
   setSelectLink,
   selectSize,
   setSize
-} from "../../../redux/builderSlice";
-import SettingsIcon from "../../../images/svg/settings-link.svg";
+} from "../../../../redux/builderSlice";
+import SettingsIcon from "../../../../images/svg/settings-link.svg";
 
 export default function ImageUploadConfigs({ content, selectedComponentData }) {
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setFontFamily } from "../../redux/builderSlice";
+import { setFontFamily } from "../../../redux/builderSlice";
 
 export default function SelectFontFamily({ selectedComponentData, content }) {
   const dispatch = useDispatch();

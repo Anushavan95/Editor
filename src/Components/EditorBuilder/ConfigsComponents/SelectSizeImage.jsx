@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setSize } from "../../redux/builderSlice";
+import { setSize } from "../../../redux/builderSlice";
 
 export default function SelectSizeImage({ selectedComponentData, content }) {
   const dispatch = useDispatch();

@@ -1,77 +1,78 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import LinkIcon from "../../images/link.svg";
+import { useDispatch } from "react-redux";
+import LinkIcon from "../../../images/link.svg";
 import {
-  setPaddingBottom,
-  setPaddingLeft,
-  setPaddingRight,
-  setPaddingTop
-} from "../../redux/builderSlice";
-import { ReactComponent as HeadingSvg } from "../../images/svg/heading.svg";
+  setMarginBottom,
+  setMarginLeft,
+  setMarginRight,
+  setMarginTop
+} from "../../../redux/builderSlice";
 
-export default function PaddingStyles({ content, selectedComponentData }) {
+import { ReactComponent as HeadingSvg } from "../../../images/svg/heading.svg";
+
+export default function MarginStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
-
   const dispatch = useDispatch();
   let top = 0;
   let right = 0;
   let bottom = 0;
   let left = 0;
+
   const allChanges = () => {
     setChange(!change);
   };
   selectedComponentData.settings.map((item) => {
     switch (Object.keys(item)[0]) {
-      case "paddingTop":
+      case "marginTop":
         return (top = Object.values(item));
-      case "paddingRight":
+      case "marginRight":
         return (right = Object.values(item));
-      case "paddingBottom":
-        return (bottom = Object.values(item));
-      case "paddingLeft":
+      case "marginLeft":
         return (left = Object.values(item));
+      case "marginBottom":
+        return (bottom = Object.values(item));
       default:
         return null;
     }
   });
   const handleTopChange = (event) => {
-    dispatch(setPaddingTop({ id: content, value: event.target.value }));
+    dispatch(setMarginTop({ id: content, value: event.target.value }));
     if (change === true) {
-      dispatch(setPaddingRight({ id: content, value: event.target.value }));
-      dispatch(setPaddingBottom({ id: content, value: event.target.value }));
-      dispatch(setPaddingLeft({ id: content, value: event.target.value }));
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
     }
   };
   const handleRightChange = (event) => {
-    dispatch(setPaddingRight({ id: content, value: event.target.value }));
+    dispatch(setMarginRight({ id: content, value: event.target.value }));
     if (change === true) {
-      dispatch(setPaddingTop({ id: content, value: event.target.value }));
-      dispatch(setPaddingBottom({ id: content, value: event.target.value }));
-      dispatch(setPaddingLeft({ id: content, value: event.target.value }));
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
     }
   };
   const handleBottomChange = (event) => {
-    dispatch(setPaddingBottom({ id: content, value: event.target.value }));
+    dispatch(setMarginBottom({ id: content, value: event.target.value }));
     if (change === true) {
-      dispatch(setPaddingTop({ id: content, value: event.target.value }));
-      dispatch(setPaddingRight({ id: content, value: event.target.value }));
-      dispatch(setPaddingLeft({ id: content, value: event.target.value }));
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
     }
   };
   const handleLeftChange = (event) => {
-    dispatch(setPaddingLeft({ id: content, value: event.target.value }));
+    dispatch(setMarginLeft({ id: content, value: event.target.value }));
     if (change === true) {
-      dispatch(setPaddingRight({ id: content, value: event.target.value }));
-      dispatch(setPaddingBottom({ id: content, value: event.target.value }));
-      dispatch(setPaddingLeft({ id: content, value: event.target.value }));
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
     }
   };
 
   return (
     <div className="margin-component">
       <Box>
-        <b className="title-margin">Padding</b>
+        <b className="title-margin">Margin</b>
         <Button
           onClick={allChanges}
           className={`margin-all ${change ? "contained" : "outlined"}`}
@@ -79,6 +80,7 @@ export default function PaddingStyles({ content, selectedComponentData }) {
           startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
         />
       </Box>
+
       <Box className="margin-styles">
         <Box>
           <Typography variant="span">Left</Typography>
@@ -97,6 +99,7 @@ export default function PaddingStyles({ content, selectedComponentData }) {
           <Typography variant="span">Top</Typography>
           <TextField
             id="filled-number"
+            // label="Right"
             value={top}
             type="number"
             onChange={handleTopChange}
@@ -115,6 +118,7 @@ export default function PaddingStyles({ content, selectedComponentData }) {
           <Typography variant="span">Bottom</Typography>
           <TextField
             id="filled-number"
+            // label="Bottom"
             value={bottom}
             type="number"
             onChange={handleBottomChange}
@@ -128,6 +132,7 @@ export default function PaddingStyles({ content, selectedComponentData }) {
           <Typography variant="span">Right</Typography>
           <TextField
             id="filled-number"
+            // label="Left"
             value={right}
             type="number"
             onChange={handleRightChange}
