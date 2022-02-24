@@ -23,6 +23,7 @@ import {
   setSelectLink
 } from "../../../redux/builderSlice";
 import SettingsIcon from "../../../images/svg/settings-link.svg";
+import PlaceHolderImage from "../../../images/placeholder.png";
 
 export default function ImageUploadConfigs({ content, selectedComponentData }) {
   console.log(selectedComponentData, "selectedComponentData");
@@ -54,31 +55,39 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
       });
     }
   };
-  useEffect(() => {
-    let a = selectedComponentData.images.map((item) => {
-      return item.imageUpload;
-    });
-    console.log(a, "a");
-    setimageBg(a[0]);
-  }, []);
+  // useEffect(() => {
+  //   let a = selectedComponentData.images.map((item) => {
+  //     console.log(item, "item");
+  //     return item.imageUpload;
+  //   });
+  //   console.log(a, "a");
+  //   setimageBg(a);
+  // }, []);
+
   return (
     <Box>
-      <Box
-        style={{
-          backgroundImage: `url(${imageBg})`,
-          height: "200px",
-          width: "150px"
-        }}
-      >
+      <label>
         <TextField
           type="file"
           name="upload-photo"
+          className="FileUpload"
           onChange={onImageChange}
-          // InputProps={{
-          //   startAdornment:
-          // }}
+          id="drop_zone"
         />
-      </Box>
+        <Box
+          style={{
+            backgroundImage: `url(${selectedComponentData.images[0].imageUpload})`,
+            backgroundSize: "100% 100%",
+            backgroundRepeat: "no-repeat",
+            height: "200px",
+            width: "250px",
+            position: "relative",
+            top: "-44px",
+            cursor: "pointer"
+          }}
+          className="dropZoneOverlay"
+        ></Box>
+      </label>
       <Box>
         <Typography variant="p">Link</Typography>
         <FormControl>

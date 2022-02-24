@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
 import RichTextEditor from "react-rte";
+import PlaceHolderImage from "../images/placeholder.png";
 
 const initialState = {
   componentEntry: "",
@@ -305,7 +306,7 @@ const builderSlice = createSlice({
               link: "",
               content: action.payload.content,
               name: "",
-              images: [],
+              images: [{ imageUpload: PlaceHolderImage }],
               settings: []
             }
           }

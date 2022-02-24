@@ -7,7 +7,7 @@ export default function ImageUploadingApp({ image, styles }) {
   const linkValue = useSelector(selectLinkValue);
   const checked = useSelector(selectChecked);
 
-  const srcImage = image.length > 0 ? image : PlaceHolderImage;
+  // const srcImage = image.length > 0 ? image : image;
 
   const imageStyles = {
     width: "100%"
@@ -16,12 +16,12 @@ export default function ImageUploadingApp({ image, styles }) {
     <div>
       {linkValue !== "" ? (
         <a href={linkValue} target={checked ? "_blank" : ""}>
-          <img src={srcImage} alt="Image_Upload" style={imageStyles} />
+          <img src={image} alt="Image_Upload" style={imageStyles} />
         </a>
       ) : (
         <React.Fragment>
           <img
-            src={srcImage}
+            src={image}
             alt="Image_Upload"
             className="image-upload"
             style={styles}
