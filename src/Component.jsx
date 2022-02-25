@@ -99,8 +99,7 @@ const Component = ({
   });
 
   const parentStyles = {
-    textAlign: `${align}`,
-    width: "200px"
+    textAlign: `${align}`
   };
   console.log(parentStyles, "align");
   const styles = {
