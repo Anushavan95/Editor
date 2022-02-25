@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
-import { useDrag } from "react-dnd";
-import { useDispatch, useSelector } from "react-redux";
-import { COMPONENT } from "./Components/EditorBuilder/Config/constants";
+import React, {useRef, useMemo, memo} from "react";
+import {useDrag} from "react-dnd";
+import {useDispatch, useSelector} from "react-redux";
+import {COMPONENT} from "./Components/EditorBuilder/Config/constants";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
 
-import { setSelectedContent } from "./redux/builderSlice";
+import {setSelectedContent, setSetTrees} from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
 // let lastIds;
-const Component = ({ data, componentData, components, path, layout, index, rowIndex, item, column ,setTree }) => {
+const Component = memo( ({data, componentData, components, path, layout, key, index, rowIndex, item, column, setTree}) => {
   // console.log("path", path)
   const dispatch = useDispatch();
 
   const ref = useRef(null);
-  const [{ isDragging }, drag] = useDrag({
-    item: { type: COMPONENT, id: data.id, path },
+  const [{isDragging}, drag] = useDrag({
+    item: {type: COMPONENT, id: data.id, path},
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
@@ -87,19 +87,21 @@ const Component = ({ data, componentData, components, path, layout, index, rowIn
     color: color
   };
 
-  setTree[rowIndex][column][item] = componentData.id ;
- /// console.log(image, "lalala");
-  console.log(setTree)
+
+  setTree[rowIndex][column][item] = componentData.id;
+  console.log(setTree[rowIndex][column], "__setTree[rowIndex][column]__")
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
-        return <ImageUploadingApp image={image} />;
+        return <ImageUploadingApp key={componentData.id} image={image}/>;
       case "Editor":
-        return <ContentEditableText />;
+        return <ContentEditableText/>;
       case "Heading":
         let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
+        // dispatch(setSetTrees(setTree));
         return (
           <Heading
+            key={componentData.id}
             styles={styles}
             tagEntry={tagEntry}
             componentData={componentData}
@@ -107,7 +109,7 @@ const Component = ({ data, componentData, components, path, layout, index, rowIn
           />
         );
       case "HyperLink":
-        return <HyperLink layout={layout} />;
+        return <HyperLink key={componentData.id} layout={layout}/>;
       default:
         break;
     }
@@ -115,5 +117,5 @@ const Component = ({ data, componentData, components, path, layout, index, rowIn
     return <></>;
   }
 
-};
+});
 export default Component;

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
 import axios from "axios";
 import RichTextEditor from "react-rte";
 
@@ -9,6 +9,7 @@ const initialState = {
   selected: "",
   products: [],
   children: [],
+  setTree: [],
   initialLayout: []
 };
 
@@ -60,7 +61,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.images.push({ imageUpload: action.payload.value });
+            el.images.push({imageUpload: action.payload.value});
           }
         }
       });
@@ -79,7 +80,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ fontFamily: action.payload.value });
+            el.settings.push({fontFamily: action.payload.value});
           }
         }
       });
@@ -98,7 +99,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ color: action.payload.value });
+            el.settings.push({color: action.payload.value});
           }
         }
       });
@@ -113,7 +114,14 @@ const builderSlice = createSlice({
       });
     },
     setSelectedContent: (state, action) => {
+
       state.selected = action.payload;
+    },
+
+    setSetTrees: (state, action) => {
+      // console.log(action.payload,'_____________state')
+      state.setTree = [...action.payload];
+// console.log(state)
     },
 
     /////FIXME THINK ABOUT THIS
@@ -130,7 +138,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginTop: action.payload.value });
+            el.settings.push({marginTop: action.payload.value});
           }
         }
       });
@@ -153,7 +161,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginRight: action.payload.value });
+            el.settings.push({marginRight: action.payload.value});
           }
         }
       });
@@ -172,7 +180,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginBottom: action.payload.value });
+            el.settings.push({marginBottom: action.payload.value});
           }
         }
       });
@@ -191,7 +199,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginLeft: action.payload.value });
+            el.settings.push({marginLeft: action.payload.value});
           }
         }
       });
@@ -212,7 +220,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingTop: action.payload.value });
+            el.settings.push({paddingTop: action.payload.value});
           }
         }
       });
@@ -238,7 +246,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingRight: action.payload.value });
+            el.settings.push({paddingRight: action.payload.value});
           }
         }
       });
@@ -256,7 +264,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingBottom: action.payload.value });
+            el.settings.push({paddingBottom: action.payload.value});
           }
         }
       });
@@ -274,7 +282,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingLeft: action.payload.value });
+            el.settings.push({paddingLeft: action.payload.value});
           }
         }
       });
@@ -294,7 +302,7 @@ const builderSlice = createSlice({
               content: action.payload.content,
               name: "",
               images: [],
-              settings: []
+              settings: [],
             }
           }
         ];
@@ -353,7 +361,8 @@ export const {
   setComponentEntry,
   setContent,
   setSelectedContent,
-  setFontFamily
+  setFontFamily,
+  setSetTrees,
 } = builderSlice.actions;
 export const selectChildren = (state) => state.component.children;
 export const selectAddedImages = (state) => state.component.children;

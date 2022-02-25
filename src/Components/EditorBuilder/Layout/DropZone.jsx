@@ -1,12 +1,12 @@
-import React from "react";
+import React, {memo} from "react";
 import classNames from "classnames";
-import { useDrop } from "react-dnd";
-import { COMPONENT, SIDEBAR_ITEM, ROW, COLUMN } from "../Config/constants";
+import {useDrop} from "react-dnd";
+import {COMPONENT, SIDEBAR_ITEM, ROW, COLUMN} from "../Config/constants";
 
 const ACCEPTS = [SIDEBAR_ITEM, COMPONENT, ROW, COLUMN];
 
-const DropZone = ({ data, onDrop, isLast, className }) => {
-  const [{ isOver, canDrop }, drop] = useDrop({
+const DropZone = memo(({data, onDrop, isLast, className}) => {
+  const [{isOver, canDrop}, drop] = useDrop({
     accept: ACCEPTS,
     drop: (item, monitor) => {
       onDrop(data, item);
@@ -72,11 +72,11 @@ const DropZone = ({ data, onDrop, isLast, className }) => {
     <div
       className={classNames(
         "dropZone",
-        { active: isActive, isLast },
+        {active: isActive, isLast},
         className
       )}
       ref={drop}
     />
   );
-};
+});
 export default DropZone;

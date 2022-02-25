@@ -149,6 +149,9 @@ function Tabs(props) {
             }
           })(onChange)}
         </TabPanel>
+        <Button style={{ width:"96%", marginTop:20, marginLeft: "2%"}} variant="contained">
+          Save
+        </Button>
       </TabContext>
     </Box>
   );

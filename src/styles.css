@@ -112,7 +112,7 @@ body {
 }
 
 .column {
-  border: 1px solid #244d7a;
+  /*border: 1px solid #244d7a;*/
   /* flex: 1 1 100%; */
   padding: 10px;
   width: 100%;
@@ -134,7 +134,7 @@ body {
 }
 
 .row-editor {
-  border: 1px solid #4992e2;
+  /*border: 1px solid #4992e2;*/
   padding: 0;
 }
 
