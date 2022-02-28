@@ -1,17 +1,12 @@
-import { Button, TextField }             from '@mui/material'
-import { Box }                           from '@mui/system'
-import React, { useState }               from 'react'
-import { useDispatch, useSelector }      from 'react-redux'
-///import { selectHyperLink, setHyperLink } from '../../../redux/mySlice'
+import React from "react";
+import { Button, TextField } from "@mui/material";
+import { Box } from "@mui/system";
+import { useDispatch } from "react-redux";
 
-
-
-export default function HyperSettings () {
- /// const hyperLink = useSelector(selectHyperLink)
-  const dispatch = useDispatch()
-  const handleHyperChange = (event) => {
-   ///dispatch(setHyperLink(event.target.value))
-  }
+export default function HyperSettings() {
+  /// const hyperLink = useSelector(selectHyperLink)
+  const dispatch = useDispatch();
+  const handleHyperChange = (event) => {};
 
   return (
     <Box className="input-settings">
@@ -19,7 +14,7 @@ export default function HyperSettings () {
         className="link"
         label="HyperLink"
         id="outlined-size-small"
-        value={''}
+        value={""}
         onChange={handleHyperChange}
         size="small"
       />
@@ -31,5 +26,5 @@ export default function HyperSettings () {
       />
       <Button variant="contained">handleSubmit</Button>
     </Box>
-  )
+  );
 }

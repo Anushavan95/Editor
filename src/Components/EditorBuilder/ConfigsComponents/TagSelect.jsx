@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useDispatch, useSelector } from "react-redux";
-import { selectChildren } from "../../redux/builderSlice";
+import { selectChildren } from "../../../redux/builderSlice";
 
 export default function BasicSelect({ selectedComponentData, content }) {
   const dispatch = useDispatch();

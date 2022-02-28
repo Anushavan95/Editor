@@ -3,7 +3,7 @@ import {useDrag} from "react-dnd";
 import {useDispatch, useSelector} from "react-redux";
 import {COMPONENT} from "./Components/EditorBuilder/Config/constants";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
-import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUploading";
+import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/ImageUpload/ImageUploading";
 
 import {setSelectedContent, setSetTrees} from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
@@ -14,8 +14,8 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
   const dispatch = useDispatch();
 
   const ref = useRef(null);
-  const [{isDragging}, drag] = useDrag({
-    item: {type: COMPONENT, id: data.id, path},
+  const [{ isDragging }, drag] = useDrag({
+    item: { type: COMPONENT, id: data.id, path },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
@@ -38,6 +38,9 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
   let fontFamily = "";
   let image = [];
   let color = "";
+  let width = "";
+  let align = "";
+  console.log(width, "ww");
   const component = components[data.id];
   componentData.settings.map((item) => {
     Object.keys(item).forEach((key) => {
@@ -63,6 +66,10 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
             return (fontFamily = item.fontFamily);
           case "color":
             return (color = item.color);
+          case "sizeWidth":
+            return (width = item.sizeWidth);
+          case "align":
+            return (align = item.align);
           default:
             return false;
         }
@@ -80,25 +87,36 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
     });
   });
 
+  const parentStyles = {
+    textAlign: `${align}`
+  };
+  console.log(parentStyles, "align");
   const styles = {
     margin: `${top}px  ${right}px ${bottom}px ${left}px`,
     padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
     fontFamily: `${fontFamily}`,
-    color: color
+    color: color,
+    width: `${width}px`
   };
 
-
   setTree[rowIndex][column][item] = componentData.id;
-  console.log(setTree[rowIndex][column], "__setTree[rowIndex][column]__")
+
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
         return <ImageUploadingApp key={componentData.id} image={image}/>;
+        return (
+          <ImageUploadingApp
+            image={image}
+            styles={styles}
+            parentStyles={parentStyles}
+            key={componentData.id}
+          />
+        );
       case "Editor":
-        return <ContentEditableText/>;
+        return <ContentEditableText />;
       case "Heading":
         let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
-        // dispatch(setSetTrees(setTree));
         return (
           <Heading
             key={componentData.id}

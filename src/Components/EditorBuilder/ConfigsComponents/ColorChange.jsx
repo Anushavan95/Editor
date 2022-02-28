@@ -1,7 +1,7 @@
 import { InputLabel, TextField, Box } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setColor } from "../../redux/builderSlice";
+import { setColor } from "../../../redux/builderSlice";
 
 export default function ColorChange({ selectedComponentData, content }) {
   const dispatch = useDispatch();

@@ -7,10 +7,10 @@ import Tab from "@mui/material/Tab";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AlignMent from "./AlignMent";
-import ColorChange from "./Components/EditorBuilder/ColorChange";
+import ColorChange from "./Components/EditorBuilder/ConfigsComponents/ColorChange";
 import HyperSettings from "./Components/EditorBuilder/ComponentsEditor/HyperSettings";
-import MarginStyles from "./Components/EditorBuilder/MarginStyles";
-import PaddingStyles from "./Components/EditorBuilder/PaddingStyles";
+import MarginStyles from "./Components/EditorBuilder/ConfigsComponents/MarginStyles";
+import PaddingStyles from "./Components/EditorBuilder/ConfigsComponents/PaddingStyles";
 import {
   selectAddedImages,
   selectedContent,
@@ -19,18 +19,19 @@ import {
   setEditorTextValue,
   setTab
 } from "./redux/builderSlice";
-import SelectFontFamily from "./Components/EditorBuilder/SelectFontFamily";
-import BasicSelect from "./Components/EditorBuilder/TagSelect";
+import SelectFontFamily from "./Components/EditorBuilder/ConfigsComponents/SelectFontFamily";
+import BasicSelect from "./Components/EditorBuilder/ConfigsComponents/TagSelect";
 import ContentEditableText from "./Components/EditorBuilder/ComponentsEditor/ContentEditable";
 import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
 import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
-import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUploadConfigs";
+import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUpload/ImageUploadConfigs";
+import SelectSizeImage from "./Components/EditorBuilder/ConfigsComponents/SelectSizeImage";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
 
   const dispatch = useDispatch();
-  const imag = useSelector(selectAddedImages);
+  // const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const content = useSelector(selectedContent);
 
@@ -108,6 +109,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
+
                     <MarginStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -133,16 +135,29 @@ function Tabs(props) {
 
               case "ImageUpload":
                 return (
-                  <ImageUploadConfigs
-                    content={content}
-                    selectedComponentData={selectedComponentData}
-                  />
-                );
-              case "button":
-                return (
-                  <Button style={{ marginTop: "150px" }} variant="contained">
-                    handleSave
-                  </Button>
+                  <>
+                    <ImageUploadConfigs
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <SelectSizeImage
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <AlignMent
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                    <MarginStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+
+                    <PaddingStyles
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
+                  </>
                 );
               default:
                 return "";

@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
 import axios from "axios";
 import RichTextEditor from "react-rte";
+import PlaceHolderImage from "../images/placeholder.png";
 
 const initialState = {
   componentEntry: "",
@@ -9,8 +10,12 @@ const initialState = {
   selected: "",
   products: [],
   children: [],
-  setTree: [],
-  initialLayout: []
+  initialLayout: [],
+  linkValue: "",
+  selectLink: "",
+  checked: false,
+  selectSize: "",
+  setTree: []
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -41,12 +46,59 @@ const builderSlice = createSlice({
     setTab: (state, action) => {
       state.tab = action.payload;
     },
+    setLinkValue: (state, action) => {
+      state.linkValue = action.payload;
+    },
+    setSelectLink: (state, action) => {
+      state.selectLink = action.payload;
+    },
+    setChecked: (state, action) => {
+      state.checked = !state.checked;
+    },
+    setSize: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "sizeWidth") {
+              check = true;
+              item.sizeWidth = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ sizeWidth: action.payload.value });
+          }
+        }
+      });
+      state.children = data;
+    },
     setTag: (state, action) => {
       // Object.keys(state.children).map((el) => {
       //   if (el.id === action.payload.id) {
       //     el.tag = action.payload.value;
       //   }
       // });
+    },
+    setAlignMent: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          let check = false;
+          el.settings.map((item) => {
+            if (Object.keys(item) == "align") {
+              check = true;
+              item.align = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.settings.push({ align: action.payload.value });
+          }
+        }
+      });
+      state.children = data;
     },
     setImage: (state, action) => {
       let data = state.children;
@@ -61,7 +113,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.images.push({imageUpload: action.payload.value});
+            el.images.push({ imageUpload: action.payload.value });
           }
         }
       });
@@ -80,7 +132,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({fontFamily: action.payload.value});
+            el.settings.push({ fontFamily: action.payload.value });
           }
         }
       });
@@ -99,13 +151,12 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({color: action.payload.value});
+            el.settings.push({ color: action.payload.value });
           }
         }
       });
       state.children = data;
     },
-
     setEditorTextValue: (state, action) => {
       Object.keys(state.children).map((el) => {
         if (el.id === action.payload.id) {
@@ -138,7 +189,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginTop: action.payload.value});
+            el.settings.push({ marginTop: action.payload.value });
           }
         }
       });
@@ -161,7 +212,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginRight: action.payload.value});
+            el.settings.push({ marginRight: action.payload.value });
           }
         }
       });
@@ -180,7 +231,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginBottom: action.payload.value});
+            el.settings.push({ marginBottom: action.payload.value });
           }
         }
       });
@@ -199,7 +250,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginLeft: action.payload.value});
+            el.settings.push({ marginLeft: action.payload.value });
           }
         }
       });
@@ -220,7 +271,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingTop: action.payload.value});
+            el.settings.push({ paddingTop: action.payload.value });
           }
         }
       });
@@ -246,7 +297,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingRight: action.payload.value});
+            el.settings.push({ paddingRight: action.payload.value });
           }
         }
       });
@@ -264,7 +315,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingBottom: action.payload.value});
+            el.settings.push({ paddingBottom: action.payload.value });
           }
         }
       });
@@ -282,7 +333,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingLeft: action.payload.value});
+            el.settings.push({ paddingLeft: action.payload.value });
           }
         }
       });
@@ -301,8 +352,8 @@ const builderSlice = createSlice({
               link: "",
               content: action.payload.content,
               name: "",
-              images: [],
-              settings: [],
+              images: [{ imageUpload: PlaceHolderImage }],
+              settings: []
             }
           }
         ];
@@ -360,9 +411,14 @@ export const {
   setPaddingLeft,
   setComponentEntry,
   setContent,
+  setLinkValue,
+  setSelectLink,
   setSelectedContent,
   setFontFamily,
   setSetTrees,
+  setChecked,
+  setAlignMent,
+  setSize,
 } = builderSlice.actions;
 export const selectChildren = (state) => state.component.children;
 export const selectAddedImages = (state) => state.component.children;
@@ -383,5 +439,9 @@ export const selectPaddingLeft = (state) => state.children;
 export const selectHeading = (state) => state.component.heading;
 export const selectInitialLayout = (state) => state.component.initialLayout;
 export const selectID = (state) => state.component.heading.id;
+export const selectLinkValue = (state) => state.component.linkValue;
+export const selectLink = (state) => state.component.selectLink;
+export const selectChecked = (state) => state.component.checked;
+export const selectSize = (state) => state.component.selectSize;
 
 export default builderSlice.reducer;
