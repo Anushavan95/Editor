@@ -10,12 +10,12 @@ const initialState = {
   selected: "",
   products: [],
   children: [],
+  setTree: [],
   initialLayout: [],
   linkValue: "",
   selectLink: "",
   checked: false,
-  selectSize: "",
-  setTree: []
+  selectSize: ""
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -113,7 +113,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.images.push({ imageUpload: action.payload.value });
+            el.images.push({imageUpload: action.payload.value});
           }
         }
       });
@@ -132,7 +132,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ fontFamily: action.payload.value });
+            el.settings.push({fontFamily: action.payload.value});
           }
         }
       });
@@ -151,7 +151,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ color: action.payload.value });
+            el.settings.push({color: action.payload.value});
           }
         }
       });
@@ -189,7 +189,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginTop: action.payload.value });
+            el.settings.push({marginTop: action.payload.value});
           }
         }
       });
@@ -212,7 +212,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginRight: action.payload.value });
+            el.settings.push({marginRight: action.payload.value});
           }
         }
       });
@@ -231,7 +231,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginBottom: action.payload.value });
+            el.settings.push({marginBottom: action.payload.value});
           }
         }
       });
@@ -250,7 +250,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ marginLeft: action.payload.value });
+            el.settings.push({marginLeft: action.payload.value});
           }
         }
       });
@@ -271,7 +271,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingTop: action.payload.value });
+            el.settings.push({paddingTop: action.payload.value});
           }
         }
       });
@@ -297,7 +297,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingRight: action.payload.value });
+            el.settings.push({paddingRight: action.payload.value});
           }
         }
       });
@@ -315,7 +315,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingBottom: action.payload.value });
+            el.settings.push({paddingBottom: action.payload.value});
           }
         }
       });
@@ -333,7 +333,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ paddingLeft: action.payload.value });
+            el.settings.push({paddingLeft: action.payload.value});
           }
         }
       });
@@ -414,11 +414,11 @@ export const {
   setLinkValue,
   setSelectLink,
   setSelectedContent,
-  setFontFamily,
   setSetTrees,
   setChecked,
   setAlignMent,
   setSize,
+  setFontFamily
 } = builderSlice.actions;
 export const selectChildren = (state) => state.component.children;
 export const selectAddedImages = (state) => state.component.children;

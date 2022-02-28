@@ -584,3 +584,39 @@ body {
 .text-helper {
   text-align: right !important;
 }
+
+
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  width: initial !important;
+}
+
+.settingsIcon {
+  width: 15px;
+}
+
+.image-upload {
+  width: 100%;
+}
+
+.dropZoneOverlay,
+.FileUpload {
+  width: 250px;
+  height: 71px;
+}
+
+.dropZoneOverlay {
+  border: dotted 1px;
+  font-family: cursive;
+  color: #7066fb;
+  position: absolute;
+  top: 0px;
+  text-align: center;
+}
+
+.FileUpload {
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+

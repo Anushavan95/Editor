@@ -10,12 +10,13 @@ import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
 // let lastIds;
 const Component = memo( ({data, componentData, components, path, layout, key, index, rowIndex, item, column, setTree}) => {
+
   // console.log("path", path)
   const dispatch = useDispatch();
 
   const ref = useRef(null);
-  const [{ isDragging }, drag] = useDrag({
-    item: { type: COMPONENT, id: data.id, path },
+  const [{isDragging}, drag] = useDrag({
+    item: {type: COMPONENT, id: data.id, path},
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
@@ -99,24 +100,25 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
     width: `${width}px`
   };
 
+
   setTree[rowIndex][column][item] = componentData.id;
 
   if (componentData) {
     switch (componentData.content) {
       case "ImageUpload":
-        return <ImageUploadingApp key={componentData.id} image={image}/>;
         return (
           <ImageUploadingApp
+            key={componentData.id}
             image={image}
             styles={styles}
             parentStyles={parentStyles}
-            key={componentData.id}
           />
         );
       case "Editor":
-        return <ContentEditableText />;
+        return <ContentEditableText/>;
       case "Heading":
         let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
+        // dispatch(setSetTrees(setTree));
         return (
           <Heading
             key={componentData.id}
@@ -134,6 +136,6 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
   } else {
     return <></>;
   }
-
 });
+
 export default Component;

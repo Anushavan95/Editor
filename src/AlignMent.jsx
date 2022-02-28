@@ -6,14 +6,16 @@ import { useDispatch } from "react-redux";
 export default function AlignMent({ content, selectedComponentData }) {
   const dispatch = useDispatch();
   let align = "";
-  selectedComponentData.settings.map((item) => {
-    switch (Object.keys(item)[0]) {
-      case "align":
-        return (align = Object.values(item));
-      default:
-        return null;
-    }
-  });
+  if(selectedComponentData){
+    selectedComponentData.settings.map((item) => {
+      switch (Object.keys(item)[0]) {
+        case "align":
+          return (align = Object.values(item));
+        default:
+          return null;
+      }
+    });
+  }
   const handleAlignMentChange = (event) => {
     dispatch(setAlignMent({ id: content, value: event.target.value }));
   };
