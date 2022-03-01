@@ -29,6 +29,20 @@ export const postHtmlDataAsync = createAsyncThunk(
   }
 );
 
+export const postInitialData = createAsyncThunk(
+  "postHtmlInitialSata/post",
+  async (setTree, children) => {
+    const response = await axios.post(
+      `your url`,
+      {
+        setTree,
+        children
+      }
+    );
+    return response.data;
+  }
+);
+
 export const zegaProductsAsync = createAsyncThunk(
   "zegaProducts/post",
   async (data) => {
@@ -68,7 +82,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ sizeWidth: action.payload.value });
+            el.settings.push({sizeWidth: action.payload.value});
           }
         }
       });
@@ -94,7 +108,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({ align: action.payload.value });
+            el.settings.push({align: action.payload.value});
           }
         }
       });
@@ -352,7 +366,7 @@ const builderSlice = createSlice({
               link: "",
               content: action.payload.content,
               name: "",
-              images: [{ imageUpload: PlaceHolderImage }],
+              images: [{imageUpload: PlaceHolderImage}],
               settings: []
             }
           }
@@ -366,6 +380,9 @@ const builderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      //   .addCase(postInitialData.pending, (state, action) => {
+      //      state.yourstate = action.payload
+      // })
       .addCase(postHtmlDataAsync.pending, (state, action) => {
         state.dataObject.image = null;
       })
@@ -443,5 +460,6 @@ export const selectLinkValue = (state) => state.component.linkValue;
 export const selectLink = (state) => state.component.selectLink;
 export const selectChecked = (state) => state.component.checked;
 export const selectSize = (state) => state.component.selectSize;
+export const data = (state) => state.component;
 
 export default builderSlice.reducer;

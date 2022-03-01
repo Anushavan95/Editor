@@ -101,6 +101,7 @@ const Component = memo( ({data, componentData, components, path, layout, key, in
   };
 
 
+
   setTree[rowIndex][column][item] = componentData.id;
 
   if (componentData) {
