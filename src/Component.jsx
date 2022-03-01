@@ -53,6 +53,7 @@ const Component = memo(
     let color = "";
     let width = "";
     let align = "";
+    let richEditorValue = "";
     const component = components[data.id];
     componentData.settings.map((item) => {
       Object.keys(item).forEach((key) => {
@@ -98,7 +99,15 @@ const Component = memo(
         }
       });
     });
-
+    Object.keys(componentData).forEach((key) => {
+      if (key !== undefined) {
+        switch (key) {
+          case "textEditorValue":
+            return (richEditorValue = componentData.textEditorValue);
+        }
+      }
+    });
+    // console.log(, "richEditorValue");
     const parentStyles = {
       ["text-align"]: `${align}`
     };
@@ -124,7 +133,7 @@ const Component = memo(
             />
           );
         case "Editor":
-          return <ContentEditableText />;
+          return <ContentEditableText richEditorValue={richEditorValue} />;
         case "Heading":
           let tagEntry = `<${componentData.tag}>Your Heading</${componentData.tag}>`;
           return (
