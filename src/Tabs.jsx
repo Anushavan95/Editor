@@ -17,7 +17,9 @@ import {
   selectTab,
   selectChildren,
   setEditorTextValue,
-  setTab, data, postInitialData
+  setTab,
+  data,
+  postInitialData
 } from "./redux/builderSlice";
 import SelectFontFamily from "./Components/EditorBuilder/ConfigsComponents/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/ConfigsComponents/TagSelect";
@@ -58,8 +60,8 @@ function Tabs(props) {
   };
 
   function handlerClick() {
-    dispatch(postInitialData(data2.setTree,data2.children));
-    console.log()
+    dispatch(postInitialData(data2.setTree, data2.children));
+    console.log();
   }
 
   return (
@@ -133,7 +135,10 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <AlignMent />
+                    <AlignMent
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                   </section>
                 );
               case "HyperLink":
@@ -170,7 +175,11 @@ function Tabs(props) {
             }
           })(onChange)}
         </TabPanel>
-        <Button style={{ width:"96%", marginTop:20, marginLeft: "2%"}} onClick={handlerClick} variant="contained">
+        <Button
+          style={{ width: "96%", marginTop: 20, marginLeft: "2%" }}
+          onClick={handlerClick}
+          variant="contained"
+        >
           Save
         </Button>
       </TabContext>

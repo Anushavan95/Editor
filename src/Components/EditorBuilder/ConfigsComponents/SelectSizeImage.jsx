@@ -23,12 +23,7 @@ export default function SelectSizeImage({ selectedComponentData, content }) {
       <p id="demo-simple-select-label">Width</p>
       <Box sx={{ minWidth: 120 }} className={"image-size-box"}>
         <FormControl>
-          <Select
-            value={width}
-            onChange={handleImageChange}
-            displayEmpty
-            // inputProps={{ "aria-label": "Without label" }}
-          >
+          <Select value={width} onChange={handleImageChange} displayEmpty>
             <MenuItem value="">
               <em>None</em>
             </MenuItem>

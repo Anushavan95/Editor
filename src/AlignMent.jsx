@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 export default function AlignMent({ content, selectedComponentData }) {
   const dispatch = useDispatch();
   let align = "";
-  if(selectedComponentData){
+  if (selectedComponentData) {
     selectedComponentData.settings.map((item) => {
       switch (Object.keys(item)[0]) {
         case "align":

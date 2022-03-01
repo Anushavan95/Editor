@@ -1,8 +1,15 @@
 import React from "react";
 
-function Heading({ tagEntry, handleClick, componentData, styles }) {
+function Heading({
+  tagEntry,
+  handleClick,
+  componentData,
+  styles,
+  parentStyles
+}) {
+  console.log(parentStyles, "parentStyles");
   return (
-    <>
+    <div style={parentStyles}>
       <div
         style={styles}
         id={componentData.id}
@@ -12,7 +19,7 @@ function Heading({ tagEntry, handleClick, componentData, styles }) {
           __html: tagEntry
         }}
       />
-    </>
+    </div>
   );
 }
 
