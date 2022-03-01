@@ -134,13 +134,13 @@ const builderSlice = createSlice({
         if (el.id === action.payload.id) {
           let check = false;
           el.settings.map((item) => {
-            if (Object.keys(item) == "fontFamily") {
+            if (Object.keys(item) == "font-family") {
               check = true;
-              item.fontFamily = action.payload.value;
+              item["font-family"] = action.payload.value;
             }
           });
           if (!check) {
-            el.settings.push({ fontFamily: action.payload.value });
+            el.settings.push({ ["font-family"]: action.payload.value });
           }
         }
       });

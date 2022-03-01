@@ -74,8 +74,8 @@ const Component = memo(
               return (paddBottom = item.paddingBottom);
             case "paddingLeft":
               return (paddLeft = item.paddingLeft);
-            case "fontFamily":
-              return (fontFamily = item.fontFamily);
+            case "font-family":
+              return (fontFamily = item["font-family"]);
             case "color":
               return (color = item.color);
             case "width":
@@ -106,7 +106,7 @@ const Component = memo(
     const styles = {
       margin: `${top}px  ${right}px ${bottom}px ${left}px`,
       padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
-      fontFamily: `${fontFamily}`,
+      ["font-family"]: `${fontFamily}`,
       color: color,
       width: `${width}px`
     };
