@@ -37,7 +37,9 @@ export default function MarginStyles({ content, selectedComponentData }) {
     }
   });
   const handleTopChange = (event) => {
-    dispatch(setMarginTop({ id: content, value: event.target.value }));
+    if (top <= 500) {
+      dispatch(setMarginTop({ id: content, value: event.target.value }));
+    }
     if (change === true) {
       dispatch(setMarginRight({ id: content, value: event.target.value }));
       dispatch(setMarginBottom({ id: content, value: event.target.value }));
@@ -45,7 +47,9 @@ export default function MarginStyles({ content, selectedComponentData }) {
     }
   };
   const handleRightChange = (event) => {
-    dispatch(setMarginRight({ id: content, value: event.target.value }));
+    if (right <= 500) {
+      dispatch(setMarginRight({ id: content, value: event.target.value }));
+    }
     if (change === true) {
       dispatch(setMarginTop({ id: content, value: event.target.value }));
       dispatch(setMarginBottom({ id: content, value: event.target.value }));
@@ -53,7 +57,9 @@ export default function MarginStyles({ content, selectedComponentData }) {
     }
   };
   const handleBottomChange = (event) => {
-    dispatch(setMarginBottom({ id: content, value: event.target.value }));
+    if (bottom <= 500) {
+      dispatch(setMarginBottom({ id: content, value: event.target.value }));
+    }
     if (change === true) {
       dispatch(setMarginTop({ id: content, value: event.target.value }));
       dispatch(setMarginRight({ id: content, value: event.target.value }));
@@ -61,7 +67,9 @@ export default function MarginStyles({ content, selectedComponentData }) {
     }
   };
   const handleLeftChange = (event) => {
-    dispatch(setMarginLeft({ id: content, value: event.target.value }));
+    if (left <= 500) {
+      dispatch(setMarginLeft({ id: content, value: event.target.value }));
+    }
     if (change === true) {
       dispatch(setMarginTop({ id: content, value: event.target.value }));
       dispatch(setMarginRight({ id: content, value: event.target.value }));
