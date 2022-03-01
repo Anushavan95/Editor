@@ -33,7 +33,6 @@ function Tabs(props) {
   const value = useSelector(selectTab);
 
   const dispatch = useDispatch();
-  // const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
   const data2 = useSelector(data);
   const content = useSelector(selectedContent);

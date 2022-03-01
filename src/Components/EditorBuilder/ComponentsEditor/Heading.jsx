@@ -7,7 +7,7 @@ function Heading({
   styles,
   parentStyles
 }) {
-  console.log(parentStyles, "parentStyles");
+  console.log(componentData, "parentStyles");
   return (
     <div style={parentStyles}>
       <div
