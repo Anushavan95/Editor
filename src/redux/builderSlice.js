@@ -87,7 +87,24 @@ const builderSlice = createSlice({
       state.children = data;
     },
     setTag: (state, action) => {
-      state.tagSelect = action.payload;
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          el.tag = action.payload.value;
+        }
+      });
+      state.children = data;
+    },
+    setTextEditorValue: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          el.textEditorValue = action.payload.value;
+        }
+      });
+      state.children = data;
     },
     setAlignMent: (state, action) => {
       let data = state.children;
@@ -343,6 +360,7 @@ const builderSlice = createSlice({
           {
             [action.payload.generateId]: {
               text: "",
+              textEditorValue: action.payload.textEditorValue,
               tag: action.payload.tag,
               id: action.payload.generateId,
               link: "",
@@ -414,12 +432,12 @@ export const {
   setChecked,
   setAlignMent,
   setSize,
+  setTextEditorValue,
   setFontFamily
 } = builderSlice.actions;
 export const selectChildren = (state) => state.component.children;
 export const selectAddedImages = (state) => state.component.children;
 export const selectTab = (state) => state.component.tab;
-// export const selectTextEditorValue = (state) => state.component.textEditorValue
 export const selectZegaProducts = (state) => state.component.zegaProducts;
 export const selectComponentEntry = (state) => state.component.componentEntry;
 export const selectMarginTop = (state) => state.component.children;

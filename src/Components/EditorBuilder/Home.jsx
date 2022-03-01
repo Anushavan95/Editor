@@ -61,6 +61,7 @@ const Container = memo(() => {
             setContent({
               content: item.component.content,
               generateId: generateId,
+              textEditorValue: "",
               tag: "h3"
             })
           );
@@ -73,6 +74,7 @@ const Container = memo(() => {
             setContent({
               content: item.component.content,
               generateId: generateId,
+              textEditorValue: "",
               tag: "h3"
             })
           );

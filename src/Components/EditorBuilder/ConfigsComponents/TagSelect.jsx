@@ -6,19 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectChildren, selectTag, setTag } from "../../../redux/builderSlice";
 
 export default function BasicSelect({ selectedComponentData, content }) {
-  const [tag, setTag] = useState("h1");
   const dispatch = useDispatch();
-  console.log(tag, "tag");
-  selectedComponentData.settings.map((item) => {
+  let tag = "";
+  Object.keys(selectedComponentData).map((item) => {
     switch (Object.keys(item)[0]) {
       case "tag":
-        return setTag(Object.values(item));
+        return (tag = Object.values(item));
       default:
         return null;
     }
   });
   const handleChange = (event, newAlignment) => {
-    // dispatch(setTag(newAlignment));
+    dispatch(setTag({ id: content, value: newAlignment }));
   };
 
   return (

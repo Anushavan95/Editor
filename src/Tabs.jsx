@@ -97,7 +97,10 @@ function Tabs(props) {
               case "Editor":
                 return (
                   <>
-                    <RichEditor />
+                    <RichEditor
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                     <MarginStyles
                       content={content}
                       selectedComponentData={selectedComponentData}
