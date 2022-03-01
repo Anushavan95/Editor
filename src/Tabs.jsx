@@ -17,7 +17,9 @@ import {
   selectTab,
   selectChildren,
   setEditorTextValue,
-  setTab
+  setTab,
+  data,
+  postInitialData
 } from "./redux/builderSlice";
 import SelectFontFamily from "./Components/EditorBuilder/ConfigsComponents/SelectFontFamily";
 import BasicSelect from "./Components/EditorBuilder/ConfigsComponents/TagSelect";
@@ -33,6 +35,7 @@ function Tabs(props) {
   const dispatch = useDispatch();
   // const imag = useSelector(selectAddedImages);
   const selComponent = useSelector(selectChildren);
+  const data2 = useSelector(data);
   const content = useSelector(selectedContent);
 
   const handleData = (id) => {
@@ -55,6 +58,11 @@ function Tabs(props) {
   const onChange = (valueText) => {
     dispatch(setEditorTextValue(valueText));
   };
+
+  function handlerClick() {
+    dispatch(postInitialData(data2.setTree, data2.children));
+    console.log();
+  }
 
   return (
     <Box sx={{ width: "100%", typography: "body1" }} className="lalal">
@@ -169,6 +177,7 @@ function Tabs(props) {
         </TabPanel>
         <Button
           style={{ width: "96%", marginTop: 20, marginLeft: "2%" }}
+          onClick={handlerClick}
           variant="contained"
         >
           Save
