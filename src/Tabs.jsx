@@ -127,7 +127,10 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <AlignMent />
+                    <AlignMent
+                      content={content}
+                      selectedComponentData={selectedComponentData}
+                    />
                   </section>
                 );
               case "HyperLink":
@@ -164,7 +167,10 @@ function Tabs(props) {
             }
           })(onChange)}
         </TabPanel>
-        <Button style={{ width:"96%", marginTop:20, marginLeft: "2%"}} variant="contained">
+        <Button
+          style={{ width: "96%", marginTop: 20, marginLeft: "2%" }}
+          variant="contained"
+        >
           Save
         </Button>
       </TabContext>

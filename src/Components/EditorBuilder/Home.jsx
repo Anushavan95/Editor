@@ -1,5 +1,5 @@
-import React, {useCallback, useState, memo} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useCallback, useState, memo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import shortid from "shortid";
 import {
   selectHeading,
@@ -57,7 +57,6 @@ const Container = memo(() => {
         case "Heading":
           component = {};
           component.id = generateId;
-
           dispatch(
             setContent({
               content: item.component.content,
@@ -94,7 +93,7 @@ const Container = memo(() => {
           break;
       }
 
-      const newItem = {id: item.id, type: item.type};
+      const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;
       }
@@ -167,7 +166,6 @@ const Container = memo(() => {
     [layout, components]
   );
 
-
   const setTree = [];
   const renderRow = (row, currentPath, generateId, index, setTree) => {
     setTree[index].push(index);
@@ -187,7 +185,6 @@ const Container = memo(() => {
   };
 
   return (
-
     <div className="body " style={{ width: "100%", marginLeft: " 325px" }}>
       <div className="pageContainer ">
         <div className="page">
@@ -221,7 +218,6 @@ const Container = memo(() => {
       </div>
     </div>
   );
-
 });
 
 export default Container;

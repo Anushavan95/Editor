@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
 import RichTextEditor from "react-rte";
 import PlaceHolderImage from "../images/placeholder.png";
@@ -15,6 +15,7 @@ const initialState = {
   linkValue: "",
   selectLink: "",
   checked: false,
+  tagSelect: "h3",
   selectSize: ""
 };
 
@@ -62,24 +63,20 @@ const builderSlice = createSlice({
         if (el.id === action.payload.id) {
           let check = false;
           el.settings.map((item) => {
-            if (Object.keys(item) == "sizeWidth") {
+            if (Object.keys(item) == "width") {
               check = true;
-              item.sizeWidth = action.payload.value;
+              item.width = action.payload.value;
             }
           });
           if (!check) {
-            el.settings.push({ sizeWidth: action.payload.value });
+            el.settings.push({ width: action.payload.value });
           }
         }
       });
       state.children = data;
     },
     setTag: (state, action) => {
-      // Object.keys(state.children).map((el) => {
-      //   if (el.id === action.payload.id) {
-      //     el.tag = action.payload.value;
-      //   }
-      // });
+      state.tagSelect = action.payload;
     },
     setAlignMent: (state, action) => {
       let data = state.children;
@@ -88,13 +85,13 @@ const builderSlice = createSlice({
         if (el.id === action.payload.id) {
           let check = false;
           el.settings.map((item) => {
-            if (Object.keys(item) == "align") {
+            if (Object.keys(item) == "textAlign") {
               check = true;
-              item.align = action.payload.value;
+              item.textAlign = action.payload.value;
             }
           });
           if (!check) {
-            el.settings.push({ align: action.payload.value });
+            el.settings.push({ textAlign: action.payload.value });
           }
         }
       });
@@ -113,7 +110,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.images.push({imageUpload: action.payload.value});
+            el.images.push({ imageUpload: action.payload.value });
           }
         }
       });
@@ -132,7 +129,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({fontFamily: action.payload.value});
+            el.settings.push({ fontFamily: action.payload.value });
           }
         }
       });
@@ -151,7 +148,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({color: action.payload.value});
+            el.settings.push({ color: action.payload.value });
           }
         }
       });
@@ -165,14 +162,11 @@ const builderSlice = createSlice({
       });
     },
     setSelectedContent: (state, action) => {
-
       state.selected = action.payload;
     },
 
     setSetTrees: (state, action) => {
-      // console.log(action.payload,'_____________state')
       state.setTree = [...action.payload];
-// console.log(state)
     },
 
     /////FIXME THINK ABOUT THIS
@@ -189,7 +183,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginTop: action.payload.value});
+            el.settings.push({ marginTop: action.payload.value });
           }
         }
       });
@@ -212,7 +206,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginRight: action.payload.value});
+            el.settings.push({ marginRight: action.payload.value });
           }
         }
       });
@@ -231,7 +225,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginBottom: action.payload.value});
+            el.settings.push({ marginBottom: action.payload.value });
           }
         }
       });
@@ -250,7 +244,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({marginLeft: action.payload.value});
+            el.settings.push({ marginLeft: action.payload.value });
           }
         }
       });
@@ -271,18 +265,10 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingTop: action.payload.value});
+            el.settings.push({ paddingTop: action.payload.value });
           }
         }
       });
-      // Object.keys(state.children).map((el) => {
-      //   if (el.id === action.payload.id) {
-      //     el.settings = [
-      //       ...el.settings,
-      //       ...{ paddingTop: action.payload.value }
-      //     ];
-      //   }
-      // });
     },
     setPaddingRight: (state, action) => {
       let data = state.children;
@@ -297,7 +283,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingRight: action.payload.value});
+            el.settings.push({ paddingRight: action.payload.value });
           }
         }
       });
@@ -315,7 +301,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingBottom: action.payload.value});
+            el.settings.push({ paddingBottom: action.payload.value });
           }
         }
       });
@@ -333,7 +319,7 @@ const builderSlice = createSlice({
             }
           });
           if (!check) {
-            el.settings.push({paddingLeft: action.payload.value});
+            el.settings.push({ paddingLeft: action.payload.value });
           }
         }
       });
@@ -435,7 +421,6 @@ export const selectPaddingTop = (state) => state.children;
 export const selectPaddingRight = (state) => state.children;
 export const selectPaddingBottom = (state) => state.children;
 export const selectPaddingLeft = (state) => state.children;
-//export const selectHyperLink = (state) => state.component.hyperLink
 export const selectHeading = (state) => state.component.heading;
 export const selectInitialLayout = (state) => state.component.initialLayout;
 export const selectID = (state) => state.component.heading.id;
