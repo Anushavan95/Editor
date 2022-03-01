@@ -10,10 +10,12 @@ const initialState = {
   selected: "",
   products: [],
   children: [],
+  setTree: [],
   initialLayout: [],
   linkValue: "",
   selectLink: "",
   checked: false,
+  tagSelect: "h3",
   selectSize: ""
 };
 
@@ -24,6 +26,17 @@ export const postHtmlDataAsync = createAsyncThunk(
       `https://test.zegashop.com/api/set`,
       action
     );
+    return response.data;
+  }
+);
+
+export const postInitialData = createAsyncThunk(
+  "postHtmlInitialSata/post",
+  async (setTree, children) => {
+    const response = await axios.post(`your url`, {
+      setTree,
+      children
+    });
     return response.data;
   }
 );
@@ -61,24 +74,20 @@ const builderSlice = createSlice({
         if (el.id === action.payload.id) {
           let check = false;
           el.settings.map((item) => {
-            if (Object.keys(item) == "sizeWidth") {
+            if (Object.keys(item) == "width") {
               check = true;
-              item.sizeWidth = action.payload.value;
+              item.width = action.payload.value;
             }
           });
           if (!check) {
-            el.settings.push({ sizeWidth: action.payload.value });
+            el.settings.push({ width: action.payload.value });
           }
         }
       });
       state.children = data;
     },
     setTag: (state, action) => {
-      // Object.keys(state.children).map((el) => {
-      //   if (el.id === action.payload.id) {
-      //     el.tag = action.payload.value;
-      //   }
-      // });
+      state.tagSelect = action.payload;
     },
     setAlignMent: (state, action) => {
       let data = state.children;
@@ -87,13 +96,13 @@ const builderSlice = createSlice({
         if (el.id === action.payload.id) {
           let check = false;
           el.settings.map((item) => {
-            if (Object.keys(item) == "align") {
+            if (Object.keys(item) == "textAlign") {
               check = true;
-              item.align = action.payload.value;
+              item.textAlign = action.payload.value;
             }
           });
           if (!check) {
-            el.settings.push({ align: action.payload.value });
+            el.settings.push({ textAlign: action.payload.value });
           }
         }
       });
@@ -165,6 +174,10 @@ const builderSlice = createSlice({
     },
     setSelectedContent: (state, action) => {
       state.selected = action.payload;
+    },
+
+    setSetTrees: (state, action) => {
+      state.setTree = [...action.payload];
     },
 
     /////FIXME THINK ABOUT THIS
@@ -267,14 +280,6 @@ const builderSlice = createSlice({
           }
         }
       });
-      // Object.keys(state.children).map((el) => {
-      //   if (el.id === action.payload.id) {
-      //     el.settings = [
-      //       ...el.settings,
-      //       ...{ paddingTop: action.payload.value }
-      //     ];
-      //   }
-      // });
     },
     setPaddingRight: (state, action) => {
       let data = state.children;
@@ -358,6 +363,9 @@ const builderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      //   .addCase(postInitialData.pending, (state, action) => {
+      //      state.yourstate = action.payload
+      // })
       .addCase(postHtmlDataAsync.pending, (state, action) => {
         state.dataObject.image = null;
       })
@@ -406,6 +414,7 @@ export const {
   setLinkValue,
   setSelectLink,
   setSelectedContent,
+  setSetTrees,
   setChecked,
   setAlignMent,
   setSize,
@@ -426,7 +435,6 @@ export const selectPaddingTop = (state) => state.children;
 export const selectPaddingRight = (state) => state.children;
 export const selectPaddingBottom = (state) => state.children;
 export const selectPaddingLeft = (state) => state.children;
-//export const selectHyperLink = (state) => state.component.hyperLink
 export const selectHeading = (state) => state.component.heading;
 export const selectInitialLayout = (state) => state.component.initialLayout;
 export const selectID = (state) => state.component.heading.id;
@@ -434,5 +442,6 @@ export const selectLinkValue = (state) => state.component.linkValue;
 export const selectLink = (state) => state.component.selectLink;
 export const selectChecked = (state) => state.component.checked;
 export const selectSize = (state) => state.component.selectSize;
+export const data = (state) => state.component;
 
 export default builderSlice.reducer;

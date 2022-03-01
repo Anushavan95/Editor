@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shortid from "shortid";
 import {
@@ -6,7 +6,8 @@ import {
   selectInitialLayout,
   setSelectedContent,
   setContent,
-  setTab
+  setTab,
+  setSetTrees
 } from "../../redux/builderSlice";
 import { COLUMN, COMPONENT, SIDEBAR_ITEM } from "./Config/constants";
 import {
@@ -19,7 +20,7 @@ import initialData from "./Config/initial-data";
 import DropZone from "./Layout/DropZone";
 import Row from "./Layout/Row";
 
-const Container = () => {
+const Container = memo(() => {
   // const initialLayout = initialData.layout;
   /// const link = useSelector(selectHyperLink)
   const heading = useSelector(selectHeading);
@@ -52,12 +53,10 @@ const Container = () => {
       dispatch(setSelectedContent(generateId));
       dispatch(setTab("2"));
 
-      console.log(item.component.content, "item.component.content");
       switch (item.component.content) {
         case "Heading":
           component = {};
           component.id = generateId;
-
           dispatch(
             setContent({
               content: item.component.content,
@@ -173,7 +172,7 @@ const Container = () => {
     return (
       <Row
         generateId={generateId}
-        key={index}
+        key={currentPath}
         rowIndex={index}
         data={row}
         setTree={setTree}
@@ -219,5 +218,6 @@ const Container = () => {
       </div>
     </div>
   );
-};
+});
+
 export default Container;

@@ -3,14 +3,12 @@ import InputLabel from "@mui/material/InputLabel";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useDispatch, useSelector } from "react-redux";
-import { selectChildren } from "../../../redux/builderSlice";
+import { selectChildren, selectTag, setTag } from "../../../redux/builderSlice";
 
 export default function BasicSelect({ selectedComponentData, content }) {
+  const [tag, setTag] = useState("h1");
   const dispatch = useDispatch();
-
-  const [tag, setTag] = useState("H1");
-
-  // let font = "";
+  console.log(tag, "tag");
   selectedComponentData.settings.map((item) => {
     switch (Object.keys(item)[0]) {
       case "tag":
@@ -20,7 +18,7 @@ export default function BasicSelect({ selectedComponentData, content }) {
     }
   });
   const handleChange = (event, newAlignment) => {
-    setTag(newAlignment);
+    // dispatch(setTag(newAlignment));
   };
 
   return (
