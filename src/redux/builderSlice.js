@@ -96,13 +96,13 @@ const builderSlice = createSlice({
         if (el.id === action.payload.id) {
           let check = false;
           el.settings.map((item) => {
-            if (Object.keys(item) == "textAlign") {
+            if (Object.keys(item) == "text-align") {
               check = true;
-              item.textAlign = action.payload.value;
+              item["text-align"] = action.payload.value;
             }
           });
           if (!check) {
-            el.settings.push({ textAlign: action.payload.value });
+            el.settings.push({ ["text-align"]: action.payload.value });
           }
         }
       });
@@ -336,7 +336,6 @@ const builderSlice = createSlice({
       });
     },
     /////////////////////// STOP HEAR
-
     setContent: (state, action) => {
       if (action.payload.generateId) {
         state.children = [
@@ -363,9 +362,6 @@ const builderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      //   .addCase(postInitialData.pending, (state, action) => {
-      //      state.yourstate = action.payload
-      // })
       .addCase(postHtmlDataAsync.pending, (state, action) => {
         state.dataObject.image = null;
       })

@@ -53,7 +53,6 @@ const Component = memo(
     let color = "";
     let width = "";
     let align = "";
-    console.log(width, "ww");
     const component = components[data.id];
     componentData.settings.map((item) => {
       Object.keys(item).forEach((key) => {
@@ -81,8 +80,8 @@ const Component = memo(
               return (color = item.color);
             case "width":
               return (width = item.width);
-            case "textAlign":
-              return (align = item.textAlign);
+            case "text-align":
+              return (align = item["text-align"]);
             default:
               return false;
           }
@@ -101,8 +100,9 @@ const Component = memo(
     });
 
     const parentStyles = {
-      textAlign: `${align}`
+      ["text-align"]: `${align}`
     };
+    console.log(parentStyles, "parentStyles text");
     const styles = {
       margin: `${top}px  ${right}px ${bottom}px ${left}px`,
       padding: `${paddTop}px ${paddRight}px ${paddBottom}px ${paddLeft}px`,
