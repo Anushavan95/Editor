@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import LinkIcon from "../../../images/link.svg";
+import LinkIcon from "../../../images/LinkIcon";
 import {
   setPaddingBottom,
   setPaddingLeft,
@@ -9,6 +9,10 @@ import {
   setPaddingTop
 } from "../../../redux/builderSlice";
 import { ReactComponent as HeadingSvg } from "../../../images/svg/heading.svg";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function PaddingStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
@@ -69,75 +73,82 @@ export default function PaddingStyles({ content, selectedComponentData }) {
   };
 
   return (
-    <div className="margin-component">
-      <Box>
-        <b className="title-margin">Padding</b>
-        <Button
-          onClick={allChanges}
-          className={`margin-all ${change ? "contained" : "outlined"}`}
-          // variant={change ? "contained" : "outlined"}
-          startIcon={<img src={LinkIcon} alt="Link" className="link-icon" />}
-        />
-      </Box>
-      <Box className="margin-styles">
-        <Box>
-          <Typography variant="span">Left</Typography>
-          <TextField
-            id="filled-number"
-            type="number"
-            value={left}
-            onChange={handleLeftChange}
-            InputLabelProps={{
-              shrink: true
-            }}
-            variant="filled"
-          />
-        </Box>
-        <Box>
-          <Typography variant="span">Top</Typography>
-          <TextField
-            id="filled-number"
-            value={top}
-            type="number"
-            onChange={handleTopChange}
-            InputLabelProps={{
-              shrink: true
-            }}
-            variant="filled"
-          />
-          <HeadingSvg
-            style={{
-              margin: "5px auto",
-              borderRadius: "5px",
-              background: " #EBF0F5 "
-            }}
-          />
-          <Typography variant="span">Bottom</Typography>
-          <TextField
-            id="filled-number"
-            value={bottom}
-            type="number"
-            onChange={handleBottomChange}
-            InputLabelProps={{
-              shrink: true
-            }}
-            variant="filled"
-          />
-        </Box>
-        <Box>
-          <Typography variant="span">Right</Typography>
-          <TextField
-            id="filled-number"
-            value={right}
-            type="number"
-            onChange={handleRightChange}
-            InputLabelProps={{
-              shrink: true
-            }}
-            variant="filled"
-          />
-        </Box>
-      </Box>
-    </div>
+    <Accordion className="emmets-summary">
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>Padding</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <div className="margin-component">
+          <Box>
+            <b className="title-margin">Padding</b>
+            <Button
+              onClick={allChanges}
+              className={`margin-all ${change ? "contained" : "outlined"}`}
+              // variant={change ? "contained" : "outlined"}
+              startIcon={<LinkIcon change={change} />}
+            />
+          </Box>
+          <Box className="margin-styles">
+            <Box>
+              <Typography variant="span">Left</Typography>
+              <TextField
+                id="filled-number"
+                type="number"
+                value={left}
+                onChange={handleLeftChange}
+                InputLabelProps={{
+                  shrink: true
+                }}
+                variant="filled"
+              />
+            </Box>
+            <Box>
+              <Typography variant="span">Top</Typography>
+              <TextField
+                id="filled-number"
+                value={top}
+                type="number"
+                onChange={handleTopChange}
+                InputLabelProps={{
+                  shrink: true
+                }}
+                variant="filled"
+              />
+              <div className="heading-logo">
+                <HeadingSvg />
+              </div>
+              <Typography variant="span">Bottom</Typography>
+              <TextField
+                id="filled-number"
+                value={bottom}
+                type="number"
+                onChange={handleBottomChange}
+                InputLabelProps={{
+                  shrink: true
+                }}
+                variant="filled"
+              />
+            </Box>
+            <Box>
+              <Typography variant="span">Right</Typography>
+              <TextField
+                id="filled-number"
+                value={right}
+                type="number"
+                onChange={handleRightChange}
+                InputLabelProps={{
+                  shrink: true
+                }}
+                variant="filled"
+              />
+            </Box>
+          </Box>
+        </div>
+      </AccordionDetails>
+    </Accordion>
   );
 }

@@ -31,14 +31,14 @@ body {
 }
 
 .sideBar {
-  padding: 15px 10px;
+  padding: 5px 10px;
   position: fixed;
   overflow-y: auto;
   flex: 0 0 1;
   width: 300px !important;
   border-right: 1px solid #111;
   height: 100vh;
-  background: #fbf9f7;
+  background-color: rgb(239, 243, 249);
   box-shadow: 0px 0px 20px rgb(0 0 0 / 10%);
 }
 
@@ -170,10 +170,11 @@ body {
 .editor-title {
   font-size: 18px !important;
   line-height: 25px !important;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  /* display: flex;
+  align-items: center; */
+  text-align: center !important;
   color: #161616;
+  padding: 5px 0px 10px;
 
   /* text-align: center; */
   /* background-color: #333; */
@@ -330,15 +331,14 @@ body {
   height: 35px;
   padding: 5px !important;
   background: #FFFFFF;
-  border: 1px solid #E7E7E7;
   box-sizing: border-box;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-
 }
 
 .margin-component {
   margin-top: 20px;
+
 }
 
 .title-margin {
@@ -446,7 +446,7 @@ body {
 }
 
 .MuiCollapse-vertical div {
-  padding: 0 !important;
+  /* padding: 0 !important; */
 }
 
 .header-part-viwes-fms {
@@ -513,7 +513,7 @@ body {
 }
 
 .components-edited-tab {
-  padding: 0px 20px !important;
+  /* padding: 0px 20px !important; */
   background-color: #F8F8F9;
 }
 

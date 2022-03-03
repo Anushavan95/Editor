@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { useDispatch, useSelector } from "react-redux";
-import { selectChildren, selectTag, setTag } from "../../../redux/builderSlice";
+import { useDispatch } from "react-redux";
+import { setTag } from "../../../redux/builderSlice";
 
 export default function BasicSelect({ selectedComponentData, content }) {
   const dispatch = useDispatch();
@@ -28,14 +28,27 @@ export default function BasicSelect({ selectedComponentData, content }) {
           color="primary"
           value={tag}
           exclusive
+          className="select-tags-parent"
           onChange={handleChange}
         >
-          <ToggleButton value={"h1"}>h1</ToggleButton>
-          <ToggleButton value={"h2"}>h2</ToggleButton>
-          <ToggleButton value={"h3"}>h3</ToggleButton>
-          <ToggleButton value={"h4"}>h4</ToggleButton>
-          <ToggleButton value={"h5"}>h5</ToggleButton>
-          <ToggleButton value={"h6"}>h6</ToggleButton>
+          <ToggleButton value="h1" className="select-tag-toggle">
+            h1
+          </ToggleButton>
+          <ToggleButton className="select-tag-toggle" value={"h2"}>
+            h2
+          </ToggleButton>
+          <ToggleButton className="select-tag-toggle" value={"h3"}>
+            h3
+          </ToggleButton>
+          <ToggleButton className="select-tag-toggle" value={"h4"}>
+            h4
+          </ToggleButton>
+          <ToggleButton className="select-tag-toggle" value={"h5"}>
+            h5
+          </ToggleButton>
+          <ToggleButton className="select-tag-toggle" value={"h6"}>
+            h6
+          </ToggleButton>
         </ToggleButtonGroup>
       </div>
     </div>
