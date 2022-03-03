@@ -70,7 +70,11 @@ function Tabs(props) {
           sx={{ borderBottom: 1, borderColor: "divider" }}
           className="tab-box"
         >
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <TabList
+            onChange={handleChange}
+            aria-label="lab API tabs example"
+            className="tab-box-builder"
+          >
             <Tab
               label={<span className="tabs-text-fms">Elements</span>}
               value="1"

@@ -7,8 +7,8 @@ const SideBarItem = ({ data }) => {
     item: data,
     collect: (monitor) => ({
       opacity: monitor.isDragging() ? "dragged" : 1,
-      className: monitor.isDragging() ? "dragged" : "",
-    }),
+      className: monitor.isDragging() ? "dragged" : ""
+    })
   });
 
   return (

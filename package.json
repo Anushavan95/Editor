@@ -26,8 +26,6 @@
     "gh-pages": "^3.2.3",
     "immutability-helper": "^3.0.0",
     "jodit-react": "^1.1.24",
-    "lodash": "4.17.15",
-    "node-sass": "^7.0.1",
     "preact-media-hook": "^1.0.3",
     "react": "^17.0.2",
     "react-contenteditable": "^3.3.6",
@@ -50,9 +48,6 @@
     "not op_mini all"
   ],
   "keywords": [],
-  "devDependencies": {
-    "sass": "^1.45.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Anushavan95/EditorBuilder.git"
@@ -61,5 +56,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Anushavan95/EditorBuilder/issues"
+  },
+  "devDependencies": {
+    "sass-loader": "^12.6.0"
   }
 }

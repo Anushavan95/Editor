@@ -19,6 +19,7 @@ import Main from "./Components/ZegaTheme/Main/Main";
 import SideBarItem from "./SideBarItem";
 import "./styles.css";
 import Tabs from "./Tabs";
+import "./app.css";
 
 export default function App() {
   const [expanded, setExpanded] = useState("panel1");
@@ -118,11 +119,11 @@ export default function App() {
                         variant="h4"
                         className="title-component-sidebar"
                       >
-                        Text
+                        Texts
                       </Typography>
                     </AccordionSummary>
                   </div>
-                  <AccordionDetails>
+                  <AccordionDetails className="accordion-details-fms">
                     <Typography>
                       <Box className="elements-parent-box">
                         {Object.values(SIDEBAR_ITEMS.slice(0, 3)).map(
@@ -157,7 +158,7 @@ export default function App() {
                       </Typography>
                     </AccordionSummary>
                   </div>
-                  <AccordionDetails>
+                  <AccordionDetails className="accordion-fms">
                     <Box className="elements-parent-box">
                       {Object.values(SIDEBAR_ITEMS.slice(3, 6)).map(
                         (sideBarItem, index) => (

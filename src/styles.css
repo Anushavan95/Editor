@@ -31,6 +31,7 @@ body {
 }
 
 .sideBar {
+  padding: 15px 10px;
   position: fixed;
   overflow-y: auto;
   flex: 0 0 1;
@@ -51,17 +52,20 @@ body {
 }
 
 .sideBarItem {
-  border: 1px solid #e9e9e9;
-  height: 80px;
-  background: #ccc;
-  width: 110px;
+  width: 120px !important;
+  height: 120px !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  grid-gap: 15px;
   cursor: move;
   display: flex;
   flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
 }
 
 .page {
@@ -187,10 +191,17 @@ body {
 
 .element-title {
   font-size: 18px !important;
+  font-family: "Open Sans", sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 25px;
+  color: #161616;
 }
 
 .tab-box {
   border-bottom: none !important;
+  padding-bottom: 20px;
+  background-color: white;
 }
 
 .css-1ujnqem-MuiTabs-root {
@@ -205,12 +216,7 @@ body {
   width: 50%;
 }
 
-.sideBarItem {
-  opacity: 1;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  box-sizing: border-box;
-}
+
 
 .editor-titles-fms {
   background: #ffffff;
@@ -290,7 +296,9 @@ body {
 
 .elements-parent-box {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  grid-gap: 10px;
 
   background-color: #ffffff;
 
@@ -359,6 +367,7 @@ body {
 .tabs-text-fms {
   color: #787878;
   font-size: 18px;
+  text-transform: capitalize;
 }
 
 .input-settings .link {
@@ -434,11 +443,6 @@ body {
 
 .contained {
   background-color: #00254A !important;
-}
-
-.sideBarItem {
-  width: 149px !important;
-  height: 149px !important;
 }
 
 .MuiCollapse-vertical div {
@@ -620,3 +624,8 @@ body {
   z-index: 1;
 }
 
+
+
+.MuiCollapse-vertical .accordion-details-fms {
+  padding: 8px !important;
+}

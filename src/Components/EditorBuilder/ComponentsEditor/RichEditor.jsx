@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 const RichEditor = ({ selectedComponentData, content }) => {
   console.log(selectedComponentData, "selectedComponentData");
   const dispatch = useDispatch();
-  const editor = useRef(null);
+  const editor = null;
   let textEditorValue = "";
   Object.keys(selectedComponentData).map((item) => {
     switch (Object.keys(item)[0]) {
