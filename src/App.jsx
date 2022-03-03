@@ -87,16 +87,28 @@ export default function App() {
                   <DesktopWindowsIcon />
                 </span>
               </div>
-              <span className="header-width-control">
-                <span>W</span>
-                <OutlinedInput
-                  id="outlined-adornment-weight"
-                  value={values.weight}
-                  type="number"
-                  onChange={handleChanges("weight")}
-                  aria-describedby="outlined-weight-helper-text"
-                />
-              </span>
+              <div className="parent-width-height">
+                <div className="header-width-control">
+                  <span>W</span>
+                  <OutlinedInput
+                    id="outlined-adornment-weight"
+                    value={values.weight}
+                    type="number"
+                    onChange={handleChanges("weight")}
+                    aria-describedby="outlined-weight-helper-text"
+                  />
+                </div>
+                <div className="header-width-control">
+                  <span>H</span>
+                  <OutlinedInput
+                    id="outlined-adornment-weight"
+                    value={values.weight}
+                    type="number"
+                    onChange={handleChanges("weight")}
+                    aria-describedby="outlined-weight-helper-text"
+                  />
+                </div>
+              </div>
             </div>
             <Box className="sideBar">
               <Typography variant="h4" className="editor-title">

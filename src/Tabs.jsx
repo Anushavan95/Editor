@@ -28,6 +28,7 @@ import RichEditor from "./Components/EditorBuilder/ComponentsEditor/RichEditor";
 import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
 import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUpload/ImageUploadConfigs";
 import SelectSizeImage from "./Components/EditorBuilder/ConfigsComponents/SelectSizeImage";
+import MargPaddComponents from "./Components/EditorBuilder/ConfigsComponents/MargPaddComponents";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -123,13 +124,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-
-                    <MarginStyles
-                      content={content}
-                      selectedComponentData={selectedComponentData}
-                    />
-
-                    <PaddingStyles
+                    <MargPaddComponents
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />

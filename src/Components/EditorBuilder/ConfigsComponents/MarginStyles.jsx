@@ -10,10 +10,6 @@ import {
 } from "../../../redux/builderSlice";
 
 import { ReactComponent as HeadingSvg } from "../../../images/svg/heading.svg";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function MarginStyles({ content, selectedComponentData }) {
   const [change, setChange] = useState(false);
@@ -81,86 +77,75 @@ export default function MarginStyles({ content, selectedComponentData }) {
     }
   };
   return (
-    <Accordion className="emmets-summary">
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
-        <Typography>Margin</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <div className="margin-component">
-          <Box>
-            <b className="title-margin">Margin</b>
-            <Button
-              onClick={allChanges}
-              className={`margin-all ${change ? "contained" : "outlined"}`}
-              startIcon={<LinkIcon change={change} />}
-            />
-          </Box>
+    <div className="margin-component">
+      <Box>
+        <b className="title-margin">Margin</b>
+        <Button
+          onClick={allChanges}
+          className={`margin-all ${change ? "contained" : "outlined"}`}
+          startIcon={<LinkIcon change={change} />}
+        />
+      </Box>
 
-          <Box className="margin-styles">
-            <Box>
-              <Typography variant="span">Left</Typography>
-              <TextField
-                id="filled-number"
-                className="emmets"
-                type="number"
-                value={left}
-                onChange={handleLeftChange}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                variant="filled"
-              />
-            </Box>
-            <Box>
-              <Typography variant="span">Top</Typography>
-              <TextField
-                id="filled-number"
-                className="emmets"
-                value={top}
-                type="number"
-                onChange={handleTopChange}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                variant="filled"
-              />
-              <div className="heading-logo">
-                <HeadingSvg />
-              </div>
-              <Typography variant="span">Bottom</Typography>
-              <TextField
-                id="filled-number"
-                className="emmets"
-                value={bottom}
-                type="number"
-                onChange={handleBottomChange}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                variant="filled"
-              />
-            </Box>
-            <Box>
-              <Typography variant="span">Right</Typography>
-              <TextField
-                id="filled-number"
-                className="emmets"
-                value={right}
-                type="number"
-                onChange={handleRightChange}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                variant="filled"
-              />
-            </Box>
-          </Box>
-        </div>
-      </AccordionDetails>
-    </Accordion>
+      <Box className="margin-styles">
+        <Box>
+          <Typography variant="span">Left</Typography>
+          <TextField
+            id="filled-number"
+            className="emmets"
+            type="number"
+            value={left}
+            onChange={handleLeftChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+        </Box>
+        <Box>
+          <Typography variant="span">Top</Typography>
+          <TextField
+            id="filled-number"
+            className="emmets"
+            value={top}
+            type="number"
+            onChange={handleTopChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+          <div className="heading-logo">
+            <HeadingSvg />
+          </div>
+          <Typography variant="span">Bottom</Typography>
+          <TextField
+            id="filled-number"
+            className="emmets"
+            value={bottom}
+            type="number"
+            onChange={handleBottomChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+        </Box>
+        <Box>
+          <Typography variant="span">Right</Typography>
+          <TextField
+            id="filled-number"
+            className="emmets"
+            value={right}
+            type="number"
+            onChange={handleRightChange}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+          />
+        </Box>
+      </Box>
+    </div>
   );
 }
