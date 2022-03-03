@@ -499,10 +499,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  /* width: 50%; */
 }
 
-.header-width-control span {
+.parent-width-height {
+  display: flex;
+  width: 30%;
+  /* justify-content: space-evenly */
+}
+
+.header-width-control div {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -510,6 +516,7 @@ body {
   line-height: 14px;
   color: #787878;
   margin-right: 10px;
+  width: 45px;
 }
 
 .components-edited-tab {
