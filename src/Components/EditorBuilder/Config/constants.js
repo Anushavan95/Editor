@@ -2,7 +2,7 @@ import React from "react";
 import shortid from "shortid";
 import { ReactComponent as EditorS } from "../../../images/svg/Editor.svg";
 import { ReactComponent as HeadingSvg } from "../../../images/svg/heading.svg";
-import { ReactComponent as HyperLinkSvg } from "../../../images/svg/hyperlink.svg";
+import { ReactComponent as HyperLinkSvg } from "../../../images/svg/HyperLink.svg";
 import { ReactComponent as ImageSvg } from "../../../images/svg/image.svg";
 import { ReactComponent as ImagesLinkSvg } from "../../../images/svg/imagesLink.svg";
 

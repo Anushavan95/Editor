@@ -106,12 +106,9 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <MarginStyles
-                      content={content}
-                      selectedComponentData={selectedComponentData}
-                    />
+
                     <EditorS />
-                    <PaddingStyles
+                    <MargPaddComponents
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
@@ -160,12 +157,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                    <MarginStyles
-                      content={content}
-                      selectedComponentData={selectedComponentData}
-                    />
-
-                    <PaddingStyles
+                    <MargPaddComponents
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
