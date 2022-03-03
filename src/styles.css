@@ -499,7 +499,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 50%; */
 }
 
 .parent-width-height {
@@ -521,7 +520,8 @@ body {
 
 .components-edited-tab {
   /* padding: 0px 20px !important; */
-  background-color: #F8F8F9;
+  background-color: white !important;
+
 }
 
 .component-entered {
