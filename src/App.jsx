@@ -19,7 +19,7 @@ import Main from "./Components/ZegaTheme/Main/Main";
 import SideBarItem from "./SideBarItem";
 import "./styles.css";
 import Tabs from "./Tabs";
-import "./app.css";
+import "./css/app.css";
 
 export default function App() {
   const [expanded, setExpanded] = useState("panel1");
