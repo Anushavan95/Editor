@@ -1,15 +1,8 @@
 import React from "react";
 import shortid from "shortid";
-import TextFieldsIcon from "@mui/icons-material/TextFields";
-import TextSnippetOutlinedIcon from "@mui/icons-material/TextSnippetOutlined";
-import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
-// import LinkIcon from "@mui/icons-material/Link";
-import HyperLink from "../../../images/hyperLink.png";
-import ImageIcon from "../../../images/Image.png";
 import { ReactComponent as EditorS } from "../../../images/svg/Editor.svg";
 import { ReactComponent as HeadingSvg } from "../../../images/svg/heading.svg";
-import { ReactComponent as HyperLinkSvg } from "../../../images/svg/HyperLink.svg";
+import { ReactComponent as HyperLinkSvg } from "../../../images/svg/hyperlink.svg";
 import { ReactComponent as ImageSvg } from "../../../images/svg/image.svg";
 import { ReactComponent as ImagesLinkSvg } from "../../../images/svg/imagesLink.svg";
 
@@ -24,8 +17,8 @@ export const SIDEBAR_ITEMS = [
     component: {
       type: <HeadingSvg className="text-icon icon" />,
       text: "Heading",
-      content: "Heading",
-    },
+      content: "Heading"
+    }
   },
   {
     id: shortid.generate(),
@@ -33,8 +26,8 @@ export const SIDEBAR_ITEMS = [
     component: {
       type: <EditorS className="edit-icon icon" />,
       text: "Editor",
-      content: "Editor",
-    },
+      content: "Editor"
+    }
   },
   {
     id: shortid.generate(),
@@ -43,8 +36,8 @@ export const SIDEBAR_ITEMS = [
       type: <HyperLinkSvg className="edit-icon icon" />,
       text: "Hyperlink",
       // my: link,
-      content: "HyperLink",
-    },
+      content: "HyperLink"
+    }
   },
   {
     id: shortid.generate(),
@@ -54,8 +47,8 @@ export const SIDEBAR_ITEMS = [
 
       // type: <AddPhotoAlternateOutlinedIcon className="image-upload icon" />,
       text: "Image",
-      content: "ImageUpload",
-    },
+      content: "ImageUpload"
+    }
   },
   // {
   //   id: shortid.generate(),
@@ -72,7 +65,7 @@ export const SIDEBAR_ITEMS = [
     component: {
       type: <ImagesLinkSvg className="edit-icon icon" />,
       text: "ImageLink",
-      content: "ImageLink",
-    },
-  },
+      content: "ImageLink"
+    }
+  }
 ];
