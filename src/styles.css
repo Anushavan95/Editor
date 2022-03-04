@@ -307,10 +307,9 @@ body {
 
 .margin-styles {
   display: flex;
-
   align-items: center;
-  justify-content: space-evenly;
-  grid-gap: 25px;
+  justify-content: center;
+  grid-gap: 10px;
   padding: 20px 0px;
   border-bottom: 0.5px solid #E7E7E7;
 
@@ -518,7 +517,7 @@ body {
 }
 
 .components-edited-tab {
-  /* padding: 0px 20px !important; */
+  /* padding: 0px 15px !important; */
   background-color: white !important;
 
 }

@@ -20,8 +20,8 @@ export default function SelectSizeImage({ selectedComponentData, content }) {
   };
   return (
     <Grid className="grid-container-image-size">
-      <p id="demo-simple-select-label">Width</p>
-      <Box sx={{ minWidth: 120 }} className={"image-size-box"}>
+      {/* <p id="demo-simple-select-label">Width</p> */}
+      <Box className={"image-size-box"}>
         <FormControl>
           <Select value={width} onChange={handleImageChange} displayEmpty>
             <MenuItem value="">
