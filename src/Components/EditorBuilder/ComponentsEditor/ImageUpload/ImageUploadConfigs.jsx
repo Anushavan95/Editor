@@ -12,7 +12,6 @@ import {
   Typography
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import SettingsIcon from "../../../../images/svg/settings-link.svg";
 import {
   selectChecked,
   selectLink,
@@ -55,6 +54,7 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
 
   return (
     <Box>
+      <span>Image</span>
       <label>
         <TextField
           type="file"
@@ -79,7 +79,7 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
       </label>
       <Box>
         <Box className="link-to-image-box">
-          <Typography variant="p">Link</Typography>
+          <Typography variant="p">Image Link here</Typography>
           <FormControl>
             <Select
               value={linkSelected}
@@ -98,33 +98,21 @@ export default function ImageUploadConfigs({ content, selectedComponentData }) {
           {linkSelected === "url" ? (
             <>
               <TextField
+                className="form-control-image-url"
                 type="text"
                 placeholder="https://your-link.com"
                 value={linkValue}
                 onChange={linkChangeValue}
               />
-              <Accordion>
-                <AccordionSummary
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <img
-                    src={SettingsIcon}
-                    alt={"SettingsIcon"}
-                    className="settingsIcon"
-                  />
-                </AccordionSummary>
-                <AccordionDetails>
-                  <label>
-                    <Checkbox
-                      checked={checked}
-                      onChange={handleChangeCheckbox}
-                      inputProps={{ "aria-label": "controlled" }}
-                    ></Checkbox>
-                    Open New Window
-                  </label>
-                </AccordionDetails>
-              </Accordion>
+
+              <label>
+                <Checkbox
+                  checked={checked}
+                  onChange={handleChangeCheckbox}
+                  inputProps={{ "aria-label": "controlled" }}
+                ></Checkbox>
+                Open New Window
+              </label>
             </>
           ) : null}
         </Box>

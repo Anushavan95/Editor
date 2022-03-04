@@ -61,6 +61,7 @@
     padding: 10px;
     margin: 10px auto;
     border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -69,7 +70,7 @@
   &:after {
     content: "";
     position: absolute;
-    width: 300px;
+    width: 310px;
     height: 2px;
     background-color: white;
     left: -9px;
@@ -81,4 +82,36 @@
   .Mui-selected {
     background-color: red !important;
   }
+}
+
+.link-to-image-box {
+  .MuiTypography-p {
+    font-size: 15px;
+  }
+}
+
+.form-control-image-url {
+  input {
+    height: 45px !important;
+    border: none;
+    background: #ffffff;
+    border: 1px solid #e7e7e7;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+}
+
+.image-size-box {
+  .css-1nrlq1o-MuiFormControl-root {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e7e7e7;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+}
+.heading-icon-svg {
+  padding: 2px;
 }

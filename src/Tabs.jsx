@@ -144,7 +144,7 @@ function Tabs(props) {
 
               case "ImageUpload":
                 return (
-                  <>
+                  <section className="component-entered">
                     <ImageUploadConfigs
                       content={content}
                       selectedComponentData={selectedComponentData}
@@ -161,7 +161,7 @@ function Tabs(props) {
                       content={content}
                       selectedComponentData={selectedComponentData}
                     />
-                  </>
+                  </section>
                 );
               default:
                 return "";

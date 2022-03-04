@@ -1,6 +1,9 @@
-.link-to-image-box,
-.grid-container-image-size {
+.link-to-image-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 0;
 }
