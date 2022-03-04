@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { InputLabel, FormControl, Box, Select, MenuItem } from "@mui/material";
 import { setAlignMent } from "./redux/builderSlice";
 import { useDispatch } from "react-redux";
 export default function AlignMent({ content, selectedComponentData }) {
+  const [align, setAlign] = useState("");
   const dispatch = useDispatch();
-  let align = "";
   if (selectedComponentData) {
     selectedComponentData.settings.map((item) => {
       switch (Object.keys(item)[0]) {
         case "align":
-          return (align = Object.values(item));
+          return setAlign(Object.values(item));
         default:
           return null;
       }
@@ -18,6 +18,7 @@ export default function AlignMent({ content, selectedComponentData }) {
   }
   const handleAlignMentChange = (event) => {
     dispatch(setAlignMent({ id: content, value: event.target.value }));
+    setAlign(event.target.value);
   };
   return (
     <Box>
@@ -28,12 +29,12 @@ export default function AlignMent({ content, selectedComponentData }) {
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          label="alignMent"
+          label={align}
           onChange={handleAlignMentChange}
           type={"align"}
           value={align}
         >
-          <MenuItem value="">
+          <MenuItem value="None">
             <em>None</em>
           </MenuItem>
           <MenuItem value={"left"}>Left</MenuItem>

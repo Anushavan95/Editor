@@ -35,8 +35,8 @@ body {
   position: fixed;
   overflow-y: auto;
   flex: 0 0 1;
-  width: 300px !important;
-  border-right: 1px solid #111;
+  width: 310px !important;
+  /* border-right: 1px solid #111; */
   height: 100vh;
   background-color: rgb(239, 243, 249);
   box-shadow: 0px 0px 20px rgb(0 0 0 / 10%);
@@ -170,16 +170,12 @@ body {
 .editor-title {
   font-size: 18px !important;
   line-height: 25px !important;
-  /* display: flex;
-  align-items: center; */
+
   text-align: center !important;
   color: #161616;
   padding: 5px 0px 10px;
 
-  /* text-align: center; */
-  /* background-color: #333; */
 
-  /* color: white; */
 }
 
 .dragged {
@@ -203,6 +199,9 @@ body {
   border-bottom: none !important;
   padding-bottom: 20px;
   background-color: white;
+  margin-top: 10px;
+  border-radius: 5px 5px 0px 0px !important;
+  overflow: hidden;
 }
 
 .css-1ujnqem-MuiTabs-root {
@@ -453,7 +452,7 @@ body {
   position: fixed;
   width: 85%;
   height: 40px;
-  left: 300px;
+  left: 310px;
   top: 0px;
   background: #f4f4f4;
   display: flex;
@@ -526,7 +525,7 @@ body {
 
 .component-entered {
   background-color: white;
-  padding: 0px 15px;
+  padding: 0px 15px 20px;
 }
 
 #demo-simple-select-label {
@@ -634,5 +633,5 @@ body {
 
 
 .MuiCollapse-vertical .accordion-details-fms {
-  padding: 8px !important;
+  padding: 15px !important;
 }
