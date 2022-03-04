@@ -63,3 +63,22 @@
     border-radius: 5px;
   }
 }
+
+.editor-title {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 2px;
+    background-color: white;
+    left: -9px;
+    bottom: 0px;
+  }
+}
+
+.selectFont-label {
+  .Mui-selected {
+    background-color: red !important;
+  }
+}
