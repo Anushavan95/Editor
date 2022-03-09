@@ -5,6 +5,7 @@ import { ReactComponent as HeadingSvg } from "../../../images/svg/heading.svg";
 import { ReactComponent as HyperLinkSvg } from "../../../images/svg/HyperLink.svg";
 import { ReactComponent as ImageSvg } from "../../../images/svg/image.svg";
 import { ReactComponent as ImagesLinkSvg } from "../../../images/svg/imagesLink.svg";
+import { ReactComponent as AccordionFAQIcon } from "../../../images/svg/accordionFAQ.svg";
 
 export const SIDEBAR_ITEM = "sidebarItem";
 export const ROW = "row";
@@ -37,6 +38,15 @@ export const SIDEBAR_ITEMS = [
       text: "Hyperlink",
       // my: link,
       content: "HyperLink"
+    }
+  },
+  {
+    id: shortid.generate(),
+    type: SIDEBAR_ITEM,
+    component: {
+      type: <AccordionFAQIcon className="edit-icon icon" />,
+      text: "Accordion",
+      content: "Accordion"
     }
   },
   {

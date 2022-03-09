@@ -179,11 +179,11 @@ body {
 }
 
 .dragged {
-  border: 1px dashed #ff5319 !important;
+  border: 1px dashed #00254A !important;
 }
 
 .dragged path {
-  fill: #ff5319 !important;
+  fill: #00254A !important;
 }
 
 .element-title {

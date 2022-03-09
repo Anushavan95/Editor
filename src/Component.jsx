@@ -8,6 +8,8 @@ import ImageUploadingApp from "./Components/EditorBuilder/ComponentsEditor/Image
 import { setSelectedContent, setSetTrees } from "./redux/builderSlice";
 import HyperLink from "./Components/EditorBuilder/ComponentsEditor/HyperLink";
 import Heading from "./Components/EditorBuilder/ComponentsEditor/Heading";
+import AccordionFAQ from "./Components/EditorBuilder/ComponentsEditor/AccordionFAQ";
+
 // let lastIds;
 const Component = memo(
   ({
@@ -54,6 +56,8 @@ const Component = memo(
     let width = "";
     let align = "";
     let richEditorValue = "";
+    let accordion = [{ accordionTitle: "", accordionDescription: "" }];
+
     const component = components[data.id];
     componentData.settings.map((item) => {
       Object.keys(item).forEach((key) => {
@@ -99,6 +103,21 @@ const Component = memo(
         }
       });
     });
+
+    componentData.accordionFaq.map((item) => {
+      Object.keys(item).forEach((key) => {
+        if (key !== undefined) {
+          switch (key) {
+            case "accordionTitle":
+              console.log(item.accordionDescription, "key");
+              return (accordion[0].accordionTitle = item.accordionTitle);
+            case "accordionDescription":
+              return (accordion[0].accordionDescription =
+                item.accordionDescription);
+          }
+        }
+      });
+    });
     Object.keys(componentData).forEach((key) => {
       if (key !== undefined) {
         switch (key) {
@@ -107,6 +126,17 @@ const Component = memo(
         }
       }
     });
+
+    // Object.keys(componentData).forEach((key) => {
+    //   console.log(key, "key");
+    //   if (key !== undefined) {
+    //     switch (key) {
+    //       case "accordionFaq":
+    //         return (accordion = componentData.accordionFaq);
+    //     }
+    //   }
+    // });
+
     // console.log(, "richEditorValue");
     const parentStyles = {
       ["text-align"]: `${align}`
@@ -122,6 +152,7 @@ const Component = memo(
     setTree[rowIndex][column][item] = componentData.id;
 
     if (componentData) {
+      console.log(componentData.content, "con");
       switch (componentData.content) {
         case "ImageUpload":
           return (
@@ -148,6 +179,14 @@ const Component = memo(
           );
         case "HyperLink":
           return <HyperLink key={componentData.id} layout={layout} />;
+        case "Accordion":
+          return (
+            <AccordionFAQ
+              accordion={accordion}
+              key={componentData.id}
+              componentData={componentData}
+            />
+          );
         default:
           break;
       }

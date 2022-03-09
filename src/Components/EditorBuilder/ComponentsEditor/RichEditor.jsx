@@ -3,7 +3,6 @@ import JoditEditor from "jodit-react";
 import { setTextEditorValue } from "../../../redux/builderSlice";
 import { useDispatch } from "react-redux";
 const RichEditor = ({ selectedComponentData, content }) => {
-  console.log(selectedComponentData, "selectedComponentData");
   const dispatch = useDispatch();
   const editor = null;
   let textEditorValue = "";
