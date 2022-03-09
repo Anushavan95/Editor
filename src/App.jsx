@@ -138,7 +138,7 @@ export default function App() {
                   <AccordionDetails className="accordion-details-fms">
                     <Typography>
                       <Box className="elements-parent-box">
-                        {Object.values(SIDEBAR_ITEMS.slice(0, 3)).map(
+                        {Object.values(SIDEBAR_ITEMS.slice(0, 4)).map(
                           (sideBarItem, index) => (
                             <SideBarItem
                               key={sideBarItem.id}
@@ -172,7 +172,7 @@ export default function App() {
                   </div>
                   <AccordionDetails className="accordion-fms">
                     <Box className="elements-parent-box">
-                      {Object.values(SIDEBAR_ITEMS.slice(3, 6)).map(
+                      {Object.values(SIDEBAR_ITEMS.slice(4, 6)).map(
                         (sideBarItem, index) => (
                           <SideBarItem
                             key={sideBarItem.id}

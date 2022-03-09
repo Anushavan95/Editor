@@ -8,6 +8,7 @@ import { setTag } from "../../../redux/builderSlice";
 export default function BasicSelect({ selectedComponentData, content }) {
   const dispatch = useDispatch();
   let tag = "";
+
   Object.keys(selectedComponentData).map((item) => {
     switch (Object.keys(item)[0]) {
       case "tag":

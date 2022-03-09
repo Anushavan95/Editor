@@ -29,6 +29,8 @@ import { ReactComponent as EditorS } from "./images/svg/Editor.svg";
 import ImageUploadConfigs from "./Components/EditorBuilder/ComponentsEditor/ImageUpload/ImageUploadConfigs";
 import SelectSizeImage from "./Components/EditorBuilder/ConfigsComponents/SelectSizeImage";
 import MargPaddComponents from "./Components/EditorBuilder/ConfigsComponents/MargPaddComponents";
+import AccordionFAQ from "./Components/EditorBuilder/ComponentsEditor/AccordionFAQ";
+import AccordionDetailsFAQ from "./Components/EditorBuilder/ComponentsEditor/AccordionDetailsFAQ";
 
 function Tabs(props) {
   const value = useSelector(selectTab);
@@ -61,7 +63,6 @@ function Tabs(props) {
 
   function handlerClick() {
     dispatch(postInitialData(data2.setTree, data2.children));
-    console.log();
   }
 
   return (
@@ -141,7 +142,13 @@ function Tabs(props) {
                 );
               case "HyperLink":
                 return <HyperSettings />;
-
+              case "Accordion":
+                return (
+                  <AccordionDetailsFAQ
+                    content={content}
+                    selectedComponentData={selectedComponentData}
+                  />
+                );
               case "ImageUpload":
                 return (
                   <section className="component-entered">

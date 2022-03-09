@@ -143,6 +143,44 @@ const builderSlice = createSlice({
       });
       state.children = data;
     },
+    setAccordionFaqTitleValue: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          let check = false;
+          el.accordionFaq.map((item) => {
+            if (Object.keys(item) == "accordionTitle") {
+              check = true;
+              item.accordionTitle = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.accordionFaq.push({ accordionTitle: action.payload.value });
+          }
+        }
+      });
+    },
+    setAccordionFaqTitleDescription: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          let check = false;
+          el.accordionFaq.map((item) => {
+            if (Object.keys(item) == "accordionDescription") {
+              check = true;
+              item.accordionDescription = action.payload.value;
+            }
+          });
+          if (!check) {
+            el.accordionFaq.push({
+              accordionDescription: action.payload.value
+            });
+          }
+        }
+      });
+    },
     setFontFamily: (state, action) => {
       let data = state.children;
       data.map((el) => {
@@ -360,6 +398,7 @@ const builderSlice = createSlice({
             [action.payload.generateId]: {
               text: "",
               textEditorValue: action.payload.textEditorValue,
+              accordionFaq: [],
               tag: action.payload.tag,
               id: action.payload.generateId,
               link: "",
@@ -411,6 +450,8 @@ export const {
   setColor,
   setTag,
   addImages,
+  setAccordionFaqTitleValue,
+  setAccordionFaqTitleDescription,
   setImage,
   setTab,
   setEditorTextValue,

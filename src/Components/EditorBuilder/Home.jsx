@@ -27,12 +27,12 @@ const Container = memo(() => {
 
   // console.log(link, "link");
   const initialLayout = useSelector(selectInitialLayout);
-  // console.log(initialLayout, 'initialLayout')
+  console.log(initialLayout, "initialLayout");
   const dispatch = useDispatch();
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
 
-  // console.log("out=>", layout);
+  console.log("out=>", layout);
   const [components, setComponents] = useState(initialComponents);
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
@@ -78,7 +78,17 @@ const Container = memo(() => {
               tag: "h3"
             })
           );
-
+          break;
+        case "Accordion":
+          component = {};
+          component.id = generateId;
+          dispatch(
+            setContent({
+              content: item.component.content,
+              generateId: generateId,
+              tag: "h3"
+            })
+          );
           break;
         case "ImageUpload":
           component = {};
