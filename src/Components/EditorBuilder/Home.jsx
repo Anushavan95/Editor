@@ -86,6 +86,8 @@ const Container = memo(() => {
             setContent({
               content: item.component.content,
               generateId: generateId,
+              accordionTitle: "",
+              accordionDescription: "",
               tag: "h3"
             })
           );
@@ -93,7 +95,6 @@ const Container = memo(() => {
         case "ImageUpload":
           component = {};
           component.id = generateId;
-
           dispatch(
             setContent({
               content: item.component.content,
@@ -115,7 +116,6 @@ const Container = memo(() => {
 
         const newComponent = {
           id: shortid.generate(),
-          // id: newId,
           ...item.component
         };
         const newItem = {

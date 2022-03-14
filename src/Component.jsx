@@ -56,8 +56,9 @@ const Component = memo(
     let width = "";
     let align = "";
     let richEditorValue = "";
-    let accordion = [{ accordionTitle: "", accordionDescription: "" }];
-
+    let accordionTitle = "";
+    let accordionDescription = "";
+    console.log(accordionTitle, 545454);
     const component = components[data.id];
     componentData.settings.map((item) => {
       Object.keys(item).forEach((key) => {
@@ -104,29 +105,33 @@ const Component = memo(
       });
     });
 
-    componentData.accordionFaq.map((item) => {
-      Object.keys(item).forEach((key) => {
-        if (key !== undefined) {
-          switch (key) {
-            case "accordionTitle":
-              console.log(item.accordionDescription, "key");
-              return (accordion[0].accordionTitle = item.accordionTitle);
-            case "accordionDescription":
-              return (accordion[0].accordionDescription =
-                item.accordionDescription);
-          }
-        }
-      });
-    });
+    // componentData.accordionFaq.map((item) => {
+    //   Object.keys(item).forEach((key) => {
+    //     if (key !== undefined) {
+    //       switch (key) {
+    //         case "accordionTitle":
+    //           console.log(item.accordionDescription, "key");
+    //           return (accordion[0].accordionTitle = item.accordionTitle);
+    //         case "accordionDescription":
+    //           return (accordion[0].accordionDescription =
+    //             item.accordionDescription);
+    //       }
+    //     }
+    //   });
+    // });
     Object.keys(componentData).forEach((key) => {
       if (key !== undefined) {
         switch (key) {
           case "textEditorValue":
             return (richEditorValue = componentData.textEditorValue);
+          case "accordionTitle":
+            return (accordionTitle = componentData.accordionTitle);
+          case "accordionDescription":
+            return (accordionDescription = componentData.accordionDescription);
         }
       }
     });
-
+    // console.log(accordionTitle, "im");
     // Object.keys(componentData).forEach((key) => {
     //   console.log(key, "key");
     //   if (key !== undefined) {
@@ -161,6 +166,7 @@ const Component = memo(
               image={image}
               styles={styles}
               parentStyles={parentStyles}
+              handleClick={(event) => handleClick(componentData.id)}
             />
           );
         case "Editor":
@@ -182,7 +188,6 @@ const Component = memo(
         case "Accordion":
           return (
             <AccordionFAQ
-              accordion={accordion}
               key={componentData.id}
               componentData={componentData}
             />

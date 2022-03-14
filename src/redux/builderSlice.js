@@ -16,6 +16,8 @@ const initialState = {
   checked: false,
   tagSelect: "h3",
   selectSize: ""
+
+  // accordionDescription: "",
 };
 
 export const postHtmlDataAsync = createAsyncThunk(
@@ -95,6 +97,17 @@ const builderSlice = createSlice({
       });
       state.children = data;
     },
+    setTitleAccordion: (state, action) => {
+      let data = state.children;
+      data.map((el) => {
+        el = Object.values(el)[0];
+        if (el.id === action.payload.id) {
+          el.accordionTitle = action.payload.value;
+        }
+      });
+      state.children = data;
+    },
+
     setTextEditorValue: (state, action) => {
       let data = state.children;
       data.map((el) => {
@@ -143,44 +156,62 @@ const builderSlice = createSlice({
       });
       state.children = data;
     },
-    setAccordionFaqTitleValue: (state, action) => {
-      let data = state.children;
-      data.map((el) => {
-        el = Object.values(el)[0];
-        if (el.id === action.payload.id) {
-          let check = false;
-          el.accordionFaq.map((item) => {
-            if (Object.keys(item) == "accordionTitle") {
-              check = true;
-              item.accordionTitle = action.payload.value;
-            }
-          });
-          if (!check) {
-            el.accordionFaq.push({ accordionTitle: action.payload.value });
-          }
-        }
-      });
+    addAccordionList: (state, action) => {
+      let data = [...state.accordionList];
+      let newData = [...data, action];
+      state.accordionList = [...newData];
+      console.log("data ::: ", newData);
     },
-    setAccordionFaqTitleDescription: (state, action) => {
-      let data = state.children;
-      data.map((el) => {
-        el = Object.values(el)[0];
-        if (el.id === action.payload.id) {
-          let check = false;
-          el.accordionFaq.map((item) => {
-            if (Object.keys(item) == "accordionDescription") {
-              check = true;
-              item.accordionDescription = action.payload.value;
-            }
-          });
-          if (!check) {
-            el.accordionFaq.push({
-              accordionDescription: action.payload.value
-            });
-          }
-        }
-      });
-    },
+    // setAccordionFaqTitleValue: (state, action) => {
+    //   let data = state.children;
+    //   data.map((el) => {
+    //     el = Object.values(el)[0];
+    //     if (el.id === action.payload.id) {
+    //       el.accordionTitle = action.payload.value;
+    //     }
+    //   });
+    //   state.children = data;
+    // },
+
+    // setAccordionFaqTitleDescription: (state, action) => {
+    //   let data = state.children;
+    //   data.map((el) => {
+    //     el = Object.values(el)[0];
+    //     if (el.id === action.payload.id) {
+    //       let check = false;
+    //       // el.accordionFaq[0].accordionDescription = action.payload.value;
+    //       console.log(el, "accordionDescription");
+    //       el.accordionDescription = action.payload.value;
+    //       // el.accordionFaq.map((item) => {
+    //       //   if (Object.keys(item) == "accordionDescription") {
+    //       //     check = true;
+    //       //     item.accordionDescription = action.payload.value;
+    //       //   }
+    //       // });
+    //       // if (!check) {
+    //       //   el.accordionFaq.push({
+    //       //     accordionDescription: action.payload.value
+    //       //   });
+    //       // }
+    //     }
+
+    //     state.children = data;
+    //   });
+    // },
+    // addAccordionList: (state, action) => {
+    //   let data = state.children;
+    //   data.map((el) => {
+    //     el = Object.values(el)[0];
+    //     if (el.id === action.payload.id) {
+    //       let check = false;
+    //       const newAccordion = {
+    //         accordionTitle: state.accordionTitle,
+    //         accordionDescription: state.accordionDescription
+    //       };
+    //       el.accordionFaq = [...el.accordionFaq, newAccordion];
+    //     }
+    //   });
+    // },
     setFontFamily: (state, action) => {
       let data = state.children;
       data.map((el) => {
@@ -313,7 +344,6 @@ const builderSlice = createSlice({
           }
         }
       });
-
       state.children = data;
     },
 
@@ -398,8 +428,10 @@ const builderSlice = createSlice({
             [action.payload.generateId]: {
               text: "",
               textEditorValue: action.payload.textEditorValue,
-              accordionFaq: [],
+              titleAccordion: action.payload.titleAccordion,
+              accordionDescription: action.payload.accordionDescription,
               tag: action.payload.tag,
+              accordionTitle: action.payload.accordionTitle,
               id: action.payload.generateId,
               link: "",
               content: action.payload.content,
@@ -450,7 +482,7 @@ export const {
   setColor,
   setTag,
   addImages,
-  setAccordionFaqTitleValue,
+  setTitleAccordion,
   setAccordionFaqTitleDescription,
   setImage,
   setTab,
@@ -471,6 +503,7 @@ export const {
   setSetTrees,
   setChecked,
   setAlignMent,
+  addAccordionList,
   setSize,
   setTextEditorValue,
   setFontFamily
@@ -496,6 +529,9 @@ export const selectLinkValue = (state) => state.component.linkValue;
 export const selectLink = (state) => state.component.selectLink;
 export const selectChecked = (state) => state.component.checked;
 export const selectSize = (state) => state.component.selectSize;
+// export const selectAccordionTitle = (state) => state.component.accordionTitle;
+export const selectAccordionList = (state) => state.component.accordionList;
+
 export const data = (state) => state.component;
 
 export default builderSlice.reducer;
