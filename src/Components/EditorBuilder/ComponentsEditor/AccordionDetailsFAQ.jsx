@@ -112,7 +112,7 @@ export default function AccordionDetailsFAQ({
                   </Accordion>
 
                   <Button
-                    onClick={() => dispatch(deleteAccordionList(index))}
+                    onClick={() => dispatch(deleteAccordionList())}
                     variant="outlined"
                     className="delete-accord"
                     startIcon={<Delete />}
