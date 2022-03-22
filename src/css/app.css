@@ -123,4 +123,54 @@
 .heading-icon-svg {
   padding: 2px;
 }
+
+.accordion-item {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  position: relative;
+}
+
+.accordion-item .jodit-container {
+  margin: 20px 0px;
+  min-width: 160px !important;
+}
+
+.accordion-item .accord-list {
+  max-width: 200px;
+}
+
+.accordion-item .accord-list input {
+  width: 100% !important;
+}
+
+.accordion-item .delete-accord {
+  padding: 0;
+  width: 50px;
+  height: 35px;
+  min-width: inherit !important;
+  position: absolute;
+  right: 0;
+}
+
+.accordion-item .delete-accord span {
+  margin-right: 0px !important;
+}
+
+.add-accord {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: #787878;
+          box-shadow: #787878;
+}
+
+.add-accord .btn-acord-added {
+  max-width: 200px;
+  border: 1px solid gray !important;
+}
 /*# sourceMappingURL=app.css.map */

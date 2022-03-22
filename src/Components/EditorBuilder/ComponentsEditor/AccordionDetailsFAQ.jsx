@@ -5,40 +5,42 @@ import {
   selectAccordionList,
   setTitleAccordion,
   addAccordionList,
-  selectAccordionTitle
+  selectAccordionTitle,
+  deleteAccordionList
 } from "../../../redux/builderSlice";
+import {
+  Button,
+  Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography
+} from "@mui/material";
 
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { ExpandMore, Delete } from "@mui/icons-material";
+import JoditEditor from "jodit-react";
+
 export default function AccordionDetailsFAQ({
   content,
   selectedComponentData
 }) {
   const dispatch = useDispatch();
-  const list = useSelector(selectAccordionList);
+  const listAccordion = useSelector(selectAccordionList);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  console.log(list, "list");
+  // console.log(list, "list");
   // useSelector(selectAccord)
   let titleAccordion = "";
   console.log(titleAccordion, "titleAccordion");
 
   let accordionDescription = "";
-  // console.log(titleAccordion, "titleAccordion 1111111111");
-  // selectedComponentData.accordionFaq.map((item) => {
-  //   console.log(item, "accordion item");
-  //   switch (Object.keys(item)[0]) {
-  //     case "accordionTitle":
-  //       return (titleAccordion = Object.values(item));
-  //     case "accordionDescription":
-  //       return (accordionDescription = Object.values(item));
-  //     default:
-  //       return null;
-  //   }
-  // });
+  const config = {
+    readonly: false
+  };
+  const editor = null;
+  // const [listAccordion, setList] = useState([
+  //   { listAccordion: listAccordion, accordionDescription: accordionDescription }
+  // ]);
 
   Object.keys(selectedComponentData).map((item) => {
     switch (Object.keys(item)[0]) {
@@ -55,58 +57,77 @@ export default function AccordionDetailsFAQ({
     dispatch(setTitleAccordion({ id: content, value: event.target.value }));
   };
 
-  // const handleDescriptionChange = (event) => {
-  //   dispatch(
-  //     setAccordionFaqTitleDescription({
-  //       id: content,
-  //       value: event.target.value
-  //     })
-  //   );
-  // };
+  const addItem = () => {
+    let newItem = {
+      titleAccordion: "",
+      accordionDescription: ""
+    };
 
-  // const add = () => {
-  //   dispatch(addAccordionList({ title: title }));
-  // };
-  console.log(title, "title");
-  console.log(selectedComponentData, "selectedComponentData");
-
+    dispatch(addAccordionList(newItem));
+  };
   return (
     <div>
-      <>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Accordion</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Item 1</Typography>
-              </AccordionSummary>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMore />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Accordion</Typography>
+        </AccordionSummary>
+        {listAccordion.map((item) => {
+          return (
+            <Box>
               <AccordionDetails>
-                <TextField
-                  value={title}
-                  onChange={handleTitleChange}
-                  placeholder={"Answer"}
-                />
-                <TextField
-                  value={description}
-                  // onChange={handleDescriptionChange}
-                  placeholder={"Description"}
-                />
-                <button>Add Item</button>
+                <Box className="accordion-item">
+                  <Accordion className="accord-list">
+                    <AccordionSummary
+                      expandIcon={<ExpandMore />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      <Typography>Item 1</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Box>
+                        Title Description
+                        <TextField
+                          value={title}
+                          onChange={handleTitleChange}
+                          placeholder={"Answer"}
+                        />
+                      </Box>
+                      <JoditEditor
+                        ref={editor}
+                        // value={textEditorValue}
+                        config={config}
+                        toolbarAdaptive={false}
+                        tabIndex={1} // tabIndex of textarea
+                        // onBlur={richEditorValue}
+                        // onChange={(newContent) => {
+                        //   // console.log(newContent, "aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                        // }}
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+
+                  <Button
+                    onClick={() => dispatch(deleteAccordionList(index))}
+                    variant="outlined"
+                    className="delete-accord"
+                    startIcon={<Delete />}
+                  ></Button>
+                </Box>
               </AccordionDetails>
-            </Accordion>
-          </AccordionDetails>
-        </Accordion>
-      </>
+            </Box>
+          );
+        })}
+        <Box className="add-accord">
+          <Button className="btn-acord-added" onClick={addItem}>
+            + Add Item
+          </Button>
+        </Box>
+      </Accordion>
     </div>
   );
 }

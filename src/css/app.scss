@@ -115,3 +115,45 @@
 .heading-icon-svg {
   padding: 2px;
 }
+
+.accordion-item {
+  .jodit-container {
+    margin: 20px 0px;
+    min-width: 160px !important;
+    // width: 100%;
+  }
+  display: flex !important;
+  position: relative;
+  .accord-list {
+    max-width: 200px;
+    input {
+      width: 100% !important;
+    }
+  }
+  .delete-accord {
+    padding: 0;
+    // box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%) 0px 1px 1px 0px rgb(
+    //     0 0 0 / 14%
+    //   ) 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    width: 50px;
+    height: 35px;
+    min-width: inherit !important;
+    position: absolute;
+
+    right: 0;
+    span {
+      margin-right: 0px !important;
+    }
+  }
+}
+
+.add-accord {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: #787878;
+  .btn-acord-added {
+    max-width: 200px;
+    border: 1px solid gray !important;
+  }
+}

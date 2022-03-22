@@ -15,7 +15,8 @@ const initialState = {
   selectLink: "",
   checked: false,
   tagSelect: "h3",
-  selectSize: ""
+  selectSize: "",
+  accordionList: []
 
   // accordionDescription: "",
 };
@@ -160,7 +161,11 @@ const builderSlice = createSlice({
       let data = [...state.accordionList];
       let newData = [...data, action];
       state.accordionList = [...newData];
-      console.log("data ::: ", newData);
+    },
+    deleteAccordionList: (state, action) => {
+      let data = [...state.accordionList];
+      let newData = data.splice(action, 1);
+      state.accordionList = [...newData];
     },
     // setAccordionFaqTitleValue: (state, action) => {
     //   let data = state.children;
@@ -257,6 +262,7 @@ const builderSlice = createSlice({
         }
       });
     },
+
     setSelectedContent: (state, action) => {
       state.selected = action.payload;
     },
@@ -506,6 +512,7 @@ export const {
   addAccordionList,
   setSize,
   setTextEditorValue,
+  deleteAccordionList,
   setFontFamily
 } = builderSlice.actions;
 export const selectChildren = (state) => state.component.children;
