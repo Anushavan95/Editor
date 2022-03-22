@@ -27,7 +27,7 @@ export default function App() {
   const [expanded3, setExpanded3] = useState("panel1");
   const [widthe, setWidthe] = useState("unset");
   const [values, setValues] = useState({
-    weight: "390px"
+    weight: "391px"
   });
   const [active, setActive] = useState("unset");
   const handleChanges = (prop) => (event) => {
